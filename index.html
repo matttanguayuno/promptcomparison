@@ -1,0 +1,3143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Generation Comparison - Uno vs Lovable vs Dreamflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-bottom: 3px solid #1e3c72;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .container {
+            display: flex;
+            max-width: 2000px;
+            margin: 2rem auto;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            position: sticky;
+            top: 2rem;
+            border: 1px solid #e1e8ed;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 1rem;
+            color: #1e3c72;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .project-list {
+            list-style: none;
+        }
+
+        .project-list li {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .project-list li:hover {
+            background: #e8f2ff;
+            transform: translateX(5px);
+            border-left-color: #2a5298;
+            color: #1e3c72;
+        }
+
+        .project-list li.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            font-weight: 600;
+            border-left-color: #1e3c72;
+            box-shadow: 0 2px 6px rgba(30, 60, 114, 0.3);
+        }
+
+        .main-content {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            min-height: 500px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .project-section {
+            display: none;
+        }
+
+        .project-section.active {
+            display: block;
+        }
+
+        .project-header h2 {
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .prompts-section {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 4rem;
+            border: 1px solid #e1e8ed;
+        }
+
+        .prompts-section h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tool-section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #1e3c72;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-section.uno {
+            border-left-color: #4a5568;
+        }
+
+        .tool-section.lovable {
+            border-left-color: #e74c3c;
+        }
+
+        .tool-section.dreamflow {
+            border-left-color: #16a085;
+        }
+
+        .tool-section h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .tool-section-single {
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-section pre, .tool-section-single pre {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #1e3c72;
+            background: white;
+            color: #1e3c72;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 2px 6px rgba(30, 60, 114, 0.3);
+        }
+
+        .tab-uno.active.active-tool {
+            background: #4a5568;
+            border-color: transparent;
+        }
+
+        .tab-lovable.active.active-tool {
+            background: #e74c3c;
+            border-color: transparent;
+        }
+
+        .tab-dreamflow.active.active-tool {
+            background: #16a085;
+            border-color: transparent;
+        }
+
+        .tab-vscodeuno.active.active-tool {
+            background: #9b59b6;
+            border-color: transparent;
+        }
+
+        .tab-vscodeunomcp.active.active-tool {
+            background: #e67e22;
+            border-color: transparent;
+        }
+
+        .tab-antigravity.active.active-tool {
+            background: #3498db;
+            border-color: transparent;
+        }
+
+        .tab-uno {
+            border-color: #4a5568;
+            color: #4a5568;
+        }
+
+        .tab-uno:hover {
+            background: #4a5568;
+            color: white;
+        }
+
+        .tab-vscodeuno {
+            border-color: #9b59b6;
+            color: #9b59b6;
+        }
+
+        .tab-vscodeuno:hover {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .tab-vscodeunomcp {
+            border-color: #e67e22;
+            color: #e67e22;
+        }
+
+        .tab-vscodeunomcp:hover {
+            background: #e67e22;
+            color: white;
+        }
+
+        .tab-lovable {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .tab-lovable:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .tab-dreamflow {
+            border-color: #16a085;
+            color: #16a085;
+        }
+
+        .tab-dreamflow:hover {
+            background: #16a085;
+            color: white;
+        }
+
+        .tab-antigravity {
+            border-color: #3498db;
+            color: #3498db;
+        }
+
+        .tab-antigravity:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .images-grid {
+            margin-top: 2rem;
+        }
+
+        .tool-group {
+            margin-bottom: 3rem;
+        }
+
+        .tool-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .tool-group-header {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-group-header.uno {
+            background: linear-gradient(135deg, #4a5568 0%, #5a6a7a 100%);
+        }
+
+        .tool-group-header.lovable {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .tool-group-header.dreamflow {
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+        }
+
+        .tool-group-header.vscodeuno {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+
+        .tool-group-header.vscodeunomcp {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+        }
+
+        .tool-group-header.antigravity {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .tool-group-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1400px) {
+            .tool-group-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .tool-group-images {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .image-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e1e8ed;
+            position: relative;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .material-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+            z-index: 10;
+        }
+
+        .image-label {
+            padding: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .image-label.uno {
+            background: linear-gradient(135deg, #4a5568 0%, #5a6a7a 100%);
+            color: white;
+        }
+
+        .image-label.lovable {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .image-label.dreamflow {
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            color: white;
+        }
+
+        .image-label.vscodeuno {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+        }
+
+        .image-label.vscodeunomcp {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .summary-table th {
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-table th:first-child {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-top-left-radius: 8px;
+        }
+
+        .summary-table th:nth-child(2) {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .summary-table th:nth-child(3),
+        .summary-table th:nth-child(4) {
+            background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
+        }
+
+        .summary-table th:nth-child(5),
+        .summary-table th:nth-child(6),
+        .summary-table th:nth-child(7) {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .summary-table th:nth-child(8),
+        .summary-table th:nth-child(9),
+        .summary-table th:nth-child(10) {
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+        }
+
+        .summary-table th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        .value-better {
+            color: #16a085;
+        }
+
+        .value-worse {
+            color: #e74c3c;
+        }
+
+        .summary-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #e1e8ed;
+            color: #334155;
+            font-size: 1rem;
+        }
+
+        .summary-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 700;
+            background: #f8fafc;
+            font-size: 1.05rem;
+        }
+
+        .prompts-section .summary-table td {
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        .prompts-section .summary-table tr:last-child td {
+            font-weight: normal;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .summary-table tr:hover:not(:last-child) {
+            background: #f8fafc;
+        }
+
+        .prompts-section .summary-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .summary-table td:nth-child(2),
+        .summary-table td:nth-child(3),
+        .summary-table td:nth-child(4),
+        .summary-table td:nth-child(5),
+        .summary-table td:nth-child(6),
+        .summary-table td:nth-child(7),
+        .summary-table td:nth-child(8),
+        .summary-table td:nth-child(9),
+        .summary-table td:nth-child(10),
+        .summary-table th:nth-child(2),
+        .summary-table th:nth-child(3),
+        .summary-table th:nth-child(4),
+        .summary-table th:nth-child(5),
+        .summary-table th:nth-child(6),
+        .summary-table th:nth-child(7),
+        .summary-table th:nth-child(8),
+        .summary-table th:nth-child(9),
+        .summary-table th:nth-child(10) {
+            text-align: center;
+        }
+
+        .download-csv-btn {
+            background: #f8fafc;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .download-csv-btn:hover {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-header h2 {
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-weight: 600;
+        }
+
+        .header-with-button {
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-intro {
+            background: linear-gradient(135deg, #f8fafc 0%, #e8f2ff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2a5298;
+        }
+
+        .summary-intro h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .summary-intro p {
+            color: #475569;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            color: #bbb;
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f1f1f1;
+            font-size: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            padding: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-arrow:hover {
+            color: #fff;
+        }
+
+        .lightbox-arrow.disabled {
+            color: #555;
+            cursor: not-allowed;
+            opacity: 0.3;
+        }
+
+        .lightbox-arrow-left {
+            left: 20px;
+        }
+
+        .lightbox-arrow-right {
+            right: 20px;
+        }
+
+        .lightbox-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #2c3e50;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-height: 300px;
+                position: relative;
+                top: 0;
+            }
+
+            .images-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Generation Comparison</h1>
+        <p class="subtitle">Comparing Uno, Lovable, and Dreamflow outputs across different prompts</p>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <ul class="project-list">
+                <li data-project='summary' class='active' onclick='showProject("summary")'>Summary</li>                <li data-project='1__Flight_Details' onclick="showProject('1__Flight_Details')">1. Flight Details</li>
+                <li data-project='2__Football_Fantasy' onclick="showProject('2__Football_Fantasy')">2. Football Fantasy</li>
+                <li data-project='3__Travel_Guide' onclick="showProject('3__Travel_Guide')">3. Travel Guide</li>
+                <li data-project='4__Electric_Utility_Dashboard' onclick="showProject('4__Electric_Utility_Dashboard')">4. Electric Utility Dashboard</li>
+                <li data-project='5__Video_Streaming' onclick="showProject('5__Video_Streaming')">5. Video Streaming</li>
+                <li data-project='6__Notes' onclick="showProject('6__Notes')">6. Notes</li>
+                <li data-project='7__Calendar' onclick="showProject('7__Calendar')">7. Calendar</li>
+                <li data-project='8__Hospital_Dashboard' onclick="showProject('8__Hospital_Dashboard')">8. Hospital Dashboard</li>
+                <li data-project='9__Budgeting_Dashboard' onclick="showProject('9__Budgeting_Dashboard')">9. Budgeting Dashboard</li>
+                <li data-project='10__Recipe_Home_Screen' onclick="showProject('10__Recipe_Home_Screen')">10. Recipe Home Screen</li>
+                <li data-project='11__Fitness_Tracking' onclick="showProject('11__Fitness_Tracking')">11. Fitness Tracking</li>
+                <li data-project='12__Login_Register' onclick="showProject('12__Login_Register')">12. Login Register</li>
+                <li data-project='13__Travel_Home_Screen' onclick="showProject('13__Travel_Home_Screen')">13. Travel Home Screen</li>
+                <li data-project='14__Burger_Joint' onclick="showProject('14__Burger_Joint')">14. Burger Joint</li>
+                <li data-project='15__Fitness_Home_Screen' onclick="showProject('15__Fitness_Home_Screen')">15. Fitness Home Screen</li>
+                <li data-project='16__Background_Dashboard' onclick="showProject('16__Background_Dashboard')">16. Background Dashboard</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="project-section active" id="summary">
+                <div class="project-header header-with-button">
+                    <h2>Performance Summary</h2>
+                    <button class="download-csv-btn" onclick="downloadCSV()">Download CSV</button>
+                </div>
+
+                <table class="summary-table" id="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Antigravity<br>Time (s)</th>
+                            <th>Uno VS Code<br>Time (s)</th>
+                            <th>Uno VS Code MCP<br>Time (s)</th>
+                            <th>Lovable<br>Time (s)</th>
+                            <th>Lovable<br>Credits</th>
+                            <th>Lovable<br>Cost/Page ($)</th>
+                            <th>Dreamflow<br>Time (s)</th>
+                            <th>Dreamflow<br>Credits</th>
+                            <th>Dreamflow<br>Cost/Page ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>                        <tr>
+                            <td>1. Flight Details</td>
+                            <td class='value-better'>80</td>
+                            <td class=''>150</td>
+                            <td class=''>105</td>
+                            <td class=''>180</td>
+                            <td class='value-better'>2.1</td>
+                            <td class='value-worse'>0.9</td>
+                            <td class='value-worse'>200</td>
+                            <td class='value-worse'>3.4</td>
+                            <td class='value-better'>0.31</td>
+                        </tr>                        <tr>
+                            <td>2. Football Fantasy</td>
+                            <td class='value-better'>65</td>
+                            <td class=''>110</td>
+                            <td class=''>170</td>
+                            <td class=''>420</td>
+                            <td class='value-better'>2.9</td>
+                            <td class='value-better'>1.25</td>
+                            <td class='value-worse'>500</td>
+                            <td class='value-worse'>11.5</td>
+                            <td class='value-worse'>2.07</td>
+                        </tr>                        <tr>
+                            <td>3. Travel Guide</td>
+                            <td class='value-better'>80</td>
+                            <td class=''>120</td>
+                            <td class=''>180</td>
+                            <td class='value-worse'>230</td>
+                            <td class='value-better'>2.4</td>
+                            <td class='value-worse'>1.03</td>
+                            <td class=''>170</td>
+                            <td class='value-worse'>4.1</td>
+                            <td class='value-better'>0.74</td>
+                        </tr>                        <tr>
+                            <td>4. Electric Utility Dashboard</td>
+                            <td class='value-better'>95</td>
+                            <td class=''>115</td>
+                            <td class='value-worse'>290</td>
+                            <td class=''>160</td>
+                            <td class='value-better'>1.8</td>
+                            <td class='value-worse'>0.77</td>
+                            <td class=''>220</td>
+                            <td class='value-worse'>3.9</td>
+                            <td class='value-better'>0.7</td>
+                        </tr>                        <tr>
+                            <td>5. Video Streaming</td>
+                            <td class='value-better'>90</td>
+                            <td class=''>105</td>
+                            <td class=''>160</td>
+                            <td class=''>270</td>
+                            <td class='value-better'>2.5</td>
+                            <td class='value-worse'>0.54</td>
+                            <td class='value-worse'>330</td>
+                            <td class='value-worse'>5.8</td>
+                            <td class='value-better'>0.26</td>
+                        </tr>                        <tr>
+                            <td>6. Notes</td>
+                            <td class='value-better'>90</td>
+                            <td class='value-worse'>275</td>
+                            <td class=''>150</td>
+                            <td class=''>180</td>
+                            <td class='value-better'>2</td>
+                            <td class='value-worse'>0.29</td>
+                            <td class=''>210</td>
+                            <td class='value-worse'>3.8</td>
+                            <td class='value-better'>0.23</td>
+                        </tr>                        <tr>
+                            <td>7. Calendar</td>
+                            <td class='value-better'>75</td>
+                            <td class=''>210</td>
+                            <td class=''>230</td>
+                            <td class='value-worse'>290</td>
+                            <td class='value-better'>2.2</td>
+                            <td class='value-better'>0.95</td>
+                            <td class=''>225</td>
+                            <td class='value-worse'>7</td>
+                            <td class='value-worse'>1.26</td>
+                        </tr>                        <tr>
+                            <td>8. Hospital Dashboard</td>
+                            <td class='value-better'>85</td>
+                            <td class=''>120</td>
+                            <td class=''>150</td>
+                            <td class=''>180</td>
+                            <td class='value-better'>1.9</td>
+                            <td class='value-worse'>0.82</td>
+                            <td class='value-worse'>260</td>
+                            <td class='value-worse'>4.4</td>
+                            <td class='value-better'>0.79</td>
+                        </tr>                        <tr>
+                            <td>9. Budgeting Dashboard</td>
+                            <td class='value-better'>80</td>
+                            <td class=''>160</td>
+                            <td class=''>140</td>
+                            <td class=''>150</td>
+                            <td class='value-better'>1.7</td>
+                            <td class='value-better'>0.73</td>
+                            <td class='value-worse'>240</td>
+                            <td class='value-worse'>5.4</td>
+                            <td class='value-worse'>0.97</td>
+                        </tr>                        <tr>
+                            <td>10. Recipe Home Screen</td>
+                            <td class='value-better'>80</td>
+                            <td class=''>150</td>
+                            <td class=''>170</td>
+                            <td class=''>120</td>
+                            <td class='value-better'>1.6</td>
+                            <td class='value-better'>0.69</td>
+                            <td class='value-worse'>185</td>
+                            <td class='value-worse'>4.5</td>
+                            <td class='value-worse'>0.81</td>
+                        </tr>                        <tr>
+                            <td>11. Fitness Tracking</td>
+                            <td class='value-better'>75</td>
+                            <td class=''>120</td>
+                            <td class=''>180</td>
+                            <td class=''>200</td>
+                            <td class='value-better'>1.9</td>
+                            <td class='value-worse'>0.82</td>
+                            <td class='value-worse'>240</td>
+                            <td class='value-worse'>3.5</td>
+                            <td class='value-better'>0.63</td>
+                        </tr>                        <tr>
+                            <td>12. Login Register</td>
+                            <td class='value-better'>60</td>
+                            <td class=''>90</td>
+                            <td class='value-worse'>300</td>
+                            <td class=''>155</td>
+                            <td class='value-better'>2.1</td>
+                            <td class='value-worse'>0.45</td>
+                            <td class=''>255</td>
+                            <td class='value-worse'>3.5</td>
+                            <td class='value-better'>0.32</td>
+                        </tr>                        <tr>
+                            <td>13. Travel Home Screen</td>
+                            <td class='value-better'>75</td>
+                            <td class='value-worse'>400</td>
+                            <td class=''>240</td>
+                            <td class=''>210</td>
+                            <td class='value-better'>2.1</td>
+                            <td class='value-better'>0.9</td>
+                            <td class=''>220</td>
+                            <td class='value-worse'>8.5</td>
+                            <td class='value-worse'>1.53</td>
+                        </tr>                        <tr>
+                            <td>14. Burger Joint</td>
+                            <td class='value-better'>80</td>
+                            <td class=''>100</td>
+                            <td class='value-worse'>330</td>
+                            <td class=''>200</td>
+                            <td class='value-better'>1.8</td>
+                            <td class='value-worse'>0.77</td>
+                            <td class=''>225</td>
+                            <td class='value-worse'>3.4</td>
+                            <td class='value-better'>0.61</td>
+                        </tr>                        <tr>
+                            <td>15. Fitness Home Screen</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-worse'>0</td>
+                            <td class='value-worse'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-worse'>0</td>
+                            <td class='value-worse'>0</td>
+                        </tr>                        <tr>
+                            <td>Average</td>
+                            <td>74</td>
+                            <td>148.3</td>
+                            <td>186.3</td>
+                            <td>196.3</td>
+                            <td>1.9</td>
+                            <td>0.69</td>
+                            <td>232</td>
+                            <td>4.8</td>
+                            <td>0.57</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="project-section" id="1__Flight_Details">
+                <div class="project-header">
+                    <h2>1. Flight Details</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section uno">
+                        <h4>UNO</h4>
+                        <pre>1. Create a page for flight details which has departure and destination option, user can select date, type of class
+2. Make UI more interesting and Add placeholder texts, redesign the page, add logo, emoji, background image
+3. Turn it into flight details page with colors, user should be able to select places from dropdown, select to and from dates, details for promocode</pre>
+                    </div>                    <div class="tool-section lovable">
+                        <h4>LOVABLE</h4>
+                        <pre>create a page for flight details which has departure and destination option, user can select date, type of class</pre>
+                    </div>                    <div class="tool-section dreamflow">
+                        <h4>DREAMFLOW</h4>
+                        <pre>1. Create a page for flight details which has departure and destination option, user can select date, type of class
+2. fix errors, the preview isn't working
+3. Make UI more interesting, redesign the page, add logo, background image</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>80</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>150</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>105</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>180</td>
+                                <td>2.1</td>
+                                <td>0.9</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>200</td>
+                                <td>3.4</td>
+                                <td>0.31</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('1__Flight_Details', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('1__Flight_Details', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('1__Flight_Details', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('1__Flight_Details', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('1__Flight_Details', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('1__Flight_Details', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('1__Flight_Details', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="1__Flight_Details_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="1. Flight Details/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('1. Flight Details/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="1. Flight Details/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('1. Flight Details/UnoHD1.png', 'UnoHD1.png')">
+                                <div class="image-label uno">UnoHD1.png</div>
+                            </div>                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="1. Flight Details/UnoHD2.png" alt="UnoHD2.png" onclick="openLightbox('1. Flight Details/UnoHD2.png', 'UnoHD2.png')">
+                                <div class="image-label uno">UnoHD2.png</div>
+                            </div>                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="1. Flight Details/UnoHD3.png" alt="UnoHD3.png" onclick="openLightbox('1. Flight Details/UnoHD3.png', 'UnoHD3.png')">
+                                <div class="image-label uno">UnoHD3.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="1. Flight Details/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('1. Flight Details/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="1. Flight Details/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('1. Flight Details/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="1. Flight Details/Lovable.png" alt="Lovable.png" onclick="openLightbox('1. Flight Details/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="1. Flight Details/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('1. Flight Details/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="1. Flight Details/Dreamflow2.png" alt="Dreamflow2.png" onclick="openLightbox('1. Flight Details/Dreamflow2.png', 'Dreamflow2.png')">
+                                <div class="image-label dreamflow">Dreamflow2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="1. Flight Details/Dreamflow3.png" alt="Dreamflow3.png" onclick="openLightbox('1. Flight Details/Dreamflow3.png', 'Dreamflow3.png')">
+                                <div class="image-label dreamflow">Dreamflow3.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="1. Flight Details/Dreamflow-Material1-1.png" alt="Dreamflow-Material1-1.png" onclick="openLightbox('1. Flight Details/Dreamflow-Material1-1.png', 'Dreamflow-Material1-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material1-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="1. Flight Details/Dreamflow-Material1-2.png" alt="Dreamflow-Material1-2.png" onclick="openLightbox('1. Flight Details/Dreamflow-Material1-2.png', 'Dreamflow-Material1-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material1-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="1. Flight Details/Dreamflow-Material1-3.png" alt="Dreamflow-Material1-3.png" onclick="openLightbox('1. Flight Details/Dreamflow-Material1-3.png', 'Dreamflow-Material1-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material1-3.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="2__Football_Fantasy">
+                <div class="project-header">
+                    <h2>2. Football Fantasy</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Create a football fantasy app that allows users to build teams, exchange players and compete in tournaments</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>65</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>110</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>170</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>420</td>
+                                <td>2.9</td>
+                                <td>1.25</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>500</td>
+                                <td>11.5</td>
+                                <td>2.07</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('2__Football_Fantasy', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('2__Football_Fantasy', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('2__Football_Fantasy', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('2__Football_Fantasy', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('2__Football_Fantasy', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('2__Football_Fantasy', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('2__Football_Fantasy', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="2__Football_Fantasy_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="2. Football Fantasy/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('2. Football Fantasy/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="2. Football Fantasy/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('2. Football Fantasy/UnoHD1.png', 'UnoHD1.png')">
+                                <div class="image-label uno">UnoHD1.png</div>
+                            </div>                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="2. Football Fantasy/UnoHD2.png" alt="UnoHD2.png" onclick="openLightbox('2. Football Fantasy/UnoHD2.png', 'UnoHD2.png')">
+                                <div class="image-label uno">UnoHD2.png</div>
+                            </div>                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="2. Football Fantasy/UnoHD3.png" alt="UnoHD3.png" onclick="openLightbox('2. Football Fantasy/UnoHD3.png', 'UnoHD3.png')">
+                                <div class="image-label uno">UnoHD3.png</div>
+                            </div>                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="2. Football Fantasy/UnoHD4.png" alt="UnoHD4.png" onclick="openLightbox('2. Football Fantasy/UnoHD4.png', 'UnoHD4.png')">
+                                <div class="image-label uno">UnoHD4.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="2. Football Fantasy/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('2. Football Fantasy/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="2. Football Fantasy/UnoVSCodeMCP-1.png" alt="UnoVSCodeMCP-1.png" onclick="openLightbox('2. Football Fantasy/UnoVSCodeMCP-1.png', 'UnoVSCodeMCP-1.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-1.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="2. Football Fantasy/UnoVSCodeMCP-2.png" alt="UnoVSCodeMCP-2.png" onclick="openLightbox('2. Football Fantasy/UnoVSCodeMCP-2.png', 'UnoVSCodeMCP-2.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-2.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="2. Football Fantasy/UnoVSCodeMCP-3.png" alt="UnoVSCodeMCP-3.png" onclick="openLightbox('2. Football Fantasy/UnoVSCodeMCP-3.png', 'UnoVSCodeMCP-3.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-3.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="2. Football Fantasy/Lovable1-1.png" alt="Lovable1-1.png" onclick="openLightbox('2. Football Fantasy/Lovable1-1.png', 'Lovable1-1.png')">
+                                <div class="image-label lovable">Lovable1-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="2. Football Fantasy/Lovable1-2.png" alt="Lovable1-2.png" onclick="openLightbox('2. Football Fantasy/Lovable1-2.png', 'Lovable1-2.png')">
+                                <div class="image-label lovable">Lovable1-2.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="2. Football Fantasy/Lovable1-3.png" alt="Lovable1-3.png" onclick="openLightbox('2. Football Fantasy/Lovable1-3.png', 'Lovable1-3.png')">
+                                <div class="image-label lovable">Lovable1-3.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="2. Football Fantasy/Lovable1-4.png" alt="Lovable1-4.png" onclick="openLightbox('2. Football Fantasy/Lovable1-4.png', 'Lovable1-4.png')">
+                                <div class="image-label lovable">Lovable1-4.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="2. Football Fantasy/Lovable2-1.png" alt="Lovable2-1.png" onclick="openLightbox('2. Football Fantasy/Lovable2-1.png', 'Lovable2-1.png')">
+                                <div class="image-label lovable">Lovable2-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="2. Football Fantasy/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('2. Football Fantasy/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="2. Football Fantasy/Dreamflow-Desktop.png" alt="Dreamflow-Desktop.png" onclick="openLightbox('2. Football Fantasy/Dreamflow-Desktop.png', 'Dreamflow-Desktop.png')">
+                                <div class="image-label dreamflow">Dreamflow-Desktop.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="2. Football Fantasy/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('2. Football Fantasy/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="2. Football Fantasy/Dreamflow-Mobile.png" alt="Dreamflow-Mobile.png" onclick="openLightbox('2. Football Fantasy/Dreamflow-Mobile.png', 'Dreamflow-Mobile.png')">
+                                <div class="image-label dreamflow">Dreamflow-Mobile.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="3__Travel_Guide">
+                <div class="project-header">
+                    <h2>3. Travel Guide</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>1. Create a travel guide application that has the following sections:
+- Travel Guide 2026
+- Tips
+- Hidden Gems
+- Where to eat
+- Bucketlist
+
+2. Add a section to allow users to purchase hotel and plane tickets</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>80</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>120</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>180</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>230</td>
+                                <td>2.4</td>
+                                <td>1.03</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>170</td>
+                                <td>4.1</td>
+                                <td>0.74</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('3__Travel_Guide', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('3__Travel_Guide', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('3__Travel_Guide', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('3__Travel_Guide', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('3__Travel_Guide', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('3__Travel_Guide', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('3__Travel_Guide', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="3__Travel_Guide_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="3. Travel Guide/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('3. Travel Guide/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="3. Travel Guide/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('3. Travel Guide/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="3. Travel Guide/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('3. Travel Guide/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="3. Travel Guide/UnoVSCodeMCP-1.png" alt="UnoVSCodeMCP-1.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-1.png', 'UnoVSCodeMCP-1.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-1.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="3. Travel Guide/UnoVSCodeMCP-2.png" alt="UnoVSCodeMCP-2.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-2.png', 'UnoVSCodeMCP-2.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-2.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="3. Travel Guide/UnoVSCodeMCP-3.png" alt="UnoVSCodeMCP-3.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-3.png', 'UnoVSCodeMCP-3.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-3.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="3. Travel Guide/UnoVSCodeMCP-4.png" alt="UnoVSCodeMCP-4.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-4.png', 'UnoVSCodeMCP-4.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-4.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="3. Travel Guide/UnoVSCodeMCP-5.png" alt="UnoVSCodeMCP-5.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-5.png', 'UnoVSCodeMCP-5.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-5.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="3. Travel Guide/Lovable.png" alt="Lovable.png" onclick="openLightbox('3. Travel Guide/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="3. Travel Guide/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('3. Travel Guide/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="3. Travel Guide/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('3. Travel Guide/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="3. Travel Guide/Dreamflow-mobile.png" alt="Dreamflow-mobile.png" onclick="openLightbox('3. Travel Guide/Dreamflow-mobile.png', 'Dreamflow-mobile.png')">
+                                <div class="image-label dreamflow">Dreamflow-mobile.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="4__Electric_Utility_Dashboard">
+                <div class="project-header">
+                    <h2>4. Electric Utility Dashboard</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Generate an Electric Utility operations dashboard page.
+Requirements:
+- KPI row (4 items): demand, supply, reserve, frequency
+- Each KPI shows a label and a value inside a card-like container
+- A scrollable list of facilities (ListView)
+- A right-hand rail containing alerts
+- Use SafeArea + AutoLayout</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>95</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>115</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>290</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>160</td>
+                                <td>1.8</td>
+                                <td>0.77</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>220</td>
+                                <td>3.9</td>
+                                <td>0.7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('4__Electric_Utility_Dashboard', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('4__Electric_Utility_Dashboard', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('4__Electric_Utility_Dashboard', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('4__Electric_Utility_Dashboard', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('4__Electric_Utility_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('4__Electric_Utility_Dashboard', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('4__Electric_Utility_Dashboard', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="4. Electric Utility Dashboard/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('4. Electric Utility Dashboard/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="4. Electric Utility Dashboard/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('4. Electric Utility Dashboard/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="4. Electric Utility Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('4. Electric Utility Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="4. Electric Utility Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('4. Electric Utility Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="4. Electric Utility Dashboard/Lovable.png" alt="Lovable.png" onclick="openLightbox('4. Electric Utility Dashboard/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="4. Electric Utility Dashboard/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('4. Electric Utility Dashboard/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="4. Electric Utility Dashboard/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('4. Electric Utility Dashboard/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="4. Electric Utility Dashboard/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('4. Electric Utility Dashboard/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="5__Video_Streaming">
+                <div class="project-header">
+                    <h2>5. Video Streaming</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Create a video streaming app.
+Requirements:
+- Movies library ListView
+- Rate a movie and "add comment" feature
+- Download a movie option</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>90</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>105</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>160</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>270</td>
+                                <td>2.5</td>
+                                <td>0.54</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>330</td>
+                                <td>5.8</td>
+                                <td>0.26</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('5__Video_Streaming', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('5__Video_Streaming', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('5__Video_Streaming', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('5__Video_Streaming', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('5__Video_Streaming', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('5__Video_Streaming', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('5__Video_Streaming', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="5__Video_Streaming_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="5. Video Streaming/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('5. Video Streaming/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="5. Video Streaming/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('5. Video Streaming/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="5. Video Streaming/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('5. Video Streaming/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="5. Video Streaming/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('5. Video Streaming/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="5. Video Streaming/Lovable-1.png" alt="Lovable-1.png" onclick="openLightbox('5. Video Streaming/Lovable-1.png', 'Lovable-1.png')">
+                                <div class="image-label lovable">Lovable-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="5. Video Streaming/Lovable-2.png" alt="Lovable-2.png" onclick="openLightbox('5. Video Streaming/Lovable-2.png', 'Lovable-2.png')">
+                                <div class="image-label lovable">Lovable-2.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="5. Video Streaming/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('5. Video Streaming/Lovable-Material-1.png', 'Lovable-Material-1.png')">
+                                <div class="image-label lovable">Lovable-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="5. Video Streaming/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('5. Video Streaming/Lovable-Material-2.png', 'Lovable-Material-2.png')">
+                                <div class="image-label lovable">Lovable-Material-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="5. Video Streaming/Dreamflow-1.png" alt="Dreamflow-1.png" onclick="openLightbox('5. Video Streaming/Dreamflow-1.png', 'Dreamflow-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="5. Video Streaming/Dreamflow-2.png" alt="Dreamflow-2.png" onclick="openLightbox('5. Video Streaming/Dreamflow-2.png', 'Dreamflow-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="5. Video Streaming/Dreamflow-3.png" alt="Dreamflow-3.png" onclick="openLightbox('5. Video Streaming/Dreamflow-3.png', 'Dreamflow-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-3.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="5. Video Streaming/Dreamflow-4.png" alt="Dreamflow-4.png" onclick="openLightbox('5. Video Streaming/Dreamflow-4.png', 'Dreamflow-4.png')">
+                                <div class="image-label dreamflow">Dreamflow-4.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="5. Video Streaming/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="5. Video Streaming/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="5. Video Streaming/Dreamflow-Material-3.png" alt="Dreamflow-Material-3.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-3.png', 'Dreamflow-Material-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-3.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="5. Video Streaming/Dreamflow-Material-4.png" alt="Dreamflow-Material-4.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-4.png', 'Dreamflow-Material-4.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-4.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="6__Notes">
+                <div class="project-header">
+                    <h2>6. Notes</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>create a page for adding and editing notes. Similar to digital post-it notes where i can add, delete, and edit the post-its that are displayed on the screen</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>90</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>275</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>150</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>180</td>
+                                <td>2</td>
+                                <td>0.29</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>210</td>
+                                <td>3.8</td>
+                                <td>0.23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('6__Notes', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('6__Notes', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('6__Notes', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('6__Notes', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('6__Notes', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('6__Notes', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('6__Notes', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="6__Notes_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="6. Notes/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('6. Notes/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="6. Notes/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('6. Notes/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="6. Notes/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('6. Notes/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="6. Notes/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('6. Notes/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="6. Notes/Lovable-1.png" alt="Lovable-1.png" onclick="openLightbox('6. Notes/Lovable-1.png', 'Lovable-1.png')">
+                                <div class="image-label lovable">Lovable-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="6. Notes/Lovable-2.png" alt="Lovable-2.png" onclick="openLightbox('6. Notes/Lovable-2.png', 'Lovable-2.png')">
+                                <div class="image-label lovable">Lovable-2.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="6. Notes/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('6. Notes/Lovable-Material-1.png', 'Lovable-Material-1.png')">
+                                <div class="image-label lovable">Lovable-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="6. Notes/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('6. Notes/Lovable-Material-2.png', 'Lovable-Material-2.png')">
+                                <div class="image-label lovable">Lovable-Material-2.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="6. Notes/Lovable-Material-3.png" alt="Lovable-Material-3.png" onclick="openLightbox('6. Notes/Lovable-Material-3.png', 'Lovable-Material-3.png')">
+                                <div class="image-label lovable">Lovable-Material-3.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="6. Notes/Dreamflow-1.png" alt="Dreamflow-1.png" onclick="openLightbox('6. Notes/Dreamflow-1.png', 'Dreamflow-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="6. Notes/Dreamflow-2.png" alt="Dreamflow-2.png" onclick="openLightbox('6. Notes/Dreamflow-2.png', 'Dreamflow-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="6. Notes/Dreamflow-3.png" alt="Dreamflow-3.png" onclick="openLightbox('6. Notes/Dreamflow-3.png', 'Dreamflow-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-3.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="6. Notes/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('6. Notes/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="6. Notes/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('6. Notes/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="6. Notes/Dreamflow-Material-3.png" alt="Dreamflow-Material-3.png" onclick="openLightbox('6. Notes/Dreamflow-Material-3.png', 'Dreamflow-Material-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-3.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="7__Calendar">
+                <div class="project-header">
+                    <h2>7. Calendar</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Create a 2025 advent calendar application with a joyful design and buttons in different sizes.</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>75</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>210</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>230</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>290</td>
+                                <td>2.2</td>
+                                <td>0.95</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>225</td>
+                                <td>7</td>
+                                <td>1.26</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('7__Calendar', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('7__Calendar', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('7__Calendar', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('7__Calendar', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('7__Calendar', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('7__Calendar', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('7__Calendar', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="7__Calendar_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="7. Calendar/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('7. Calendar/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="7. Calendar/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('7. Calendar/UnoHD1.png', 'UnoHD1.png')">
+                                <div class="image-label uno">UnoHD1.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="7. Calendar/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('7. Calendar/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="7. Calendar/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('7. Calendar/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="7. Calendar/Lovable1-1.png" alt="Lovable1-1.png" onclick="openLightbox('7. Calendar/Lovable1-1.png', 'Lovable1-1.png')">
+                                <div class="image-label lovable">Lovable1-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="7. Calendar/Lovable1-2.png" alt="Lovable1-2.png" onclick="openLightbox('7. Calendar/Lovable1-2.png', 'Lovable1-2.png')">
+                                <div class="image-label lovable">Lovable1-2.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="7. Calendar/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('7. Calendar/Lovable-Material-1.png', 'Lovable-Material-1.png')">
+                                <div class="image-label lovable">Lovable-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="7. Calendar/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('7. Calendar/Lovable-Material-2.png', 'Lovable-Material-2.png')">
+                                <div class="image-label lovable">Lovable-Material-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="7. Calendar/Dreamflow1-1.png" alt="Dreamflow1-1.png" onclick="openLightbox('7. Calendar/Dreamflow1-1.png', 'Dreamflow1-1.png')">
+                                <div class="image-label dreamflow">Dreamflow1-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="7. Calendar/Dreamflow1-2.png" alt="Dreamflow1-2.png" onclick="openLightbox('7. Calendar/Dreamflow1-2.png', 'Dreamflow1-2.png')">
+                                <div class="image-label dreamflow">Dreamflow1-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="7. Calendar/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('7. Calendar/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="7. Calendar/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('7. Calendar/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="8__Hospital_Dashboard">
+                <div class="project-header">
+                    <h2>8. Hospital Dashboard</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Create a modern hospital dashboard with patient cards, stats, and a quick-action panel</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>85</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>120</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>150</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>180</td>
+                                <td>1.9</td>
+                                <td>0.82</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>260</td>
+                                <td>4.4</td>
+                                <td>0.79</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('8__Hospital_Dashboard', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('8__Hospital_Dashboard', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('8__Hospital_Dashboard', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('8__Hospital_Dashboard', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('8__Hospital_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('8__Hospital_Dashboard', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('8__Hospital_Dashboard', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="8__Hospital_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="8. Hospital Dashboard/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('8. Hospital Dashboard/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="8. Hospital Dashboard/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('8. Hospital Dashboard/UnoHD1.png', 'UnoHD1.png')">
+                                <div class="image-label uno">UnoHD1.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="8. Hospital Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('8. Hospital Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="8. Hospital Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('8. Hospital Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="8. Hospital Dashboard/Lovable.png" alt="Lovable.png" onclick="openLightbox('8. Hospital Dashboard/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="8. Hospital Dashboard/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('8. Hospital Dashboard/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="8. Hospital Dashboard/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('8. Hospital Dashboard/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="8. Hospital Dashboard/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('8. Hospital Dashboard/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="9__Budgeting_Dashboard">
+                <div class="project-header">
+                    <h2>9. Budgeting Dashboard</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Create a budgeting dashboard with a header, a pie chart placeholder, and a list of monthly expenses</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>80</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>160</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>140</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>150</td>
+                                <td>1.7</td>
+                                <td>0.73</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>240</td>
+                                <td>5.4</td>
+                                <td>0.97</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('9__Budgeting_Dashboard', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('9__Budgeting_Dashboard', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('9__Budgeting_Dashboard', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('9__Budgeting_Dashboard', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('9__Budgeting_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('9__Budgeting_Dashboard', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('9__Budgeting_Dashboard', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="9__Budgeting_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="9. Budgeting Dashboard/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('9. Budgeting Dashboard/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="9. Budgeting Dashboard/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('9. Budgeting Dashboard/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="9. Budgeting Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('9. Budgeting Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="9. Budgeting Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('9. Budgeting Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="9. Budgeting Dashboard/Lovable.png" alt="Lovable.png" onclick="openLightbox('9. Budgeting Dashboard/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="9. Budgeting Dashboard/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('9. Budgeting Dashboard/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="9. Budgeting Dashboard/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('9. Budgeting Dashboard/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="9. Budgeting Dashboard/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('9. Budgeting Dashboard/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="10__Recipe_Home_Screen">
+                <div class="project-header">
+                    <h2>10. Recipe Home Screen</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Make a recipe app home screen with a search bar, category buttons, and a featured recipe card</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>80</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>150</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>170</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>120</td>
+                                <td>1.6</td>
+                                <td>0.69</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>185</td>
+                                <td>4.5</td>
+                                <td>0.81</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('10__Recipe_Home_Screen', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('10__Recipe_Home_Screen', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('10__Recipe_Home_Screen', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('10__Recipe_Home_Screen', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('10__Recipe_Home_Screen', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('10__Recipe_Home_Screen', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('10__Recipe_Home_Screen', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="10__Recipe_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="10. Recipe Home Screen/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('10. Recipe Home Screen/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="10. Recipe Home Screen/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('10. Recipe Home Screen/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="10. Recipe Home Screen/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('10. Recipe Home Screen/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="10. Recipe Home Screen/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('10. Recipe Home Screen/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="10. Recipe Home Screen/Lovable.png" alt="Lovable.png" onclick="openLightbox('10. Recipe Home Screen/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="10. Recipe Home Screen/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('10. Recipe Home Screen/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="10. Recipe Home Screen/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('10. Recipe Home Screen/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="10. Recipe Home Screen/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('10. Recipe Home Screen/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="11__Fitness_Tracking">
+                <div class="project-header">
+                    <h2>11. Fitness Tracking</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Design a fitness tracking screen with a progress ring placeholder, daily goals, and action buttons</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>75</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>120</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>180</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>200</td>
+                                <td>1.9</td>
+                                <td>0.82</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>240</td>
+                                <td>3.5</td>
+                                <td>0.63</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('11__Fitness_Tracking', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('11__Fitness_Tracking', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('11__Fitness_Tracking', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('11__Fitness_Tracking', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('11__Fitness_Tracking', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('11__Fitness_Tracking', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('11__Fitness_Tracking', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="11__Fitness_Tracking_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="11. Fitness Tracking/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('11. Fitness Tracking/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="11. Fitness Tracking/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('11. Fitness Tracking/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="11. Fitness Tracking/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('11. Fitness Tracking/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="11. Fitness Tracking/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('11. Fitness Tracking/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="11. Fitness Tracking/Lovable.png" alt="Lovable.png" onclick="openLightbox('11. Fitness Tracking/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="11. Fitness Tracking/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('11. Fitness Tracking/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="11. Fitness Tracking/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('11. Fitness Tracking/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="11. Fitness Tracking/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('11. Fitness Tracking/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="12__Login_Register">
+                <div class="project-header">
+                    <h2>12. Login Register</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Login/register UI design, with a nice background, sleek icons</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>60</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>90</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>300</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>155</td>
+                                <td>2.1</td>
+                                <td>0.45</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>255</td>
+                                <td>3.5</td>
+                                <td>0.32</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('12__Login_Register', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('12__Login_Register', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('12__Login_Register', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('12__Login_Register', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('12__Login_Register', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('12__Login_Register', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('12__Login_Register', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="12__Login_Register_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="12. Login Register/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('12. Login Register/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="12. Login Register/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('12. Login Register/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="12. Login Register/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('12. Login Register/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="12. Login Register/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('12. Login Register/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="12. Login Register/Lovable-1.png" alt="Lovable-1.png" onclick="openLightbox('12. Login Register/Lovable-1.png', 'Lovable-1.png')">
+                                <div class="image-label lovable">Lovable-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="12. Login Register/Lovable-2.png" alt="Lovable-2.png" onclick="openLightbox('12. Login Register/Lovable-2.png', 'Lovable-2.png')">
+                                <div class="image-label lovable">Lovable-2.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="12. Login Register/Lovable-3.png" alt="Lovable-3.png" onclick="openLightbox('12. Login Register/Lovable-3.png', 'Lovable-3.png')">
+                                <div class="image-label lovable">Lovable-3.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="12. Login Register/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('12. Login Register/Lovable-Material-1.png', 'Lovable-Material-1.png')">
+                                <div class="image-label lovable">Lovable-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="12. Login Register/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('12. Login Register/Lovable-Material-2.png', 'Lovable-Material-2.png')">
+                                <div class="image-label lovable">Lovable-Material-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="12. Login Register/Dreamflow-1.png" alt="Dreamflow-1.png" onclick="openLightbox('12. Login Register/Dreamflow-1.png', 'Dreamflow-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="12. Login Register/Dreamflow-2.png" alt="Dreamflow-2.png" onclick="openLightbox('12. Login Register/Dreamflow-2.png', 'Dreamflow-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="12. Login Register/Dreamflow-3.png" alt="Dreamflow-3.png" onclick="openLightbox('12. Login Register/Dreamflow-3.png', 'Dreamflow-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-3.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="12. Login Register/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('12. Login Register/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="12. Login Register/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('12. Login Register/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="12. Login Register/Dreamflow-Material-3.png" alt="Dreamflow-Material-3.png" onclick="openLightbox('12. Login Register/Dreamflow-Material-3.png', 'Dreamflow-Material-3.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material-3.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="13__Travel_Home_Screen">
+                <div class="project-header">
+                    <h2>13. Travel Home Screen</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Design a mobile travel app home page UI in a clean, premium style.
+Overall aesthetic: modern, minimalistic, high-contrast layout with generous white space, subtle shadows, and crisp typography. No device frames. Balanced, calm color palette (avoid overly bright tones). Use soft rounded corners on all cards and buttons. Layout should feel curated and editorial.
+Screen structure (top -&gt; bottom):
+Top bar / Header area:
+A compact top navigation bar with a small profile avatar on the left (circular), app logo in the center, and a notifications bell icon on the right.
+Subtle shadow separating header from content.
+Greeting + Search:
+Line 1: personalized greeting text, e.g. "Where do you want to explore today?".
+Large, dominant search bar beneath, wide and centered, with magnifying-glass icon on the left and placeholder text "Search destinations, flights, hotels...".
+Slight inset shadow to indicate interactivity.
+Featured destination hero card:
+Wide full-bleed carousel card with an atmospheric travel photo (mountains, beach cityscape, or iconic landmark - avoid specific brand references).
+Rounded corners.
+Overlaid text: destination name in bold, short tagline below.
+Subtle gradient overlay to ensure readability.
+Include left/right carousel pagination indicators or dots at bottom center.
+Quick-action icon grid:
+A 2x3 or 3x2 grid of rounded square icons for primary actions: "Flights", "Hotels", "Experiences", "Cars", "Trips", "Map".
+Each icon minimalistic, monochrome line style.
+Beneath each icon: a short label in small text.
+Even spacing, consistent margins.
+Recommended trips section:
+Section title: "Recommended for You" aligned left.
+Horizontal scrollable card list (3–4 cards visible).
+Each card: destination photo, destination name, small detail like "From EUR129" or "4.7 * Reviews".
+Uniform shadow depth and spacing between cards.
+Explore categories section:
+Title: "Explore Categories".
+Two large rectangular cards arranged vertically or in a grid:
+Examples: "City Breaks", "Nature Escapes", "Cultural Trips", "Romantic Getaways".
+Each card contains a background image with soft color overlay and bold text label.
+Bottom navigation bar:
+Persistent nav bar with 4–5 icons: "Home", "Search", "Trips", "Favorites", "Profile".
+Minimalistic outline icons, slight active-state color highlight on Home.
+Fixed, with subtle top border line.
+Typography:
+Sans-serif, modern.
+Large bold headers, medium-weight subtext, small caption sizes.
+Ensure high readability and strong vertical hierarchy.
+Interactions and micro-details:
+Soft shadows, smooth gradients, elegant hover/tap feedback.
+Consistent spacing grid (e.g., 8-point system).
+No clutter. No text unrelated to travel UI. No ads.
+The final render:
+High-resolution, crisp mobile UI mockup.
+Straight-on view (no perspective).
+Consistent color palette and spacing.
+No lorem ipsum - use meaningful travel-related placeholder text.</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>75</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>400</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>240</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>210</td>
+                                <td>2.1</td>
+                                <td>0.9</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>220</td>
+                                <td>8.5</td>
+                                <td>1.53</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('13__Travel_Home_Screen', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('13__Travel_Home_Screen', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('13__Travel_Home_Screen', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('13__Travel_Home_Screen', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('13__Travel_Home_Screen', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('13__Travel_Home_Screen', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('13__Travel_Home_Screen', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="13__Travel_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="13. Travel Home Screen/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('13. Travel Home Screen/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="13. Travel Home Screen/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('13. Travel Home Screen/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="13. Travel Home Screen/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('13. Travel Home Screen/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="13. Travel Home Screen/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('13. Travel Home Screen/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="13. Travel Home Screen/Lovable.png" alt="Lovable.png" onclick="openLightbox('13. Travel Home Screen/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="13. Travel Home Screen/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('13. Travel Home Screen/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="13. Travel Home Screen/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('13. Travel Home Screen/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="13. Travel Home Screen/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('13. Travel Home Screen/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="14__Burger_Joint">
+                <div class="project-header">
+                    <h2>14. Burger Joint</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Design a clean, modern home page UI for a burger joint app. Include a hero burger image, today's specials, quick-order buttons (Burgers, Sides, Drinks), a prominent ‘Order Now' CTA, and a bottom navigation bar (Home, Menu, Cart, Profile). Use bold typography, simple iconography, subtle depth, and a mobile-first layout. Keep the style appetizing, friendly, and minimal</pre>
+                    </div>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>80</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>100</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>330</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>200</td>
+                                <td>1.8</td>
+                                <td>0.77</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>225</td>
+                                <td>3.4</td>
+                                <td>0.61</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('14__Burger_Joint', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('14__Burger_Joint', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('14__Burger_Joint', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('14__Burger_Joint', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('14__Burger_Joint', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('14__Burger_Joint', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('14__Burger_Joint', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="14__Burger_Joint_images">                    <div class="tool-group" data-tool-group="antigravity">
+                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
+                                
+                                <img src="14. Burger Joint/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('14. Burger Joint/Antigravity.png', 'Antigravity.png')">
+                                <div class="image-label antigravity">Antigravity.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="uno">
+                        <div class="tool-group-header uno">UNO HD</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
+                                
+                                <img src="14. Burger Joint/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('14. Burger Joint/UnoHD.png', 'UnoHD.png')">
+                                <div class="image-label uno">UnoHD.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="14. Burger Joint/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('14. Burger Joint/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="14. Burger Joint/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('14. Burger Joint/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="lovable">
+                        <div class="tool-group-header lovable">LOVABLE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
+                                
+                                <img src="14. Burger Joint/Lovable.png" alt="Lovable.png" onclick="openLightbox('14. Burger Joint/Lovable.png', 'Lovable.png')">
+                                <div class="image-label lovable">Lovable.png</div>
+                            </div>                            <div class="image-card" data-tool="lovable">
+                                <div class='material-badge'>Material</div>
+                                <img src="14. Burger Joint/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('14. Burger Joint/Lovable-Material.png', 'Lovable-Material.png')">
+                                <div class="image-label lovable">Lovable-Material.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
+                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
+                                
+                                <img src="14. Burger Joint/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('14. Burger Joint/Dreamflow.png', 'Dreamflow.png')">
+                                <div class="image-label dreamflow">Dreamflow.png</div>
+                            </div>                            <div class="image-card" data-tool="dreamflow">
+                                <div class='material-badge'>Material</div>
+                                <img src="14. Burger Joint/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('14. Burger Joint/Dreamflow-Material.png', 'Dreamflow-Material.png')">
+                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="15__Fitness_Home_Screen">
+                <div class="project-header">
+                    <h2>15. Fitness Home Screen</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('15__Fitness_Home_Screen', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('15__Fitness_Home_Screen', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('15__Fitness_Home_Screen', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('15__Fitness_Home_Screen', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('15__Fitness_Home_Screen', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('15__Fitness_Home_Screen', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('15__Fitness_Home_Screen', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="15__Fitness_Home_Screen_images">                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="15. Fitness Home Screen/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('15. Fitness Home Screen/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="15. Fitness Home Screen/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('15. Fitness Home Screen/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+            <div class="project-section" id="16__Background_Dashboard">
+                <div class="project-header">
+                    <h2>16. Background Dashboard</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                    <div class="tool-section-single">
+                        <pre>Create project #16 (without Uno MCP): "Background Dashboard"
+
+background image is the moon with a clock in the middle
+The components have depth to them, the buttons appear to be above the bars they're in. The values appear deeper than the bars they're in. Try to recreate a similar style with depth.
+Make sure there are no build errors. Iterate until you think what you generated is very close to the screenshot provided.</pre>
+                    </div>                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('16__Background_Dashboard', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('16__Background_Dashboard', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('16__Background_Dashboard', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('16__Background_Dashboard', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('16__Background_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('16__Background_Dashboard', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('16__Background_Dashboard', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="16__Background_Dashboard_images">                    <div class="tool-group" data-tool-group="vscodeuno">
+                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="16. Background Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('16. Background Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
+                                <div class="image-label vscodeuno">UnoVSCode.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeuno">
+                                
+                                <img src="16. Background Dashboard/UnoVSCode-More.png" alt="UnoVSCode-More.png" onclick="openLightbox('16. Background Dashboard/UnoVSCode-More.png', 'UnoVSCode-More.png')">
+                                <div class="image-label vscodeuno">UnoVSCode-More.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
+                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="16. Background Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('16. Background Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
+                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
+                                
+                                <img src="16. Background Dashboard/UnoVSCodeMCP-More.png" alt="UnoVSCodeMCP-More.png" onclick="openLightbox('16. Background Dashboard/UnoVSCodeMCP-More.png', 'UnoVSCodeMCP-More.png')">
+                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-More.png</div>
+                            </div>                        </div>
+                    </div>                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-arrow lightbox-arrow-left" id="lightbox-prev" onclick="navigateLightbox(event, -1)">&#8249;</span>
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation()">
+        <span class="lightbox-arrow lightbox-arrow-right" id="lightbox-next" onclick="navigateLightbox(event, 1)">&#8250;</span>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        let currentImageIndex = -1;
+        let visibleImages = [];
+
+        function downloadCSV() {
+            const table = document.getElementById('performance-table');
+            let csv = [];
+            
+            // Get headers
+            const headers = [];
+            table.querySelectorAll('thead th').forEach(th => {
+                headers.push('"' + th.innerText.replace(/\n/g, ' ').replace(/"/g, '""') + '"');
+            });
+            csv.push(headers.join(','));
+            
+            // Get rows
+            table.querySelectorAll('tbody tr').forEach(tr => {
+                const row = [];
+                tr.querySelectorAll('td').forEach(td => {
+                    row.push('"' + td.innerText.replace(/"/g, '""') + '"');
+                });
+                csv.push(row.join(','));
+            });
+            
+            // Create download
+            const csvContent = csv.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'performance-summary.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function showProject(projectId) {
+            document.querySelectorAll('.project-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(projectId).classList.add('active');
+            
+            document.querySelectorAll('.project-list li').forEach(li => {
+                li.classList.remove('active');
+                if (li.dataset.project === projectId) {
+                    li.classList.add('active');
+                }
+            });
+            
+            // Scroll to container (past header)
+            const container = document.querySelector('.container');
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            updateVisibleImages();
+        }
+
+        function filterImages(projectId, tool) {
+            const container = document.getElementById(projectId + '_images');
+            const toolGroups = container.querySelectorAll('.tool-group');
+            
+            toolGroups.forEach(group => {
+                if (tool === 'all' || group.dataset.toolGroup === tool) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+            
+            const section = document.getElementById(projectId);
+            section.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.remove('active-tool');
+            });
+            event.target.classList.add('active');
+            if (tool !== 'all') {
+                event.target.classList.add('active-tool');
+            }
+            
+            updateVisibleImages();
+        }
+
+        function updateVisibleImages() {
+            const activeSection = document.querySelector('.project-section.active');
+            if (!activeSection) return;
+            
+            const container = activeSection.querySelector('.images-grid');
+            const cards = container.querySelectorAll('.image-card');
+            
+            visibleImages = [];
+            cards.forEach(card => {
+                if (card.style.display !== 'none') {
+                    const img = card.querySelector('img');
+                    visibleImages.push({
+                        src: img.src,
+                        caption: img.alt
+                    });
+                }
+            });
+        }
+
+        function openLightbox(src, caption) {
+            updateVisibleImages();
+            
+            currentImageIndex = visibleImages.findIndex(img => img.src.endsWith(src));
+            
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            
+            updateArrows();
+        }
+
+        function updateArrows() {
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+            
+            if (currentImageIndex <= 0 || visibleImages.length <= 1) {
+                prevBtn.classList.add('disabled');
+            } else {
+                prevBtn.classList.remove('disabled');
+            }
+            
+            if (currentImageIndex >= visibleImages.length - 1 || visibleImages.length <= 1) {
+                nextBtn.classList.add('disabled');
+            } else {
+                nextBtn.classList.remove('disabled');
+            }
+        }
+
+        function navigateLightbox(event, direction) {
+            event.stopPropagation();
+            
+            const newIndex = currentImageIndex + direction;
+            
+            if (newIndex < 0 || newIndex >= visibleImages.length) {
+                return;
+            }
+            
+            currentImageIndex = newIndex;
+            const image = visibleImages[currentImageIndex];
+            
+            document.getElementById('lightbox-img').src = image.src;
+            document.getElementById('lightbox-caption').textContent = image.caption;
+            
+            updateArrows();
+        }
+
+        function closeLightbox(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateLightbox(e, -1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(e, 1);
+                }
+            }
+        });
+
+        document.querySelectorAll('.project-list li').forEach(li => {
+            li.addEventListener('click', () => {
+                showProject(li.dataset.project);
+            });
+        });
+        
+        window.addEventListener('load', () => {
+            updateVisibleImages();
+        });
+    </script>
+</body>
+</html>

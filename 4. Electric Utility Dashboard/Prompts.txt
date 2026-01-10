@@ -1,0 +1,10 @@
+UNO
+
+
+Generate an Electric Utility operations dashboard page.
+Requirements:
+- KPI row (4 items): demand, supply, reserve, frequency
+- Each KPI shows a label and a value inside a card-like container
+- A scrollable list of facilities (ListView)
+- A right-hand rail containing alerts
+- Use SafeArea + AutoLayout

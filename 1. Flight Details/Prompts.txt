@@ -1,0 +1,26 @@
+UNO
+
+1. Create a page for flight details which has departure and destination option, user can select date, type of class
+
+2. Make UI more interesting and Add placeholder texts, redesign the page, add logo, emoji, background image
+
+3. Turn it into flight details page with colors, user should be able to select places from dropdown, select to and from dates, details for promocode
+
+
+
+
+
+LOVABLE
+
+create a page for flight details which has departure and destination option, user can select date, type of class
+
+
+
+DREAMFLOW
+
+1. Create a page for flight details which has departure and destination option, user can select date, type of class
+
+2. fix errors, the preview isn't working
+
+3. Make UI more interesting, redesign the page, add logo, background image
+

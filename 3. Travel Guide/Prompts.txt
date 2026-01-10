@@ -1,0 +1,17 @@
+UNO
+
+Prompt #1
+
+Create a travel guide application that has the following sections:
+- Travel Guide 2026
+- Tips
+- Hidden Gems
+- Where to eat
+- Bucketlist
+
+
+Prompt #2
+
+Add a section to allow users to purchase hotel and plane tickets
+
+

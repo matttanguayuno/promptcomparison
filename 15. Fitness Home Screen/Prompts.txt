@@ -1,0 +1,5 @@
+UNO
+
+Add a project 15.Init.FitnessHomeScreen, and generate the inspiration attached, as accurately as possible. Compare with the image iteratively until you think it's exactly the same as in the image. Make it wide enough to fill a phone preview in the browser. Make sure there are no build errors.
+
+

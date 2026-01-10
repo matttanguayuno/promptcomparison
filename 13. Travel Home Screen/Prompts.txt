@@ -1,0 +1,50 @@
+UNO
+
+Design a mobile travel app home page UI in a clean, premium style.
+Overall aesthetic: modern, minimalistic, high-contrast layout with generous white space, subtle shadows, and crisp typography. No device frames. Balanced, calm color palette (avoid overly bright tones). Use soft rounded corners on all cards and buttons. Layout should feel curated and editorial.
+Screen structure (top → bottom):
+Top bar / Header area:
+A compact top navigation bar with a small profile avatar on the left (circular), app logo in the center, and a notifications bell icon on the right.
+Subtle shadow separating header from content.
+Greeting + Search:
+Line 1: personalized greeting text, e.g. “Where do you want to explore today?”.
+Large, dominant search bar beneath, wide and centered, with magnifying-glass icon on the left and placeholder text “Search destinations, flights, hotels…”.
+Slight inset shadow to indicate interactivity.
+Featured destination hero card:
+Wide full-bleed carousel card with an atmospheric travel photo (mountains, beach cityscape, or iconic landmark — avoid specific brand references).
+Rounded corners.
+Overlaid text: destination name in bold, short tagline below.
+Subtle gradient overlay to ensure readability.
+Include left/right carousel pagination indicators or dots at bottom center.
+Quick-action icon grid:
+A 2×3 or 3×2 grid of rounded square icons for primary actions: “Flights”, “Hotels”, “Experiences”, “Cars”, “Trips”, “Map”.
+Each icon minimalistic, monochrome line style.
+Beneath each icon: a short label in small text.
+Even spacing, consistent margins.
+Recommended trips section:
+Section title: “Recommended for You” aligned left.
+Horizontal scrollable card list (3–4 cards visible).
+Each card: destination photo, destination name, small detail like “From €129” or “4.7 ★ Reviews”.
+Uniform shadow depth and spacing between cards.
+Explore categories section:
+Title: “Explore Categories”.
+Two large rectangular cards arranged vertically or in a grid:
+Examples: “City Breaks”, “Nature Escapes”, “Cultural Trips”, “Romantic Getaways”.
+Each card contains a background image with soft color overlay and bold text label.
+Bottom navigation bar:
+Persistent nav bar with 4–5 icons: “Home”, “Search”, “Trips”, “Favorites”, “Profile”.
+Minimalistic outline icons, slight active-state color highlight on Home.
+Fixed, with subtle top border line.
+Typography:
+Sans-serif, modern.
+Large bold headers, medium-weight subtext, small caption sizes.
+Ensure high readability and strong vertical hierarchy.
+Interactions and micro-details:
+Soft shadows, smooth gradients, elegant hover/tap feedback.
+Consistent spacing grid (e.g., 8-point system).
+No clutter. No text unrelated to travel UI. No ads.
+The final render:
+High-resolution, crisp mobile UI mockup.
+Straight-on view (no perspective).
+Consistent color palette and spacing.
+No lorem ipsum — use meaningful travel-related placeholder text.

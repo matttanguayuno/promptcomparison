@@ -1,0 +1,7 @@
+UNO
+
+Create a video streaming app.
+Requirements:
+- Movies library ListView
+- Rate a movie and "add comment" feature
+- Download a movie option

@@ -1,0 +1,3 @@
+UNO
+
+create a page for adding and editing notes. Similar to digital post-it notes where i can add, delete, and edit the post-its that are displayed on the screen

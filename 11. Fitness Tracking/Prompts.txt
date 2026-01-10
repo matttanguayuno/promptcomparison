@@ -1,0 +1,3 @@
+UNO
+
+Design a fitness tracking screen with a progress ring placeholder, daily goals, and action buttons
