@@ -20,30 +20,31 @@ async function init() {
 
 // Load all projects from the directory structure
 async function loadProjects() {
-    // Define all project folders
+    // Define all project folders with optional display names
     const projectFolders = [
-        '1. Flight Details',
-        '2. Football Fantasy',
-        '3. Travel Guide',
-        '4. Electric Utility Dashboard',
-        '5. Video Streaming',
-        '6. Notes',
-        '7. Calendar',
-        '8. Hospital Dashboard',
-        '9. Budgeting Dashboard',
-        '10. Recipe Home Screen',
-        '11. Fitness Tracking',
-        '12. Login Register',
-        '13. Travel Home Screen',
-        '14. Burger Joint',
-        '15. Fitness Home Screen',
-        '16. Background Dashboard',
-        '17. LoginEmailPhone'
+        { folder: '1. Flight Details' },
+        { folder: '2. Football Fantasy' },
+        { folder: '3. Travel Guide' },
+        { folder: '4. Electric Utility Dashboard' },
+        { folder: '5. Video Streaming' },
+        { folder: '6. Notes' },
+        { folder: '7. Calendar' },
+        { folder: '8. Hospital Dashboard' },
+        { folder: '9. Budgeting Dashboard' },
+        { folder: '10. Recipe Home Screen' },
+        { folder: '11. Fitness Tracking' },
+        { folder: '12. Login Register' },
+        { folder: '13. Travel Home Screen' },
+        { folder: '14. Burger Joint' },
+        { folder: '15. Fitness Home Screen' },
+        { folder: '16. Background Dashboard' },
+        { folder: '17. LoginEmailPhone', displayName: '17. Login Email Phone' }
     ];
 
-    projects = projectFolders.map(folder => ({
-        name: folder,
-        path: BASE_PATH + folder
+    projects = projectFolders.map(item => ({
+        name: item.displayName || item.folder,
+        folder: item.folder,
+        path: BASE_PATH + item.folder
     }));
 }
 
