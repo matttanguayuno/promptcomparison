@@ -29,13 +29,16 @@ async function loadProjects() {
         '5. Video Streaming',
         '6. Notes',
         '7. Calendar',
-        '8. Hopital Dashboard',
+        '8. Hospital Dashboard',
         '9. Budgeting Dashboard',
         '10. Recipe Home Screen',
         '11. Fitness Tracking',
         '12. Login Register',
-        '12. Sign In',
-        '13. Travel Home Screen'
+        '13. Travel Home Screen',
+        '14. Burger Joint',
+        '15. Fitness Home Screen',
+        '16. Background Dashboard',
+        '17. LoginEmailPhone'
     ];
 
     projects = projectFolders.map(folder => ({
