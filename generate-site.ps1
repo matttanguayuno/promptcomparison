@@ -23,7 +23,7 @@ $performanceData = @(
 )
 
 # Get all project folders and sort numerically
-$folders = Get-ChildItem $basePath -Directory | Where-Object { $_.Name -ne "Comparison" } | Sort-Object { 
+$folders = Get-ChildItem $basePath -Directory | Where-Object { $_.Name -ne "Comparison" -and $_.Name -ne ".vscode" -and $_.Name -ne ".git" } | Sort-Object { 
     if ($_.Name -match '^(\d+)') { 
         [int]$matches[1] 
     } else { 
