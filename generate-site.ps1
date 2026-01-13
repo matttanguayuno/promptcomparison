@@ -97,15 +97,23 @@ foreach ($folder in $folders) {
     }
     
     # Sort images with natural sorting (handles numbers properly)
+    # FirstGen files should appear first for their prefix
     $projectData.Images = $projectData.Images | Sort-Object { 
-        # Extract parts for natural sorting
-        if ($_.Name -match '^([^\d]*)(\d+)(.*)$') {
+        # Extract prefix (everything before -FirstGen or -number)
+        $name = $_.Name
+        
+        if ($name -match '^(.*?)-FirstGen') {
+            # FirstGen images: use prefix and sort order 0
             $prefix = $matches[1]
-            $number = [int]$matches[2]
-            $suffix = $matches[3]
-            return @($prefix, $number, $suffix)
+            return @($prefix, 0, "")
+        } elseif ($name -match '^(.*?)-(\d+)') {
+            # Numbered images: use prefix and number + 1
+            $prefix = $matches[1]
+            $number = [int]$matches[2] + 1
+            return @($prefix, $number, "")
         } else {
-            return @($_.Name, 0, "")
+            # Other images: use full name
+            return @($name, 999, "")
         }
     }
     
