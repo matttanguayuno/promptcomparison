@@ -34,8 +34,14 @@ $folders = Get-ChildItem $basePath -Directory | Where-Object { $_.Name -ne "Comp
 $projectsData = @()
 
 foreach ($folder in $folders) {
-    $projectName = $folder.Name
+    $folderName = $folder.Name
     $folderPath = $folder.FullName
+    
+    # Map folder names to display names
+    $projectName = $folderName
+    if ($folderName -eq "17. LoginEmailPhone") {
+        $projectName = "17. Login Email Phone"
+    }
     
     Write-Host "Processing: $projectName"
     
@@ -92,7 +98,7 @@ foreach ($folder in $folders) {
             Name = $imageName
             Tool = $tool
             Label = $imageName
-            RelativePath = "$projectName/$imageName"
+            RelativePath = "$folderName/$imageName"
         }
     }
     
