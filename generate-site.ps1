@@ -1047,21 +1047,35 @@ foreach ($data in $performanceData) {
     $dreamflowCostClass = if ($dreamflowCostPerPage -lt $lovableCostPerPage -and $dreamflowCostPerPage -lt $vibecodeCostPerPage) { "value-better" } elseif ($dreamflowCostPerPage -gt $lovableCostPerPage -and $dreamflowCostPerPage -gt $vibecodeCostPerPage) { "value-worse" } else { "" }
     $vibecodeCostClass = if ($vibecodeCostPerPage -lt $lovableCostPerPage -and $vibecodeCostPerPage -lt $dreamflowCostPerPage) { "value-better" } elseif ($vibecodeCostPerPage -gt $lovableCostPerPage -and $vibecodeCostPerPage -gt $dreamflowCostPerPage) { "value-worse" } else { "" }
     
+    # Display empty string for 0 values
+    $antigravityTimeDisplay = if ($data.AntigravityTime -eq 0) { "" } else { $data.AntigravityTime }
+    $unoVSCodeTimeDisplay = if ($data.UnoVSCodeTime -eq 0) { "" } else { $data.UnoVSCodeTime }
+    $unoVSCodeMCPTimeDisplay = if ($data.UnoVSCodeMCPTime -eq 0) { "" } else { $data.UnoVSCodeMCPTime }
+    $lovableTimeDisplay = if ($data.LovableTime -eq 0) { "" } else { $data.LovableTime }
+    $lovableCreditsDisplay = if ($data.LovableCredits -eq 0) { "" } else { $data.LovableCredits }
+    $lovableCostDisplay = if ($lovableCostPerPage -eq 0) { "" } else { $lovableCostPerPage }
+    $dreamflowTimeDisplay = if ($data.DreamflowTime -eq 0) { "" } else { $data.DreamflowTime }
+    $dreamflowCreditsDisplay = if ($data.DreamflowCredits -eq 0) { "" } else { $data.DreamflowCredits }
+    $dreamflowCostDisplay = if ($dreamflowCostPerPage -eq 0) { "" } else { $dreamflowCostPerPage }
+    $vibecodeTimeDisplay = if ($data.VibecodeTime -eq 0) { "" } else { $data.VibecodeTime }
+    $vibecodeCreditsDisplay = if ($data.VibecodeCredits -eq 0) { "" } else { $data.VibecodeCredits }
+    $vibecodeCostDisplay = if ($vibecodeCostPerPage -eq 0) { "" } else { $vibecodeCostPerPage }
+    
     $html += @"
                         <tr>
                             <td>$($data.Name)</td>
-                            <td class='$antigravityTimeClass'>$($data.AntigravityTime)</td>
-                            <td class='$unoVSCodeTimeClass'>$($data.UnoVSCodeTime)</td>
-                            <td class='$unoVSCodeMCPTimeClass'>$($data.UnoVSCodeMCPTime)</td>
-                            <td class='$lovableTimeClass'>$($data.LovableTime)</td>
-                            <td class='$lovableCreditsClass'>$($data.LovableCredits)</td>
-                            <td class='$lovableCostClass'>$lovableCostPerPage</td>
-                            <td class='$dreamflowTimeClass'>$($data.DreamflowTime)</td>
-                            <td class='$dreamflowCreditsClass'>$($data.DreamflowCredits)</td>
-                            <td class='$dreamflowCostClass'>$dreamflowCostPerPage</td>
-                            <td class='$vibecodeTimeClass'>$($data.VibecodeTime)</td>
-                            <td class='$vibecodeCreditsClass'>$($data.VibecodeCredits)</td>
-                            <td class='$vibecodeCostClass'>$vibecodeCostPerPage</td>
+                            <td class='$antigravityTimeClass'>$antigravityTimeDisplay</td>
+                            <td class='$unoVSCodeTimeClass'>$unoVSCodeTimeDisplay</td>
+                            <td class='$unoVSCodeMCPTimeClass'>$unoVSCodeMCPTimeDisplay</td>
+                            <td class='$lovableTimeClass'>$lovableTimeDisplay</td>
+                            <td class='$lovableCreditsClass'>$lovableCreditsDisplay</td>
+                            <td class='$lovableCostClass'>$lovableCostDisplay</td>
+                            <td class='$dreamflowTimeClass'>$dreamflowTimeDisplay</td>
+                            <td class='$dreamflowCreditsClass'>$dreamflowCreditsDisplay</td>
+                            <td class='$dreamflowCostClass'>$dreamflowCostDisplay</td>
+                            <td class='$vibecodeTimeClass'>$vibecodeTimeDisplay</td>
+                            <td class='$vibecodeCreditsClass'>$vibecodeCreditsDisplay</td>
+                            <td class='$vibecodeCostClass'>$vibecodeCostDisplay</td>
                         </tr>
 "@
 }
@@ -1097,9 +1111,9 @@ $lovableTimeAvg = [math]::Round($lovableTimeTotal / $count, 1)
 $lovableCreditsAvg = [math]::Round($lovableCreditsTotal / $count, 1)
 $dreamflowTimeAvg = [math]::Round($dreamflowTimeTotal / $count, 1)
 $dreamflowCreditsAvg = [math]::Round($dreamflowCreditsTotal / $count, 1)
-$vibecodeTimeAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeTimeTotal / $vibecodeCount, 1) } else { 0 }
-$vibecodeCreditsAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { 0 }
-$vibecodeCostPerPageAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { 0 }
+$vibecodeTimeAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeTimeTotal / $vibecodeCount, 1) } else { "" }
+$vibecodeCreditsAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { "" }
+$vibecodeCostPerPageAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { "" }
 
 $html += @"
                         <tr>
@@ -1323,9 +1337,20 @@ foreach ($project in $projectsData) {
     # Add performance data for this project
     $projectPerf = $performanceData | Where-Object { $_.Name -eq $project.Name }
     if ($projectPerf) {
-        $lovableCostPerPage = [math]::Round(($projectPerf.LovableCredits * 0.43) / $projectPerf.LovablePages, 2)
-        $dreamflowCostPerPage = [math]::Round(($projectPerf.DreamflowCredits * 0.18) / $projectPerf.DreamflowPages, 2)
-        $vibecodeCostPerPage = if ($projectPerf.VibecodePages -gt 0) { [math]::Round($projectPerf.VibecodeCredits / $projectPerf.VibecodePages, 2) } else { 0 }
+        $lovableCostPerPage = if ($projectPerf.LovableCredits -eq 0) { "" } else { [math]::Round(($projectPerf.LovableCredits * 0.43) / $projectPerf.LovablePages, 2) }
+        $dreamflowCostPerPage = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { [math]::Round(($projectPerf.DreamflowCredits * 0.18) / $projectPerf.DreamflowPages, 2) }
+        $vibecodeCostPerPage = if ($projectPerf.VibecodePages -gt 0 -and $projectPerf.VibecodeCredits -gt 0) { [math]::Round($projectPerf.VibecodeCredits / $projectPerf.VibecodePages, 2) } else { "" }
+        
+        # Display values or empty for 0
+        $antigravityTimeDisplay = if ($projectPerf.AntigravityTime -eq 0) { "" } else { $projectPerf.AntigravityTime }
+        $unoVSCodeTimeDisplay = if ($projectPerf.UnoVSCodeTime -eq 0) { "" } else { $projectPerf.UnoVSCodeTime }
+        $unoVSCodeMCPTimeDisplay = if ($projectPerf.UnoVSCodeMCPTime -eq 0) { "" } else { $projectPerf.UnoVSCodeMCPTime }
+        $lovableTimeDisplay = if ($projectPerf.LovableTime -eq 0) { "" } else { $projectPerf.LovableTime }
+        $lovableCreditsDisplay = if ($projectPerf.LovableCredits -eq 0) { "" } else { $projectPerf.LovableCredits }
+        $dreamflowTimeDisplay = if ($projectPerf.DreamflowTime -eq 0) { "" } else { $projectPerf.DreamflowTime }
+        $dreamflowCreditsDisplay = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { $projectPerf.DreamflowCredits }
+        $vibecodeTimeDisplay = if ($projectPerf.VibecodeTime -eq 0) { "" } else { $projectPerf.VibecodeTime }
+        $vibecodeCreditsDisplay = if ($projectPerf.VibecodeCredits -eq 0) { "" } else { "$$($projectPerf.VibecodeCredits)" }
         
         $html += @"
                 <div class="prompts-section">
@@ -1342,38 +1367,38 @@ foreach ($project in $projectsData) {
                         <tbody>
                             <tr>
                                 <td>Antigravity</td>
-                                <td>$($projectPerf.AntigravityTime)</td>
+                                <td>$antigravityTimeDisplay</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
-                                <td>$($projectPerf.UnoVSCodeTime)</td>
+                                <td>$unoVSCodeTimeDisplay</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code MCP</td>
-                                <td>$($projectPerf.UnoVSCodeMCPTime)</td>
+                                <td>$unoVSCodeMCPTimeDisplay</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
-                                <td>$($projectPerf.LovableTime)</td>
-                                <td>$($projectPerf.LovableCredits)</td>
+                                <td>$lovableTimeDisplay</td>
+                                <td>$lovableCreditsDisplay</td>
                                 <td>$lovableCostPerPage</td>
                             </tr>
                             <tr>
                                 <td>Dreamflow</td>
-                                <td>$($projectPerf.DreamflowTime)</td>
-                                <td>$($projectPerf.DreamflowCredits)</td>
+                                <td>$dreamflowTimeDisplay</td>
+                                <td>$dreamflowCreditsDisplay</td>
                                 <td>$dreamflowCostPerPage</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
-                                <td>$($projectPerf.VibecodeTime)</td>
-                                <td>$$($projectPerf.VibecodeCredits)</td>
+                                <td>$vibecodeTimeDisplay</td>
+                                <td>$vibecodeCreditsDisplay</td>
                                 <td>$vibecodeCostPerPage</td>
                             </tr>
                         </tbody>
