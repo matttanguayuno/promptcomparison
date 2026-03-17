@@ -22,7 +22,7 @@ $performanceData = @(
     @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1 }
     @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1 }
     @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1 }
-    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 0; VibecodeCredits = 0; VibecodePages = 1 }
+    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2 }
 )
 
 # Google Drive video links (Vibecode demos)
