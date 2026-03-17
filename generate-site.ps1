@@ -427,6 +427,52 @@ $html = @"
             margin: 0;
         }
 
+        .prompt-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        .copy-btn:hover {
+            background: #2a5298;
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn.copied {
+            background: #16a085;
+        }
+
+        .copy-icon {
+            width: 14px;
+            height: 14px;
+        }
+
         .tabs {
             display: flex;
             gap: 1rem;
@@ -1268,13 +1314,31 @@ foreach ($project in $projectsData) {
                 $html += @"
                     <div class="tool-section uno">
                         <h4>UNO</h4>
-                        <pre>$unoText</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>$unoText</pre>
+                        </div>
                     </div>
 "@
             } else {
                 $html += @"
                     <div class="tool-section-single">
-                        <pre>$unoText</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>$unoText</pre>
+                        </div>
                     </div>
 "@
             }
@@ -1309,13 +1373,31 @@ foreach ($project in $projectsData) {
                 $html += @"
                     <div class="tool-section lovable">
                         <h4>LOVABLE</h4>
-                        <pre>$lovableText</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>$lovableText</pre>
+                        </div>
                     </div>
 "@
             } else {
                 $html += @"
                     <div class="tool-section-single">
-                        <pre>$lovableText</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>$lovableText</pre>
+                        </div>
                     </div>
 "@
             }
@@ -1350,13 +1432,31 @@ foreach ($project in $projectsData) {
                 $html += @"
                     <div class="tool-section dreamflow">
                         <h4>DREAMFLOW</h4>
-                        <pre>$dreamflowText</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>$dreamflowText</pre>
+                        </div>
                     </div>
 "@
             } else {
                 $html += @"
                     <div class="tool-section-single">
-                        <pre>$dreamflowText</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>$dreamflowText</pre>
+                        </div>
                     </div>
 "@
             }
@@ -1763,6 +1863,26 @@ $html += @"
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
+        }
+
+        function copyPrompt(button) {
+            const container = button.closest('.prompt-container');
+            const pre = container.querySelector('pre');
+            const text = pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy to clipboard');
+            });
         }
     </script>
 </body>

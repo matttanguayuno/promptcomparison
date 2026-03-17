@@ -259,6 +259,52 @@
             margin: 0;
         }
 
+        .prompt-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        .copy-btn:hover {
+            background: #2a5298;
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn.copied {
+            background: #16a085;
+        }
+
+        .copy-icon {
+            width: 14px;
+            height: 14px;
+        }
+
         .tabs {
             display: flex;
             gap: 1rem;
@@ -1184,17 +1230,44 @@
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section uno">
                         <h4>UNO</h4>
-                        <pre>1. Create a page for flight details which has departure and destination option, user can select date, type of class
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>1. Create a page for flight details which has departure and destination option, user can select date, type of class
 2. Make UI more interesting and Add placeholder texts, redesign the page, add logo, emoji, background image
 3. Turn it into flight details page with colors, user should be able to select places from dropdown, select to and from dates, details for promocode</pre>
+                        </div>
                     </div>                    <div class="tool-section lovable">
                         <h4>LOVABLE</h4>
-                        <pre>create a page for flight details which has departure and destination option, user can select date, type of class</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>create a page for flight details which has departure and destination option, user can select date, type of class</pre>
+                        </div>
                     </div>                    <div class="tool-section dreamflow">
                         <h4>DREAMFLOW</h4>
-                        <pre>1. Create a page for flight details which has departure and destination option, user can select date, type of class
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>1. Create a page for flight details which has departure and destination option, user can select date, type of class
 2. fix errors, the preview isn't working
 3. Make UI more interesting, redesign the page, add logo, background image</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -1241,7 +1314,7 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>780</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.96</td>
                             </tr>
                         </tbody>
@@ -1368,7 +1441,16 @@
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Create a football fantasy app that allows users to build teams, exchange players and compete in tournaments</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Create a football fantasy app that allows users to build teams, exchange players and compete in tournaments</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -1415,7 +1497,7 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1490</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.27</td>
                             </tr>
                         </tbody>
@@ -1558,7 +1640,15 @@
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>1. Create a travel guide application that has the following sections:
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>1. Create a travel guide application that has the following sections:
 - Travel Guide 2026
 - Tips
 - Hidden Gems
@@ -1566,6 +1656,7 @@
 - Bucketlist
 
 2. Add a section to allow users to purchase hotel and plane tickets</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -1612,7 +1703,7 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.1</td>
                             </tr>
                         </tbody>
@@ -1723,13 +1814,22 @@
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Generate an Electric Utility operations dashboard page.
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Generate an Electric Utility operations dashboard page.
 Requirements:
 - KPI row (4 items): demand, supply, reserve, frequency
 - Each KPI shows a label and a value inside a card-like container
 - A scrollable list of facilities (ListView)
 - A right-hand rail containing alerts
 - Use SafeArea + AutoLayout</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -1776,7 +1876,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.5</td>
                             </tr>
                         </tbody>
@@ -1867,11 +1967,20 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Create a video streaming app.
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Create a video streaming app.
 Requirements:
 - Movies library ListView
 - Rate a movie and "add comment" feature
 - Download a movie option</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -1918,7 +2027,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1080</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>3.18</td>
                             </tr>
                         </tbody>
@@ -2053,7 +2162,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>create a page for adding and editing notes. Similar to digital post-it notes where i can add, delete, and edit the post-its that are displayed on the screen</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>create a page for adding and editing notes. Similar to digital post-it notes where i can add, delete, and edit the post-its that are displayed on the screen</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2100,7 +2218,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>450</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.49</td>
                             </tr>
                         </tbody>
@@ -2208,6 +2326,13 @@ Requirements:
                                 <img src="6. Notes/Vibecode-2.png" alt="Vibecode-2.png" onclick="openLightbox('6. Notes/Vibecode-2.png', 'Vibecode-2.png')">
                                 <div class="image-label vibecode">Vibecode-2.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="other">
+                        <div class="tool-group-header other">OTHER</div>
+                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                                
+                                <img src="6. Notes/Builder.png" alt="Builder.png" onclick="openLightbox('6. Notes/Builder.png', 'Builder.png')">
+                                <div class="image-label other">Builder.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="7__Calendar">
@@ -2216,7 +2341,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Create a 2025 advent calendar application with a joyful design and buttons in different sizes.</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Create a 2025 advent calendar application with a joyful design and buttons in different sizes.</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2263,7 +2397,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>285</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.69</td>
                             </tr>
                         </tbody>
@@ -2363,7 +2497,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Create a modern hospital dashboard with patient cards, stats, and a quick-action panel</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Create a modern hospital dashboard with patient cards, stats, and a quick-action panel</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2410,7 +2553,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>680</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>2.52</td>
                             </tr>
                         </tbody>
@@ -2494,7 +2637,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Create a budgeting dashboard with a header, a pie chart placeholder, and a list of monthly expenses</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Create a budgeting dashboard with a header, a pie chart placeholder, and a list of monthly expenses</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2541,7 +2693,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1095</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.15</td>
                             </tr>
                         </tbody>
@@ -2625,7 +2777,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Make a recipe app home screen with a search bar, category buttons, and a featured recipe card</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Make a recipe app home screen with a search bar, category buttons, and a featured recipe card</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2672,7 +2833,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.54</td>
                             </tr>
                         </tbody>
@@ -2756,7 +2917,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Design a fitness tracking screen with a progress ring placeholder, daily goals, and action buttons</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Design a fitness tracking screen with a progress ring placeholder, daily goals, and action buttons</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2803,7 +2973,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.51</td>
                             </tr>
                         </tbody>
@@ -2887,7 +3057,16 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Login/register UI design, with a nice background, sleek icons</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Login/register UI design, with a nice background, sleek icons</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2934,7 +3113,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>330</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.82</td>
                             </tr>
                         </tbody>
@@ -3050,7 +3229,15 @@ Requirements:
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Design a mobile travel app home page UI in a clean, premium style.
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Design a mobile travel app home page UI in a clean, premium style.
 Overall aesthetic: modern, minimalistic, high-contrast layout with generous white space, subtle shadows, and crisp typography. No device frames. Balanced, calm color palette (avoid overly bright tones). Use soft rounded corners on all cards and buttons. Layout should feel curated and editorial.
 Screen structure (top -&gt; bottom):
 Top bar / Header area:
@@ -3098,6 +3285,7 @@ High-resolution, crisp mobile UI mockup.
 Straight-on view (no perspective).
 Consistent color palette and spacing.
 No lorem ipsum - use meaningful travel-related placeholder text.</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -3144,7 +3332,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.57</td>
                             </tr>
                         </tbody>
@@ -3228,7 +3416,16 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Design a clean, modern home page UI for a burger joint app. Include a hero burger image, today's specials, quick-order buttons (Burgers, Sides, Drinks), a prominent ‘Order Now' CTA, and a bottom navigation bar (Home, Menu, Cart, Profile). Use bold typography, simple iconography, subtle depth, and a mobile-first layout. Keep the style appetizing, friendly, and minimal</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Design a clean, modern home page UI for a burger joint app. Include a hero burger image, today's specials, quick-order buttons (Burgers, Sides, Drinks), a prominent ‘Order Now' CTA, and a bottom navigation bar (Home, Menu, Cart, Profile). Use bold typography, simple iconography, subtle depth, and a mobile-first layout. Keep the style appetizing, friendly, and minimal</pre>
+                        </div>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -3275,7 +3472,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>295</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.61</td>
                             </tr>
                         </tbody>
@@ -3359,7 +3556,16 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Recreate the inspiration attached</pre>
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                                Copy
+                            </button>
+                            <pre>Recreate the inspiration attached</pre>
+                        </div>
                     </div>                </div>
                 <div class="inspiration-section">
                     <h3>Inspiration</h3>                    <img src="15. Fitness Home Screen/Inspiration.jpg" alt="Inspiration.jpg" class="inspiration-image" onclick="openLightbox('15. Fitness Home Screen/Inspiration.jpg')">                </div>
@@ -3408,7 +3614,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.24</td>
                             </tr>
                         </tbody>
@@ -3505,7 +3711,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>445</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.22</td>
                             </tr>
                         </tbody>
@@ -3606,7 +3812,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>380</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.92</td>
                             </tr>
                         </tbody>
@@ -3707,7 +3913,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>730</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.76</td>
                             </tr>
                         </tbody>
@@ -3946,6 +4152,26 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
+        }
+
+        function copyPrompt(button) {
+            const container = button.closest('.prompt-container');
+            const pre = container.querySelector('pre');
+            const text = pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy to clipboard');
+            });
         }
     </script>
 </body>
