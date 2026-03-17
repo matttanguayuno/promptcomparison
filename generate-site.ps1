@@ -451,13 +451,16 @@ $html = @"
             align-items: center;
             gap: 5px;
             transition: all 0.2s ease;
-            opacity: 0.8;
+            opacity: 0.9;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .copy-btn:hover {
             background: #2a5298;
             opacity: 1;
             transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
         .copy-btn:active {
@@ -471,6 +474,10 @@ $html = @"
         .copy-icon {
             width: 14px;
             height: 14px;
+        }
+
+        .prompt-container pre {
+            padding-top: 35px;
         }
 
         .tabs {
