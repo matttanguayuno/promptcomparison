@@ -1754,7 +1754,7 @@ $html += @"
             });
             
             // Add view-active to columns matching the view
-            document.querySelectorAll(`#performance-table th[data-view="${view}"], #performance-table td[data-view="${view}"]`).forEach(cell => {
+            document.querySelectorAll('#performance-table th[data-view="' + view + '"], #performance-table td[data-view="' + view + '"]').forEach(cell => {
                 cell.classList.add('view-active');
             });
             
