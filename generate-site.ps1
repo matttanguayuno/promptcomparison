@@ -88,7 +88,7 @@ foreach ($folder in $folders) {
     }
     
     # Get all images (PNG, JPG, JPEG)
-    $images = Get-ChildItem $folderPath -Include "*.png", "*.jpg", "*.jpeg" -File
+    $images = Get-ChildItem $folderPath -File | Where-Object { $_.Extension -match '\.(png|jpg|jpeg)$' }
     
     $projectData = @{
         Name = $projectName
