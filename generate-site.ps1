@@ -211,10 +211,16 @@ $html = @"
 
         .container {
             display: flex;
-            max-width: 2000px;
+            max-width: 95%;
             margin: 2rem auto;
             gap: 2rem;
             padding: 0 1rem;
+        }
+
+        @media (min-width: 2400px) {
+            .container {
+                max-width: 2400px;
+            }
         }
 
         .sidebar {
@@ -293,6 +299,47 @@ $html = @"
             border-bottom: 3px solid #2a5298;
             padding-bottom: 0.5rem;
             font-weight: 600;
+        }
+
+        .view-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .view-btn {
+            padding: 0.75rem 2rem;
+            border: 2px solid #1e3c72;
+            background: white;
+            color: #1e3c72;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .view-btn.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 2px 6px rgba(30, 60, 114, 0.3);
+        }
+
+        .summary-table th[data-view],
+        .summary-table td[data-view] {
+            display: none;
+        }
+
+        .summary-table th[data-view].view-active,
+        .summary-table td[data-view].view-active {
+            display: table-cell;
         }
 
         .prompts-section {
@@ -996,22 +1043,28 @@ $html += @"
                     <button class="download-csv-btn" onclick="downloadCSV()">Download CSV</button>
                 </div>
 
+                <div class="view-switcher">
+                    <button class="view-btn active" onclick="switchTableView('time')">Time</button>
+                    <button class="view-btn" onclick="switchTableView('cost')">Cost</button>
+                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page</button>
+                </div>
+
                 <table class="summary-table" id="performance-table">
                     <thead>
                         <tr>
                             <th>Project</th>
-                            <th>Antigravity<br>Time (s)</th>
-                            <th>Uno VS Code<br>Time (s)</th>
-                            <th>Uno VS Code MCP<br>Time (s)</th>
-                            <th>Lovable<br>Time (s)</th>
-                            <th>Lovable<br>Credits</th>
-                            <th>Lovable<br>Cost/Page ($)</th>
-                            <th>Dreamflow<br>Time (s)</th>
-                            <th>Dreamflow<br>Credits</th>
-                            <th>Dreamflow<br>Cost/Page ($)</th>
-                            <th>Vibecode<br>Time (s)</th>
-                            <th>Vibecode<br>Cost ($)</th>
-                            <th>Vibecode<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Antigravity<br>Time (s)</th>
+                            <th data-view="time" class="view-active">Uno VS Code<br>Time (s)</th>
+                            <th data-view="time" class="view-active">Uno VS Code MCP<br>Time (s)</th>
+                            <th data-view="time" class="view-active">Lovable<br>Time (s)</th>
+                            <th data-view="cost">Lovable<br>Credits</th>
+                            <th data-view="costperpage">Lovable<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Dreamflow<br>Time (s)</th>
+                            <th data-view="cost">Dreamflow<br>Credits</th>
+                            <th data-view="costperpage">Dreamflow<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
+                            <th data-view="cost">Vibecode<br>Cost ($)</th>
+                            <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1064,18 +1117,18 @@ foreach ($data in $performanceData) {
     $html += @"
                         <tr>
                             <td>$($data.Name)</td>
-                            <td class='$antigravityTimeClass'>$antigravityTimeDisplay</td>
-                            <td class='$unoVSCodeTimeClass'>$unoVSCodeTimeDisplay</td>
-                            <td class='$unoVSCodeMCPTimeClass'>$unoVSCodeMCPTimeDisplay</td>
-                            <td class='$lovableTimeClass'>$lovableTimeDisplay</td>
-                            <td class='$lovableCreditsClass'>$lovableCreditsDisplay</td>
-                            <td class='$lovableCostClass'>$lovableCostDisplay</td>
-                            <td class='$dreamflowTimeClass'>$dreamflowTimeDisplay</td>
-                            <td class='$dreamflowCreditsClass'>$dreamflowCreditsDisplay</td>
-                            <td class='$dreamflowCostClass'>$dreamflowCostDisplay</td>
-                            <td class='$vibecodeTimeClass'>$vibecodeTimeDisplay</td>
-                            <td class='$vibecodeCreditsClass'>$vibecodeCreditsDisplay</td>
-                            <td class='$vibecodeCostClass'>$vibecodeCostDisplay</td>
+                            <td data-view="time" class="view-active $antigravityTimeClass">$antigravityTimeDisplay</td>
+                            <td data-view="time" class="view-active $unoVSCodeTimeClass">$unoVSCodeTimeDisplay</td>
+                            <td data-view="time" class="view-active $unoVSCodeMCPTimeClass">$unoVSCodeMCPTimeDisplay</td>
+                            <td data-view="time" class="view-active $lovableTimeClass">$lovableTimeDisplay</td>
+                            <td data-view="cost" class="$lovableCreditsClass">$lovableCreditsDisplay</td>
+                            <td data-view="costperpage" class="$lovableCostClass">$lovableCostDisplay</td>
+                            <td data-view="time" class="view-active $dreamflowTimeClass">$dreamflowTimeDisplay</td>
+                            <td data-view="cost" class="$dreamflowCreditsClass">$dreamflowCreditsDisplay</td>
+                            <td data-view="costperpage" class="$dreamflowCostClass">$dreamflowCostDisplay</td>
+                            <td data-view="time" class="view-active $vibecodeTimeClass">$vibecodeTimeDisplay</td>
+                            <td data-view="cost" class="$vibecodeCreditsClass">$vibecodeCreditsDisplay</td>
+                            <td data-view="costperpage" class="$vibecodeCostClass">$vibecodeCostDisplay</td>
                         </tr>
 "@
 }
@@ -1118,18 +1171,18 @@ $vibecodeCostPerPageAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCre
 $html += @"
                         <tr>
                             <td>Average</td>
-                            <td>$antigravityAvg</td>
-                            <td>$unoVSCodeAvg</td>
-                            <td>$unoVSCodeMCPAvg</td>
-                            <td>$lovableTimeAvg</td>
-                            <td>$lovableCreditsAvg</td>
-                            <td>0.69</td>
-                            <td>$dreamflowTimeAvg</td>
-                            <td>$dreamflowCreditsAvg</td>
-                            <td>0.57</td>
-                            <td>$vibecodeTimeAvg</td>
-                            <td>$vibecodeCreditsAvg</td>
-                            <td>$vibecodeCostPerPageAvg</td>
+                            <td data-view="time" class="view-active">$antigravityAvg</td>
+                            <td data-view="time" class="view-active">$unoVSCodeAvg</td>
+                            <td data-view="time" class="view-active">$unoVSCodeMCPAvg</td>
+                            <td data-view="time" class="view-active">$lovableTimeAvg</td>
+                            <td data-view="cost">$lovableCreditsAvg</td>
+                            <td data-view="costperpage">0.69</td>
+                            <td data-view="time" class="view-active">$dreamflowTimeAvg</td>
+                            <td data-view="cost">$dreamflowCreditsAvg</td>
+                            <td data-view="costperpage">0.57</td>
+                            <td data-view="time" class="view-active">$vibecodeTimeAvg</td>
+                            <td data-view="cost">$vibecodeCreditsAvg</td>
+                            <td data-view="costperpage">$vibecodeCostPerPageAvg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1693,6 +1746,24 @@ $html += @"
         window.addEventListener('load', () => {
             updateVisibleImages();
         });
+
+        function switchTableView(view) {
+            // Remove view-active from all columns
+            document.querySelectorAll('#performance-table th[data-view], #performance-table td[data-view]').forEach(cell => {
+                cell.classList.remove('view-active');
+            });
+            
+            // Add view-active to columns matching the view
+            document.querySelectorAll(`#performance-table th[data-view="${view}"], #performance-table td[data-view="${view}"]`).forEach(cell => {
+                cell.classList.add('view-active');
+            });
+            
+            // Update button states
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
     </script>
 </body>
 </html>

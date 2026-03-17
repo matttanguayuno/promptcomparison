@@ -43,10 +43,16 @@
 
         .container {
             display: flex;
-            max-width: 2000px;
+            max-width: 95%;
             margin: 2rem auto;
             gap: 2rem;
             padding: 0 1rem;
+        }
+
+        @media (min-width: 2400px) {
+            .container {
+                max-width: 2400px;
+            }
         }
 
         .sidebar {
@@ -125,6 +131,47 @@
             border-bottom: 3px solid #2a5298;
             padding-bottom: 0.5rem;
             font-weight: 600;
+        }
+
+        .view-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .view-btn {
+            padding: 0.75rem 2rem;
+            border: 2px solid #1e3c72;
+            background: white;
+            color: #1e3c72;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .view-btn.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 2px 6px rgba(30, 60, 114, 0.3);
+        }
+
+        .summary-table th[data-view],
+        .summary-table td[data-view] {
+            display: none;
+        }
+
+        .summary-table th[data-view].view-active,
+        .summary-table td[data-view].view-active {
+            display: table-cell;
         }
 
         .prompts-section {
@@ -836,290 +883,296 @@
                     <button class="download-csv-btn" onclick="downloadCSV()">Download CSV</button>
                 </div>
 
+                <div class="view-switcher">
+                    <button class="view-btn active" onclick="switchTableView('time')">Time</button>
+                    <button class="view-btn" onclick="switchTableView('cost')">Cost</button>
+                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page</button>
+                </div>
+
                 <table class="summary-table" id="performance-table">
                     <thead>
                         <tr>
                             <th>Project</th>
-                            <th>Antigravity<br>Time (s)</th>
-                            <th>Uno VS Code<br>Time (s)</th>
-                            <th>Uno VS Code MCP<br>Time (s)</th>
-                            <th>Lovable<br>Time (s)</th>
-                            <th>Lovable<br>Credits</th>
-                            <th>Lovable<br>Cost/Page ($)</th>
-                            <th>Dreamflow<br>Time (s)</th>
-                            <th>Dreamflow<br>Credits</th>
-                            <th>Dreamflow<br>Cost/Page ($)</th>
-                            <th>Vibecode<br>Time (s)</th>
-                            <th>Vibecode<br>Cost ($)</th>
-                            <th>Vibecode<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Antigravity<br>Time (s)</th>
+                            <th data-view="time" class="view-active">Uno VS Code<br>Time (s)</th>
+                            <th data-view="time" class="view-active">Uno VS Code MCP<br>Time (s)</th>
+                            <th data-view="time" class="view-active">Lovable<br>Time (s)</th>
+                            <th data-view="cost">Lovable<br>Credits</th>
+                            <th data-view="costperpage">Lovable<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Dreamflow<br>Time (s)</th>
+                            <th data-view="cost">Dreamflow<br>Credits</th>
+                            <th data-view="costperpage">Dreamflow<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
+                            <th data-view="cost">Vibecode<br>Cost ($)</th>
+                            <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
                             <td>1. Flight Details</td>
-                            <td class='value-better'>80</td>
-                            <td class=''>150</td>
-                            <td class=''>105</td>
-                            <td class=''>180</td>
-                            <td class=''>2.1</td>
-                            <td class=''>0.9</td>
-                            <td class=''>200</td>
-                            <td class='value-worse'>3.4</td>
-                            <td class='value-better'>0.31</td>
-                            <td class='value-worse'>780</td>
-                            <td class='value-better'>1.96</td>
-                            <td class='value-worse'>1.96</td>
+                            <td data-view="time" class="view-active value-better">80</td>
+                            <td data-view="time" class="view-active ">150</td>
+                            <td data-view="time" class="view-active ">105</td>
+                            <td data-view="time" class="view-active ">180</td>
+                            <td data-view="cost" class="">2.1</td>
+                            <td data-view="costperpage" class="">0.9</td>
+                            <td data-view="time" class="view-active ">200</td>
+                            <td data-view="cost" class="value-worse">3.4</td>
+                            <td data-view="costperpage" class="value-better">0.31</td>
+                            <td data-view="time" class="view-active value-worse">780</td>
+                            <td data-view="cost" class="value-better">1.96</td>
+                            <td data-view="costperpage" class="value-worse">1.96</td>
                         </tr>                        <tr>
                             <td>2. Football Fantasy</td>
-                            <td class='value-better'>65</td>
-                            <td class=''>110</td>
-                            <td class=''>170</td>
-                            <td class=''>420</td>
-                            <td class=''>2.9</td>
-                            <td class=''>1.25</td>
-                            <td class=''>500</td>
-                            <td class='value-worse'>11.5</td>
-                            <td class='value-worse'>2.07</td>
-                            <td class='value-worse'>1490</td>
-                            <td class='value-better'>0.54</td>
-                            <td class='value-better'>0.27</td>
+                            <td data-view="time" class="view-active value-better">65</td>
+                            <td data-view="time" class="view-active ">110</td>
+                            <td data-view="time" class="view-active ">170</td>
+                            <td data-view="time" class="view-active ">420</td>
+                            <td data-view="cost" class="">2.9</td>
+                            <td data-view="costperpage" class="">1.25</td>
+                            <td data-view="time" class="view-active ">500</td>
+                            <td data-view="cost" class="value-worse">11.5</td>
+                            <td data-view="costperpage" class="value-worse">2.07</td>
+                            <td data-view="time" class="view-active value-worse">1490</td>
+                            <td data-view="cost" class="value-better">0.54</td>
+                            <td data-view="costperpage" class="value-better">0.27</td>
                         </tr>                        <tr>
                             <td>3. Travel Guide</td>
-                            <td class='value-better'>80</td>
-                            <td class=''>120</td>
-                            <td class=''>180</td>
-                            <td class=''>230</td>
-                            <td class=''>2.4</td>
-                            <td class=''>1.03</td>
-                            <td class=''>170</td>
-                            <td class='value-worse'>4.1</td>
-                            <td class='value-better'>0.74</td>
-                            <td class='value-worse'>540</td>
-                            <td class='value-better'>1.1</td>
-                            <td class='value-worse'>1.1</td>
+                            <td data-view="time" class="view-active value-better">80</td>
+                            <td data-view="time" class="view-active ">120</td>
+                            <td data-view="time" class="view-active ">180</td>
+                            <td data-view="time" class="view-active ">230</td>
+                            <td data-view="cost" class="">2.4</td>
+                            <td data-view="costperpage" class="">1.03</td>
+                            <td data-view="time" class="view-active ">170</td>
+                            <td data-view="cost" class="value-worse">4.1</td>
+                            <td data-view="costperpage" class="value-better">0.74</td>
+                            <td data-view="time" class="view-active value-worse">540</td>
+                            <td data-view="cost" class="value-better">1.1</td>
+                            <td data-view="costperpage" class="value-worse">1.1</td>
                         </tr>                        <tr>
                             <td>4. Electric Utility Dashboard</td>
-                            <td class='value-better'>95</td>
-                            <td class=''>115</td>
-                            <td class='value-worse'>290</td>
-                            <td class=''>160</td>
-                            <td class=''>1.8</td>
-                            <td class='value-worse'>0.77</td>
-                            <td class=''>220</td>
-                            <td class='value-worse'>3.9</td>
-                            <td class=''>0.7</td>
-                            <td class=''>240</td>
-                            <td class='value-better'>0.5</td>
-                            <td class='value-better'>0.5</td>
+                            <td data-view="time" class="view-active value-better">95</td>
+                            <td data-view="time" class="view-active ">115</td>
+                            <td data-view="time" class="view-active value-worse">290</td>
+                            <td data-view="time" class="view-active ">160</td>
+                            <td data-view="cost" class="">1.8</td>
+                            <td data-view="costperpage" class="value-worse">0.77</td>
+                            <td data-view="time" class="view-active ">220</td>
+                            <td data-view="cost" class="value-worse">3.9</td>
+                            <td data-view="costperpage" class="">0.7</td>
+                            <td data-view="time" class="view-active ">240</td>
+                            <td data-view="cost" class="value-better">0.5</td>
+                            <td data-view="costperpage" class="value-better">0.5</td>
                         </tr>                        <tr>
                             <td>5. Video Streaming</td>
-                            <td class='value-better'>90</td>
-                            <td class=''>105</td>
-                            <td class=''>160</td>
-                            <td class=''>270</td>
-                            <td class='value-better'>2.5</td>
-                            <td class=''>0.54</td>
-                            <td class=''>330</td>
-                            <td class=''>5.8</td>
-                            <td class='value-better'>0.26</td>
-                            <td class='value-worse'>1080</td>
-                            <td class='value-worse'>6.37</td>
-                            <td class='value-worse'>3.18</td>
+                            <td data-view="time" class="view-active value-better">90</td>
+                            <td data-view="time" class="view-active ">105</td>
+                            <td data-view="time" class="view-active ">160</td>
+                            <td data-view="time" class="view-active ">270</td>
+                            <td data-view="cost" class="value-better">2.5</td>
+                            <td data-view="costperpage" class="">0.54</td>
+                            <td data-view="time" class="view-active ">330</td>
+                            <td data-view="cost" class="">5.8</td>
+                            <td data-view="costperpage" class="value-better">0.26</td>
+                            <td data-view="time" class="view-active value-worse">1080</td>
+                            <td data-view="cost" class="value-worse">6.37</td>
+                            <td data-view="costperpage" class="value-worse">3.18</td>
                         </tr>                        <tr>
                             <td>6. Notes</td>
-                            <td class='value-better'>90</td>
-                            <td class=''>275</td>
-                            <td class=''>150</td>
-                            <td class=''>180</td>
-                            <td class=''>2</td>
-                            <td class=''>0.29</td>
-                            <td class=''>210</td>
-                            <td class='value-worse'>3.8</td>
-                            <td class='value-better'>0.23</td>
-                            <td class='value-worse'>450</td>
-                            <td class='value-better'>1.49</td>
-                            <td class='value-worse'>1.49</td>
+                            <td data-view="time" class="view-active value-better">90</td>
+                            <td data-view="time" class="view-active ">275</td>
+                            <td data-view="time" class="view-active ">150</td>
+                            <td data-view="time" class="view-active ">180</td>
+                            <td data-view="cost" class="">2</td>
+                            <td data-view="costperpage" class="">0.29</td>
+                            <td data-view="time" class="view-active ">210</td>
+                            <td data-view="cost" class="value-worse">3.8</td>
+                            <td data-view="costperpage" class="value-better">0.23</td>
+                            <td data-view="time" class="view-active value-worse">450</td>
+                            <td data-view="cost" class="value-better">1.49</td>
+                            <td data-view="costperpage" class="value-worse">1.49</td>
                         </tr>                        <tr>
                             <td>7. Calendar</td>
-                            <td class='value-better'>75</td>
-                            <td class=''>210</td>
-                            <td class=''>230</td>
-                            <td class='value-worse'>290</td>
-                            <td class=''>2.2</td>
-                            <td class=''>0.95</td>
-                            <td class=''>225</td>
-                            <td class='value-worse'>7</td>
-                            <td class='value-worse'>1.26</td>
-                            <td class=''>285</td>
-                            <td class='value-better'>0.69</td>
-                            <td class='value-better'>0.69</td>
+                            <td data-view="time" class="view-active value-better">75</td>
+                            <td data-view="time" class="view-active ">210</td>
+                            <td data-view="time" class="view-active ">230</td>
+                            <td data-view="time" class="view-active value-worse">290</td>
+                            <td data-view="cost" class="">2.2</td>
+                            <td data-view="costperpage" class="">0.95</td>
+                            <td data-view="time" class="view-active ">225</td>
+                            <td data-view="cost" class="value-worse">7</td>
+                            <td data-view="costperpage" class="value-worse">1.26</td>
+                            <td data-view="time" class="view-active ">285</td>
+                            <td data-view="cost" class="value-better">0.69</td>
+                            <td data-view="costperpage" class="value-better">0.69</td>
                         </tr>                        <tr>
                             <td>8. Hospital Dashboard</td>
-                            <td class='value-better'>85</td>
-                            <td class=''>120</td>
-                            <td class=''>150</td>
-                            <td class=''>180</td>
-                            <td class='value-better'>1.9</td>
-                            <td class=''>0.82</td>
-                            <td class=''>260</td>
-                            <td class='value-worse'>4.4</td>
-                            <td class='value-better'>0.79</td>
-                            <td class='value-worse'>680</td>
-                            <td class=''>2.52</td>
-                            <td class='value-worse'>2.52</td>
+                            <td data-view="time" class="view-active value-better">85</td>
+                            <td data-view="time" class="view-active ">120</td>
+                            <td data-view="time" class="view-active ">150</td>
+                            <td data-view="time" class="view-active ">180</td>
+                            <td data-view="cost" class="value-better">1.9</td>
+                            <td data-view="costperpage" class="">0.82</td>
+                            <td data-view="time" class="view-active ">260</td>
+                            <td data-view="cost" class="value-worse">4.4</td>
+                            <td data-view="costperpage" class="value-better">0.79</td>
+                            <td data-view="time" class="view-active value-worse">680</td>
+                            <td data-view="cost" class="">2.52</td>
+                            <td data-view="costperpage" class="value-worse">2.52</td>
                         </tr>                        <tr>
                             <td>9. Budgeting Dashboard</td>
-                            <td class='value-better'>80</td>
-                            <td class=''>160</td>
-                            <td class=''>140</td>
-                            <td class=''>150</td>
-                            <td class=''>1.7</td>
-                            <td class='value-better'>0.73</td>
-                            <td class=''>240</td>
-                            <td class='value-worse'>5.4</td>
-                            <td class=''>0.97</td>
-                            <td class='value-worse'>1095</td>
-                            <td class='value-better'>1.15</td>
-                            <td class='value-worse'>1.15</td>
+                            <td data-view="time" class="view-active value-better">80</td>
+                            <td data-view="time" class="view-active ">160</td>
+                            <td data-view="time" class="view-active ">140</td>
+                            <td data-view="time" class="view-active ">150</td>
+                            <td data-view="cost" class="">1.7</td>
+                            <td data-view="costperpage" class="value-better">0.73</td>
+                            <td data-view="time" class="view-active ">240</td>
+                            <td data-view="cost" class="value-worse">5.4</td>
+                            <td data-view="costperpage" class="">0.97</td>
+                            <td data-view="time" class="view-active value-worse">1095</td>
+                            <td data-view="cost" class="value-better">1.15</td>
+                            <td data-view="costperpage" class="value-worse">1.15</td>
                         </tr>                        <tr>
                             <td>10. Recipe Home Screen</td>
-                            <td class='value-better'>80</td>
-                            <td class=''>150</td>
-                            <td class=''>170</td>
-                            <td class=''>120</td>
-                            <td class=''>1.6</td>
-                            <td class=''>0.69</td>
-                            <td class=''>185</td>
-                            <td class='value-worse'>4.5</td>
-                            <td class='value-worse'>0.81</td>
-                            <td class='value-worse'>270</td>
-                            <td class='value-better'>0.54</td>
-                            <td class='value-better'>0.54</td>
+                            <td data-view="time" class="view-active value-better">80</td>
+                            <td data-view="time" class="view-active ">150</td>
+                            <td data-view="time" class="view-active ">170</td>
+                            <td data-view="time" class="view-active ">120</td>
+                            <td data-view="cost" class="">1.6</td>
+                            <td data-view="costperpage" class="">0.69</td>
+                            <td data-view="time" class="view-active ">185</td>
+                            <td data-view="cost" class="value-worse">4.5</td>
+                            <td data-view="costperpage" class="value-worse">0.81</td>
+                            <td data-view="time" class="view-active value-worse">270</td>
+                            <td data-view="cost" class="value-better">0.54</td>
+                            <td data-view="costperpage" class="value-better">0.54</td>
                         </tr>                        <tr>
                             <td>11. Fitness Tracking</td>
-                            <td class='value-better'>75</td>
-                            <td class=''>120</td>
-                            <td class=''>180</td>
-                            <td class=''>200</td>
-                            <td class=''>1.9</td>
-                            <td class='value-worse'>0.82</td>
-                            <td class='value-worse'>240</td>
-                            <td class='value-worse'>3.5</td>
-                            <td class=''>0.63</td>
-                            <td class='value-worse'>240</td>
-                            <td class='value-better'>0.51</td>
-                            <td class='value-better'>0.51</td>
+                            <td data-view="time" class="view-active value-better">75</td>
+                            <td data-view="time" class="view-active ">120</td>
+                            <td data-view="time" class="view-active ">180</td>
+                            <td data-view="time" class="view-active ">200</td>
+                            <td data-view="cost" class="">1.9</td>
+                            <td data-view="costperpage" class="value-worse">0.82</td>
+                            <td data-view="time" class="view-active value-worse">240</td>
+                            <td data-view="cost" class="value-worse">3.5</td>
+                            <td data-view="costperpage" class="">0.63</td>
+                            <td data-view="time" class="view-active value-worse">240</td>
+                            <td data-view="cost" class="value-better">0.51</td>
+                            <td data-view="costperpage" class="value-better">0.51</td>
                         </tr>                        <tr>
                             <td>12. Login Register</td>
-                            <td class='value-better'>60</td>
-                            <td class=''>90</td>
-                            <td class=''>300</td>
-                            <td class=''>155</td>
-                            <td class=''>2.1</td>
-                            <td class=''>0.45</td>
-                            <td class=''>255</td>
-                            <td class='value-worse'>3.5</td>
-                            <td class='value-better'>0.32</td>
-                            <td class='value-worse'>330</td>
-                            <td class='value-better'>0.82</td>
-                            <td class='value-worse'>0.82</td>
+                            <td data-view="time" class="view-active value-better">60</td>
+                            <td data-view="time" class="view-active ">90</td>
+                            <td data-view="time" class="view-active ">300</td>
+                            <td data-view="time" class="view-active ">155</td>
+                            <td data-view="cost" class="">2.1</td>
+                            <td data-view="costperpage" class="">0.45</td>
+                            <td data-view="time" class="view-active ">255</td>
+                            <td data-view="cost" class="value-worse">3.5</td>
+                            <td data-view="costperpage" class="value-better">0.32</td>
+                            <td data-view="time" class="view-active value-worse">330</td>
+                            <td data-view="cost" class="value-better">0.82</td>
+                            <td data-view="costperpage" class="value-worse">0.82</td>
                         </tr>                        <tr>
                             <td>13. Travel Home Screen</td>
-                            <td class='value-better'>75</td>
-                            <td class='value-worse'>400</td>
-                            <td class=''>240</td>
-                            <td class=''>210</td>
-                            <td class=''>2.1</td>
-                            <td class=''>0.9</td>
-                            <td class=''>220</td>
-                            <td class='value-worse'>8.5</td>
-                            <td class='value-worse'>1.53</td>
-                            <td class=''>270</td>
-                            <td class='value-better'>0.57</td>
-                            <td class='value-better'>0.57</td>
+                            <td data-view="time" class="view-active value-better">75</td>
+                            <td data-view="time" class="view-active value-worse">400</td>
+                            <td data-view="time" class="view-active ">240</td>
+                            <td data-view="time" class="view-active ">210</td>
+                            <td data-view="cost" class="">2.1</td>
+                            <td data-view="costperpage" class="">0.9</td>
+                            <td data-view="time" class="view-active ">220</td>
+                            <td data-view="cost" class="value-worse">8.5</td>
+                            <td data-view="costperpage" class="value-worse">1.53</td>
+                            <td data-view="time" class="view-active ">270</td>
+                            <td data-view="cost" class="value-better">0.57</td>
+                            <td data-view="costperpage" class="value-better">0.57</td>
                         </tr>                        <tr>
                             <td>14. Burger Joint</td>
-                            <td class='value-better'>80</td>
-                            <td class=''>100</td>
-                            <td class='value-worse'>330</td>
-                            <td class=''>200</td>
-                            <td class=''>1.8</td>
-                            <td class='value-worse'>0.77</td>
-                            <td class=''>225</td>
-                            <td class='value-worse'>3.4</td>
-                            <td class=''>0.61</td>
-                            <td class=''>295</td>
-                            <td class='value-better'>0.61</td>
-                            <td class=''>0.61</td>
+                            <td data-view="time" class="view-active value-better">80</td>
+                            <td data-view="time" class="view-active ">100</td>
+                            <td data-view="time" class="view-active value-worse">330</td>
+                            <td data-view="time" class="view-active ">200</td>
+                            <td data-view="cost" class="">1.8</td>
+                            <td data-view="costperpage" class="value-worse">0.77</td>
+                            <td data-view="time" class="view-active ">225</td>
+                            <td data-view="cost" class="value-worse">3.4</td>
+                            <td data-view="costperpage" class="">0.61</td>
+                            <td data-view="time" class="view-active ">295</td>
+                            <td data-view="cost" class="value-better">0.61</td>
+                            <td data-view="costperpage" class="">0.61</td>
                         </tr>                        <tr>
                             <td>15. Fitness Home Screen</td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-worse'>540</td>
-                            <td class='value-worse'>1.24</td>
-                            <td class='value-worse'>1.24</td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-worse">540</td>
+                            <td data-view="cost" class="value-worse">1.24</td>
+                            <td data-view="costperpage" class="value-worse">1.24</td>
                         </tr>                        <tr>
                             <td>16. Background Dashboard</td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-worse'>445</td>
-                            <td class='value-worse'>1.22</td>
-                            <td class='value-worse'>1.22</td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-worse">445</td>
+                            <td data-view="cost" class="value-worse">1.22</td>
+                            <td data-view="costperpage" class="value-worse">1.22</td>
                         </tr>                        <tr>
                             <td>17. Login Email Phone</td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-worse'>380</td>
-                            <td class='value-worse'>0.92</td>
-                            <td class='value-worse'>0.92</td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-worse">380</td>
+                            <td data-view="cost" class="value-worse">0.92</td>
+                            <td data-view="costperpage" class="value-worse">0.92</td>
                         </tr>                        <tr>
                             <td>18. MeowFlix</td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-better'></td>
-                            <td class=''></td>
-                            <td class=''></td>
-                            <td class='value-worse'>730</td>
-                            <td class='value-worse'>1.52</td>
-                            <td class='value-worse'>0.76</td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-better"></td>
+                            <td data-view="cost" class=""></td>
+                            <td data-view="costperpage" class=""></td>
+                            <td data-view="time" class="view-active value-worse">730</td>
+                            <td data-view="cost" class="value-worse">1.52</td>
+                            <td data-view="costperpage" class="value-worse">0.76</td>
                         </tr>                        <tr>
                             <td>Average</td>
-                            <td>61.7</td>
-                            <td>123.6</td>
-                            <td>155.3</td>
-                            <td>163.6</td>
-                            <td>1.6</td>
-                            <td>0.69</td>
-                            <td>193.3</td>
-                            <td>4</td>
-                            <td>0.57</td>
-                            <td>563.3</td>
-                            <td>1.35</td>
-                            <td>1.35</td>
+                            <td data-view="time" class="view-active">61.7</td>
+                            <td data-view="time" class="view-active">123.6</td>
+                            <td data-view="time" class="view-active">155.3</td>
+                            <td data-view="time" class="view-active">163.6</td>
+                            <td data-view="cost">1.6</td>
+                            <td data-view="costperpage">0.69</td>
+                            <td data-view="time" class="view-active">193.3</td>
+                            <td data-view="cost">4</td>
+                            <td data-view="costperpage">0.57</td>
+                            <td data-view="time" class="view-active">563.3</td>
+                            <td data-view="cost">1.35</td>
+                            <td data-view="costperpage">1.35</td>
                         </tr>
                     </tbody>
                 </table>
@@ -3828,6 +3881,24 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
         window.addEventListener('load', () => {
             updateVisibleImages();
         });
+
+        function switchTableView(view) {
+            // Remove view-active from all columns
+            document.querySelectorAll('#performance-table th[data-view], #performance-table td[data-view]').forEach(cell => {
+                cell.classList.remove('view-active');
+            });
+            
+            // Add view-active to columns matching the view
+            document.querySelectorAll(#performance-table th[data-view=""], #performance-table td[data-view=""]).forEach(cell => {
+                cell.classList.add('view-active');
+            });
+            
+            // Update button states
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
     </script>
 </body>
 </html>
