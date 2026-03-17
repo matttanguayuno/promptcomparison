@@ -715,6 +715,12 @@ $html = @"
             background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
         }
 
+        .summary-table th:nth-child(11),
+        .summary-table th:nth-child(12),
+        .summary-table th:nth-child(13) {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
         .summary-table th:last-child {
             border-top-right-radius: 8px;
         }
