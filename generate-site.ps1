@@ -25,6 +25,28 @@ $performanceData = @(
     @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 0; VibecodeCredits = 0; VibecodePages = 1 }
 )
 
+# Google Drive video links (Vibecode demos)
+$vibecodeDriveLinks = @{
+    "1. Flight Details" = "https://drive.google.com/file/d/1gYwTFgJFAASlSrPR1S-TufUK5e7FOcmF/view?usp=drive_link"
+    "2. Football Fantasy" = "https://drive.google.com/file/d/10ce_zHgYFgtVQqZ7yKi1AXs5joqrf2Bc/view?usp=drive_link"
+    "3. Travel Guide" = "https://drive.google.com/file/d/1Ola-DlEJsEfwu39D_2Aw-1JYQFAtnxWN/view?usp=drive_link"
+    "4. Electric Utility Dashboard" = "https://drive.google.com/file/d/16NsWe7XNNoQSsY919ADpm606UovpTcdY/view?usp=drive_link"
+    "5. Video Streaming" = "https://drive.google.com/file/d/1F5PSits1L1twL_DAb-MDCXSSJpAwSUr0/view?usp=drive_link"
+    "6. Notes" = "https://drive.google.com/file/d/1UcfDK7OgOsCeKFrRDRTZ0KzVXGfu6_yX/view?usp=drive_link"
+    "7. Calendar" = "https://drive.google.com/file/d/1Ql6dduAL5d8IxnqDfEaOZ_AFG-NH0dMM/view?usp=drive_link"
+    "8. Hospital Dashboard" = "https://drive.google.com/file/d/1vD6cm8j6U7xcmNgzaSFGSx0JMvV5Ww76/view?usp=drive_link"
+    "9. Budgeting Dashboard" = "https://drive.google.com/file/d/1M4tleZnCU6S46hGJd9-XIu_QI37Uslo5/view?usp=drive_link"
+    "10. Recipe Home Screen" = "https://drive.google.com/file/d/15gdCxNPkIufHX6_kVdUP1BvOi3Jn1EoD/view?usp=drive_link"
+    "11. Fitness Tracking" = "https://drive.google.com/file/d/1v0eTqJsCSPgbs0YdEcn1sL4S9aEdI-fo/view?usp=drive_link"
+    "12. Login Register" = "https://drive.google.com/file/d/1f3nuNreNcXlbzEtLRWOdLjYcihJFzRwU/view?usp=drive_link"
+    "13. Travel Home Screen" = "https://drive.google.com/file/d/1BwqaTFYFFi8cZdeeIG1VPQhzflBxN3WQ/view?usp=drive_link"
+    "14. Burger Joint" = "https://drive.google.com/file/d/184Asoy5O7mKh2UCtnANwKi_aMtUwG0xX/view?usp=drive_link"
+    "15. Fitness Home Screen" = "https://drive.google.com/file/d/13YULDvowxo7nlL0ohsEJqBrH2A3_0S5S/view?usp=drive_link"
+    "16. Background Dashboard" = "https://drive.google.com/file/d/1V2IgSL3AYRiisaroJDioptomDd73AwOu/view?usp=drive_link"
+    "17. Login Email Phone" = "https://drive.google.com/file/d/1V2IgSL3AYRiisaroJDioptomDd73AwOu/view?usp=drive_link"
+    "18. MeowFlix" = "https://drive.google.com/file/d/18mLYLer1mv_NBX6ibFTvC5Dc8lG8qPhS/view?usp=drive_link"
+}
+
 # Get all project folders and sort numerically
 $folders = Get-ChildItem $basePath -Directory | Where-Object { $_.Name -ne "Comparison" -and $_.Name -ne ".vscode" -and $_.Name -ne ".git" } | Sort-Object { 
     if ($_.Name -match '^(\d+)') { 
@@ -73,6 +95,7 @@ foreach ($folder in $folders) {
         Prompts = $prompts
         Images = @()
         InspirationImages = @()
+        VibecodeVideoUrl = $vibecodeDriveLinks[$projectName]
     }
     
     foreach ($image in $images) {
@@ -105,6 +128,8 @@ foreach ($folder in $folders) {
             $tool = "lovable"
         } elseif ($imageName -match "^Dreamflow") {
             $tool = "dreamflow"
+        } elseif ($imageName -match "^Vibecode") {
+            $tool = "vibecode"
         }
         
         $projectData.Images += @{
@@ -476,6 +501,21 @@ $html = @"
             color: white;
         }
 
+        .tab-vibecode {
+            border-color: #f39c12;
+            color: #f39c12;
+        }
+
+        .tab-vibecode:hover {
+            background: #f39c12;
+            color: white;
+        }
+
+        .tab-vibecode.active.active-tool {
+            background: #f39c12;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -521,6 +561,25 @@ $html = @"
 
         .tool-group-header.antigravity {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .tool-group-header.vibecode {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
         }
 
         .tool-group-images {
@@ -1328,6 +1387,7 @@ foreach ($project in $projectsData) {
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('$projectId', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('$projectId', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('$projectId', 'vibecode')">Vibecode</button>
                 </div>
 
                 <div class="images-grid" id="${projectId}_images">
@@ -1341,6 +1401,7 @@ foreach ($project in $projectsData) {
         "vscodeunomcp" = @()
         "lovable" = @()
         "dreamflow" = @()
+        "vibecode" = @()
         "other" = @()
     }
     
@@ -1349,10 +1410,10 @@ foreach ($project in $projectsData) {
     }
     
     # Generate tool sections
-    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "other")
+    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "vibecode", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
-        if ($toolImages.Count -gt 0) {
+        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl)) {
             $toolDisplayName = switch ($toolName) {
                 "antigravity" { "ANTIGRAVITY" }
                 "uno" { "UNO HD" }
@@ -1360,6 +1421,7 @@ foreach ($project in $projectsData) {
                 "vscodeunomcp" { "UNO VS CODE MCP" }
                 "lovable" { "LOVABLE" }
                 "dreamflow" { "DREAMFLOW" }
+                "vibecode" { "VIBECODE" }
                 default { $toolName.ToUpper() }
             }
             
@@ -1368,6 +1430,17 @@ foreach ($project in $projectsData) {
                         <div class="tool-group-header $toolName">$toolDisplayName</div>
                         <div class="tool-group-images">
 "@
+            
+            # Add video embed for Vibecode if URL exists
+            if ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) {
+                # Convert Google Drive view URL to embed URL
+                $embedUrl = $project.VibecodeVideoUrl -replace '/view\?usp=drive_link', '/preview'
+                $html += @"
+                            <div class="video-container">
+                                <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>
+"@
+            }
             
             foreach ($image in $toolImages) {
                 $materialBadge = ""

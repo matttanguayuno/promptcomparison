@@ -333,6 +333,21 @@
             color: white;
         }
 
+        .tab-vibecode {
+            border-color: #f39c12;
+            color: #f39c12;
+        }
+
+        .tab-vibecode:hover {
+            background: #f39c12;
+            color: white;
+        }
+
+        .tab-vibecode.active.active-tool {
+            background: #f39c12;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -378,6 +393,25 @@
 
         .tool-group-header.antigravity {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .tool-group-header.vibecode {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
         }
 
         .tool-group-images {
@@ -1148,7 +1182,7 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>780</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.96</td>
                             </tr>
                         </tbody>
@@ -1162,9 +1196,15 @@
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('1__Flight_Details', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('1__Flight_Details', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('1__Flight_Details', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('1__Flight_Details', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="1__Flight_Details_images">                </div>
+                <div class="images-grid" id="1__Flight_Details_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1gYwTFgJFAASlSrPR1S-TufUK5e7FOcmF/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="2__Football_Fantasy">
                 <div class="project-header">
@@ -1219,7 +1259,7 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1490</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.27</td>
                             </tr>
                         </tbody>
@@ -1233,9 +1273,15 @@
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('2__Football_Fantasy', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('2__Football_Fantasy', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('2__Football_Fantasy', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('2__Football_Fantasy', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="2__Football_Fantasy_images">                </div>
+                <div class="images-grid" id="2__Football_Fantasy_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/10ce_zHgYFgtVQqZ7yKi1AXs5joqrf2Bc/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="3__Travel_Guide">
                 <div class="project-header">
@@ -1297,7 +1343,7 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.1</td>
                             </tr>
                         </tbody>
@@ -1311,9 +1357,15 @@
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('3__Travel_Guide', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('3__Travel_Guide', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('3__Travel_Guide', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('3__Travel_Guide', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="3__Travel_Guide_images">                </div>
+                <div class="images-grid" id="3__Travel_Guide_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1Ola-DlEJsEfwu39D_2Aw-1JYQFAtnxWN/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="4__Electric_Utility_Dashboard">
                 <div class="project-header">
@@ -1374,7 +1426,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.5</td>
                             </tr>
                         </tbody>
@@ -1388,9 +1440,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('4__Electric_Utility_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('4__Electric_Utility_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('4__Electric_Utility_Dashboard', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('4__Electric_Utility_Dashboard', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                </div>
+                <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/16NsWe7XNNoQSsY919ADpm606UovpTcdY/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="5__Video_Streaming">
                 <div class="project-header">
@@ -1449,7 +1507,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1080</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>3.18</td>
                             </tr>
                         </tbody>
@@ -1463,9 +1521,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('5__Video_Streaming', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('5__Video_Streaming', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('5__Video_Streaming', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('5__Video_Streaming', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="5__Video_Streaming_images">                </div>
+                <div class="images-grid" id="5__Video_Streaming_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1F5PSits1L1twL_DAb-MDCXSSJpAwSUr0/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="6__Notes">
                 <div class="project-header">
@@ -1520,7 +1584,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>450</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.49</td>
                             </tr>
                         </tbody>
@@ -1534,9 +1598,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('6__Notes', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('6__Notes', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('6__Notes', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('6__Notes', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="6__Notes_images">                </div>
+                <div class="images-grid" id="6__Notes_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1UcfDK7OgOsCeKFrRDRTZ0KzVXGfu6_yX/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="7__Calendar">
                 <div class="project-header">
@@ -1591,7 +1661,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>285</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.69</td>
                             </tr>
                         </tbody>
@@ -1605,9 +1675,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('7__Calendar', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('7__Calendar', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('7__Calendar', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('7__Calendar', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="7__Calendar_images">                </div>
+                <div class="images-grid" id="7__Calendar_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1Ql6dduAL5d8IxnqDfEaOZ_AFG-NH0dMM/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="8__Hospital_Dashboard">
                 <div class="project-header">
@@ -1662,7 +1738,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>680</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>2.52</td>
                             </tr>
                         </tbody>
@@ -1676,9 +1752,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('8__Hospital_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('8__Hospital_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('8__Hospital_Dashboard', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('8__Hospital_Dashboard', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="8__Hospital_Dashboard_images">                </div>
+                <div class="images-grid" id="8__Hospital_Dashboard_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1vD6cm8j6U7xcmNgzaSFGSx0JMvV5Ww76/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="9__Budgeting_Dashboard">
                 <div class="project-header">
@@ -1733,7 +1815,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1095</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.15</td>
                             </tr>
                         </tbody>
@@ -1747,9 +1829,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('9__Budgeting_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('9__Budgeting_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('9__Budgeting_Dashboard', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('9__Budgeting_Dashboard', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="9__Budgeting_Dashboard_images">                </div>
+                <div class="images-grid" id="9__Budgeting_Dashboard_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1M4tleZnCU6S46hGJd9-XIu_QI37Uslo5/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="10__Recipe_Home_Screen">
                 <div class="project-header">
@@ -1804,7 +1892,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.54</td>
                             </tr>
                         </tbody>
@@ -1818,9 +1906,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('10__Recipe_Home_Screen', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('10__Recipe_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('10__Recipe_Home_Screen', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('10__Recipe_Home_Screen', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="10__Recipe_Home_Screen_images">                </div>
+                <div class="images-grid" id="10__Recipe_Home_Screen_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/15gdCxNPkIufHX6_kVdUP1BvOi3Jn1EoD/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="11__Fitness_Tracking">
                 <div class="project-header">
@@ -1875,7 +1969,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.51</td>
                             </tr>
                         </tbody>
@@ -1889,9 +1983,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('11__Fitness_Tracking', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('11__Fitness_Tracking', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('11__Fitness_Tracking', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('11__Fitness_Tracking', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="11__Fitness_Tracking_images">                </div>
+                <div class="images-grid" id="11__Fitness_Tracking_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1v0eTqJsCSPgbs0YdEcn1sL4S9aEdI-fo/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="12__Login_Register">
                 <div class="project-header">
@@ -1946,7 +2046,7 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>330</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.82</td>
                             </tr>
                         </tbody>
@@ -1960,9 +2060,15 @@ Requirements:
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('12__Login_Register', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('12__Login_Register', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('12__Login_Register', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('12__Login_Register', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="12__Login_Register_images">                </div>
+                <div class="images-grid" id="12__Login_Register_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1f3nuNreNcXlbzEtLRWOdLjYcihJFzRwU/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="13__Travel_Home_Screen">
                 <div class="project-header">
@@ -2064,7 +2170,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.57</td>
                             </tr>
                         </tbody>
@@ -2078,9 +2184,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('13__Travel_Home_Screen', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('13__Travel_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('13__Travel_Home_Screen', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('13__Travel_Home_Screen', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="13__Travel_Home_Screen_images">                </div>
+                <div class="images-grid" id="13__Travel_Home_Screen_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1BwqaTFYFFi8cZdeeIG1VPQhzflBxN3WQ/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="14__Burger_Joint">
                 <div class="project-header">
@@ -2135,7 +2247,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>295</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.61</td>
                             </tr>
                         </tbody>
@@ -2149,9 +2261,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('14__Burger_Joint', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('14__Burger_Joint', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('14__Burger_Joint', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('14__Burger_Joint', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="14__Burger_Joint_images">                </div>
+                <div class="images-grid" id="14__Burger_Joint_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/184Asoy5O7mKh2UCtnANwKi_aMtUwG0xX/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="15__Fitness_Home_Screen">
                 <div class="project-header">
@@ -2206,7 +2324,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.24</td>
                             </tr>
                         </tbody>
@@ -2220,9 +2338,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('15__Fitness_Home_Screen', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('15__Fitness_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('15__Fitness_Home_Screen', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('15__Fitness_Home_Screen', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="15__Fitness_Home_Screen_images">                </div>
+                <div class="images-grid" id="15__Fitness_Home_Screen_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/13YULDvowxo7nlL0ohsEJqBrH2A3_0S5S/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="16__Background_Dashboard">
                 <div class="project-header">
@@ -2273,7 +2397,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>445</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.22</td>
                             </tr>
                         </tbody>
@@ -2287,9 +2411,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('16__Background_Dashboard', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('16__Background_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('16__Background_Dashboard', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('16__Background_Dashboard', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="16__Background_Dashboard_images">                </div>
+                <div class="images-grid" id="16__Background_Dashboard_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1V2IgSL3AYRiisaroJDioptomDd73AwOu/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="17__Login_Email_Phone">
                 <div class="project-header">
@@ -2340,7 +2470,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>380</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.92</td>
                             </tr>
                         </tbody>
@@ -2354,9 +2484,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('17__Login_Email_Phone', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('17__Login_Email_Phone', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('17__Login_Email_Phone', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('17__Login_Email_Phone', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="17__Login_Email_Phone_images">                </div>
+                <div class="images-grid" id="17__Login_Email_Phone_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1V2IgSL3AYRiisaroJDioptomDd73AwOu/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
             <div class="project-section" id="18__MeowFlix">
                 <div class="project-header">
@@ -2409,7 +2545,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>0</td>
-                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0</td>
                             </tr>
                         </tbody>
@@ -2423,9 +2559,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('18__MeowFlix', 'vscodeunomcp')">Uno VS Code MCP</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('18__MeowFlix', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('18__MeowFlix', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-vibecode" onclick="filterImages('18__MeowFlix', 'vibecode')">Vibecode</button>
                 </div>
 
-                <div class="images-grid" id="18__MeowFlix_images">                </div>
+                <div class="images-grid" id="18__MeowFlix_images">                    <div class="tool-group" data-tool-group="vibecode">
+                        <div class="tool-group-header vibecode">VIBECODE</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/18mLYLer1mv_NBX6ibFTvC5Dc8lG8qPhS/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                </div>
             </div>
         </main>
     </div>
