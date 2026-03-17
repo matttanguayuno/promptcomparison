@@ -141,6 +141,33 @@
             font-weight: 600;
         }
 
+        .inspiration-section {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border: 2px solid #2a5298;
+        }
+
+        .inspiration-section h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .inspiration-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .inspiration-image:hover {
+            transform: scale(1.02);
+        }
+
         .tool-section {
             margin-bottom: 1.5rem;
             padding: 1rem;
@@ -758,6 +785,7 @@
                 <li data-project='15__Fitness_Home_Screen' onclick="showProject('15__Fitness_Home_Screen')">15. Fitness Home Screen</li>
                 <li data-project='16__Background_Dashboard' onclick="showProject('16__Background_Dashboard')">16. Background Dashboard</li>
                 <li data-project='17__Login_Email_Phone' onclick="showProject('17__Login_Email_Phone')">17. Login Email Phone</li>
+                <li data-project='18__MeowFlix' onclick="showProject('18__MeowFlix')">18. MeowFlix</li>
             </ul>
         </aside>
 
@@ -781,6 +809,9 @@
                             <th>Dreamflow<br>Time (s)</th>
                             <th>Dreamflow<br>Credits</th>
                             <th>Dreamflow<br>Cost/Page ($)</th>
+                            <th>Vibecode<br>Time (s)</th>
+                            <th>Vibecode<br>Cost ($)</th>
+                            <th>Vibecode<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
@@ -789,44 +820,56 @@
                             <td class=''>150</td>
                             <td class=''>105</td>
                             <td class=''>180</td>
-                            <td class='value-better'>2.1</td>
-                            <td class='value-worse'>0.9</td>
-                            <td class='value-worse'>200</td>
+                            <td class=''>2.1</td>
+                            <td class=''>0.9</td>
+                            <td class=''>200</td>
                             <td class='value-worse'>3.4</td>
                             <td class='value-better'>0.31</td>
+                            <td class='value-worse'>780</td>
+                            <td class='value-better'>1.96</td>
+                            <td class='value-worse'>1.96</td>
                         </tr>                        <tr>
                             <td>2. Football Fantasy</td>
                             <td class='value-better'>65</td>
                             <td class=''>110</td>
                             <td class=''>170</td>
                             <td class=''>420</td>
-                            <td class='value-better'>2.9</td>
-                            <td class='value-better'>1.25</td>
-                            <td class='value-worse'>500</td>
+                            <td class=''>2.9</td>
+                            <td class=''>1.25</td>
+                            <td class=''>500</td>
                             <td class='value-worse'>11.5</td>
                             <td class='value-worse'>2.07</td>
+                            <td class='value-worse'>1490</td>
+                            <td class='value-better'>0.54</td>
+                            <td class='value-better'>0.27</td>
                         </tr>                        <tr>
                             <td>3. Travel Guide</td>
                             <td class='value-better'>80</td>
                             <td class=''>120</td>
                             <td class=''>180</td>
-                            <td class='value-worse'>230</td>
-                            <td class='value-better'>2.4</td>
-                            <td class='value-worse'>1.03</td>
+                            <td class=''>230</td>
+                            <td class=''>2.4</td>
+                            <td class=''>1.03</td>
                             <td class=''>170</td>
                             <td class='value-worse'>4.1</td>
                             <td class='value-better'>0.74</td>
+                            <td class='value-worse'>540</td>
+                            <td class='value-better'>1.1</td>
+                            <td class='value-worse'>1.1</td>
                         </tr>                        <tr>
                             <td>4. Electric Utility Dashboard</td>
                             <td class='value-better'>95</td>
                             <td class=''>115</td>
                             <td class='value-worse'>290</td>
                             <td class=''>160</td>
-                            <td class='value-better'>1.8</td>
+                            <td class=''>1.8</td>
                             <td class='value-worse'>0.77</td>
                             <td class=''>220</td>
                             <td class='value-worse'>3.9</td>
-                            <td class='value-better'>0.7</td>
+                            <td class=''>0.7</td>
+                            <td class=''>240</td>
+                            <td class='value-better'>0.5</td>
+                            <td class='value-better'>0.5</td>
                         </tr>                        <tr>
                             <td>5. Video Streaming</td>
                             <td class='value-better'>90</td>
@@ -834,32 +877,41 @@
                             <td class=''>160</td>
                             <td class=''>270</td>
                             <td class='value-better'>2.5</td>
-                            <td class='value-worse'>0.54</td>
-                            <td class='value-worse'>330</td>
-                            <td class='value-worse'>5.8</td>
+                            <td class=''>0.54</td>
+                            <td class=''>330</td>
+                            <td class=''>5.8</td>
                             <td class='value-better'>0.26</td>
+                            <td class='value-worse'>1080</td>
+                            <td class='value-worse'>6.37</td>
+                            <td class='value-worse'>3.18</td>
                         </tr>                        <tr>
                             <td>6. Notes</td>
                             <td class='value-better'>90</td>
-                            <td class='value-worse'>275</td>
+                            <td class=''>275</td>
                             <td class=''>150</td>
                             <td class=''>180</td>
-                            <td class='value-better'>2</td>
-                            <td class='value-worse'>0.29</td>
+                            <td class=''>2</td>
+                            <td class=''>0.29</td>
                             <td class=''>210</td>
                             <td class='value-worse'>3.8</td>
                             <td class='value-better'>0.23</td>
+                            <td class='value-worse'>450</td>
+                            <td class='value-better'>1.49</td>
+                            <td class='value-worse'>1.49</td>
                         </tr>                        <tr>
                             <td>7. Calendar</td>
                             <td class='value-better'>75</td>
                             <td class=''>210</td>
                             <td class=''>230</td>
                             <td class='value-worse'>290</td>
-                            <td class='value-better'>2.2</td>
-                            <td class='value-better'>0.95</td>
+                            <td class=''>2.2</td>
+                            <td class=''>0.95</td>
                             <td class=''>225</td>
                             <td class='value-worse'>7</td>
                             <td class='value-worse'>1.26</td>
+                            <td class=''>285</td>
+                            <td class='value-better'>0.69</td>
+                            <td class='value-better'>0.69</td>
                         </tr>                        <tr>
                             <td>8. Hospital Dashboard</td>
                             <td class='value-better'>85</td>
@@ -867,98 +919,167 @@
                             <td class=''>150</td>
                             <td class=''>180</td>
                             <td class='value-better'>1.9</td>
-                            <td class='value-worse'>0.82</td>
-                            <td class='value-worse'>260</td>
+                            <td class=''>0.82</td>
+                            <td class=''>260</td>
                             <td class='value-worse'>4.4</td>
                             <td class='value-better'>0.79</td>
+                            <td class='value-worse'>680</td>
+                            <td class=''>2.52</td>
+                            <td class='value-worse'>2.52</td>
                         </tr>                        <tr>
                             <td>9. Budgeting Dashboard</td>
                             <td class='value-better'>80</td>
                             <td class=''>160</td>
                             <td class=''>140</td>
                             <td class=''>150</td>
-                            <td class='value-better'>1.7</td>
+                            <td class=''>1.7</td>
                             <td class='value-better'>0.73</td>
-                            <td class='value-worse'>240</td>
+                            <td class=''>240</td>
                             <td class='value-worse'>5.4</td>
-                            <td class='value-worse'>0.97</td>
+                            <td class=''>0.97</td>
+                            <td class='value-worse'>1095</td>
+                            <td class='value-better'>1.15</td>
+                            <td class='value-worse'>1.15</td>
                         </tr>                        <tr>
                             <td>10. Recipe Home Screen</td>
                             <td class='value-better'>80</td>
                             <td class=''>150</td>
                             <td class=''>170</td>
                             <td class=''>120</td>
-                            <td class='value-better'>1.6</td>
-                            <td class='value-better'>0.69</td>
-                            <td class='value-worse'>185</td>
+                            <td class=''>1.6</td>
+                            <td class=''>0.69</td>
+                            <td class=''>185</td>
                             <td class='value-worse'>4.5</td>
                             <td class='value-worse'>0.81</td>
+                            <td class='value-worse'>270</td>
+                            <td class='value-better'>0.54</td>
+                            <td class='value-better'>0.54</td>
                         </tr>                        <tr>
                             <td>11. Fitness Tracking</td>
                             <td class='value-better'>75</td>
                             <td class=''>120</td>
                             <td class=''>180</td>
                             <td class=''>200</td>
-                            <td class='value-better'>1.9</td>
+                            <td class=''>1.9</td>
                             <td class='value-worse'>0.82</td>
                             <td class='value-worse'>240</td>
                             <td class='value-worse'>3.5</td>
-                            <td class='value-better'>0.63</td>
+                            <td class=''>0.63</td>
+                            <td class='value-worse'>240</td>
+                            <td class='value-better'>0.51</td>
+                            <td class='value-better'>0.51</td>
                         </tr>                        <tr>
                             <td>12. Login Register</td>
                             <td class='value-better'>60</td>
                             <td class=''>90</td>
-                            <td class='value-worse'>300</td>
+                            <td class=''>300</td>
                             <td class=''>155</td>
-                            <td class='value-better'>2.1</td>
-                            <td class='value-worse'>0.45</td>
+                            <td class=''>2.1</td>
+                            <td class=''>0.45</td>
                             <td class=''>255</td>
                             <td class='value-worse'>3.5</td>
                             <td class='value-better'>0.32</td>
+                            <td class='value-worse'>330</td>
+                            <td class='value-better'>0.82</td>
+                            <td class='value-worse'>0.82</td>
                         </tr>                        <tr>
                             <td>13. Travel Home Screen</td>
                             <td class='value-better'>75</td>
                             <td class='value-worse'>400</td>
                             <td class=''>240</td>
                             <td class=''>210</td>
-                            <td class='value-better'>2.1</td>
-                            <td class='value-better'>0.9</td>
+                            <td class=''>2.1</td>
+                            <td class=''>0.9</td>
                             <td class=''>220</td>
                             <td class='value-worse'>8.5</td>
                             <td class='value-worse'>1.53</td>
+                            <td class=''>270</td>
+                            <td class='value-better'>0.57</td>
+                            <td class='value-better'>0.57</td>
                         </tr>                        <tr>
                             <td>14. Burger Joint</td>
                             <td class='value-better'>80</td>
                             <td class=''>100</td>
                             <td class='value-worse'>330</td>
                             <td class=''>200</td>
-                            <td class='value-better'>1.8</td>
+                            <td class=''>1.8</td>
                             <td class='value-worse'>0.77</td>
                             <td class=''>225</td>
                             <td class='value-worse'>3.4</td>
+                            <td class=''>0.61</td>
+                            <td class=''>295</td>
                             <td class='value-better'>0.61</td>
+                            <td class=''>0.61</td>
                         </tr>                        <tr>
                             <td>15. Fitness Home Screen</td>
                             <td class='value-better'>0</td>
                             <td class='value-better'>0</td>
                             <td class='value-better'>0</td>
                             <td class='value-better'>0</td>
-                            <td class='value-worse'>0</td>
-                            <td class='value-worse'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
                             <td class='value-better'>0</td>
-                            <td class='value-worse'>0</td>
-                            <td class='value-worse'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-worse'>540</td>
+                            <td class='value-worse'>1.24</td>
+                            <td class='value-worse'>1.24</td>
+                        </tr>                        <tr>
+                            <td>16. Background Dashboard</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-worse'>445</td>
+                            <td class='value-worse'>1.22</td>
+                            <td class='value-worse'>1.22</td>
+                        </tr>                        <tr>
+                            <td>17. Login Email Phone</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-worse'>380</td>
+                            <td class='value-worse'>0.92</td>
+                            <td class='value-worse'>0.92</td>
+                        </tr>                        <tr>
+                            <td>18. MeowFlix</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
+                            <td class='value-better'>0</td>
+                            <td class=''>0</td>
+                            <td class=''>0</td>
                         </tr>                        <tr>
                             <td>Average</td>
-                            <td>74</td>
-                            <td>148.3</td>
-                            <td>186.3</td>
-                            <td>196.3</td>
-                            <td>1.9</td>
+                            <td>61.7</td>
+                            <td>123.6</td>
+                            <td>155.3</td>
+                            <td>163.6</td>
+                            <td>1.6</td>
                             <td>0.69</td>
-                            <td>232</td>
-                            <td>4.8</td>
+                            <td>193.3</td>
+                            <td>4</td>
                             <td>0.57</td>
+                            <td>553.5</td>
+                            <td>1.34</td>
+                            <td>1.34</td>
                         </tr>
                     </tbody>
                 </table>
@@ -989,7 +1110,7 @@
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1024,6 +1145,12 @@
                                 <td>3.4</td>
                                 <td>0.31</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>780</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>1.96</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1037,77 +1164,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('1__Flight_Details', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="1__Flight_Details_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="1. Flight Details/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('1. Flight Details/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="1. Flight Details/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('1. Flight Details/UnoHD1.png', 'UnoHD1.png')">
-                                <div class="image-label uno">UnoHD1.png</div>
-                            </div>                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="1. Flight Details/UnoHD2.png" alt="UnoHD2.png" onclick="openLightbox('1. Flight Details/UnoHD2.png', 'UnoHD2.png')">
-                                <div class="image-label uno">UnoHD2.png</div>
-                            </div>                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="1. Flight Details/UnoHD3.png" alt="UnoHD3.png" onclick="openLightbox('1. Flight Details/UnoHD3.png', 'UnoHD3.png')">
-                                <div class="image-label uno">UnoHD3.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="1. Flight Details/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('1. Flight Details/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="1. Flight Details/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('1. Flight Details/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="1. Flight Details/Lovable.png" alt="Lovable.png" onclick="openLightbox('1. Flight Details/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="1. Flight Details/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('1. Flight Details/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="1. Flight Details/Dreamflow2.png" alt="Dreamflow2.png" onclick="openLightbox('1. Flight Details/Dreamflow2.png', 'Dreamflow2.png')">
-                                <div class="image-label dreamflow">Dreamflow2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="1. Flight Details/Dreamflow3.png" alt="Dreamflow3.png" onclick="openLightbox('1. Flight Details/Dreamflow3.png', 'Dreamflow3.png')">
-                                <div class="image-label dreamflow">Dreamflow3.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="1. Flight Details/Dreamflow-Material1-1.png" alt="Dreamflow-Material1-1.png" onclick="openLightbox('1. Flight Details/Dreamflow-Material1-1.png', 'Dreamflow-Material1-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material1-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="1. Flight Details/Dreamflow-Material1-2.png" alt="Dreamflow-Material1-2.png" onclick="openLightbox('1. Flight Details/Dreamflow-Material1-2.png', 'Dreamflow-Material1-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material1-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="1. Flight Details/Dreamflow-Material1-3.png" alt="Dreamflow-Material1-3.png" onclick="openLightbox('1. Flight Details/Dreamflow-Material1-3.png', 'Dreamflow-Material1-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material1-3.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="1__Flight_Details_images">                </div>
             </div>
             <div class="project-section" id="2__Football_Fantasy">
                 <div class="project-header">
@@ -1124,7 +1181,7 @@
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1159,6 +1216,12 @@
                                 <td>11.5</td>
                                 <td>2.07</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>1490</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.27</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1172,97 +1235,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('2__Football_Fantasy', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="2__Football_Fantasy_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="2. Football Fantasy/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('2. Football Fantasy/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="2. Football Fantasy/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('2. Football Fantasy/UnoHD1.png', 'UnoHD1.png')">
-                                <div class="image-label uno">UnoHD1.png</div>
-                            </div>                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="2. Football Fantasy/UnoHD2.png" alt="UnoHD2.png" onclick="openLightbox('2. Football Fantasy/UnoHD2.png', 'UnoHD2.png')">
-                                <div class="image-label uno">UnoHD2.png</div>
-                            </div>                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="2. Football Fantasy/UnoHD3.png" alt="UnoHD3.png" onclick="openLightbox('2. Football Fantasy/UnoHD3.png', 'UnoHD3.png')">
-                                <div class="image-label uno">UnoHD3.png</div>
-                            </div>                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="2. Football Fantasy/UnoHD4.png" alt="UnoHD4.png" onclick="openLightbox('2. Football Fantasy/UnoHD4.png', 'UnoHD4.png')">
-                                <div class="image-label uno">UnoHD4.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="2. Football Fantasy/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('2. Football Fantasy/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="2. Football Fantasy/UnoVSCodeMCP-1.png" alt="UnoVSCodeMCP-1.png" onclick="openLightbox('2. Football Fantasy/UnoVSCodeMCP-1.png', 'UnoVSCodeMCP-1.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-1.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="2. Football Fantasy/UnoVSCodeMCP-2.png" alt="UnoVSCodeMCP-2.png" onclick="openLightbox('2. Football Fantasy/UnoVSCodeMCP-2.png', 'UnoVSCodeMCP-2.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-2.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="2. Football Fantasy/UnoVSCodeMCP-3.png" alt="UnoVSCodeMCP-3.png" onclick="openLightbox('2. Football Fantasy/UnoVSCodeMCP-3.png', 'UnoVSCodeMCP-3.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-3.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="2. Football Fantasy/Lovable1-1.png" alt="Lovable1-1.png" onclick="openLightbox('2. Football Fantasy/Lovable1-1.png', 'Lovable1-1.png')">
-                                <div class="image-label lovable">Lovable1-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="2. Football Fantasy/Lovable1-2.png" alt="Lovable1-2.png" onclick="openLightbox('2. Football Fantasy/Lovable1-2.png', 'Lovable1-2.png')">
-                                <div class="image-label lovable">Lovable1-2.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="2. Football Fantasy/Lovable1-3.png" alt="Lovable1-3.png" onclick="openLightbox('2. Football Fantasy/Lovable1-3.png', 'Lovable1-3.png')">
-                                <div class="image-label lovable">Lovable1-3.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="2. Football Fantasy/Lovable1-4.png" alt="Lovable1-4.png" onclick="openLightbox('2. Football Fantasy/Lovable1-4.png', 'Lovable1-4.png')">
-                                <div class="image-label lovable">Lovable1-4.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="2. Football Fantasy/Lovable2-1.png" alt="Lovable2-1.png" onclick="openLightbox('2. Football Fantasy/Lovable2-1.png', 'Lovable2-1.png')">
-                                <div class="image-label lovable">Lovable2-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="2. Football Fantasy/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('2. Football Fantasy/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="2. Football Fantasy/Dreamflow-Desktop.png" alt="Dreamflow-Desktop.png" onclick="openLightbox('2. Football Fantasy/Dreamflow-Desktop.png', 'Dreamflow-Desktop.png')">
-                                <div class="image-label dreamflow">Dreamflow-Desktop.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="2. Football Fantasy/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('2. Football Fantasy/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="2. Football Fantasy/Dreamflow-Mobile.png" alt="Dreamflow-Mobile.png" onclick="openLightbox('2. Football Fantasy/Dreamflow-Mobile.png', 'Dreamflow-Mobile.png')">
-                                <div class="image-label dreamflow">Dreamflow-Mobile.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="2__Football_Fantasy_images">                </div>
             </div>
             <div class="project-section" id="3__Travel_Guide">
                 <div class="project-header">
@@ -1286,7 +1259,7 @@
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1321,6 +1294,12 @@
                                 <td>4.1</td>
                                 <td>0.74</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>540</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>1.1</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1334,73 +1313,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('3__Travel_Guide', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="3__Travel_Guide_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="3. Travel Guide/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('3. Travel Guide/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="3. Travel Guide/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('3. Travel Guide/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="3. Travel Guide/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('3. Travel Guide/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="3. Travel Guide/UnoVSCodeMCP-1.png" alt="UnoVSCodeMCP-1.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-1.png', 'UnoVSCodeMCP-1.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-1.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="3. Travel Guide/UnoVSCodeMCP-2.png" alt="UnoVSCodeMCP-2.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-2.png', 'UnoVSCodeMCP-2.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-2.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="3. Travel Guide/UnoVSCodeMCP-3.png" alt="UnoVSCodeMCP-3.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-3.png', 'UnoVSCodeMCP-3.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-3.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="3. Travel Guide/UnoVSCodeMCP-4.png" alt="UnoVSCodeMCP-4.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-4.png', 'UnoVSCodeMCP-4.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-4.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="3. Travel Guide/UnoVSCodeMCP-5.png" alt="UnoVSCodeMCP-5.png" onclick="openLightbox('3. Travel Guide/UnoVSCodeMCP-5.png', 'UnoVSCodeMCP-5.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-5.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="3. Travel Guide/Lovable.png" alt="Lovable.png" onclick="openLightbox('3. Travel Guide/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="3. Travel Guide/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('3. Travel Guide/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="3. Travel Guide/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('3. Travel Guide/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="3. Travel Guide/Dreamflow-mobile.png" alt="Dreamflow-mobile.png" onclick="openLightbox('3. Travel Guide/Dreamflow-mobile.png', 'Dreamflow-mobile.png')">
-                                <div class="image-label dreamflow">Dreamflow-mobile.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="3__Travel_Guide_images">                </div>
             </div>
             <div class="project-section" id="4__Electric_Utility_Dashboard">
                 <div class="project-header">
@@ -1423,7 +1336,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1458,6 +1371,12 @@ Requirements:
                                 <td>3.9</td>
                                 <td>0.7</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>240</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.5</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1471,57 +1390,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('4__Electric_Utility_Dashboard', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="4. Electric Utility Dashboard/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('4. Electric Utility Dashboard/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="4. Electric Utility Dashboard/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('4. Electric Utility Dashboard/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="4. Electric Utility Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('4. Electric Utility Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="4. Electric Utility Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('4. Electric Utility Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="4. Electric Utility Dashboard/Lovable.png" alt="Lovable.png" onclick="openLightbox('4. Electric Utility Dashboard/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="4. Electric Utility Dashboard/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('4. Electric Utility Dashboard/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="4. Electric Utility Dashboard/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('4. Electric Utility Dashboard/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="4. Electric Utility Dashboard/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('4. Electric Utility Dashboard/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                </div>
             </div>
             <div class="project-section" id="5__Video_Streaming">
                 <div class="project-header">
@@ -1542,7 +1411,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1577,6 +1446,12 @@ Requirements:
                                 <td>5.8</td>
                                 <td>0.26</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>1080</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>3.18</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1590,89 +1465,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('5__Video_Streaming', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="5__Video_Streaming_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="5. Video Streaming/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('5. Video Streaming/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="5. Video Streaming/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('5. Video Streaming/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="5. Video Streaming/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('5. Video Streaming/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="5. Video Streaming/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('5. Video Streaming/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="5. Video Streaming/Lovable-1.png" alt="Lovable-1.png" onclick="openLightbox('5. Video Streaming/Lovable-1.png', 'Lovable-1.png')">
-                                <div class="image-label lovable">Lovable-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="5. Video Streaming/Lovable-2.png" alt="Lovable-2.png" onclick="openLightbox('5. Video Streaming/Lovable-2.png', 'Lovable-2.png')">
-                                <div class="image-label lovable">Lovable-2.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="5. Video Streaming/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('5. Video Streaming/Lovable-Material-1.png', 'Lovable-Material-1.png')">
-                                <div class="image-label lovable">Lovable-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="5. Video Streaming/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('5. Video Streaming/Lovable-Material-2.png', 'Lovable-Material-2.png')">
-                                <div class="image-label lovable">Lovable-Material-2.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="5. Video Streaming/Dreamflow-1.png" alt="Dreamflow-1.png" onclick="openLightbox('5. Video Streaming/Dreamflow-1.png', 'Dreamflow-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="5. Video Streaming/Dreamflow-2.png" alt="Dreamflow-2.png" onclick="openLightbox('5. Video Streaming/Dreamflow-2.png', 'Dreamflow-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="5. Video Streaming/Dreamflow-3.png" alt="Dreamflow-3.png" onclick="openLightbox('5. Video Streaming/Dreamflow-3.png', 'Dreamflow-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-3.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="5. Video Streaming/Dreamflow-4.png" alt="Dreamflow-4.png" onclick="openLightbox('5. Video Streaming/Dreamflow-4.png', 'Dreamflow-4.png')">
-                                <div class="image-label dreamflow">Dreamflow-4.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="5. Video Streaming/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="5. Video Streaming/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="5. Video Streaming/Dreamflow-Material-3.png" alt="Dreamflow-Material-3.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-3.png', 'Dreamflow-Material-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-3.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="5. Video Streaming/Dreamflow-Material-4.png" alt="Dreamflow-Material-4.png" onclick="openLightbox('5. Video Streaming/Dreamflow-Material-4.png', 'Dreamflow-Material-4.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-4.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="5__Video_Streaming_images">                </div>
             </div>
             <div class="project-section" id="6__Notes">
                 <div class="project-header">
@@ -1689,7 +1482,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1724,6 +1517,12 @@ Requirements:
                                 <td>3.8</td>
                                 <td>0.23</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>450</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>1.49</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1737,85 +1536,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('6__Notes', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="6__Notes_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="6. Notes/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('6. Notes/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="6. Notes/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('6. Notes/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="6. Notes/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('6. Notes/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="6. Notes/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('6. Notes/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="6. Notes/Lovable-1.png" alt="Lovable-1.png" onclick="openLightbox('6. Notes/Lovable-1.png', 'Lovable-1.png')">
-                                <div class="image-label lovable">Lovable-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="6. Notes/Lovable-2.png" alt="Lovable-2.png" onclick="openLightbox('6. Notes/Lovable-2.png', 'Lovable-2.png')">
-                                <div class="image-label lovable">Lovable-2.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="6. Notes/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('6. Notes/Lovable-Material-1.png', 'Lovable-Material-1.png')">
-                                <div class="image-label lovable">Lovable-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="6. Notes/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('6. Notes/Lovable-Material-2.png', 'Lovable-Material-2.png')">
-                                <div class="image-label lovable">Lovable-Material-2.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="6. Notes/Lovable-Material-3.png" alt="Lovable-Material-3.png" onclick="openLightbox('6. Notes/Lovable-Material-3.png', 'Lovable-Material-3.png')">
-                                <div class="image-label lovable">Lovable-Material-3.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="6. Notes/Dreamflow-1.png" alt="Dreamflow-1.png" onclick="openLightbox('6. Notes/Dreamflow-1.png', 'Dreamflow-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="6. Notes/Dreamflow-2.png" alt="Dreamflow-2.png" onclick="openLightbox('6. Notes/Dreamflow-2.png', 'Dreamflow-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="6. Notes/Dreamflow-3.png" alt="Dreamflow-3.png" onclick="openLightbox('6. Notes/Dreamflow-3.png', 'Dreamflow-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-3.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="6. Notes/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('6. Notes/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="6. Notes/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('6. Notes/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="6. Notes/Dreamflow-Material-3.png" alt="Dreamflow-Material-3.png" onclick="openLightbox('6. Notes/Dreamflow-Material-3.png', 'Dreamflow-Material-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-3.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="6__Notes_images">                </div>
             </div>
             <div class="project-section" id="7__Calendar">
                 <div class="project-header">
@@ -1832,7 +1553,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1867,6 +1588,12 @@ Requirements:
                                 <td>7</td>
                                 <td>1.26</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>285</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.69</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1880,73 +1607,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('7__Calendar', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="7__Calendar_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="7. Calendar/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('7. Calendar/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="7. Calendar/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('7. Calendar/UnoHD1.png', 'UnoHD1.png')">
-                                <div class="image-label uno">UnoHD1.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="7. Calendar/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('7. Calendar/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="7. Calendar/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('7. Calendar/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="7. Calendar/Lovable1-1.png" alt="Lovable1-1.png" onclick="openLightbox('7. Calendar/Lovable1-1.png', 'Lovable1-1.png')">
-                                <div class="image-label lovable">Lovable1-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="7. Calendar/Lovable1-2.png" alt="Lovable1-2.png" onclick="openLightbox('7. Calendar/Lovable1-2.png', 'Lovable1-2.png')">
-                                <div class="image-label lovable">Lovable1-2.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="7. Calendar/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('7. Calendar/Lovable-Material-1.png', 'Lovable-Material-1.png')">
-                                <div class="image-label lovable">Lovable-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="7. Calendar/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('7. Calendar/Lovable-Material-2.png', 'Lovable-Material-2.png')">
-                                <div class="image-label lovable">Lovable-Material-2.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="7. Calendar/Dreamflow1-1.png" alt="Dreamflow1-1.png" onclick="openLightbox('7. Calendar/Dreamflow1-1.png', 'Dreamflow1-1.png')">
-                                <div class="image-label dreamflow">Dreamflow1-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="7. Calendar/Dreamflow1-2.png" alt="Dreamflow1-2.png" onclick="openLightbox('7. Calendar/Dreamflow1-2.png', 'Dreamflow1-2.png')">
-                                <div class="image-label dreamflow">Dreamflow1-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="7. Calendar/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('7. Calendar/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="7. Calendar/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('7. Calendar/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="7__Calendar_images">                </div>
             </div>
             <div class="project-section" id="8__Hospital_Dashboard">
                 <div class="project-header">
@@ -1963,7 +1624,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1998,6 +1659,12 @@ Requirements:
                                 <td>4.4</td>
                                 <td>0.79</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>680</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>2.52</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2011,57 +1678,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('8__Hospital_Dashboard', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="8__Hospital_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="8. Hospital Dashboard/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('8. Hospital Dashboard/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="8. Hospital Dashboard/UnoHD1.png" alt="UnoHD1.png" onclick="openLightbox('8. Hospital Dashboard/UnoHD1.png', 'UnoHD1.png')">
-                                <div class="image-label uno">UnoHD1.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="8. Hospital Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('8. Hospital Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="8. Hospital Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('8. Hospital Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="8. Hospital Dashboard/Lovable.png" alt="Lovable.png" onclick="openLightbox('8. Hospital Dashboard/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="8. Hospital Dashboard/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('8. Hospital Dashboard/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="8. Hospital Dashboard/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('8. Hospital Dashboard/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="8. Hospital Dashboard/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('8. Hospital Dashboard/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="8__Hospital_Dashboard_images">                </div>
             </div>
             <div class="project-section" id="9__Budgeting_Dashboard">
                 <div class="project-header">
@@ -2078,7 +1695,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2113,6 +1730,12 @@ Requirements:
                                 <td>5.4</td>
                                 <td>0.97</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>1095</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>1.15</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2126,57 +1749,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('9__Budgeting_Dashboard', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="9__Budgeting_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="9. Budgeting Dashboard/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('9. Budgeting Dashboard/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="9. Budgeting Dashboard/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('9. Budgeting Dashboard/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="9. Budgeting Dashboard/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('9. Budgeting Dashboard/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="9. Budgeting Dashboard/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('9. Budgeting Dashboard/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="9. Budgeting Dashboard/Lovable.png" alt="Lovable.png" onclick="openLightbox('9. Budgeting Dashboard/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="9. Budgeting Dashboard/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('9. Budgeting Dashboard/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="9. Budgeting Dashboard/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('9. Budgeting Dashboard/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="9. Budgeting Dashboard/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('9. Budgeting Dashboard/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="9__Budgeting_Dashboard_images">                </div>
             </div>
             <div class="project-section" id="10__Recipe_Home_Screen">
                 <div class="project-header">
@@ -2193,7 +1766,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2228,6 +1801,12 @@ Requirements:
                                 <td>4.5</td>
                                 <td>0.81</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>270</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.54</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2241,57 +1820,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('10__Recipe_Home_Screen', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="10__Recipe_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="10. Recipe Home Screen/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('10. Recipe Home Screen/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="10. Recipe Home Screen/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('10. Recipe Home Screen/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="10. Recipe Home Screen/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('10. Recipe Home Screen/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="10. Recipe Home Screen/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('10. Recipe Home Screen/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="10. Recipe Home Screen/Lovable.png" alt="Lovable.png" onclick="openLightbox('10. Recipe Home Screen/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="10. Recipe Home Screen/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('10. Recipe Home Screen/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="10. Recipe Home Screen/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('10. Recipe Home Screen/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="10. Recipe Home Screen/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('10. Recipe Home Screen/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="10__Recipe_Home_Screen_images">                </div>
             </div>
             <div class="project-section" id="11__Fitness_Tracking">
                 <div class="project-header">
@@ -2308,7 +1837,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2343,6 +1872,12 @@ Requirements:
                                 <td>3.5</td>
                                 <td>0.63</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>240</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.51</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2356,57 +1891,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('11__Fitness_Tracking', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="11__Fitness_Tracking_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="11. Fitness Tracking/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('11. Fitness Tracking/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="11. Fitness Tracking/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('11. Fitness Tracking/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="11. Fitness Tracking/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('11. Fitness Tracking/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="11. Fitness Tracking/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('11. Fitness Tracking/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="11. Fitness Tracking/Lovable.png" alt="Lovable.png" onclick="openLightbox('11. Fitness Tracking/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="11. Fitness Tracking/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('11. Fitness Tracking/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="11. Fitness Tracking/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('11. Fitness Tracking/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="11. Fitness Tracking/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('11. Fitness Tracking/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="11__Fitness_Tracking_images">                </div>
             </div>
             <div class="project-section" id="12__Login_Register">
                 <div class="project-header">
@@ -2423,7 +1908,7 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2458,6 +1943,12 @@ Requirements:
                                 <td>3.5</td>
                                 <td>0.32</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>330</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.82</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2471,85 +1962,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('12__Login_Register', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="12__Login_Register_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="12. Login Register/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('12. Login Register/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="12. Login Register/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('12. Login Register/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="12. Login Register/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('12. Login Register/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="12. Login Register/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('12. Login Register/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="12. Login Register/Lovable-1.png" alt="Lovable-1.png" onclick="openLightbox('12. Login Register/Lovable-1.png', 'Lovable-1.png')">
-                                <div class="image-label lovable">Lovable-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="12. Login Register/Lovable-2.png" alt="Lovable-2.png" onclick="openLightbox('12. Login Register/Lovable-2.png', 'Lovable-2.png')">
-                                <div class="image-label lovable">Lovable-2.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="12. Login Register/Lovable-3.png" alt="Lovable-3.png" onclick="openLightbox('12. Login Register/Lovable-3.png', 'Lovable-3.png')">
-                                <div class="image-label lovable">Lovable-3.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="12. Login Register/Lovable-Material-1.png" alt="Lovable-Material-1.png" onclick="openLightbox('12. Login Register/Lovable-Material-1.png', 'Lovable-Material-1.png')">
-                                <div class="image-label lovable">Lovable-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="12. Login Register/Lovable-Material-2.png" alt="Lovable-Material-2.png" onclick="openLightbox('12. Login Register/Lovable-Material-2.png', 'Lovable-Material-2.png')">
-                                <div class="image-label lovable">Lovable-Material-2.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="12. Login Register/Dreamflow-1.png" alt="Dreamflow-1.png" onclick="openLightbox('12. Login Register/Dreamflow-1.png', 'Dreamflow-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="12. Login Register/Dreamflow-2.png" alt="Dreamflow-2.png" onclick="openLightbox('12. Login Register/Dreamflow-2.png', 'Dreamflow-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="12. Login Register/Dreamflow-3.png" alt="Dreamflow-3.png" onclick="openLightbox('12. Login Register/Dreamflow-3.png', 'Dreamflow-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-3.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="12. Login Register/Dreamflow-Material-1.png" alt="Dreamflow-Material-1.png" onclick="openLightbox('12. Login Register/Dreamflow-Material-1.png', 'Dreamflow-Material-1.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-1.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="12. Login Register/Dreamflow-Material-2.png" alt="Dreamflow-Material-2.png" onclick="openLightbox('12. Login Register/Dreamflow-Material-2.png', 'Dreamflow-Material-2.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-2.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="12. Login Register/Dreamflow-Material-3.png" alt="Dreamflow-Material-3.png" onclick="openLightbox('12. Login Register/Dreamflow-Material-3.png', 'Dreamflow-Material-3.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material-3.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="12__Login_Register_images">                </div>
             </div>
             <div class="project-section" id="13__Travel_Home_Screen">
                 <div class="project-header">
@@ -2613,7 +2026,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2648,6 +2061,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>8.5</td>
                                 <td>1.53</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>270</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.57</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2661,57 +2080,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('13__Travel_Home_Screen', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="13__Travel_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="13. Travel Home Screen/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('13. Travel Home Screen/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="13. Travel Home Screen/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('13. Travel Home Screen/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="13. Travel Home Screen/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('13. Travel Home Screen/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="13. Travel Home Screen/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('13. Travel Home Screen/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="13. Travel Home Screen/Lovable.png" alt="Lovable.png" onclick="openLightbox('13. Travel Home Screen/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="13. Travel Home Screen/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('13. Travel Home Screen/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="13. Travel Home Screen/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('13. Travel Home Screen/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="13. Travel Home Screen/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('13. Travel Home Screen/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="13__Travel_Home_Screen_images">                </div>
             </div>
             <div class="project-section" id="14__Burger_Joint">
                 <div class="project-header">
@@ -2728,7 +2097,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2763,6 +2132,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>3.4</td>
                                 <td>0.61</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>295</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.61</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2776,57 +2151,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('14__Burger_Joint', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="14__Burger_Joint_images">                    <div class="tool-group" data-tool-group="antigravity">
-                        <div class="tool-group-header antigravity">ANTIGRAVITY</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="antigravity">
-                                
-                                <img src="14. Burger Joint/Antigravity.png" alt="Antigravity.png" onclick="openLightbox('14. Burger Joint/Antigravity.png', 'Antigravity.png')">
-                                <div class="image-label antigravity">Antigravity.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="uno">
-                        <div class="tool-group-header uno">UNO HD</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="uno">
-                                
-                                <img src="14. Burger Joint/UnoHD.png" alt="UnoHD.png" onclick="openLightbox('14. Burger Joint/UnoHD.png', 'UnoHD.png')">
-                                <div class="image-label uno">UnoHD.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="14. Burger Joint/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('14. Burger Joint/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="14. Burger Joint/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('14. Burger Joint/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="lovable">
-                        <div class="tool-group-header lovable">LOVABLE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="lovable">
-                                
-                                <img src="14. Burger Joint/Lovable.png" alt="Lovable.png" onclick="openLightbox('14. Burger Joint/Lovable.png', 'Lovable.png')">
-                                <div class="image-label lovable">Lovable.png</div>
-                            </div>                            <div class="image-card" data-tool="lovable">
-                                <div class='material-badge'>Material</div>
-                                <img src="14. Burger Joint/Lovable-Material.png" alt="Lovable-Material.png" onclick="openLightbox('14. Burger Joint/Lovable-Material.png', 'Lovable-Material.png')">
-                                <div class="image-label lovable">Lovable-Material.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="dreamflow">
-                        <div class="tool-group-header dreamflow">DREAMFLOW</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="dreamflow">
-                                
-                                <img src="14. Burger Joint/Dreamflow.png" alt="Dreamflow.png" onclick="openLightbox('14. Burger Joint/Dreamflow.png', 'Dreamflow.png')">
-                                <div class="image-label dreamflow">Dreamflow.png</div>
-                            </div>                            <div class="image-card" data-tool="dreamflow">
-                                <div class='material-badge'>Material</div>
-                                <img src="14. Burger Joint/Dreamflow-Material.png" alt="Dreamflow-Material.png" onclick="openLightbox('14. Burger Joint/Dreamflow-Material.png', 'Dreamflow-Material.png')">
-                                <div class="image-label dreamflow">Dreamflow-Material.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="14__Burger_Joint_images">                </div>
             </div>
             <div class="project-section" id="15__Fitness_Home_Screen">
                 <div class="project-header">
@@ -2834,7 +2159,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                 </div>
                 <div class="prompts-section">
                     <h3>Prompts</h3>                    <div class="tool-section-single">
-                        <pre>Add a project 15.Init.FitnessHomeScreen, and generate the inspiration attached, as accurately as possible. Compare with the image iteratively until you think it's exactly the same as in the image. Make it wide enough to fill a phone preview in the browser. Make sure there are no build errors.</pre>
+                        <pre>Recreate the inspiration attached</pre>
                     </div>                </div>
                 <div class="prompts-section">
                     <h3>Performance</h3>
@@ -2843,7 +2168,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits</th>
+                                <th>Credits/Cost</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2878,6 +2203,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0</td>
                                 <td>0</td>
                             </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>540</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>1.24</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2891,29 +2222,62 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('15__Fitness_Home_Screen', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="15__Fitness_Home_Screen_images">                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="15. Fitness Home Screen/UnoVSCode-FirstGen.png" alt="UnoVSCode-FirstGen.png" onclick="openLightbox('15. Fitness Home Screen/UnoVSCode-FirstGen.png', 'UnoVSCode-FirstGen.png')">
-                                <div class="image-label vscodeuno">UnoVSCode-FirstGen.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="15. Fitness Home Screen/UnoVSCode.png" alt="UnoVSCode.png" onclick="openLightbox('15. Fitness Home Screen/UnoVSCode.png', 'UnoVSCode.png')">
-                                <div class="image-label vscodeuno">UnoVSCode.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="15. Fitness Home Screen/UnoVSCodeMCP.png" alt="UnoVSCodeMCP.png" onclick="openLightbox('15. Fitness Home Screen/UnoVSCodeMCP.png', 'UnoVSCodeMCP.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="15__Fitness_Home_Screen_images">                </div>
             </div>
             <div class="project-section" id="16__Background_Dashboard">
                 <div class="project-header">
                     <h2>16. Background Dashboard</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits/Cost</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>445</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>1.22</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tabs">
                     <button class="tab-button active" onclick="filterImages('16__Background_Dashboard', 'all')">All</button>
@@ -2925,33 +2289,62 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('16__Background_Dashboard', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="16__Background_Dashboard_images">                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="16. Background Dashboard/UnoVSCode-FirstGen.png" alt="UnoVSCode-FirstGen.png" onclick="openLightbox('16. Background Dashboard/UnoVSCode-FirstGen.png', 'UnoVSCode-FirstGen.png')">
-                                <div class="image-label vscodeuno">UnoVSCode-FirstGen.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="16. Background Dashboard/UnoVSCode-More.png" alt="UnoVSCode-More.png" onclick="openLightbox('16. Background Dashboard/UnoVSCode-More.png', 'UnoVSCode-More.png')">
-                                <div class="image-label vscodeuno">UnoVSCode-More.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="16. Background Dashboard/UnoVSCodeMCP-FirstGen.png" alt="UnoVSCodeMCP-FirstGen.png" onclick="openLightbox('16. Background Dashboard/UnoVSCodeMCP-FirstGen.png', 'UnoVSCodeMCP-FirstGen.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-FirstGen.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="16. Background Dashboard/UnoVSCodeMCP-More.png" alt="UnoVSCodeMCP-More.png" onclick="openLightbox('16. Background Dashboard/UnoVSCodeMCP-More.png', 'UnoVSCodeMCP-More.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-More.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="16__Background_Dashboard_images">                </div>
             </div>
             <div class="project-section" id="17__Login_Email_Phone">
                 <div class="project-header">
                     <h2>17. Login Email Phone</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits/Cost</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>380</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0.92</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tabs">
                     <button class="tab-button active" onclick="filterImages('17__Login_Email_Phone', 'all')">All</button>
@@ -2963,29 +2356,76 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('17__Login_Email_Phone', 'dreamflow')">Dreamflow</button>
                 </div>
 
-                <div class="images-grid" id="17__Login_Email_Phone_images">                    <div class="tool-group" data-tool-group="vscodeuno">
-                        <div class="tool-group-header vscodeuno">UNO VS CODE</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="17. LoginEmailPhone/UnoVSCode-FirstGen.png" alt="UnoVSCode-FirstGen.png" onclick="openLightbox('17. LoginEmailPhone/UnoVSCode-FirstGen.png', 'UnoVSCode-FirstGen.png')">
-                                <div class="image-label vscodeuno">UnoVSCode-FirstGen.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="17. LoginEmailPhone/UnoVSCode-1.png" alt="UnoVSCode-1.png" onclick="openLightbox('17. LoginEmailPhone/UnoVSCode-1.png', 'UnoVSCode-1.png')">
-                                <div class="image-label vscodeuno">UnoVSCode-1.png</div>
-                            </div>                            <div class="image-card" data-tool="vscodeuno">
-                                
-                                <img src="17. LoginEmailPhone/UnoVSCode-2.png" alt="UnoVSCode-2.png" onclick="openLightbox('17. LoginEmailPhone/UnoVSCode-2.png', 'UnoVSCode-2.png')">
-                                <div class="image-label vscodeuno">UnoVSCode-2.png</div>
-                            </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="vscodeunomcp">
-                        <div class="tool-group-header vscodeunomcp">UNO VS CODE MCP</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="vscodeunomcp">
-                                
-                                <img src="17. LoginEmailPhone/UnoVSCodeMCP-FirstGen.png" alt="UnoVSCodeMCP-FirstGen.png" onclick="openLightbox('17. LoginEmailPhone/UnoVSCodeMCP-FirstGen.png', 'UnoVSCodeMCP-FirstGen.png')">
-                                <div class="image-label vscodeunomcp">UnoVSCodeMCP-FirstGen.png</div>
-                            </div>                        </div>
-                    </div>                </div>
+                <div class="images-grid" id="17__Login_Email_Phone_images">                </div>
+            </div>
+            <div class="project-section" id="18__MeowFlix">
+                <div class="project-header">
+                    <h2>18. MeowFlix</h2>
+                </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                </div>
+                <div class="prompts-section">
+                    <h3>Performance</h3>
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Time (s)</th>
+                                <th>Credits/Cost</th>
+                                <th>Cost/Page ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antigravity</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Uno VS Code MCP</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Vibecode</td>
+                                <td>0</td>
+                                <td>.\generate-site.ps1(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="filterImages('18__MeowFlix', 'all')">All</button>
+                    <button class="tab-button tab-antigravity" onclick="filterImages('18__MeowFlix', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-uno" onclick="filterImages('18__MeowFlix', 'uno')">Uno HD</button>
+                    <button class="tab-button tab-vscodeuno" onclick="filterImages('18__MeowFlix', 'vscodeuno')">Uno VS Code</button>
+                    <button class="tab-button tab-vscodeunomcp" onclick="filterImages('18__MeowFlix', 'vscodeunomcp')">Uno VS Code MCP</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('18__MeowFlix', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('18__MeowFlix', 'dreamflow')">Dreamflow</button>
+                </div>
+
+                <div class="images-grid" id="18__MeowFlix_images">                </div>
             </div>
         </main>
     </div>
