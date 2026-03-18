@@ -646,36 +646,28 @@
             border-top-left-radius: 8px;
         }
 
-        .summary-table th:nth-child(2) {
+        .summary-table th.tool-antigravity {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
         }
 
-        .summary-table th:nth-child(3),
-        .summary-table th:nth-child(4) {
+        .summary-table th.tool-uno,
+        .summary-table th.tool-unomcp {
             background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
         }
 
-        .summary-table th:nth-child(5),
-        .summary-table th:nth-child(6),
-        .summary-table th:nth-child(7) {
+        .summary-table th.tool-lovable {
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
 
-        .summary-table th:nth-child(8),
-        .summary-table th:nth-child(9),
-        .summary-table th:nth-child(10) {
+        .summary-table th.tool-dreamflow {
             background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
         }
 
-        .summary-table th:nth-child(11),
-        .summary-table th:nth-child(12),
-        .summary-table th:nth-child(13) {
+        .summary-table th.tool-vibecode {
             background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
         }
 
-        .summary-table th:nth-child(14),
-        .summary-table th:nth-child(15),
-        .summary-table th:nth-child(16) {
+        .summary-table th.tool-builder {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
@@ -724,36 +716,8 @@
             background: #f8fafc;
         }
 
-        .summary-table td:nth-child(2),
-        .summary-table td:nth-child(3),
-        .summary-table td:nth-child(4),
-        .summary-table td:nth-child(5),
-        .summary-table td:nth-child(6),
-        .summary-table td:nth-child(7),
-        .summary-table td:nth-child(8),
-        .summary-table td:nth-child(9),
-        .summary-table td:nth-child(10),
-        .summary-table td:nth-child(11),
-        .summary-table td:nth-child(12),
-        .summary-table td:nth-child(13),
-        .summary-table td:nth-child(14),
-        .summary-table td:nth-child(15),
-        .summary-table td:nth-child(16),
-        .summary-table th:nth-child(2),
-        .summary-table th:nth-child(3),
-        .summary-table th:nth-child(4),
-        .summary-table th:nth-child(5),
-        .summary-table th:nth-child(6),
-        .summary-table th:nth-child(7),
-        .summary-table th:nth-child(8),
-        .summary-table th:nth-child(9),
-        .summary-table th:nth-child(10),
-        .summary-table th:nth-child(11),
-        .summary-table th:nth-child(12),
-        .summary-table th:nth-child(13),
-        .summary-table th:nth-child(14),
-        .summary-table th:nth-child(15),
-        .summary-table th:nth-child(16) {
+        .summary-table td:not(:first-child),
+        .summary-table th:not(:first-child) {
             text-align: center;
         }
 
@@ -986,27 +950,27 @@
                     <thead>
                         <tr>
                             <th>Project</th>
-                            <th data-view="time" class="view-active">Antigravity<br>Time (s)</th>
-                            <th data-view="time" class="view-active">Uno VS Code<br>Time (s)</th>
-                            <th data-view="time" class="view-active">Uno VS Code MCP<br>Time (s)</th>
-                            <th data-view="time" class="view-active">Lovable<br>Time (s)</th>
-                            <th data-view="credits">Lovable<br>Credits</th>
-                            <th data-view="cost">Lovable<br>Cost ($)</th>
-                            <th data-view="creditsperpage">Lovable<br>Credits/Page</th>
-                            <th data-view="costperpage">Lovable<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active">Dreamflow<br>Time (s)</th>
-                            <th data-view="credits">Dreamflow<br>Credits</th>
-                            <th data-view="cost">Dreamflow<br>Cost ($)</th>
-                            <th data-view="creditsperpage">Dreamflow<br>Credits/Page</th>
-                            <th data-view="costperpage">Dreamflow<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
-                            <th data-view="cost">Vibecode<br>Cost ($)</th>
-                            <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active">Builder<br>Time (s)</th>
-                            <th data-view="credits">Builder<br>Credits</th>
-                            <th data-view="cost">Builder<br>Cost ($)</th>
-                            <th data-view="creditsperpage">Builder<br>Credits/Page</th>
-                            <th data-view="costperpage">Builder<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active tool-antigravity">Antigravity<br>Time (s)</th>
+                            <th data-view="time" class="view-active tool-uno">Uno VS Code<br>Time (s)</th>
+                            <th data-view="time" class="view-active tool-unomcp">Uno VS Code MCP<br>Time (s)</th>
+                            <th data-view="time" class="view-active tool-lovable">Lovable<br>Time (s)</th>
+                            <th data-view="credits" class="tool-lovable">Lovable<br>Credits</th>
+                            <th data-view="cost" class="tool-lovable">Lovable<br>Cost ($)</th>
+                            <th data-view="creditsperpage" class="tool-lovable">Lovable<br>Credits/Page</th>
+                            <th data-view="costperpage" class="tool-lovable">Lovable<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active tool-dreamflow">Dreamflow<br>Time (s)</th>
+                            <th data-view="credits" class="tool-dreamflow">Dreamflow<br>Credits</th>
+                            <th data-view="cost" class="tool-dreamflow">Dreamflow<br>Cost ($)</th>
+                            <th data-view="creditsperpage" class="tool-dreamflow">Dreamflow<br>Credits/Page</th>
+                            <th data-view="costperpage" class="tool-dreamflow">Dreamflow<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active tool-vibecode">Vibecode<br>Time (s)</th>
+                            <th data-view="cost" class="tool-vibecode">Vibecode<br>Cost ($)</th>
+                            <th data-view="costperpage" class="tool-vibecode">Vibecode<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active tool-builder">Builder<br>Time (s)</th>
+                            <th data-view="credits" class="tool-builder">Builder<br>Credits</th>
+                            <th data-view="cost" class="tool-builder">Builder<br>Cost ($)</th>
+                            <th data-view="creditsperpage" class="tool-builder">Builder<br>Credits/Page</th>
+                            <th data-view="costperpage" class="tool-builder">Builder<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
