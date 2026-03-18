@@ -1161,8 +1161,10 @@ $html += @"
 
                 <div class="view-switcher">
                     <button class="view-btn active" onclick="switchTableView('time')">Time</button>
-                    <button class="view-btn" onclick="switchTableView('cost')">Cost</button>
-                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page</button>
+                    <button class="view-btn" onclick="switchTableView('credits')">Credits</button>
+                    <button class="view-btn" onclick="switchTableView('cost')">Cost ($)</button>
+                    <button class="view-btn" onclick="switchTableView('creditsperpage')">Credits / Page</button>
+                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page ($)</button>
                 </div>
 
                 <table class="summary-table" id="performance-table">
@@ -1173,17 +1175,23 @@ $html += @"
                             <th data-view="time" class="view-active">Uno VS Code<br>Time (s)</th>
                             <th data-view="time" class="view-active">Uno VS Code MCP<br>Time (s)</th>
                             <th data-view="time" class="view-active">Lovable<br>Time (s)</th>
-                            <th data-view="cost">Lovable<br>Credits</th>
+                            <th data-view="credits">Lovable<br>Credits</th>
+                            <th data-view="cost">Lovable<br>Cost ($)</th>
+                            <th data-view="creditsperpage">Lovable<br>Credits/Page</th>
                             <th data-view="costperpage">Lovable<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active">Dreamflow<br>Time (s)</th>
-                            <th data-view="cost">Dreamflow<br>Credits</th>
+                            <th data-view="credits">Dreamflow<br>Credits</th>
+                            <th data-view="cost">Dreamflow<br>Cost ($)</th>
+                            <th data-view="creditsperpage">Dreamflow<br>Credits/Page</th>
                             <th data-view="costperpage">Dreamflow<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
                             <th data-view="cost">Vibecode<br>Cost ($)</th>
                             <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active">Builder<br>Time (s)</th>
-                            <th data-view="cost">Builder<br>Credits</th>
-                            <th data-view="costperpage">Builder<br>Credits/Page</th>
+                            <th data-view="credits">Builder<br>Credits</th>
+                            <th data-view="cost">Builder<br>Cost ($)</th>
+                            <th data-view="creditsperpage">Builder<br>Credits/Page</th>
+                            <th data-view="costperpage">Builder<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1191,11 +1199,17 @@ $html += @"
 
 # Add performance data rows
 foreach ($data in $performanceData) {
-    # Calculate cost per page
-    $lovableCostPerPage = [math]::Round(($data.LovableCredits * 0.43) / $data.LovablePages, 2)
-    $dreamflowCostPerPage = [math]::Round(($data.DreamflowCredits * 0.18) / $data.DreamflowPages, 2)
+    # Calculate costs and per-page values
+    $lovableCost = [math]::Round($data.LovableCredits * 0.43, 2)
+    $lovableCreditsPerPage = if ($data.LovablePages -gt 0) { [math]::Round($data.LovableCredits / $data.LovablePages, 2) } else { 0 }
+    $lovableCostPerPage = if ($data.LovablePages -gt 0) { [math]::Round($lovableCost / $data.LovablePages, 2) } else { 0 }
+    $dreamflowCost = [math]::Round($data.DreamflowCredits * 0.18, 2)
+    $dreamflowCreditsPerPage = if ($data.DreamflowPages -gt 0) { [math]::Round($data.DreamflowCredits / $data.DreamflowPages, 2) } else { 0 }
+    $dreamflowCostPerPage = if ($data.DreamflowPages -gt 0) { [math]::Round($dreamflowCost / $data.DreamflowPages, 2) } else { 0 }
     $vibecodeCostPerPage = if ($data.VibecodePages -gt 0) { [math]::Round($data.VibecodeCredits / $data.VibecodePages, 2) } else { 0 }
+    $builderCost = [math]::Round($data.BuilderCredits * 0.048, 2)
     $builderCreditsPerPage = if ($data.BuilderPages -gt 0) { [math]::Round($data.BuilderCredits / $data.BuilderPages, 2) } else { 0 }
+    $builderCostPerPage = if ($data.BuilderPages -gt 0) { [math]::Round($builderCost / $data.BuilderPages, 2) } else { 0 }
     
     # Get all time values for comparison
     $allTimes = @($data.AntigravityTime, $data.UnoVSCodeTime, $data.UnoVSCodeMCPTime, $data.LovableTime, $data.DreamflowTime, $data.VibecodeTime, $data.BuilderTime)
@@ -1236,7 +1250,13 @@ foreach ($data in $performanceData) {
     $vibecodeCostDisplay = if ($vibecodeCostPerPage -eq 0) { "" } else { $vibecodeCostPerPage }
     $builderTimeDisplay = if ($data.BuilderTime -eq 0) { "" } else { $data.BuilderTime }
     $builderCreditsDisplay = if ($data.BuilderCredits -eq 0) { "" } else { $data.BuilderCredits }
-    $builderCostDisplay = if ($builderCreditsPerPage -eq 0) { "" } else { $builderCreditsPerPage }
+    $builderCostDisplay = if ($builderCost -eq 0) { "" } else { $builderCost }
+    $builderCreditsPerPageDisplay = if ($builderCreditsPerPage -eq 0) { "" } else { $builderCreditsPerPage }
+    $builderCostPerPageDisplay = if ($builderCostPerPage -eq 0) { "" } else { $builderCostPerPage }
+    $lovableCostDisplay2 = if ($lovableCost -eq 0) { "" } else { $lovableCost }
+    $lovableCreditsPerPageDisplay = if ($lovableCreditsPerPage -eq 0) { "" } else { $lovableCreditsPerPage }
+    $dreamflowCostDisplay2 = if ($dreamflowCost -eq 0) { "" } else { $dreamflowCost }
+    $dreamflowCreditsPerPageDisplay = if ($dreamflowCreditsPerPage -eq 0) { "" } else { $dreamflowCreditsPerPage }
     
     $html += @"
                         <tr>
@@ -1245,17 +1265,23 @@ foreach ($data in $performanceData) {
                             <td data-view="time" class="view-active $unoVSCodeTimeClass">$unoVSCodeTimeDisplay</td>
                             <td data-view="time" class="view-active $unoVSCodeMCPTimeClass">$unoVSCodeMCPTimeDisplay</td>
                             <td data-view="time" class="view-active $lovableTimeClass">$lovableTimeDisplay</td>
-                            <td data-view="cost" class="$lovableCreditsClass">$lovableCreditsDisplay</td>
-                            <td data-view="costperpage" class="$lovableCostClass">$lovableCostDisplay</td>
+                            <td data-view="credits">$lovableCreditsDisplay</td>
+                            <td data-view="cost">$lovableCostDisplay2</td>
+                            <td data-view="creditsperpage">$lovableCreditsPerPageDisplay</td>
+                            <td data-view="costperpage">$lovableCostDisplay</td>
                             <td data-view="time" class="view-active $dreamflowTimeClass">$dreamflowTimeDisplay</td>
-                            <td data-view="cost" class="$dreamflowCreditsClass">$dreamflowCreditsDisplay</td>
-                            <td data-view="costperpage" class="$dreamflowCostClass">$dreamflowCostDisplay</td>
+                            <td data-view="credits">$dreamflowCreditsDisplay</td>
+                            <td data-view="cost">$dreamflowCostDisplay2</td>
+                            <td data-view="creditsperpage">$dreamflowCreditsPerPageDisplay</td>
+                            <td data-view="costperpage">$dreamflowCostDisplay</td>
                             <td data-view="time" class="view-active $vibecodeTimeClass">$vibecodeTimeDisplay</td>
-                            <td data-view="cost" class="$vibecodeCreditsClass">$vibecodeCreditsDisplay</td>
-                            <td data-view="costperpage" class="$vibecodeCostClass">$vibecodeCostDisplay</td>
+                            <td data-view="cost">$vibecodeCreditsDisplay</td>
+                            <td data-view="costperpage">$vibecodeCostDisplay</td>
                             <td data-view="time" class="view-active $builderTimeClass">$builderTimeDisplay</td>
-                            <td data-view="cost">$builderCreditsDisplay</td>
-                            <td data-view="costperpage">$builderCostDisplay</td>
+                            <td data-view="credits">$builderCreditsDisplay</td>
+                            <td data-view="cost">$builderCostDisplay</td>
+                            <td data-view="creditsperpage">$builderCreditsPerPageDisplay</td>
+                            <td data-view="costperpage">$builderCostPerPageDisplay</td>
                         </tr>
 "@
 }
@@ -1302,7 +1328,15 @@ $vibecodeCreditsAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCredits
 $vibecodeCostPerPageAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { "" }
 $builderTimeAvg = if ($builderCount -gt 0) { [math]::Round($builderTimeTotal / $builderCount, 1) } else { "" }
 $builderCreditsAvg = if ($builderCount -gt 0) { [math]::Round($builderCreditsTotal / $builderCount, 1) } else { "" }
+$builderCostAvg = if ($builderCount -gt 0) { [math]::Round(($builderCreditsTotal * 0.048) / $builderCount, 2) } else { "" }
 $builderCreditsPerPageAvg = if ($builderCount -gt 0) { [math]::Round($builderCreditsTotal / $builderCount, 2) } else { "" }
+$builderCostPerPageAvg = if ($builderCount -gt 0) { [math]::Round(($builderCreditsTotal * 0.048) / $builderCount, 2) } else { "" }
+$lovableCostAvg = [math]::Round(($lovableCreditsTotal * 0.43) / $count, 2)
+$lovableCreditsPerPageAvg = [math]::Round($lovableCreditsTotal / $count, 2)
+$lovableCostPerPageAvg = [math]::Round(($lovableCreditsTotal * 0.43) / $count, 2)
+$dreamflowCostAvg = [math]::Round(($dreamflowCreditsTotal * 0.18) / $count, 2)
+$dreamflowCreditsPerPageAvg = [math]::Round($dreamflowCreditsTotal / $count, 2)
+$dreamflowCostPerPageAvg = [math]::Round(($dreamflowCreditsTotal * 0.18) / $count, 2)
 
 $html += @"
                         <tr>
@@ -1311,17 +1345,23 @@ $html += @"
                             <td data-view="time" class="view-active">$unoVSCodeAvg</td>
                             <td data-view="time" class="view-active">$unoVSCodeMCPAvg</td>
                             <td data-view="time" class="view-active">$lovableTimeAvg</td>
-                            <td data-view="cost">$lovableCreditsAvg</td>
-                            <td data-view="costperpage">0.69</td>
+                            <td data-view="credits">$lovableCreditsAvg</td>
+                            <td data-view="cost">$lovableCostAvg</td>
+                            <td data-view="creditsperpage">$lovableCreditsPerPageAvg</td>
+                            <td data-view="costperpage">$lovableCostPerPageAvg</td>
                             <td data-view="time" class="view-active">$dreamflowTimeAvg</td>
-                            <td data-view="cost">$dreamflowCreditsAvg</td>
-                            <td data-view="costperpage">0.57</td>
+                            <td data-view="credits">$dreamflowCreditsAvg</td>
+                            <td data-view="cost">$dreamflowCostAvg</td>
+                            <td data-view="creditsperpage">$dreamflowCreditsPerPageAvg</td>
+                            <td data-view="costperpage">$dreamflowCostPerPageAvg</td>
                             <td data-view="time" class="view-active">$vibecodeTimeAvg</td>
                             <td data-view="cost">$vibecodeCreditsAvg</td>
                             <td data-view="costperpage">$vibecodeCostPerPageAvg</td>
                             <td data-view="time" class="view-active">$builderTimeAvg</td>
-                            <td data-view="cost">$builderCreditsAvg</td>
-                            <td data-view="costperpage">$builderCreditsPerPageAvg</td>
+                            <td data-view="credits">$builderCreditsAvg</td>
+                            <td data-view="cost">$builderCostAvg</td>
+                            <td data-view="creditsperpage">$builderCreditsPerPageAvg</td>
+                            <td data-view="costperpage">$builderCostPerPageAvg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1579,9 +1619,14 @@ foreach ($project in $projectsData) {
     # Add performance data for this project
     $projectPerf = $performanceData | Where-Object { $_.Name -eq $project.Name }
     if ($projectPerf) {
-        $lovableCostPerPage = if ($projectPerf.LovableCredits -eq 0) { "" } else { [math]::Round(($projectPerf.LovableCredits * 0.43) / $projectPerf.LovablePages, 2) }
-        $dreamflowCostPerPage = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { [math]::Round(($projectPerf.DreamflowCredits * 0.18) / $projectPerf.DreamflowPages, 2) }
-        $vibecodeCostPerPage = if ($projectPerf.VibecodePages -gt 0 -and $projectPerf.VibecodeCredits -gt 0) { [math]::Round($projectPerf.VibecodeCredits / $projectPerf.VibecodePages, 2) } else { "" }
+        $pLovableCost = if ($projectPerf.LovableCredits -eq 0) { "" } else { [math]::Round($projectPerf.LovableCredits * 0.43, 2) }
+        $pLovableCostPerPage = if ($projectPerf.LovableCredits -eq 0) { "" } else { [math]::Round(($projectPerf.LovableCredits * 0.43) / $projectPerf.LovablePages, 2) }
+        $pDreamflowCost = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { [math]::Round($projectPerf.DreamflowCredits * 0.18, 2) }
+        $pDreamflowCostPerPage = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { [math]::Round(($projectPerf.DreamflowCredits * 0.18) / $projectPerf.DreamflowPages, 2) }
+        $pVibecodeCost = if ($projectPerf.VibecodeCredits -eq 0) { "" } else { $projectPerf.VibecodeCredits }
+        $pVibecodeCostPerPage = if ($projectPerf.VibecodePages -gt 0 -and $projectPerf.VibecodeCredits -gt 0) { [math]::Round($projectPerf.VibecodeCredits / $projectPerf.VibecodePages, 2) } else { "" }
+        $pBuilderCost = if ($projectPerf.BuilderCredits -eq 0) { "" } else { [math]::Round($projectPerf.BuilderCredits * 0.048, 2) }
+        $pBuilderCostPerPage = if ($projectPerf.BuilderPages -gt 0 -and $projectPerf.BuilderCredits -gt 0) { [math]::Round(($projectPerf.BuilderCredits * 0.048) / $projectPerf.BuilderPages, 2) } else { "" }
         
         # Display values or empty for 0
         $antigravityTimeDisplay = if ($projectPerf.AntigravityTime -eq 0) { "" } else { $projectPerf.AntigravityTime }
@@ -1592,10 +1637,8 @@ foreach ($project in $projectsData) {
         $dreamflowTimeDisplay = if ($projectPerf.DreamflowTime -eq 0) { "" } else { $projectPerf.DreamflowTime }
         $dreamflowCreditsDisplay = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { $projectPerf.DreamflowCredits }
         $vibecodeTimeDisplay = if ($projectPerf.VibecodeTime -eq 0) { "" } else { $projectPerf.VibecodeTime }
-        $vibecodeCreditsDisplay = if ($projectPerf.VibecodeCredits -eq 0) { "" } else { "$$($projectPerf.VibecodeCredits)" }
         $builderTimeDisplay = if ($projectPerf.BuilderTime -eq 0) { "" } else { $projectPerf.BuilderTime }
         $builderCreditsDisplay = if ($projectPerf.BuilderCredits -eq 0) { "" } else { $projectPerf.BuilderCredits }
-        $builderCreditsPerPage = if ($projectPerf.BuilderPages -gt 0 -and $projectPerf.BuilderCredits -gt 0) { [math]::Round($projectPerf.BuilderCredits / $projectPerf.BuilderPages, 2) } else { "" }
         
         $html += @"
                 <div class="prompts-section">
@@ -1605,7 +1648,8 @@ foreach ($project in $projectsData) {
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1615,10 +1659,12 @@ foreach ($project in $projectsData) {
                                 <td>$antigravityTimeDisplay</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>$unoVSCodeTimeDisplay</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -1627,30 +1673,35 @@ foreach ($project in $projectsData) {
                                 <td>$unoVSCodeMCPTimeDisplay</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>$lovableTimeDisplay</td>
                                 <td>$lovableCreditsDisplay</td>
-                                <td>$lovableCostPerPage</td>
+                                <td>$pLovableCost</td>
+                                <td>$pLovableCostPerPage</td>
                             </tr>
                             <tr>
                                 <td>Dreamflow</td>
                                 <td>$dreamflowTimeDisplay</td>
                                 <td>$dreamflowCreditsDisplay</td>
-                                <td>$dreamflowCostPerPage</td>
+                                <td>$pDreamflowCost</td>
+                                <td>$pDreamflowCostPerPage</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>$vibecodeTimeDisplay</td>
-                                <td>$vibecodeCreditsDisplay</td>
-                                <td>$vibecodeCostPerPage</td>
+                                <td>-</td>
+                                <td>$pVibecodeCost</td>
+                                <td>$pVibecodeCostPerPage</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>$builderTimeDisplay</td>
                                 <td>$builderCreditsDisplay</td>
-                                <td>$builderCreditsPerPage</td>
+                                <td>$pBuilderCost</td>
+                                <td>$pBuilderCostPerPage</td>
                             </tr>
                         </tbody>
                     </table>

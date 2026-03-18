@@ -976,8 +976,10 @@
 
                 <div class="view-switcher">
                     <button class="view-btn active" onclick="switchTableView('time')">Time</button>
-                    <button class="view-btn" onclick="switchTableView('cost')">Cost</button>
-                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page</button>
+                    <button class="view-btn" onclick="switchTableView('credits')">Credits</button>
+                    <button class="view-btn" onclick="switchTableView('cost')">Cost ($)</button>
+                    <button class="view-btn" onclick="switchTableView('creditsperpage')">Credits / Page</button>
+                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page ($)</button>
                 </div>
 
                 <table class="summary-table" id="performance-table">
@@ -988,17 +990,23 @@
                             <th data-view="time" class="view-active">Uno VS Code<br>Time (s)</th>
                             <th data-view="time" class="view-active">Uno VS Code MCP<br>Time (s)</th>
                             <th data-view="time" class="view-active">Lovable<br>Time (s)</th>
-                            <th data-view="cost">Lovable<br>Credits</th>
+                            <th data-view="credits">Lovable<br>Credits</th>
+                            <th data-view="cost">Lovable<br>Cost ($)</th>
+                            <th data-view="creditsperpage">Lovable<br>Credits/Page</th>
                             <th data-view="costperpage">Lovable<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active">Dreamflow<br>Time (s)</th>
-                            <th data-view="cost">Dreamflow<br>Credits</th>
+                            <th data-view="credits">Dreamflow<br>Credits</th>
+                            <th data-view="cost">Dreamflow<br>Cost ($)</th>
+                            <th data-view="creditsperpage">Dreamflow<br>Credits/Page</th>
                             <th data-view="costperpage">Dreamflow<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
                             <th data-view="cost">Vibecode<br>Cost ($)</th>
                             <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active">Builder<br>Time (s)</th>
-                            <th data-view="cost">Builder<br>Credits</th>
-                            <th data-view="costperpage">Builder<br>Credits/Page</th>
+                            <th data-view="credits">Builder<br>Credits</th>
+                            <th data-view="cost">Builder<br>Cost ($)</th>
+                            <th data-view="creditsperpage">Builder<br>Credits/Page</th>
+                            <th data-view="costperpage">Builder<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
@@ -1007,323 +1015,437 @@
                             <td data-view="time" class="view-active ">150</td>
                             <td data-view="time" class="view-active ">105</td>
                             <td data-view="time" class="view-active ">180</td>
-                            <td data-view="cost" class="">2.1</td>
-                            <td data-view="costperpage" class="">0.9</td>
+                            <td data-view="credits">2.1</td>
+                            <td data-view="cost">0.9</td>
+                            <td data-view="creditsperpage">2.1</td>
+                            <td data-view="costperpage">0.9</td>
                             <td data-view="time" class="view-active ">200</td>
-                            <td data-view="cost" class="value-worse">3.4</td>
-                            <td data-view="costperpage" class="value-better">0.31</td>
+                            <td data-view="credits">3.4</td>
+                            <td data-view="cost">0.61</td>
+                            <td data-view="creditsperpage">1.7</td>
+                            <td data-view="costperpage">0.3</td>
                             <td data-view="time" class="view-active value-worse">780</td>
-                            <td data-view="cost" class="value-better">1.96</td>
-                            <td data-view="costperpage" class="value-worse">1.96</td>
+                            <td data-view="cost">1.96</td>
+                            <td data-view="costperpage">1.96</td>
                             <td data-view="time" class="view-active ">380</td>
-                            <td data-view="cost">14</td>
-                            <td data-view="costperpage">14</td>
+                            <td data-view="credits">14</td>
+                            <td data-view="cost">0.67</td>
+                            <td data-view="creditsperpage">14</td>
+                            <td data-view="costperpage">0.67</td>
                         </tr>                        <tr>
                             <td>2. Football Fantasy</td>
                             <td data-view="time" class="view-active value-better">65</td>
                             <td data-view="time" class="view-active ">110</td>
                             <td data-view="time" class="view-active ">170</td>
                             <td data-view="time" class="view-active ">420</td>
-                            <td data-view="cost" class="">2.9</td>
-                            <td data-view="costperpage" class="">1.25</td>
+                            <td data-view="credits">2.9</td>
+                            <td data-view="cost">1.25</td>
+                            <td data-view="creditsperpage">2.9</td>
+                            <td data-view="costperpage">1.25</td>
                             <td data-view="time" class="view-active ">500</td>
-                            <td data-view="cost" class="value-worse">11.5</td>
-                            <td data-view="costperpage" class="value-worse">2.07</td>
+                            <td data-view="credits">11.5</td>
+                            <td data-view="cost">2.07</td>
+                            <td data-view="creditsperpage">11.5</td>
+                            <td data-view="costperpage">2.07</td>
                             <td data-view="time" class="view-active value-worse">1490</td>
-                            <td data-view="cost" class="value-better">0.54</td>
-                            <td data-view="costperpage" class="value-better">0.27</td>
+                            <td data-view="cost">0.54</td>
+                            <td data-view="costperpage">0.27</td>
                             <td data-view="time" class="view-active ">180</td>
-                            <td data-view="cost">5</td>
-                            <td data-view="costperpage">1.67</td>
+                            <td data-view="credits">5</td>
+                            <td data-view="cost">0.24</td>
+                            <td data-view="creditsperpage">1.67</td>
+                            <td data-view="costperpage">0.08</td>
                         </tr>                        <tr>
                             <td>3. Travel Guide</td>
                             <td data-view="time" class="view-active value-better">80</td>
                             <td data-view="time" class="view-active ">120</td>
                             <td data-view="time" class="view-active ">180</td>
                             <td data-view="time" class="view-active ">230</td>
-                            <td data-view="cost" class="">2.4</td>
-                            <td data-view="costperpage" class="">1.03</td>
+                            <td data-view="credits">2.4</td>
+                            <td data-view="cost">1.03</td>
+                            <td data-view="creditsperpage">2.4</td>
+                            <td data-view="costperpage">1.03</td>
                             <td data-view="time" class="view-active ">170</td>
-                            <td data-view="cost" class="value-worse">4.1</td>
-                            <td data-view="costperpage" class="value-better">0.74</td>
+                            <td data-view="credits">4.1</td>
+                            <td data-view="cost">0.74</td>
+                            <td data-view="creditsperpage">4.1</td>
+                            <td data-view="costperpage">0.74</td>
                             <td data-view="time" class="view-active value-worse">540</td>
-                            <td data-view="cost" class="value-better">1.1</td>
-                            <td data-view="costperpage" class="value-worse">1.1</td>
+                            <td data-view="cost">1.1</td>
+                            <td data-view="costperpage">1.1</td>
                             <td data-view="time" class="view-active ">160</td>
-                            <td data-view="cost">4</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">4</td>
+                            <td data-view="cost">0.19</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>4. Electric Utility Dashboard</td>
                             <td data-view="time" class="view-active value-better">95</td>
                             <td data-view="time" class="view-active ">115</td>
                             <td data-view="time" class="view-active value-worse">290</td>
                             <td data-view="time" class="view-active ">160</td>
-                            <td data-view="cost" class="">1.8</td>
-                            <td data-view="costperpage" class="value-worse">0.77</td>
+                            <td data-view="credits">1.8</td>
+                            <td data-view="cost">0.77</td>
+                            <td data-view="creditsperpage">1.8</td>
+                            <td data-view="costperpage">0.77</td>
                             <td data-view="time" class="view-active ">220</td>
-                            <td data-view="cost" class="value-worse">3.9</td>
-                            <td data-view="costperpage" class="">0.7</td>
+                            <td data-view="credits">3.9</td>
+                            <td data-view="cost">0.7</td>
+                            <td data-view="creditsperpage">3.9</td>
+                            <td data-view="costperpage">0.7</td>
                             <td data-view="time" class="view-active ">240</td>
-                            <td data-view="cost" class="value-better">0.5</td>
-                            <td data-view="costperpage" class="value-better">0.5</td>
+                            <td data-view="cost">0.5</td>
+                            <td data-view="costperpage">0.5</td>
                             <td data-view="time" class="view-active ">155</td>
-                            <td data-view="cost">4</td>
-                            <td data-view="costperpage">4</td>
+                            <td data-view="credits">4</td>
+                            <td data-view="cost">0.19</td>
+                            <td data-view="creditsperpage">4</td>
+                            <td data-view="costperpage">0.19</td>
                         </tr>                        <tr>
                             <td>5. Video Streaming</td>
                             <td data-view="time" class="view-active value-better">90</td>
                             <td data-view="time" class="view-active ">105</td>
                             <td data-view="time" class="view-active ">160</td>
                             <td data-view="time" class="view-active ">270</td>
-                            <td data-view="cost" class="value-better">2.5</td>
-                            <td data-view="costperpage" class="">0.54</td>
+                            <td data-view="credits">2.5</td>
+                            <td data-view="cost">1.08</td>
+                            <td data-view="creditsperpage">1.25</td>
+                            <td data-view="costperpage">0.54</td>
                             <td data-view="time" class="view-active ">330</td>
-                            <td data-view="cost" class="">5.8</td>
-                            <td data-view="costperpage" class="value-better">0.26</td>
+                            <td data-view="credits">5.8</td>
+                            <td data-view="cost">1.04</td>
+                            <td data-view="creditsperpage">1.45</td>
+                            <td data-view="costperpage">0.26</td>
                             <td data-view="time" class="view-active value-worse">1080</td>
-                            <td data-view="cost" class="value-worse">6.37</td>
-                            <td data-view="costperpage" class="value-worse">3.18</td>
+                            <td data-view="cost">6.37</td>
+                            <td data-view="costperpage">3.18</td>
                             <td data-view="time" class="view-active ">160</td>
-                            <td data-view="cost">4</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">4</td>
+                            <td data-view="cost">0.19</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>6. Notes</td>
                             <td data-view="time" class="view-active value-better">90</td>
                             <td data-view="time" class="view-active ">275</td>
                             <td data-view="time" class="view-active ">150</td>
                             <td data-view="time" class="view-active ">180</td>
-                            <td data-view="cost" class="">2</td>
-                            <td data-view="costperpage" class="">0.29</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.86</td>
+                            <td data-view="creditsperpage">0.67</td>
+                            <td data-view="costperpage">0.29</td>
                             <td data-view="time" class="view-active ">210</td>
-                            <td data-view="cost" class="value-worse">3.8</td>
-                            <td data-view="costperpage" class="value-better">0.23</td>
+                            <td data-view="credits">3.8</td>
+                            <td data-view="cost">0.68</td>
+                            <td data-view="creditsperpage">1.27</td>
+                            <td data-view="costperpage">0.23</td>
                             <td data-view="time" class="view-active value-worse">450</td>
-                            <td data-view="cost" class="value-better">1.49</td>
-                            <td data-view="costperpage" class="value-worse">1.49</td>
+                            <td data-view="cost">1.49</td>
+                            <td data-view="costperpage">1.49</td>
                             <td data-view="time" class="view-active ">125</td>
-                            <td data-view="cost">2</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.1</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>7. Calendar</td>
                             <td data-view="time" class="view-active value-better">75</td>
                             <td data-view="time" class="view-active ">210</td>
                             <td data-view="time" class="view-active ">230</td>
                             <td data-view="time" class="view-active value-worse">290</td>
-                            <td data-view="cost" class="">2.2</td>
-                            <td data-view="costperpage" class="">0.95</td>
+                            <td data-view="credits">2.2</td>
+                            <td data-view="cost">0.95</td>
+                            <td data-view="creditsperpage">2.2</td>
+                            <td data-view="costperpage">0.95</td>
                             <td data-view="time" class="view-active ">225</td>
-                            <td data-view="cost" class="value-worse">7</td>
-                            <td data-view="costperpage" class="value-worse">1.26</td>
+                            <td data-view="credits">7</td>
+                            <td data-view="cost">1.26</td>
+                            <td data-view="creditsperpage">7</td>
+                            <td data-view="costperpage">1.26</td>
                             <td data-view="time" class="view-active ">285</td>
-                            <td data-view="cost" class="value-better">0.69</td>
-                            <td data-view="costperpage" class="value-better">0.69</td>
+                            <td data-view="cost">0.69</td>
+                            <td data-view="costperpage">0.69</td>
                             <td data-view="time" class="view-active ">125</td>
-                            <td data-view="cost">3</td>
-                            <td data-view="costperpage">3</td>
+                            <td data-view="credits">3</td>
+                            <td data-view="cost">0.14</td>
+                            <td data-view="creditsperpage">3</td>
+                            <td data-view="costperpage">0.14</td>
                         </tr>                        <tr>
                             <td>8. Hospital Dashboard</td>
                             <td data-view="time" class="view-active value-better">85</td>
                             <td data-view="time" class="view-active ">120</td>
                             <td data-view="time" class="view-active ">150</td>
                             <td data-view="time" class="view-active ">180</td>
-                            <td data-view="cost" class="value-better">1.9</td>
-                            <td data-view="costperpage" class="">0.82</td>
+                            <td data-view="credits">1.9</td>
+                            <td data-view="cost">0.82</td>
+                            <td data-view="creditsperpage">1.9</td>
+                            <td data-view="costperpage">0.82</td>
                             <td data-view="time" class="view-active ">260</td>
-                            <td data-view="cost" class="value-worse">4.4</td>
-                            <td data-view="costperpage" class="value-better">0.79</td>
+                            <td data-view="credits">4.4</td>
+                            <td data-view="cost">0.79</td>
+                            <td data-view="creditsperpage">4.4</td>
+                            <td data-view="costperpage">0.79</td>
                             <td data-view="time" class="view-active value-worse">680</td>
-                            <td data-view="cost" class="">2.52</td>
-                            <td data-view="costperpage" class="value-worse">2.52</td>
+                            <td data-view="cost">2.52</td>
+                            <td data-view="costperpage">2.52</td>
                             <td data-view="time" class="view-active ">100</td>
-                            <td data-view="cost">2</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.1</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>9. Budgeting Dashboard</td>
                             <td data-view="time" class="view-active value-better">80</td>
                             <td data-view="time" class="view-active ">160</td>
                             <td data-view="time" class="view-active ">140</td>
                             <td data-view="time" class="view-active ">150</td>
-                            <td data-view="cost" class="">1.7</td>
-                            <td data-view="costperpage" class="value-better">0.73</td>
+                            <td data-view="credits">1.7</td>
+                            <td data-view="cost">0.73</td>
+                            <td data-view="creditsperpage">1.7</td>
+                            <td data-view="costperpage">0.73</td>
                             <td data-view="time" class="view-active ">240</td>
-                            <td data-view="cost" class="value-worse">5.4</td>
-                            <td data-view="costperpage" class="">0.97</td>
+                            <td data-view="credits">5.4</td>
+                            <td data-view="cost">0.97</td>
+                            <td data-view="creditsperpage">5.4</td>
+                            <td data-view="costperpage">0.97</td>
                             <td data-view="time" class="view-active value-worse">1095</td>
-                            <td data-view="cost" class="value-better">1.15</td>
-                            <td data-view="costperpage" class="value-worse">1.15</td>
+                            <td data-view="cost">1.15</td>
+                            <td data-view="costperpage">1.15</td>
                             <td data-view="time" class="view-active ">105</td>
-                            <td data-view="cost">2</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.1</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>10. Recipe Home Screen</td>
                             <td data-view="time" class="view-active value-better">80</td>
                             <td data-view="time" class="view-active ">150</td>
                             <td data-view="time" class="view-active ">170</td>
                             <td data-view="time" class="view-active ">120</td>
-                            <td data-view="cost" class="">1.6</td>
-                            <td data-view="costperpage" class="">0.69</td>
+                            <td data-view="credits">1.6</td>
+                            <td data-view="cost">0.69</td>
+                            <td data-view="creditsperpage">1.6</td>
+                            <td data-view="costperpage">0.69</td>
                             <td data-view="time" class="view-active ">185</td>
-                            <td data-view="cost" class="value-worse">4.5</td>
-                            <td data-view="costperpage" class="value-worse">0.81</td>
+                            <td data-view="credits">4.5</td>
+                            <td data-view="cost">0.81</td>
+                            <td data-view="creditsperpage">4.5</td>
+                            <td data-view="costperpage">0.81</td>
                             <td data-view="time" class="view-active value-worse">270</td>
-                            <td data-view="cost" class="value-better">0.54</td>
-                            <td data-view="costperpage" class="value-better">0.54</td>
+                            <td data-view="cost">0.54</td>
+                            <td data-view="costperpage">0.54</td>
                             <td data-view="time" class="view-active ">95</td>
-                            <td data-view="cost">2</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.1</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>11. Fitness Tracking</td>
                             <td data-view="time" class="view-active value-better">75</td>
                             <td data-view="time" class="view-active ">120</td>
                             <td data-view="time" class="view-active ">180</td>
                             <td data-view="time" class="view-active ">200</td>
-                            <td data-view="cost" class="">1.9</td>
-                            <td data-view="costperpage" class="value-worse">0.82</td>
+                            <td data-view="credits">1.9</td>
+                            <td data-view="cost">0.82</td>
+                            <td data-view="creditsperpage">1.9</td>
+                            <td data-view="costperpage">0.82</td>
                             <td data-view="time" class="view-active value-worse">240</td>
-                            <td data-view="cost" class="value-worse">3.5</td>
-                            <td data-view="costperpage" class="">0.63</td>
+                            <td data-view="credits">3.5</td>
+                            <td data-view="cost">0.63</td>
+                            <td data-view="creditsperpage">3.5</td>
+                            <td data-view="costperpage">0.63</td>
                             <td data-view="time" class="view-active value-worse">240</td>
-                            <td data-view="cost" class="value-better">0.51</td>
-                            <td data-view="costperpage" class="value-better">0.51</td>
+                            <td data-view="cost">0.51</td>
+                            <td data-view="costperpage">0.51</td>
                             <td data-view="time" class="view-active ">120</td>
-                            <td data-view="cost">3</td>
-                            <td data-view="costperpage">3</td>
+                            <td data-view="credits">3</td>
+                            <td data-view="cost">0.14</td>
+                            <td data-view="creditsperpage">3</td>
+                            <td data-view="costperpage">0.14</td>
                         </tr>                        <tr>
                             <td>12. Login Register</td>
                             <td data-view="time" class="view-active value-better">60</td>
                             <td data-view="time" class="view-active ">90</td>
                             <td data-view="time" class="view-active ">300</td>
                             <td data-view="time" class="view-active ">155</td>
-                            <td data-view="cost" class="">2.1</td>
-                            <td data-view="costperpage" class="">0.45</td>
+                            <td data-view="credits">2.1</td>
+                            <td data-view="cost">0.9</td>
+                            <td data-view="creditsperpage">1.05</td>
+                            <td data-view="costperpage">0.45</td>
                             <td data-view="time" class="view-active ">255</td>
-                            <td data-view="cost" class="value-worse">3.5</td>
-                            <td data-view="costperpage" class="value-better">0.32</td>
+                            <td data-view="credits">3.5</td>
+                            <td data-view="cost">0.63</td>
+                            <td data-view="creditsperpage">1.75</td>
+                            <td data-view="costperpage">0.32</td>
                             <td data-view="time" class="view-active value-worse">330</td>
-                            <td data-view="cost" class="value-better">0.82</td>
-                            <td data-view="costperpage" class="value-worse">0.82</td>
+                            <td data-view="cost">0.82</td>
+                            <td data-view="costperpage">0.82</td>
                             <td data-view="time" class="view-active ">110</td>
-                            <td data-view="cost">2</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.1</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>13. Travel Home Screen</td>
                             <td data-view="time" class="view-active value-better">75</td>
                             <td data-view="time" class="view-active value-worse">400</td>
                             <td data-view="time" class="view-active ">240</td>
                             <td data-view="time" class="view-active ">210</td>
-                            <td data-view="cost" class="">2.1</td>
-                            <td data-view="costperpage" class="">0.9</td>
+                            <td data-view="credits">2.1</td>
+                            <td data-view="cost">0.9</td>
+                            <td data-view="creditsperpage">2.1</td>
+                            <td data-view="costperpage">0.9</td>
                             <td data-view="time" class="view-active ">220</td>
-                            <td data-view="cost" class="value-worse">8.5</td>
-                            <td data-view="costperpage" class="value-worse">1.53</td>
+                            <td data-view="credits">8.5</td>
+                            <td data-view="cost">1.53</td>
+                            <td data-view="creditsperpage">8.5</td>
+                            <td data-view="costperpage">1.53</td>
                             <td data-view="time" class="view-active ">270</td>
-                            <td data-view="cost" class="value-better">0.57</td>
-                            <td data-view="costperpage" class="value-better">0.57</td>
+                            <td data-view="cost">0.57</td>
+                            <td data-view="costperpage">0.57</td>
                             <td data-view="time" class="view-active ">200</td>
-                            <td data-view="cost">6</td>
-                            <td data-view="costperpage">6</td>
+                            <td data-view="credits">6</td>
+                            <td data-view="cost">0.29</td>
+                            <td data-view="creditsperpage">6</td>
+                            <td data-view="costperpage">0.29</td>
                         </tr>                        <tr>
                             <td>14. Burger Joint</td>
                             <td data-view="time" class="view-active value-better">80</td>
                             <td data-view="time" class="view-active ">100</td>
                             <td data-view="time" class="view-active value-worse">330</td>
                             <td data-view="time" class="view-active ">200</td>
-                            <td data-view="cost" class="">1.8</td>
-                            <td data-view="costperpage" class="value-worse">0.77</td>
+                            <td data-view="credits">1.8</td>
+                            <td data-view="cost">0.77</td>
+                            <td data-view="creditsperpage">1.8</td>
+                            <td data-view="costperpage">0.77</td>
                             <td data-view="time" class="view-active ">225</td>
-                            <td data-view="cost" class="value-worse">3.4</td>
-                            <td data-view="costperpage" class="">0.61</td>
+                            <td data-view="credits">3.4</td>
+                            <td data-view="cost">0.61</td>
+                            <td data-view="creditsperpage">3.4</td>
+                            <td data-view="costperpage">0.61</td>
                             <td data-view="time" class="view-active ">295</td>
-                            <td data-view="cost" class="value-better">0.61</td>
-                            <td data-view="costperpage" class="">0.61</td>
+                            <td data-view="cost">0.61</td>
+                            <td data-view="costperpage">0.61</td>
                             <td data-view="time" class="view-active ">175</td>
-                            <td data-view="cost">5</td>
-                            <td data-view="costperpage">5</td>
+                            <td data-view="credits">5</td>
+                            <td data-view="cost">0.24</td>
+                            <td data-view="creditsperpage">5</td>
+                            <td data-view="costperpage">0.24</td>
                         </tr>                        <tr>
                             <td>15. Fitness Home Screen</td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-worse">540</td>
-                            <td data-view="cost" class="value-worse">1.24</td>
-                            <td data-view="costperpage" class="value-worse">1.24</td>
+                            <td data-view="cost">1.24</td>
+                            <td data-view="costperpage">1.24</td>
                             <td data-view="time" class="view-active ">235</td>
-                            <td data-view="cost">6</td>
-                            <td data-view="costperpage">6</td>
+                            <td data-view="credits">6</td>
+                            <td data-view="cost">0.29</td>
+                            <td data-view="creditsperpage">6</td>
+                            <td data-view="costperpage">0.29</td>
                         </tr>                        <tr>
                             <td>16. Background Dashboard</td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-worse">445</td>
-                            <td data-view="cost" class="value-worse">1.22</td>
-                            <td data-view="costperpage" class="value-worse">1.22</td>
+                            <td data-view="cost">1.22</td>
+                            <td data-view="costperpage">1.22</td>
                             <td data-view="time" class="view-active ">145</td>
-                            <td data-view="cost">3</td>
-                            <td data-view="costperpage">3</td>
+                            <td data-view="credits">3</td>
+                            <td data-view="cost">0.14</td>
+                            <td data-view="creditsperpage">3</td>
+                            <td data-view="costperpage">0.14</td>
                         </tr>                        <tr>
                             <td>17. Login Email Phone</td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-worse">380</td>
-                            <td data-view="cost" class="value-worse">0.92</td>
-                            <td data-view="costperpage" class="value-worse">0.92</td>
+                            <td data-view="cost">0.92</td>
+                            <td data-view="costperpage">0.92</td>
                             <td data-view="time" class="view-active ">155</td>
-                            <td data-view="cost">4</td>
-                            <td data-view="costperpage">4</td>
+                            <td data-view="credits">4</td>
+                            <td data-view="cost">0.19</td>
+                            <td data-view="creditsperpage">4</td>
+                            <td data-view="costperpage">0.19</td>
                         </tr>                        <tr>
                             <td>18. MeowFlix</td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-better"></td>
-                            <td data-view="cost" class=""></td>
-                            <td data-view="costperpage" class=""></td>
+                            <td data-view="credits"></td>
+                            <td data-view="cost"></td>
+                            <td data-view="creditsperpage"></td>
+                            <td data-view="costperpage"></td>
                             <td data-view="time" class="view-active value-worse">730</td>
-                            <td data-view="cost" class="value-worse">1.52</td>
-                            <td data-view="costperpage" class="value-worse">0.76</td>
+                            <td data-view="cost">1.52</td>
+                            <td data-view="costperpage">0.76</td>
                             <td data-view="time" class="view-active ">120</td>
-                            <td data-view="cost">2</td>
-                            <td data-view="costperpage">2</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.1</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.1</td>
                         </tr>                        <tr>
                             <td>Average</td>
                             <td data-view="time" class="view-active">61.7</td>
                             <td data-view="time" class="view-active">123.6</td>
                             <td data-view="time" class="view-active">155.3</td>
                             <td data-view="time" class="view-active">163.6</td>
-                            <td data-view="cost">1.6</td>
+                            <td data-view="credits">1.6</td>
+                            <td data-view="cost">0.69</td>
+                            <td data-view="creditsperpage">1.61</td>
                             <td data-view="costperpage">0.69</td>
                             <td data-view="time" class="view-active">193.3</td>
-                            <td data-view="cost">4</td>
-                            <td data-view="costperpage">0.57</td>
+                            <td data-view="credits">4</td>
+                            <td data-view="cost">0.73</td>
+                            <td data-view="creditsperpage">4.04</td>
+                            <td data-view="costperpage">0.73</td>
                             <td data-view="time" class="view-active">563.3</td>
                             <td data-view="cost">1.35</td>
                             <td data-view="costperpage">1.35</td>
                             <td data-view="time" class="view-active">158.1</td>
-                            <td data-view="cost">4.1</td>
-                            <td data-view="costperpage">4.06</td>
+                            <td data-view="credits">4.1</td>
+                            <td data-view="cost">0.19</td>
+                            <td data-view="creditsperpage">4.06</td>
+                            <td data-view="costperpage">0.19</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1378,7 +1500,8 @@
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1388,10 +1511,12 @@
                                 <td>80</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>150</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -1400,30 +1525,35 @@
                                 <td>105</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>180</td>
                                 <td>2.1</td>
                                 <td>0.9</td>
+                                <td>0.9</td>
                             </tr>
                             <tr>
                                 <td>Dreamflow</td>
                                 <td>200</td>
                                 <td>3.4</td>
+                                <td>0.61</td>
                                 <td>0.31</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>780</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.96</td>
                                 <td>1.96</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>380</td>
                                 <td>14</td>
-                                <td>14</td>
+                                <td>0.67</td>
+                                <td>0.67</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1572,7 +1702,8 @@
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1582,10 +1713,12 @@
                                 <td>65</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>110</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -1594,11 +1727,13 @@
                                 <td>170</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>420</td>
                                 <td>2.9</td>
+                                <td>1.25</td>
                                 <td>1.25</td>
                             </tr>
                             <tr>
@@ -1606,18 +1741,21 @@
                                 <td>500</td>
                                 <td>11.5</td>
                                 <td>2.07</td>
+                                <td>2.07</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1490</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.54</td>
                                 <td>0.27</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>180</td>
                                 <td>5</td>
-                                <td>1.67</td>
+                                <td>0.24</td>
+                                <td>0.08</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1786,7 +1924,8 @@
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1796,10 +1935,12 @@
                                 <td>80</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>120</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -1808,11 +1949,13 @@
                                 <td>180</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>230</td>
                                 <td>2.4</td>
+                                <td>1.03</td>
                                 <td>1.03</td>
                             </tr>
                             <tr>
@@ -1820,18 +1963,21 @@
                                 <td>170</td>
                                 <td>4.1</td>
                                 <td>0.74</td>
+                                <td>0.74</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.1</td>
                                 <td>1.1</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>160</td>
                                 <td>4</td>
-                                <td>2</td>
+                                <td>0.19</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1967,7 +2113,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -1977,10 +2124,12 @@ Requirements:
                                 <td>95</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>115</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -1989,11 +2138,13 @@ Requirements:
                                 <td>290</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>160</td>
                                 <td>1.8</td>
+                                <td>0.77</td>
                                 <td>0.77</td>
                             </tr>
                             <tr>
@@ -2001,18 +2152,21 @@ Requirements:
                                 <td>220</td>
                                 <td>3.9</td>
                                 <td>0.7</td>
+                                <td>0.7</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.5</td>
                                 <td>0.5</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>155</td>
                                 <td>4</td>
-                                <td>4</td>
+                                <td>0.19</td>
+                                <td>0.19</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2126,7 +2280,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2136,10 +2291,12 @@ Requirements:
                                 <td>90</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>105</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -2148,30 +2305,35 @@ Requirements:
                                 <td>160</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>270</td>
                                 <td>2.5</td>
+                                <td>1.08</td>
                                 <td>0.54</td>
                             </tr>
                             <tr>
                                 <td>Dreamflow</td>
                                 <td>330</td>
                                 <td>5.8</td>
+                                <td>1.04</td>
                                 <td>0.26</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1080</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>6.37</td>
                                 <td>3.18</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>160</td>
                                 <td>4</td>
-                                <td>2</td>
+                                <td>0.19</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2325,7 +2487,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2335,10 +2498,12 @@ Requirements:
                                 <td>90</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>275</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -2347,30 +2512,35 @@ Requirements:
                                 <td>150</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>180</td>
                                 <td>2</td>
+                                <td>0.86</td>
                                 <td>0.29</td>
                             </tr>
                             <tr>
                                 <td>Dreamflow</td>
                                 <td>210</td>
                                 <td>3.8</td>
+                                <td>0.68</td>
                                 <td>0.23</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>450</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.49</td>
                                 <td>1.49</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>125</td>
                                 <td>2</td>
-                                <td>2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2512,7 +2682,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2522,10 +2693,12 @@ Requirements:
                                 <td>75</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>210</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -2534,11 +2707,13 @@ Requirements:
                                 <td>230</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>290</td>
                                 <td>2.2</td>
+                                <td>0.95</td>
                                 <td>0.95</td>
                             </tr>
                             <tr>
@@ -2546,18 +2721,21 @@ Requirements:
                                 <td>225</td>
                                 <td>7</td>
                                 <td>1.26</td>
+                                <td>1.26</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>285</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.69</td>
                                 <td>0.69</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>125</td>
                                 <td>3</td>
-                                <td>3</td>
+                                <td>0.14</td>
+                                <td>0.14</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2687,7 +2865,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2697,10 +2876,12 @@ Requirements:
                                 <td>85</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>120</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -2709,11 +2890,13 @@ Requirements:
                                 <td>150</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>180</td>
                                 <td>1.9</td>
+                                <td>0.82</td>
                                 <td>0.82</td>
                             </tr>
                             <tr>
@@ -2721,18 +2904,21 @@ Requirements:
                                 <td>260</td>
                                 <td>4.4</td>
                                 <td>0.79</td>
+                                <td>0.79</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>680</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>2.52</td>
                                 <td>2.52</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>100</td>
                                 <td>2</td>
-                                <td>2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2842,7 +3028,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -2852,10 +3039,12 @@ Requirements:
                                 <td>80</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>160</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -2864,11 +3053,13 @@ Requirements:
                                 <td>140</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>150</td>
                                 <td>1.7</td>
+                                <td>0.73</td>
                                 <td>0.73</td>
                             </tr>
                             <tr>
@@ -2876,18 +3067,21 @@ Requirements:
                                 <td>240</td>
                                 <td>5.4</td>
                                 <td>0.97</td>
+                                <td>0.97</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1095</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.15</td>
                                 <td>1.15</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>105</td>
                                 <td>2</td>
-                                <td>2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2997,7 +3191,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3007,10 +3202,12 @@ Requirements:
                                 <td>80</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>150</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3019,11 +3216,13 @@ Requirements:
                                 <td>170</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>120</td>
                                 <td>1.6</td>
+                                <td>0.69</td>
                                 <td>0.69</td>
                             </tr>
                             <tr>
@@ -3031,18 +3230,21 @@ Requirements:
                                 <td>185</td>
                                 <td>4.5</td>
                                 <td>0.81</td>
+                                <td>0.81</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.54</td>
                                 <td>0.54</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>95</td>
                                 <td>2</td>
-                                <td>2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3152,7 +3354,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3162,10 +3365,12 @@ Requirements:
                                 <td>75</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>120</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3174,11 +3379,13 @@ Requirements:
                                 <td>180</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>200</td>
                                 <td>1.9</td>
+                                <td>0.82</td>
                                 <td>0.82</td>
                             </tr>
                             <tr>
@@ -3186,18 +3393,21 @@ Requirements:
                                 <td>240</td>
                                 <td>3.5</td>
                                 <td>0.63</td>
+                                <td>0.63</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.51</td>
                                 <td>0.51</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>120</td>
                                 <td>3</td>
-                                <td>3</td>
+                                <td>0.14</td>
+                                <td>0.14</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3307,7 +3517,8 @@ Requirements:
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3317,10 +3528,12 @@ Requirements:
                                 <td>60</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>90</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3329,30 +3542,35 @@ Requirements:
                                 <td>300</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>155</td>
                                 <td>2.1</td>
+                                <td>0.9</td>
                                 <td>0.45</td>
                             </tr>
                             <tr>
                                 <td>Dreamflow</td>
                                 <td>255</td>
                                 <td>3.5</td>
+                                <td>0.63</td>
                                 <td>0.32</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>330</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.82</td>
                                 <td>0.82</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>110</td>
                                 <td>2</td>
-                                <td>2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3541,7 +3759,8 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3551,10 +3770,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>75</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>400</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3563,11 +3784,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>240</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>210</td>
                                 <td>2.1</td>
+                                <td>0.9</td>
                                 <td>0.9</td>
                             </tr>
                             <tr>
@@ -3575,18 +3798,21 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>220</td>
                                 <td>8.5</td>
                                 <td>1.53</td>
+                                <td>1.53</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.57</td>
                                 <td>0.57</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>200</td>
                                 <td>6</td>
-                                <td>6</td>
+                                <td>0.29</td>
+                                <td>0.29</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3696,7 +3922,8 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3706,10 +3933,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>80</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td>100</td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3718,11 +3947,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>330</td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
                                 <td>200</td>
                                 <td>1.8</td>
+                                <td>0.77</td>
                                 <td>0.77</td>
                             </tr>
                             <tr>
@@ -3730,18 +3961,21 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>225</td>
                                 <td>3.4</td>
                                 <td>0.61</td>
+                                <td>0.61</td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>295</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.61</td>
                                 <td>0.61</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>175</td>
                                 <td>5</td>
-                                <td>5</td>
+                                <td>0.24</td>
+                                <td>0.24</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3853,7 +4087,8 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3863,10 +4098,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td></td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3875,9 +4112,11 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -3887,18 +4126,21 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.24</td>
                                 <td>1.24</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>235</td>
                                 <td>6</td>
-                                <td>6</td>
+                                <td>0.29</td>
+                                <td>0.29</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3968,7 +4210,8 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -3978,10 +4221,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td></td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -3990,9 +4235,11 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -4002,18 +4249,21 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>445</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.22</td>
                                 <td>1.22</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>145</td>
                                 <td>3</td>
-                                <td>3</td>
+                                <td>0.14</td>
+                                <td>0.14</td>
                             </tr>
                         </tbody>
                     </table>
@@ -4087,7 +4337,8 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -4097,10 +4348,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td></td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -4109,9 +4362,11 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -4121,18 +4376,21 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>380</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>0.92</td>
                                 <td>0.92</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>155</td>
                                 <td>4</td>
-                                <td>4</td>
+                                <td>0.19</td>
+                                <td>0.19</td>
                             </tr>
                         </tbody>
                     </table>
@@ -4204,7 +4462,8 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <th>Tool</th>
                                 <th>Time (s)</th>
-                                <th>Credits/Cost</th>
+                                <th>Credits</th>
+                                <th>Cost ($)</th>
                                 <th>Cost/Page ($)</th>
                             </tr>
                         </thead>
@@ -4214,10 +4473,12 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Uno VS Code</td>
                                 <td></td>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -4226,9 +4487,11 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td>-</td>
                                 <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>Lovable</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -4238,18 +4501,21 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>730</td>
-                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>-</td>
+                                <td>1.52</td>
                                 <td>0.76</td>
                             </tr>
                             <tr>
                                 <td>Builder</td>
                                 <td>120</td>
                                 <td>2</td>
-                                <td>2</td>
+                                <td>0.1</td>
+                                <td>0.1</td>
                             </tr>
                         </tbody>
                     </table>
