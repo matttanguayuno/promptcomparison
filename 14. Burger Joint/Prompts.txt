@@ -1,3 +1,7 @@
 UNO
 
 Design a clean, modern home page UI for a burger joint app. Include a hero burger image, today’s specials, quick-order buttons (Burgers, Sides, Drinks), a prominent ‘Order Now’ CTA, and a bottom navigation bar (Home, Menu, Cart, Profile). Use bold typography, simple iconography, subtle depth, and a mobile-first layout. Keep the style appetizing, friendly, and minimal
+
+BUILDER
+Video: https://drive.google.com/file/d/1izMJyEkYVL62ptI-QjeL0nckSWhhS7vl/view?usp=drive_link
+Screenshots: See project folder

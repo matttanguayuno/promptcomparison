@@ -1,3 +1,8 @@
 UNO
 
 create a page for adding and editing notes. Similar to digital post-it notes where i can add, delete, and edit the post-its that are displayed on the screen
+
+
+BUILDER
+Video: https://drive.google.com/file/d/1zqjmkv-ymkhPJRRWzrrw0Fe4jghPdS2m/view?usp=drive_link
+Screenshots: See project folder

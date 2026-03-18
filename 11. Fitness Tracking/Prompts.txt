@@ -1,3 +1,8 @@
 UNO
 
 Design a fitness tracking screen with a progress ring placeholder, daily goals, and action buttons
+
+
+BUILDER
+Video: https://drive.google.com/file/d/1FTeyez7tgyXALKyAuUZ9xe6Rsll44vLL/view?usp=drive_link
+Screenshots: See project folder

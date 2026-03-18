@@ -8,3 +8,8 @@ Requirements:
 - A scrollable list of facilities (ListView)
 - A right-hand rail containing alerts
 - Use SafeArea + AutoLayout
+
+
+BUILDER
+Video: https://drive.google.com/file/d/1HDYn3pKRHfyceAwjTGoYmwKUJtd9i1XU/view?usp=drive_link
+Screenshots: See project folder

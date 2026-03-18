@@ -5,3 +5,8 @@ Requirements:
 - Movies library ListView
 - Rate a movie and "add comment" feature
 - Download a movie option
+
+
+BUILDER
+Video: https://drive.google.com/file/d/1dtWEB6qvXJDh80M3U1x-dlW9vRyGuiMS/view?usp=drive_link
+Screenshots: See project folder

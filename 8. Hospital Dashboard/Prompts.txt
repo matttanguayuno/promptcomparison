@@ -1,3 +1,8 @@
 UNO
 
 Create a modern hospital dashboard with patient cards, stats, and a quick-action panel
+
+
+BUILDER
+Video: https://drive.google.com/file/d/1vlydaX1-hQR07IW7Br24O9U60FwgreES/view?usp=drive_link
+Screenshots: See project folder
