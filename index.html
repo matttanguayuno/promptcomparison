@@ -449,6 +449,21 @@
             border-color: transparent;
         }
 
+        .tab-builder {
+            border-color: #2ecc71;
+            color: #2ecc71;
+        }
+
+        .tab-builder:hover {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .tab-builder.active.active-tool {
+            background: #2ecc71;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -498,6 +513,10 @@
 
         .tool-group-header.vibecode {
             background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .tool-group-header.builder {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
         .video-container {
@@ -654,6 +673,12 @@
             background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
         }
 
+        .summary-table th:nth-child(14),
+        .summary-table th:nth-child(15),
+        .summary-table th:nth-child(16) {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
         .summary-table th:last-child {
             border-top-right-radius: 8px;
         }
@@ -708,6 +733,12 @@
         .summary-table td:nth-child(8),
         .summary-table td:nth-child(9),
         .summary-table td:nth-child(10),
+        .summary-table td:nth-child(11),
+        .summary-table td:nth-child(12),
+        .summary-table td:nth-child(13),
+        .summary-table td:nth-child(14),
+        .summary-table td:nth-child(15),
+        .summary-table td:nth-child(16),
         .summary-table th:nth-child(2),
         .summary-table th:nth-child(3),
         .summary-table th:nth-child(4),
@@ -716,7 +747,13 @@
         .summary-table th:nth-child(7),
         .summary-table th:nth-child(8),
         .summary-table th:nth-child(9),
-        .summary-table th:nth-child(10) {
+        .summary-table th:nth-child(10),
+        .summary-table th:nth-child(11),
+        .summary-table th:nth-child(12),
+        .summary-table th:nth-child(13),
+        .summary-table th:nth-child(14),
+        .summary-table th:nth-child(15),
+        .summary-table th:nth-child(16) {
             text-align: center;
         }
 
@@ -959,6 +996,9 @@
                             <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
                             <th data-view="cost">Vibecode<br>Cost ($)</th>
                             <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Builder<br>Time (s)</th>
+                            <th data-view="cost">Builder<br>Credits</th>
+                            <th data-view="costperpage">Builder<br>Credits/Page</th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
@@ -975,6 +1015,9 @@
                             <td data-view="time" class="view-active value-worse">780</td>
                             <td data-view="cost" class="value-better">1.96</td>
                             <td data-view="costperpage" class="value-worse">1.96</td>
+                            <td data-view="time" class="view-active ">380</td>
+                            <td data-view="cost">14</td>
+                            <td data-view="costperpage">14</td>
                         </tr>                        <tr>
                             <td>2. Football Fantasy</td>
                             <td data-view="time" class="view-active value-better">65</td>
@@ -989,6 +1032,9 @@
                             <td data-view="time" class="view-active value-worse">1490</td>
                             <td data-view="cost" class="value-better">0.54</td>
                             <td data-view="costperpage" class="value-better">0.27</td>
+                            <td data-view="time" class="view-active ">180</td>
+                            <td data-view="cost">5</td>
+                            <td data-view="costperpage">1.67</td>
                         </tr>                        <tr>
                             <td>3. Travel Guide</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1003,6 +1049,9 @@
                             <td data-view="time" class="view-active value-worse">540</td>
                             <td data-view="cost" class="value-better">1.1</td>
                             <td data-view="costperpage" class="value-worse">1.1</td>
+                            <td data-view="time" class="view-active ">160</td>
+                            <td data-view="cost">4</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>4. Electric Utility Dashboard</td>
                             <td data-view="time" class="view-active value-better">95</td>
@@ -1017,6 +1066,9 @@
                             <td data-view="time" class="view-active ">240</td>
                             <td data-view="cost" class="value-better">0.5</td>
                             <td data-view="costperpage" class="value-better">0.5</td>
+                            <td data-view="time" class="view-active ">155</td>
+                            <td data-view="cost">4</td>
+                            <td data-view="costperpage">4</td>
                         </tr>                        <tr>
                             <td>5. Video Streaming</td>
                             <td data-view="time" class="view-active value-better">90</td>
@@ -1031,6 +1083,9 @@
                             <td data-view="time" class="view-active value-worse">1080</td>
                             <td data-view="cost" class="value-worse">6.37</td>
                             <td data-view="costperpage" class="value-worse">3.18</td>
+                            <td data-view="time" class="view-active ">160</td>
+                            <td data-view="cost">4</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>6. Notes</td>
                             <td data-view="time" class="view-active value-better">90</td>
@@ -1045,6 +1100,9 @@
                             <td data-view="time" class="view-active value-worse">450</td>
                             <td data-view="cost" class="value-better">1.49</td>
                             <td data-view="costperpage" class="value-worse">1.49</td>
+                            <td data-view="time" class="view-active ">125</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>7. Calendar</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1059,6 +1117,9 @@
                             <td data-view="time" class="view-active ">285</td>
                             <td data-view="cost" class="value-better">0.69</td>
                             <td data-view="costperpage" class="value-better">0.69</td>
+                            <td data-view="time" class="view-active ">125</td>
+                            <td data-view="cost">3</td>
+                            <td data-view="costperpage">3</td>
                         </tr>                        <tr>
                             <td>8. Hospital Dashboard</td>
                             <td data-view="time" class="view-active value-better">85</td>
@@ -1073,6 +1134,9 @@
                             <td data-view="time" class="view-active value-worse">680</td>
                             <td data-view="cost" class="">2.52</td>
                             <td data-view="costperpage" class="value-worse">2.52</td>
+                            <td data-view="time" class="view-active ">100</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>9. Budgeting Dashboard</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1087,6 +1151,9 @@
                             <td data-view="time" class="view-active value-worse">1095</td>
                             <td data-view="cost" class="value-better">1.15</td>
                             <td data-view="costperpage" class="value-worse">1.15</td>
+                            <td data-view="time" class="view-active ">105</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>10. Recipe Home Screen</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1101,6 +1168,9 @@
                             <td data-view="time" class="view-active value-worse">270</td>
                             <td data-view="cost" class="value-better">0.54</td>
                             <td data-view="costperpage" class="value-better">0.54</td>
+                            <td data-view="time" class="view-active ">95</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>11. Fitness Tracking</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1115,6 +1185,9 @@
                             <td data-view="time" class="view-active value-worse">240</td>
                             <td data-view="cost" class="value-better">0.51</td>
                             <td data-view="costperpage" class="value-better">0.51</td>
+                            <td data-view="time" class="view-active ">120</td>
+                            <td data-view="cost">3</td>
+                            <td data-view="costperpage">3</td>
                         </tr>                        <tr>
                             <td>12. Login Register</td>
                             <td data-view="time" class="view-active value-better">60</td>
@@ -1129,6 +1202,9 @@
                             <td data-view="time" class="view-active value-worse">330</td>
                             <td data-view="cost" class="value-better">0.82</td>
                             <td data-view="costperpage" class="value-worse">0.82</td>
+                            <td data-view="time" class="view-active ">110</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>13. Travel Home Screen</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1143,6 +1219,9 @@
                             <td data-view="time" class="view-active ">270</td>
                             <td data-view="cost" class="value-better">0.57</td>
                             <td data-view="costperpage" class="value-better">0.57</td>
+                            <td data-view="time" class="view-active ">200</td>
+                            <td data-view="cost">6</td>
+                            <td data-view="costperpage">6</td>
                         </tr>                        <tr>
                             <td>14. Burger Joint</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1157,6 +1236,9 @@
                             <td data-view="time" class="view-active ">295</td>
                             <td data-view="cost" class="value-better">0.61</td>
                             <td data-view="costperpage" class="">0.61</td>
+                            <td data-view="time" class="view-active ">175</td>
+                            <td data-view="cost">5</td>
+                            <td data-view="costperpage">5</td>
                         </tr>                        <tr>
                             <td>15. Fitness Home Screen</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1171,6 +1253,9 @@
                             <td data-view="time" class="view-active value-worse">540</td>
                             <td data-view="cost" class="value-worse">1.24</td>
                             <td data-view="costperpage" class="value-worse">1.24</td>
+                            <td data-view="time" class="view-active ">235</td>
+                            <td data-view="cost">6</td>
+                            <td data-view="costperpage">6</td>
                         </tr>                        <tr>
                             <td>16. Background Dashboard</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1185,6 +1270,9 @@
                             <td data-view="time" class="view-active value-worse">445</td>
                             <td data-view="cost" class="value-worse">1.22</td>
                             <td data-view="costperpage" class="value-worse">1.22</td>
+                            <td data-view="time" class="view-active ">145</td>
+                            <td data-view="cost">3</td>
+                            <td data-view="costperpage">3</td>
                         </tr>                        <tr>
                             <td>17. Login Email Phone</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1199,6 +1287,9 @@
                             <td data-view="time" class="view-active value-worse">380</td>
                             <td data-view="cost" class="value-worse">0.92</td>
                             <td data-view="costperpage" class="value-worse">0.92</td>
+                            <td data-view="time" class="view-active ">155</td>
+                            <td data-view="cost">4</td>
+                            <td data-view="costperpage">4</td>
                         </tr>                        <tr>
                             <td>18. MeowFlix</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1213,6 +1304,9 @@
                             <td data-view="time" class="view-active value-worse">730</td>
                             <td data-view="cost" class="value-worse">1.52</td>
                             <td data-view="costperpage" class="value-worse">0.76</td>
+                            <td data-view="time" class="view-active ">120</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>Average</td>
                             <td data-view="time" class="view-active">61.7</td>
@@ -1227,6 +1321,9 @@
                             <td data-view="time" class="view-active">563.3</td>
                             <td data-view="cost">1.35</td>
                             <td data-view="costperpage">1.35</td>
+                            <td data-view="time" class="view-active">158.1</td>
+                            <td data-view="cost">4.1</td>
+                            <td data-view="costperpage">4.06</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1319,8 +1416,14 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>780</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.96</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>380</td>
+                                <td>14</td>
+                                <td>14</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1334,6 +1437,7 @@
                     <button class="tab-button tab-lovable" onclick="filterImages('1__Flight_Details', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('1__Flight_Details', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('1__Flight_Details', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('1__Flight_Details', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="1__Flight_Details_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1423,13 +1527,18 @@
                                 <img src="1. Flight Details/Vibecode - 3.png" alt="Vibecode - 3.png" onclick="openLightbox('1. Flight Details/Vibecode - 3.png', 'Vibecode - 3.png')">
                                 <div class="image-label vibecode">Vibecode - 3.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1i6wLoFj_wG9O6X0nQS10nOI8pEqK3tnj/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="1. Flight Details/Builder.png" alt="Builder.png" onclick="openLightbox('1. Flight Details/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
+                            </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="other">
                         <div class="tool-group-header other">OTHER</div>
                         <div class="tool-group-images">                            <div class="image-card" data-tool="other">
-                                
-                                <img src="1. Flight Details/Builder.png" alt="Builder.png" onclick="openLightbox('1. Flight Details/Builder.png', 'Builder.png')">
-                                <div class="image-label other">Builder.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
                                 
                                 <img src="1. Flight Details/Uno Studio Live - 1.png" alt="Uno Studio Live - 1.png" onclick="openLightbox('1. Flight Details/Uno Studio Live - 1.png', 'Uno Studio Live - 1.png')">
                                 <div class="image-label other">Uno Studio Live - 1.png</div>
@@ -1501,8 +1610,14 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1490</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.27</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>180</td>
+                                <td>5</td>
+                                <td>1.67</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1516,6 +1631,7 @@
                     <button class="tab-button tab-lovable" onclick="filterImages('2__Football_Fantasy', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('2__Football_Fantasy', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('2__Football_Fantasy', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('2__Football_Fantasy', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="2__Football_Fantasy_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1621,20 +1737,22 @@
                                 <img src="2. Football Fantasy/Vibecode-2.png" alt="Vibecode-2.png" onclick="openLightbox('2. Football Fantasy/Vibecode-2.png', 'Vibecode-2.png')">
                                 <div class="image-label vibecode">Vibecode-2.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1-c1pPXjp2s4ooIrJ0-Cwyq06l5udRJ1f/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="2. Football Fantasy/Builder-1.png" alt="Builder-1.png" onclick="openLightbox('2. Football Fantasy/Builder-1.png', 'Builder-1.png')">
-                                <div class="image-label other">Builder-1.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label builder">Builder-1.png</div>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="2. Football Fantasy/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('2. Football Fantasy/Builder-2.png', 'Builder-2.png')">
-                                <div class="image-label other">Builder-2.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label builder">Builder-2.png</div>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="2. Football Fantasy/Builder-3.png" alt="Builder-3.png" onclick="openLightbox('2. Football Fantasy/Builder-3.png', 'Builder-3.png')">
-                                <div class="image-label other">Builder-3.png</div>
+                                <div class="image-label builder">Builder-3.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -1706,8 +1824,14 @@
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.1</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>160</td>
+                                <td>4</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1721,6 +1845,7 @@
                     <button class="tab-button tab-lovable" onclick="filterImages('3__Travel_Guide', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('3__Travel_Guide', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('3__Travel_Guide', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('3__Travel_Guide', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="3__Travel_Guide_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1798,16 +1923,18 @@
                                 <img src="3. Travel Guide/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('3. Travel Guide/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1EDBKBO5VXPTJB1QnJu7xOApN-kSVycRn/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="3. Travel Guide/Builder-1.png" alt="Builder-1.png" onclick="openLightbox('3. Travel Guide/Builder-1.png', 'Builder-1.png')">
-                                <div class="image-label other">Builder-1.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label builder">Builder-1.png</div>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="3. Travel Guide/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('3. Travel Guide/Builder-2.png', 'Builder-2.png')">
-                                <div class="image-label other">Builder-2.png</div>
+                                <div class="image-label builder">Builder-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -1878,8 +2005,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>155</td>
+                                <td>4</td>
+                                <td>4</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1893,6 +2026,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('4__Electric_Utility_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('4__Electric_Utility_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('4__Electric_Utility_Dashboard', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('4__Electric_Utility_Dashboard', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1954,12 +2088,14 @@ Requirements:
                                 <img src="4. Electric Utility Dashboard/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('4. Electric Utility Dashboard/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1HDYn3pKRHfyceAwjTGoYmwKUJtd9i1XU/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="4. Electric Utility Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('4. Electric Utility Dashboard/Builder.png', 'Builder.png')">
-                                <div class="image-label other">Builder.png</div>
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2028,8 +2164,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1080</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>3.18</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>160</td>
+                                <td>4</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2043,6 +2185,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('5__Video_Streaming', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('5__Video_Streaming', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('5__Video_Streaming', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('5__Video_Streaming', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="5__Video_Streaming_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2144,16 +2287,18 @@ Requirements:
                                 <img src="5. Video Streaming/Vibecode-3.png" alt="Vibecode-3.png" onclick="openLightbox('5. Video Streaming/Vibecode-3.png', 'Vibecode-3.png')">
                                 <div class="image-label vibecode">Vibecode-3.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1dtWEB6qvXJDh80M3U1x-dlW9vRyGuiMS/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="5. Video Streaming/Builder-1.png" alt="Builder-1.png" onclick="openLightbox('5. Video Streaming/Builder-1.png', 'Builder-1.png')">
-                                <div class="image-label other">Builder-1.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label builder">Builder-1.png</div>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="5. Video Streaming/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('5. Video Streaming/Builder-2.png', 'Builder-2.png')">
-                                <div class="image-label other">Builder-2.png</div>
+                                <div class="image-label builder">Builder-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2218,8 +2363,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>450</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.49</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>125</td>
+                                <td>2</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2233,6 +2384,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('6__Notes', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('6__Notes', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('6__Notes', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('6__Notes', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="6__Notes_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2326,12 +2478,14 @@ Requirements:
                                 <img src="6. Notes/Vibecode-2.png" alt="Vibecode-2.png" onclick="openLightbox('6. Notes/Vibecode-2.png', 'Vibecode-2.png')">
                                 <div class="image-label vibecode">Vibecode-2.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1zqjmkv-ymkhPJRRWzrrw0Fe4jghPdS2m/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="6. Notes/Builder.png" alt="Builder.png" onclick="openLightbox('6. Notes/Builder.png', 'Builder.png')">
-                                <div class="image-label other">Builder.png</div>
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2396,8 +2550,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>285</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.69</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>125</td>
+                                <td>3</td>
+                                <td>3</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2411,6 +2571,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('7__Calendar', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('7__Calendar', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('7__Calendar', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('7__Calendar', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="7__Calendar_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2488,16 +2649,18 @@ Requirements:
                                 <img src="7. Calendar/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('7. Calendar/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1iHIpZrnPtERPXbRM9APkoEOQmleDuJg4/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="7. Calendar/Builder-1.png" alt="Builder-1.png" onclick="openLightbox('7. Calendar/Builder-1.png', 'Builder-1.png')">
-                                <div class="image-label other">Builder-1.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label builder">Builder-1.png</div>
+                            </div>                            <div class="image-card" data-tool="builder">
                                 
                                 <img src="7. Calendar/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('7. Calendar/Builder-2.png', 'Builder-2.png')">
-                                <div class="image-label other">Builder-2.png</div>
+                                <div class="image-label builder">Builder-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2562,8 +2725,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>680</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>2.52</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2577,6 +2746,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('8__Hospital_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('8__Hospital_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('8__Hospital_Dashboard', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('8__Hospital_Dashboard', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="8__Hospital_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2637,6 +2807,15 @@ Requirements:
                                 
                                 <img src="8. Hospital Dashboard/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('8. Hospital Dashboard/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1vlydaX1-hQR07IW7Br24O9U60FwgreES/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="8. Hospital Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('8. Hospital Dashboard/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2701,8 +2880,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>1095</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.15</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>105</td>
+                                <td>2</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2716,6 +2901,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('9__Budgeting_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('9__Budgeting_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('9__Budgeting_Dashboard', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('9__Budgeting_Dashboard', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="9__Budgeting_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2776,6 +2962,15 @@ Requirements:
                                 
                                 <img src="9. Budgeting Dashboard/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('9. Budgeting Dashboard/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1EqSMqLDtU0n5Gemh5f2E4XSFseDrUg-S/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="9. Budgeting Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('9. Budgeting Dashboard/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2840,8 +3035,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.54</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>95</td>
+                                <td>2</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2855,6 +3056,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('10__Recipe_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('10__Recipe_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('10__Recipe_Home_Screen', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('10__Recipe_Home_Screen', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="10__Recipe_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2915,6 +3117,15 @@ Requirements:
                                 
                                 <img src="10. Recipe Home Screen/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('10. Recipe Home Screen/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/18PbUQl-VqbIEBBwAvvQIIl-1W89zB6C7/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="10. Recipe Home Screen/Builder.png" alt="Builder.png" onclick="openLightbox('10. Recipe Home Screen/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2979,8 +3190,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>240</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.51</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>120</td>
+                                <td>3</td>
+                                <td>3</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2994,6 +3211,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('11__Fitness_Tracking', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('11__Fitness_Tracking', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('11__Fitness_Tracking', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('11__Fitness_Tracking', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="11__Fitness_Tracking_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3054,6 +3272,15 @@ Requirements:
                                 
                                 <img src="11. Fitness Tracking/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('11. Fitness Tracking/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1FTeyez7tgyXALKyAuUZ9xe6Rsll44vLL/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="11. Fitness Tracking/Builder.png" alt="Builder.png" onclick="openLightbox('11. Fitness Tracking/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3118,8 +3345,14 @@ Requirements:
                             <tr>
                                 <td>Vibecode</td>
                                 <td>330</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.82</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>110</td>
+                                <td>2</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3133,6 +3366,7 @@ Requirements:
                     <button class="tab-button tab-lovable" onclick="filterImages('12__Login_Register', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('12__Login_Register', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('12__Login_Register', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('12__Login_Register', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="12__Login_Register_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3225,6 +3459,15 @@ Requirements:
                                 
                                 <img src="12. Login Register/Vibecode-2.png" alt="Vibecode-2.png" onclick="openLightbox('12. Login Register/Vibecode-2.png', 'Vibecode-2.png')">
                                 <div class="image-label vibecode">Vibecode-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1zbJqPBRyKQV1xGal_NrX2u9T_qFWQ_Jq/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="12. Login Register/Builder.png" alt="Builder.png" onclick="openLightbox('12. Login Register/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3336,8 +3579,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>270</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.57</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>200</td>
+                                <td>6</td>
+                                <td>6</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3351,6 +3600,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-lovable" onclick="filterImages('13__Travel_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('13__Travel_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('13__Travel_Home_Screen', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('13__Travel_Home_Screen', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="13__Travel_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3411,6 +3661,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="13. Travel Home Screen/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('13. Travel Home Screen/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1CX7-0hS-tg39sdwki-iTqKFDkdY2mKqY/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="13. Travel Home Screen/Builder.png" alt="Builder.png" onclick="openLightbox('13. Travel Home Screen/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3475,8 +3734,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>295</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.61</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>175</td>
+                                <td>5</td>
+                                <td>5</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3490,6 +3755,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-lovable" onclick="filterImages('14__Burger_Joint', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('14__Burger_Joint', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('14__Burger_Joint', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('14__Burger_Joint', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="14__Burger_Joint_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3551,6 +3817,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="14. Burger Joint/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('14. Burger Joint/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1izMJyEkYVL62ptI-QjeL0nckSWhhS7vl/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="14. Burger Joint/Builder.png" alt="Builder.png" onclick="openLightbox('14. Burger Joint/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="15__Fitness_Home_Screen">
@@ -3566,7 +3841,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                     <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
                                 </svg>
                             </button>
-                            <pre>Recreate the inspiration attached</pre>
+                            <pre>Recreate the dashboard in the inspiration image attached</pre>
                         </div>
                     </div>                </div>
                 <div class="inspiration-section">
@@ -3616,8 +3891,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>540</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.24</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>235</td>
+                                <td>6</td>
+                                <td>6</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3631,6 +3912,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-lovable" onclick="filterImages('15__Fitness_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('15__Fitness_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('15__Fitness_Home_Screen', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('15__Fitness_Home_Screen', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="15__Fitness_Home_Screen_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -3660,12 +3942,23 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="15. Fitness Home Screen/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('15. Fitness Home Screen/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1Lhc8GRO6peAqAQvlk1jtZRwvPXVSk2ci/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="15. Fitness Home Screen/Builder.png" alt="Builder.png" onclick="openLightbox('15. Fitness Home Screen/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="16__Background_Dashboard">
                 <div class="project-header">
                     <h2>16. Background Dashboard</h2>
                 </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                </div>
                 <div class="inspiration-section">
                     <h3>Inspiration</h3>                    <img src="16. Background Dashboard/Inspiration.jpg" alt="Inspiration.jpg" class="inspiration-image" onclick="openLightbox('16. Background Dashboard/Inspiration.jpg')">                </div>
                 <div class="prompts-section">
@@ -3713,8 +4006,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>445</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>1.22</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>145</td>
+                                <td>3</td>
+                                <td>3</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3728,6 +4027,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-lovable" onclick="filterImages('16__Background_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('16__Background_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('16__Background_Dashboard', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('16__Background_Dashboard', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="16__Background_Dashboard_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -3761,12 +4061,23 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="16. Background Dashboard/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('16. Background Dashboard/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1j8gtYtszJNfQ72A1P0IB3TBbeELdkvBq/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="16. Background Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('16. Background Dashboard/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="17__Login_Email_Phone">
                 <div class="project-header">
                     <h2>17. Login Email Phone</h2>
                 </div>
+                <div class="prompts-section">
+                    <h3>Prompts</h3>                </div>
                 <div class="inspiration-section">
                     <h3>Inspiration</h3>                    <img src="17. LoginEmailPhone/Inspiration.jpg" alt="Inspiration.jpg" class="inspiration-image" onclick="openLightbox('17. LoginEmailPhone/Inspiration.jpg')">                </div>
                 <div class="prompts-section">
@@ -3814,8 +4125,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>380</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.92</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>155</td>
+                                <td>4</td>
+                                <td>4</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3829,6 +4146,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-lovable" onclick="filterImages('17__Login_Email_Phone', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('17__Login_Email_Phone', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('17__Login_Email_Phone', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('17__Login_Email_Phone', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="17__Login_Email_Phone_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -3861,6 +4179,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="17. LoginEmailPhone/Vibecode.png" alt="Vibecode.png" onclick="openLightbox('17. LoginEmailPhone/Vibecode.png', 'Vibecode.png')">
                                 <div class="image-label vibecode">Vibecode.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1KaH7EEQjtiysAoDFIAULe6EfPVas-ewc/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="17. LoginEmailPhone/Builder.png" alt="Builder.png" onclick="openLightbox('17. LoginEmailPhone/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3915,8 +4242,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                             <tr>
                                 <td>Vibecode</td>
                                 <td>730</td>
-                                <td>push(System.Collections.Hashtable.VibecodeCredits)</td>
+                                <td>(System.Collections.Hashtable.VibecodeCredits)</td>
                                 <td>0.76</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>120</td>
+                                <td>2</td>
+                                <td>2</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3930,6 +4263,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-lovable" onclick="filterImages('18__MeowFlix', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('18__MeowFlix', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('18__MeowFlix', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('18__MeowFlix', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="18__MeowFlix_images">                    <div class="tool-group" data-tool-group="vibecode">
@@ -3944,6 +4278,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="18. MeowFlix/Vibecode-2.png" alt="Vibecode-2.png" onclick="openLightbox('18. MeowFlix/Vibecode-2.png', 'Vibecode-2.png')">
                                 <div class="image-label vibecode">Vibecode-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="builder">
+                        <div class="tool-group-header builder">BUILDER</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1HFHJ2Fbgh7j3ws-eOaGKhu64Zwo547UN/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="builder">
+                                
+                                <img src="18. MeowFlix/Builder.png" alt="Builder.png" onclick="openLightbox('18. MeowFlix/Builder.png', 'Builder.png')">
+                                <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>

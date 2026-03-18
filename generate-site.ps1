@@ -5,24 +5,24 @@ $outputFile = Join-Path $basePath "index.html"
 
 # Performance data for summary
 $performanceData = @(
-    @{ Name = "1. Flight Details"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 105; LovableTime = 180; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 200; DreamflowCredits = 3.4; DreamflowPages = 2; VibecodeTime = 780; VibecodeCredits = 1.96; VibecodePages = 1 }
-    @{ Name = "2. Football Fantasy"; AntigravityTime = 65; UnoVSCodeTime = 110; UnoVSCodeMCPTime = 170; LovableTime = 420; LovableCredits = 2.9; LovablePages = 1; DreamflowTime = 500; DreamflowCredits = 11.5; DreamflowPages = 1; VibecodeTime = 1490; VibecodeCredits = 0.54; VibecodePages = 2 }
-    @{ Name = "3. Travel Guide"; AntigravityTime = 80; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 230; LovableCredits = 2.4; LovablePages = 1; DreamflowTime = 170; DreamflowCredits = 4.1; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.1; VibecodePages = 1 }
-    @{ Name = "4. Electric Utility Dashboard"; AntigravityTime = 95; UnoVSCodeTime = 115; UnoVSCodeMCPTime = 290; LovableTime = 160; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 3.9; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.5; VibecodePages = 1 }
-    @{ Name = "5. Video Streaming"; AntigravityTime = 90; UnoVSCodeTime = 105; UnoVSCodeMCPTime = 160; LovableTime = 270; LovableCredits = 2.5; LovablePages = 2; DreamflowTime = 330; DreamflowCredits = 5.8; DreamflowPages = 4; VibecodeTime = 1080; VibecodeCredits = 6.37; VibecodePages = 2 }
-    @{ Name = "6. Notes"; AntigravityTime = 90; UnoVSCodeTime = 275; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 2; LovablePages = 3; DreamflowTime = 210; DreamflowCredits = 3.8; DreamflowPages = 3; VibecodeTime = 450; VibecodeCredits = 1.49; VibecodePages = 1 }
-    @{ Name = "7. Calendar"; AntigravityTime = 75; UnoVSCodeTime = 210; UnoVSCodeMCPTime = 230; LovableTime = 290; LovableCredits = 2.2; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 7; DreamflowPages = 1; VibecodeTime = 285; VibecodeCredits = 0.69; VibecodePages = 1 }
-    @{ Name = "8. Hospital Dashboard"; AntigravityTime = 85; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 260; DreamflowCredits = 4.4; DreamflowPages = 1; VibecodeTime = 680; VibecodeCredits = 2.52; VibecodePages = 1 }
-    @{ Name = "9. Budgeting Dashboard"; AntigravityTime = 80; UnoVSCodeTime = 160; UnoVSCodeMCPTime = 140; LovableTime = 150; LovableCredits = 1.7; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 5.4; DreamflowPages = 1; VibecodeTime = 1095; VibecodeCredits = 1.15; VibecodePages = 1 }
-    @{ Name = "10. Recipe Home Screen"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 170; LovableTime = 120; LovableCredits = 1.6; LovablePages = 1; DreamflowTime = 185; DreamflowCredits = 4.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.54; VibecodePages = 1 }
-    @{ Name = "11. Fitness Tracking"; AntigravityTime = 75; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 200; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 3.5; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.51; VibecodePages = 1 }
-    @{ Name = "12. Login Register"; AntigravityTime = 60; UnoVSCodeTime = 90; UnoVSCodeMCPTime = 300; LovableTime = 155; LovableCredits = 2.1; LovablePages = 2; DreamflowTime = 255; DreamflowCredits = 3.5; DreamflowPages = 2; VibecodeTime = 330; VibecodeCredits = 0.82; VibecodePages = 1 }
-    @{ Name = "13. Travel Home Screen"; AntigravityTime = 75; UnoVSCodeTime = 400; UnoVSCodeMCPTime = 240; LovableTime = 210; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 8.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.57; VibecodePages = 1 }
-    @{ Name = "14. Burger Joint"; AntigravityTime = 80; UnoVSCodeTime = 100; UnoVSCodeMCPTime = 330; LovableTime = 200; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 3.4; DreamflowPages = 1; VibecodeTime = 295; VibecodeCredits = 0.61; VibecodePages = 1 }
-    @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1 }
-    @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1 }
-    @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1 }
-    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2 }
+    @{ Name = "1. Flight Details"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 105; LovableTime = 180; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 200; DreamflowCredits = 3.4; DreamflowPages = 2; VibecodeTime = 780; VibecodeCredits = 1.96; VibecodePages = 1; BuilderTime = 380; BuilderCredits = 14; BuilderPages = 1 }
+    @{ Name = "2. Football Fantasy"; AntigravityTime = 65; UnoVSCodeTime = 110; UnoVSCodeMCPTime = 170; LovableTime = 420; LovableCredits = 2.9; LovablePages = 1; DreamflowTime = 500; DreamflowCredits = 11.5; DreamflowPages = 1; VibecodeTime = 1490; VibecodeCredits = 0.54; VibecodePages = 2; BuilderTime = 180; BuilderCredits = 5; BuilderPages = 3 }
+    @{ Name = "3. Travel Guide"; AntigravityTime = 80; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 230; LovableCredits = 2.4; LovablePages = 1; DreamflowTime = 170; DreamflowCredits = 4.1; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.1; VibecodePages = 1; BuilderTime = 160; BuilderCredits = 4; BuilderPages = 2 }
+    @{ Name = "4. Electric Utility Dashboard"; AntigravityTime = 95; UnoVSCodeTime = 115; UnoVSCodeMCPTime = 290; LovableTime = 160; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 3.9; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.5; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1 }
+    @{ Name = "5. Video Streaming"; AntigravityTime = 90; UnoVSCodeTime = 105; UnoVSCodeMCPTime = 160; LovableTime = 270; LovableCredits = 2.5; LovablePages = 2; DreamflowTime = 330; DreamflowCredits = 5.8; DreamflowPages = 4; VibecodeTime = 1080; VibecodeCredits = 6.37; VibecodePages = 2; BuilderTime = 160; BuilderCredits = 4; BuilderPages = 2 }
+    @{ Name = "6. Notes"; AntigravityTime = 90; UnoVSCodeTime = 275; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 2; LovablePages = 3; DreamflowTime = 210; DreamflowCredits = 3.8; DreamflowPages = 3; VibecodeTime = 450; VibecodeCredits = 1.49; VibecodePages = 1; BuilderTime = 125; BuilderCredits = 2; BuilderPages = 1 }
+    @{ Name = "7. Calendar"; AntigravityTime = 75; UnoVSCodeTime = 210; UnoVSCodeMCPTime = 230; LovableTime = 290; LovableCredits = 2.2; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 7; DreamflowPages = 1; VibecodeTime = 285; VibecodeCredits = 0.69; VibecodePages = 1; BuilderTime = 125; BuilderCredits = 3; BuilderPages = 1 }
+    @{ Name = "8. Hospital Dashboard"; AntigravityTime = 85; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 260; DreamflowCredits = 4.4; DreamflowPages = 1; VibecodeTime = 680; VibecodeCredits = 2.52; VibecodePages = 1; BuilderTime = 100; BuilderCredits = 2; BuilderPages = 1 }
+    @{ Name = "9. Budgeting Dashboard"; AntigravityTime = 80; UnoVSCodeTime = 160; UnoVSCodeMCPTime = 140; LovableTime = 150; LovableCredits = 1.7; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 5.4; DreamflowPages = 1; VibecodeTime = 1095; VibecodeCredits = 1.15; VibecodePages = 1; BuilderTime = 105; BuilderCredits = 2; BuilderPages = 1 }
+    @{ Name = "10. Recipe Home Screen"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 170; LovableTime = 120; LovableCredits = 1.6; LovablePages = 1; DreamflowTime = 185; DreamflowCredits = 4.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.54; VibecodePages = 1; BuilderTime = 95; BuilderCredits = 2; BuilderPages = 1 }
+    @{ Name = "11. Fitness Tracking"; AntigravityTime = 75; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 200; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 3.5; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.51; VibecodePages = 1; BuilderTime = 120; BuilderCredits = 3; BuilderPages = 1 }
+    @{ Name = "12. Login Register"; AntigravityTime = 60; UnoVSCodeTime = 90; UnoVSCodeMCPTime = 300; LovableTime = 155; LovableCredits = 2.1; LovablePages = 2; DreamflowTime = 255; DreamflowCredits = 3.5; DreamflowPages = 2; VibecodeTime = 330; VibecodeCredits = 0.82; VibecodePages = 1; BuilderTime = 110; BuilderCredits = 2; BuilderPages = 1 }
+    @{ Name = "13. Travel Home Screen"; AntigravityTime = 75; UnoVSCodeTime = 400; UnoVSCodeMCPTime = 240; LovableTime = 210; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 8.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.57; VibecodePages = 1; BuilderTime = 200; BuilderCredits = 6; BuilderPages = 1 }
+    @{ Name = "14. Burger Joint"; AntigravityTime = 80; UnoVSCodeTime = 100; UnoVSCodeMCPTime = 330; LovableTime = 200; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 3.4; DreamflowPages = 1; VibecodeTime = 295; VibecodeCredits = 0.61; VibecodePages = 1; BuilderTime = 175; BuilderCredits = 5; BuilderPages = 1 }
+    @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1; BuilderTime = 235; BuilderCredits = 6; BuilderPages = 1 }
+    @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1; BuilderTime = 145; BuilderCredits = 3; BuilderPages = 1 }
+    @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1 }
+    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2; BuilderTime = 120; BuilderCredits = 2; BuilderPages = 1 }
 )
 
 # Google Drive video links (Vibecode demos)
@@ -45,6 +45,28 @@ $vibecodeDriveLinks = @{
     "16. Background Dashboard" = "https://drive.google.com/file/d/1V2IgSL3AYRiisaroJDioptomDd73AwOu/view?usp=drive_link"
     "17. Login Email Phone" = "https://drive.google.com/file/d/1V2IgSL3AYRiisaroJDioptomDd73AwOu/view?usp=drive_link"
     "18. MeowFlix" = "https://drive.google.com/file/d/18mLYLer1mv_NBX6ibFTvC5Dc8lG8qPhS/view?usp=drive_link"
+}
+
+# Google Drive video links (Builder demos)
+$builderDriveLinks = @{
+    "1. Flight Details" = "https://drive.google.com/file/d/1i6wLoFj_wG9O6X0nQS10nOI8pEqK3tnj/view?usp=drive_link"
+    "2. Football Fantasy" = "https://drive.google.com/file/d/1-c1pPXjp2s4ooIrJ0-Cwyq06l5udRJ1f/view?usp=drive_link"
+    "3. Travel Guide" = "https://drive.google.com/file/d/1EDBKBO5VXPTJB1QnJu7xOApN-kSVycRn/view?usp=drive_link"
+    "4. Electric Utility Dashboard" = "https://drive.google.com/file/d/1HDYn3pKRHfyceAwjTGoYmwKUJtd9i1XU/view?usp=drive_link"
+    "5. Video Streaming" = "https://drive.google.com/file/d/1dtWEB6qvXJDh80M3U1x-dlW9vRyGuiMS/view?usp=drive_link"
+    "6. Notes" = "https://drive.google.com/file/d/1zqjmkv-ymkhPJRRWzrrw0Fe4jghPdS2m/view?usp=drive_link"
+    "7. Calendar" = "https://drive.google.com/file/d/1iHIpZrnPtERPXbRM9APkoEOQmleDuJg4/view?usp=drive_link"
+    "8. Hospital Dashboard" = "https://drive.google.com/file/d/1vlydaX1-hQR07IW7Br24O9U60FwgreES/view?usp=drive_link"
+    "9. Budgeting Dashboard" = "https://drive.google.com/file/d/1EqSMqLDtU0n5Gemh5f2E4XSFseDrUg-S/view?usp=drive_link"
+    "10. Recipe Home Screen" = "https://drive.google.com/file/d/18PbUQl-VqbIEBBwAvvQIIl-1W89zB6C7/view?usp=drive_link"
+    "11. Fitness Tracking" = "https://drive.google.com/file/d/1FTeyez7tgyXALKyAuUZ9xe6Rsll44vLL/view?usp=drive_link"
+    "12. Login Register" = "https://drive.google.com/file/d/1zbJqPBRyKQV1xGal_NrX2u9T_qFWQ_Jq/view?usp=drive_link"
+    "13. Travel Home Screen" = "https://drive.google.com/file/d/1CX7-0hS-tg39sdwki-iTqKFDkdY2mKqY/view?usp=drive_link"
+    "14. Burger Joint" = "https://drive.google.com/file/d/1izMJyEkYVL62ptI-QjeL0nckSWhhS7vl/view?usp=drive_link"
+    "15. Fitness Home Screen" = "https://drive.google.com/file/d/1Lhc8GRO6peAqAQvlk1jtZRwvPXVSk2ci/view?usp=drive_link"
+    "16. Background Dashboard" = "https://drive.google.com/file/d/1j8gtYtszJNfQ72A1P0IB3TBbeELdkvBq/view?usp=drive_link"
+    "17. Login Email Phone" = "https://drive.google.com/file/d/1KaH7EEQjtiysAoDFIAULe6EfPVas-ewc/view?usp=drive_link"
+    "18. MeowFlix" = "https://drive.google.com/file/d/1HFHJ2Fbgh7j3ws-eOaGKhu64Zwo547UN/view?usp=drive_link"
 }
 
 # Get all project folders and sort numerically
@@ -96,6 +118,7 @@ foreach ($folder in $folders) {
         Images = @()
         InspirationImages = @()
         VibecodeVideoUrl = $vibecodeDriveLinks[$projectName]
+        BuilderVideoUrl = $builderDriveLinks[$projectName]
     }
     
     foreach ($image in $images) {
@@ -130,6 +153,8 @@ foreach ($folder in $folders) {
             $tool = "dreamflow"
         } elseif ($imageName -match "^Vibecode") {
             $tool = "vibecode"
+        } elseif ($imageName -match "^Builder") {
+            $tool = "builder"
         }
         
         $projectData.Images += @{
@@ -617,6 +642,21 @@ $html = @"
             border-color: transparent;
         }
 
+        .tab-builder {
+            border-color: #2ecc71;
+            color: #2ecc71;
+        }
+
+        .tab-builder:hover {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .tab-builder.active.active-tool {
+            background: #2ecc71;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -666,6 +706,10 @@ $html = @"
 
         .tool-group-header.vibecode {
             background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .tool-group-header.builder {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
         .video-container {
@@ -822,6 +866,12 @@ $html = @"
             background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
         }
 
+        .summary-table th:nth-child(14),
+        .summary-table th:nth-child(15),
+        .summary-table th:nth-child(16) {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
         .summary-table th:last-child {
             border-top-right-radius: 8px;
         }
@@ -876,6 +926,12 @@ $html = @"
         .summary-table td:nth-child(8),
         .summary-table td:nth-child(9),
         .summary-table td:nth-child(10),
+        .summary-table td:nth-child(11),
+        .summary-table td:nth-child(12),
+        .summary-table td:nth-child(13),
+        .summary-table td:nth-child(14),
+        .summary-table td:nth-child(15),
+        .summary-table td:nth-child(16),
         .summary-table th:nth-child(2),
         .summary-table th:nth-child(3),
         .summary-table th:nth-child(4),
@@ -884,7 +940,13 @@ $html = @"
         .summary-table th:nth-child(7),
         .summary-table th:nth-child(8),
         .summary-table th:nth-child(9),
-        .summary-table th:nth-child(10) {
+        .summary-table th:nth-child(10),
+        .summary-table th:nth-child(11),
+        .summary-table th:nth-child(12),
+        .summary-table th:nth-child(13),
+        .summary-table th:nth-child(14),
+        .summary-table th:nth-child(15),
+        .summary-table th:nth-child(16) {
             text-align: center;
         }
 
@@ -1119,6 +1181,9 @@ $html += @"
                             <th data-view="time" class="view-active">Vibecode<br>Time (s)</th>
                             <th data-view="cost">Vibecode<br>Cost ($)</th>
                             <th data-view="costperpage">Vibecode<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active">Builder<br>Time (s)</th>
+                            <th data-view="cost">Builder<br>Credits</th>
+                            <th data-view="costperpage">Builder<br>Credits/Page</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1130,9 +1195,10 @@ foreach ($data in $performanceData) {
     $lovableCostPerPage = [math]::Round(($data.LovableCredits * 0.43) / $data.LovablePages, 2)
     $dreamflowCostPerPage = [math]::Round(($data.DreamflowCredits * 0.18) / $data.DreamflowPages, 2)
     $vibecodeCostPerPage = if ($data.VibecodePages -gt 0) { [math]::Round($data.VibecodeCredits / $data.VibecodePages, 2) } else { 0 }
+    $builderCreditsPerPage = if ($data.BuilderPages -gt 0) { [math]::Round($data.BuilderCredits / $data.BuilderPages, 2) } else { 0 }
     
     # Get all time values for comparison
-    $allTimes = @($data.AntigravityTime, $data.UnoVSCodeTime, $data.UnoVSCodeMCPTime, $data.LovableTime, $data.DreamflowTime, $data.VibecodeTime)
+    $allTimes = @($data.AntigravityTime, $data.UnoVSCodeTime, $data.UnoVSCodeMCPTime, $data.LovableTime, $data.DreamflowTime, $data.VibecodeTime, $data.BuilderTime)
     $minTime = ($allTimes | Measure-Object -Minimum).Minimum
     $maxTime = ($allTimes | Measure-Object -Maximum).Maximum
     
@@ -1143,6 +1209,7 @@ foreach ($data in $performanceData) {
     $lovableTimeClass = if ($data.LovableTime -eq $minTime) { "value-better" } elseif ($data.LovableTime -eq $maxTime) { "value-worse" } else { "" }
     $dreamflowTimeClass = if ($data.DreamflowTime -eq $minTime) { "value-better" } elseif ($data.DreamflowTime -eq $maxTime) { "value-worse" } else { "" }
     $vibecodeTimeClass = if ($data.VibecodeTime -eq $minTime) { "value-better" } elseif ($data.VibecodeTime -eq $maxTime) { "value-worse" } else { "" }
+    $builderTimeClass = if ($data.BuilderTime -eq $minTime) { "value-better" } elseif ($data.BuilderTime -eq $maxTime) { "value-worse" } else { "" }
     
     # Determine which tool is better for credits
     $lovableCreditsClass = if ($data.LovableCredits -lt $data.DreamflowCredits -and $data.LovableCredits -lt $data.VibecodeCredits) { "value-better" } elseif ($data.LovableCredits -gt $data.DreamflowCredits -and $data.LovableCredits -gt $data.VibecodeCredits) { "value-worse" } else { "" }
@@ -1167,6 +1234,9 @@ foreach ($data in $performanceData) {
     $vibecodeTimeDisplay = if ($data.VibecodeTime -eq 0) { "" } else { $data.VibecodeTime }
     $vibecodeCreditsDisplay = if ($data.VibecodeCredits -eq 0) { "" } else { $data.VibecodeCredits }
     $vibecodeCostDisplay = if ($vibecodeCostPerPage -eq 0) { "" } else { $vibecodeCostPerPage }
+    $builderTimeDisplay = if ($data.BuilderTime -eq 0) { "" } else { $data.BuilderTime }
+    $builderCreditsDisplay = if ($data.BuilderCredits -eq 0) { "" } else { $data.BuilderCredits }
+    $builderCostDisplay = if ($builderCreditsPerPage -eq 0) { "" } else { $builderCreditsPerPage }
     
     $html += @"
                         <tr>
@@ -1183,6 +1253,9 @@ foreach ($data in $performanceData) {
                             <td data-view="time" class="view-active $vibecodeTimeClass">$vibecodeTimeDisplay</td>
                             <td data-view="cost" class="$vibecodeCreditsClass">$vibecodeCreditsDisplay</td>
                             <td data-view="costperpage" class="$vibecodeCostClass">$vibecodeCostDisplay</td>
+                            <td data-view="time" class="view-active $builderTimeClass">$builderTimeDisplay</td>
+                            <td data-view="cost">$builderCreditsDisplay</td>
+                            <td data-view="costperpage">$builderCostDisplay</td>
                         </tr>
 "@
 }
@@ -1198,6 +1271,9 @@ $dreamflowCreditsTotal = 0
 $vibecodeTimeTotal = 0
 $vibecodeCreditsTotal = 0
 $vibecodeCount = 0
+$builderTimeTotal = 0
+$builderCreditsTotal = 0
+$builderCount = 0
 foreach ($d in $performanceData) {
     $antigravityTotal += $d.AntigravityTime
     $unoVSCodeTotal += $d.UnoVSCodeTime
@@ -1209,6 +1285,9 @@ foreach ($d in $performanceData) {
     $vibecodeTimeTotal += $d.VibecodeTime
     $vibecodeCreditsTotal += $d.VibecodeCredits
     if ($d.VibecodeTime -gt 0) { $vibecodeCount++ }
+    $builderTimeTotal += $d.BuilderTime
+    $builderCreditsTotal += $d.BuilderCredits
+    if ($d.BuilderTime -gt 0) { $builderCount++ }
 }
 $count = $performanceData.Count
 $antigravityAvg = [math]::Round($antigravityTotal / $count, 1)
@@ -1221,6 +1300,9 @@ $dreamflowCreditsAvg = [math]::Round($dreamflowCreditsTotal / $count, 1)
 $vibecodeTimeAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeTimeTotal / $vibecodeCount, 1) } else { "" }
 $vibecodeCreditsAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { "" }
 $vibecodeCostPerPageAvg = if ($vibecodeCount -gt 0) { [math]::Round($vibecodeCreditsTotal / $vibecodeCount, 2) } else { "" }
+$builderTimeAvg = if ($builderCount -gt 0) { [math]::Round($builderTimeTotal / $builderCount, 1) } else { "" }
+$builderCreditsAvg = if ($builderCount -gt 0) { [math]::Round($builderCreditsTotal / $builderCount, 1) } else { "" }
+$builderCreditsPerPageAvg = if ($builderCount -gt 0) { [math]::Round($builderCreditsTotal / $builderCount, 2) } else { "" }
 
 $html += @"
                         <tr>
@@ -1237,6 +1319,9 @@ $html += @"
                             <td data-view="time" class="view-active">$vibecodeTimeAvg</td>
                             <td data-view="cost">$vibecodeCreditsAvg</td>
                             <td data-view="costperpage">$vibecodeCostPerPageAvg</td>
+                            <td data-view="time" class="view-active">$builderTimeAvg</td>
+                            <td data-view="cost">$builderCreditsAvg</td>
+                            <td data-view="costperpage">$builderCreditsPerPageAvg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1276,7 +1361,9 @@ foreach ($project in $projectsData) {
             $trimmed = $line.Trim()
             if ($trimmed -eq "UNO" -or $trimmed -eq "LOVABLE" -or $trimmed -eq "DREAMFLOW") {
                 $currentTool = $trimmed
-            } elseif ($trimmed -and $currentTool) {
+            } elseif ($trimmed -eq "BUILDER") {
+                $currentTool = "BUILDER"
+            } elseif ($trimmed -and $currentTool -and $currentTool -ne "BUILDER") {
                 $toolContent[$currentTool] += $trimmed
             }
         }
@@ -1506,6 +1593,9 @@ foreach ($project in $projectsData) {
         $dreamflowCreditsDisplay = if ($projectPerf.DreamflowCredits -eq 0) { "" } else { $projectPerf.DreamflowCredits }
         $vibecodeTimeDisplay = if ($projectPerf.VibecodeTime -eq 0) { "" } else { $projectPerf.VibecodeTime }
         $vibecodeCreditsDisplay = if ($projectPerf.VibecodeCredits -eq 0) { "" } else { "$$($projectPerf.VibecodeCredits)" }
+        $builderTimeDisplay = if ($projectPerf.BuilderTime -eq 0) { "" } else { $projectPerf.BuilderTime }
+        $builderCreditsDisplay = if ($projectPerf.BuilderCredits -eq 0) { "" } else { $projectPerf.BuilderCredits }
+        $builderCreditsPerPage = if ($projectPerf.BuilderPages -gt 0 -and $projectPerf.BuilderCredits -gt 0) { [math]::Round($projectPerf.BuilderCredits / $projectPerf.BuilderPages, 2) } else { "" }
         
         $html += @"
                 <div class="prompts-section">
@@ -1556,6 +1646,12 @@ foreach ($project in $projectsData) {
                                 <td>$vibecodeCreditsDisplay</td>
                                 <td>$vibecodeCostPerPage</td>
                             </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>$builderTimeDisplay</td>
+                                <td>$builderCreditsDisplay</td>
+                                <td>$builderCreditsPerPage</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1574,6 +1670,7 @@ foreach ($project in $projectsData) {
                     <button class="tab-button tab-lovable" onclick="filterImages('$projectId', 'lovable')">Lovable</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('$projectId', 'vibecode')">Vibecode</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('$projectId', 'builder')">Builder</button>
                 </div>
 
                 <div class="images-grid" id="${projectId}_images">
@@ -1588,6 +1685,7 @@ foreach ($project in $projectsData) {
         "lovable" = @()
         "dreamflow" = @()
         "vibecode" = @()
+        "builder" = @()
         "other" = @()
     }
     
@@ -1596,10 +1694,10 @@ foreach ($project in $projectsData) {
     }
     
     # Generate tool sections
-    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "vibecode", "other")
+    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "vibecode", "builder", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
-        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl)) {
+        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl)) {
             $toolDisplayName = switch ($toolName) {
                 "antigravity" { "ANTIGRAVITY" }
                 "uno" { "UNO HD" }
@@ -1608,6 +1706,7 @@ foreach ($project in $projectsData) {
                 "lovable" { "LOVABLE" }
                 "dreamflow" { "DREAMFLOW" }
                 "vibecode" { "VIBECODE" }
+                "builder" { "BUILDER" }
                 default { $toolName.ToUpper() }
             }
             
@@ -1621,6 +1720,17 @@ foreach ($project in $projectsData) {
             if ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) {
                 # Convert Google Drive view URL to embed URL
                 $embedUrl = $project.VibecodeVideoUrl -replace '/view\?usp=drive_link', '/preview'
+                $html += @"
+                            <div class="video-container">
+                                <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>
+"@
+            }
+            
+            # Add video embed for Builder if URL exists
+            if ($toolName -eq "builder" -and $project.BuilderVideoUrl) {
+                # Convert Google Drive view URL to embed URL
+                $embedUrl = $project.BuilderVideoUrl -replace '/view\?usp=drive_link', '/preview'
                 $html += @"
                             <div class="video-container">
                                 <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
