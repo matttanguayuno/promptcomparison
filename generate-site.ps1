@@ -1355,6 +1355,7 @@ foreach ($project in $projectsData) {
         # Parse prompts
         $promptLines = $project.Prompts -split "`n"
         $currentTool = ""
+        $defaultPrompt = @()
         $toolContent = @{
             "UNO" = @()
             "LOVABLE" = @()
@@ -1367,6 +1368,8 @@ foreach ($project in $projectsData) {
                 $currentTool = $trimmed
             } elseif ($trimmed -eq "BUILDER") {
                 $currentTool = "BUILDER"
+            } elseif ($trimmed -and $currentTool -eq "") {
+                $defaultPrompt += $trimmed
             } elseif ($trimmed -and $currentTool -and $currentTool -ne "BUILDER") {
                 $toolContent[$currentTool] += $trimmed
             }
@@ -1377,9 +1380,30 @@ foreach ($project in $projectsData) {
         if ($toolContent["UNO"].Count -gt 0) { $toolsWithContent++ }
         if ($toolContent["LOVABLE"].Count -gt 0) { $toolsWithContent++ }
         if ($toolContent["DREAMFLOW"].Count -gt 0) { $toolsWithContent++ }
+        if ($defaultPrompt.Count -gt 0) { $toolsWithContent++ }
         
         # If only one tool, don't show header
         $showHeaders = $toolsWithContent -gt 1
+        
+        # Render default prompt (text before any tool section)
+        if ($defaultPrompt.Count -gt 0) {
+            $defaultText = ($defaultPrompt -join "`n")
+            $defaultText = $defaultText -replace '<', '&lt;' -replace '>', '&gt;'
+            
+            $html += @"
+                    <div class="tool-section-single">
+                        <div class="prompt-container">
+                            <button class="copy-btn" onclick="copyPrompt(this)" title="Copy to clipboard">
+                                <svg class="copy-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                </svg>
+                            </button>
+                            <pre>$defaultText</pre>
+                        </div>
+                    </div>
+"@
+        }
         
         if ($toolContent["UNO"].Count -gt 0) {
             $unoText = ($toolContent["UNO"] -join "`n")
