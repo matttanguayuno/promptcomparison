@@ -10,3 +10,7 @@ Requirements:
 BUILDER
 Video: https://drive.google.com/file/d/1dtWEB6qvXJDh80M3U1x-dlW9vRyGuiMS/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/1CtLcbWFRmj8wgimYWe8P-2wTKrzb39mw/view?usp=drive_link
+Screenshots: See project folder

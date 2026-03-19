@@ -4,3 +4,7 @@ Design a 'Netflix for Cats' app interface where users can subscribe to live stre
 BUILDER
 Video: https://drive.google.com/file/d/1HFHJ2Fbgh7j3ws-eOaGKhu64Zwo547UN/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/1NGqdTow7XYmQJ1NXngcB40s0dwNaJ3f9/view?usp=drive_link
+Screenshots: See project folder

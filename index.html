@@ -464,6 +464,21 @@
             border-color: transparent;
         }
 
+        .tab-bolt {
+            border-color: #1389FD;
+            color: #1389FD;
+        }
+
+        .tab-bolt:hover {
+            background: #1389FD;
+            color: white;
+        }
+
+        .tab-bolt.active.active-tool {
+            background: #1389FD;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -517,6 +532,10 @@
 
         .tool-group-header.builder {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .tool-group-header.bolt {
+            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
         }
 
         .video-container {
@@ -669,6 +688,10 @@
 
         .summary-table th.tool-builder {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .summary-table th.tool-bolt {
+            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
         }
 
         .summary-table th:last-child {
@@ -1519,6 +1542,13 @@
                                 <td>0.67</td>
                                 <td>0.67</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1532,6 +1562,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('1__Flight_Details', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('1__Flight_Details', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('1__Flight_Details', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('1__Flight_Details', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="1__Flight_Details_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1630,13 +1661,18 @@
                                 <img src="1. Flight Details/Builder.png" alt="Builder.png" onclick="openLightbox('1. Flight Details/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1SNYktZUdHAf2q28MvKk_DmLNDrYElwrB/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
+                                
+                                <img src="1. Flight Details/Bolt.png" alt="Bolt.png" onclick="openLightbox('1. Flight Details/Bolt.png', 'Bolt.png')">
+                                <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="other">
                         <div class="tool-group-header other">OTHER</div>
                         <div class="tool-group-images">                            <div class="image-card" data-tool="other">
-                                
-                                <img src="1. Flight Details/Bolt.png" alt="Bolt.png" onclick="openLightbox('1. Flight Details/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
                                 
                                 <img src="1. Flight Details/Uno Studio Live - 1.png" alt="Uno Studio Live - 1.png" onclick="openLightbox('1. Flight Details/Uno Studio Live - 1.png', 'Uno Studio Live - 1.png')">
                                 <div class="image-label other">Uno Studio Live - 1.png</div>
@@ -1725,6 +1761,13 @@
                                 <td>0.24</td>
                                 <td>0.08</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1738,6 +1781,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('2__Football_Fantasy', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('2__Football_Fantasy', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('2__Football_Fantasy', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('2__Football_Fantasy', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="2__Football_Fantasy_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1860,12 +1904,14 @@
                                 <img src="2. Football Fantasy/Builder-3.png" alt="Builder-3.png" onclick="openLightbox('2. Football Fantasy/Builder-3.png', 'Builder-3.png')">
                                 <div class="image-label builder">Builder-3.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1zxUiLWcyqDrWuI5o3nclDTJBsF2LcQMh/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="2. Football Fantasy/Bolt.png" alt="Bolt.png" onclick="openLightbox('2. Football Fantasy/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -1954,6 +2000,13 @@
                                 <td>0.19</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1967,6 +2020,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('3__Travel_Guide', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('3__Travel_Guide', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('3__Travel_Guide', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('3__Travel_Guide', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="3__Travel_Guide_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2057,6 +2111,11 @@
                                 <img src="3. Travel Guide/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('3. Travel Guide/Builder-2.png', 'Builder-2.png')">
                                 <div class="image-label builder">Builder-2.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1wESirzeF57tRYZqkLQN06xUCGfCRsA8G/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="4__Electric_Utility_Dashboard">
@@ -2143,6 +2202,13 @@ Requirements:
                                 <td>0.19</td>
                                 <td>0.19</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2156,6 +2222,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('4__Electric_Utility_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('4__Electric_Utility_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('4__Electric_Utility_Dashboard', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('4__Electric_Utility_Dashboard', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2226,12 +2293,14 @@ Requirements:
                                 <img src="4. Electric Utility Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('4. Electric Utility Dashboard/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1IrRdPBX0-5N-I5EjKPxJQoKRn6pI6BBk/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="4. Electric Utility Dashboard/Bolt.png" alt="Bolt.png" onclick="openLightbox('4. Electric Utility Dashboard/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2317,6 +2386,13 @@ Requirements:
                                 <td>0.19</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2330,6 +2406,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('5__Video_Streaming', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('5__Video_Streaming', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('5__Video_Streaming', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('5__Video_Streaming', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="5__Video_Streaming_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2444,12 +2521,14 @@ Requirements:
                                 <img src="5. Video Streaming/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('5. Video Streaming/Builder-2.png', 'Builder-2.png')">
                                 <div class="image-label builder">Builder-2.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1CtLcbWFRmj8wgimYWe8P-2wTKrzb39mw/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="5. Video Streaming/Bolt.png" alt="Bolt.png" onclick="openLightbox('5. Video Streaming/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2531,6 +2610,13 @@ Requirements:
                                 <td>0.1</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2544,6 +2630,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('6__Notes', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('6__Notes', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('6__Notes', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('6__Notes', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="6__Notes_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2646,16 +2733,18 @@ Requirements:
                                 <img src="6. Notes/Builder.png" alt="Builder.png" onclick="openLightbox('6. Notes/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/14gQx2vpCSqBIylWpp0s-T8QyY8zR8YTy/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="6. Notes/Bolt-1.png" alt="Bolt-1.png" onclick="openLightbox('6. Notes/Bolt-1.png', 'Bolt-1.png')">
-                                <div class="image-label other">Bolt-1.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label bolt">Bolt-1.png</div>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="6. Notes/Bolt-2.png" alt="Bolt-2.png" onclick="openLightbox('6. Notes/Bolt-2.png', 'Bolt-2.png')">
-                                <div class="image-label other">Bolt-2.png</div>
+                                <div class="image-label bolt">Bolt-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2737,6 +2826,13 @@ Requirements:
                                 <td>0.14</td>
                                 <td>0.14</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2750,6 +2846,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('7__Calendar', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('7__Calendar', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('7__Calendar', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('7__Calendar', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="7__Calendar_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2840,12 +2937,14 @@ Requirements:
                                 <img src="7. Calendar/Builder-2.png" alt="Builder-2.png" onclick="openLightbox('7. Calendar/Builder-2.png', 'Builder-2.png')">
                                 <div class="image-label builder">Builder-2.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1hpc1tQ1-M5F15pCAQzzYQkGXELqOEw6I/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="7. Calendar/Bolt.png" alt="Bolt.png" onclick="openLightbox('7. Calendar/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2927,6 +3026,13 @@ Requirements:
                                 <td>0.1</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2940,6 +3046,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('8__Hospital_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('8__Hospital_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('8__Hospital_Dashboard', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('8__Hospital_Dashboard', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="8__Hospital_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3010,12 +3117,14 @@ Requirements:
                                 <img src="8. Hospital Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('8. Hospital Dashboard/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1dFPi08toVxuiBk_D-mz769UtQXegitQw/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="8. Hospital Dashboard/Bolt.png" alt="Bolt.png" onclick="openLightbox('8. Hospital Dashboard/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3097,6 +3206,13 @@ Requirements:
                                 <td>0.1</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3110,6 +3226,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('9__Budgeting_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('9__Budgeting_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('9__Budgeting_Dashboard', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('9__Budgeting_Dashboard', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="9__Budgeting_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3180,16 +3297,18 @@ Requirements:
                                 <img src="9. Budgeting Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('9. Budgeting Dashboard/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1i8H-usT9xyaUB0GTuZnjAyw8vpQC68Rp/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="9. Budgeting Dashboard/Bolt-1.png" alt="Bolt-1.png" onclick="openLightbox('9. Budgeting Dashboard/Bolt-1.png', 'Bolt-1.png')">
-                                <div class="image-label other">Bolt-1.png</div>
-                            </div>                            <div class="image-card" data-tool="other">
+                                <div class="image-label bolt">Bolt-1.png</div>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="9. Budgeting Dashboard/Bolt-2.png" alt="Bolt-2.png" onclick="openLightbox('9. Budgeting Dashboard/Bolt-2.png', 'Bolt-2.png')">
-                                <div class="image-label other">Bolt-2.png</div>
+                                <div class="image-label bolt">Bolt-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3271,6 +3390,13 @@ Requirements:
                                 <td>0.1</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3284,6 +3410,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('10__Recipe_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('10__Recipe_Home_Screen', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('10__Recipe_Home_Screen', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('10__Recipe_Home_Screen', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="10__Recipe_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3354,12 +3481,14 @@ Requirements:
                                 <img src="10. Recipe Home Screen/Builder.png" alt="Builder.png" onclick="openLightbox('10. Recipe Home Screen/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1hAs418Ctj1mXSUmq7UEkwe5l7cV7mI2A/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="10. Recipe Home Screen/Bolt.png" alt="Bolt.png" onclick="openLightbox('10. Recipe Home Screen/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3441,6 +3570,13 @@ Requirements:
                                 <td>0.14</td>
                                 <td>0.14</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3454,6 +3590,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('11__Fitness_Tracking', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('11__Fitness_Tracking', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('11__Fitness_Tracking', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('11__Fitness_Tracking', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="11__Fitness_Tracking_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3524,12 +3661,14 @@ Requirements:
                                 <img src="11. Fitness Tracking/Builder.png" alt="Builder.png" onclick="openLightbox('11. Fitness Tracking/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1koPDB1abVglplT2zpxssFEcjfBhBB0K8/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="11. Fitness Tracking/Bolt.png" alt="Bolt.png" onclick="openLightbox('11. Fitness Tracking/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3611,6 +3750,13 @@ Requirements:
                                 <td>0.1</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3624,6 +3770,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('12__Login_Register', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('12__Login_Register', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('12__Login_Register', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('12__Login_Register', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="12__Login_Register_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3726,12 +3873,14 @@ Requirements:
                                 <img src="12. Login Register/Builder.png" alt="Builder.png" onclick="openLightbox('12. Login Register/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1u7HRpa74e1s6Cp5fFr9xz1gy0CLiOivM/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="12. Login Register/Bolt.png" alt="Bolt.png" onclick="openLightbox('12. Login Register/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3860,6 +4009,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.29</td>
                                 <td>0.29</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3873,6 +4029,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('13__Travel_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('13__Travel_Home_Screen', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('13__Travel_Home_Screen', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('13__Travel_Home_Screen', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="13__Travel_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3942,6 +4099,11 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="13. Travel Home Screen/Builder.png" alt="Builder.png" onclick="openLightbox('13. Travel Home Screen/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1-hAvJCsGhPzyNJCAZafeJY8BIb7IwYnM/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4023,6 +4185,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.24</td>
                                 <td>0.24</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4036,6 +4205,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('14__Burger_Joint', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('14__Burger_Joint', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('14__Burger_Joint', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('14__Burger_Joint', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="14__Burger_Joint_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -4106,12 +4276,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="14. Burger Joint/Builder.png" alt="Builder.png" onclick="openLightbox('14. Burger Joint/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/193RQWOEoADH4yVMIZ6A9od6Nk2kpiLw8/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="14. Burger Joint/Bolt.png" alt="Bolt.png" onclick="openLightbox('14. Burger Joint/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4195,6 +4367,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.29</td>
                                 <td>0.29</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4208,6 +4387,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('15__Fitness_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('15__Fitness_Home_Screen', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('15__Fitness_Home_Screen', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('15__Fitness_Home_Screen', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="15__Fitness_Home_Screen_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -4246,12 +4426,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="15. Fitness Home Screen/Builder.png" alt="Builder.png" onclick="openLightbox('15. Fitness Home Screen/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1sepyQtf1jXiLAJCxzfgiC42pOz62DMdl/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="15. Fitness Home Screen/Bolt.png" alt="Bolt.png" onclick="openLightbox('15. Fitness Home Screen/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4335,6 +4517,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.14</td>
                                 <td>0.14</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4348,6 +4537,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('16__Background_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('16__Background_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('16__Background_Dashboard', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('16__Background_Dashboard', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="16__Background_Dashboard_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -4390,12 +4580,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="16. Background Dashboard/Builder.png" alt="Builder.png" onclick="openLightbox('16. Background Dashboard/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1h5bTmpcYMqkfziY0qWQsE1emu7sfI4oH/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="16. Background Dashboard/Bolt.png" alt="Bolt.png" onclick="openLightbox('16. Background Dashboard/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4479,6 +4671,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.19</td>
                                 <td>0.19</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4492,6 +4691,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('17__Login_Email_Phone', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('17__Login_Email_Phone', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('17__Login_Email_Phone', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('17__Login_Email_Phone', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="17__Login_Email_Phone_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -4534,12 +4734,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="17. LoginEmailPhone/Builder.png" alt="Builder.png" onclick="openLightbox('17. LoginEmailPhone/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1hkwVVi3oijANckZ3OJ-i8OlFrGz7R_77/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="17. LoginEmailPhone/Bolt.png" alt="Bolt.png" onclick="openLightbox('17. LoginEmailPhone/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4621,6 +4823,13 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.1</td>
                                 <td>0.1</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4634,6 +4843,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('18__MeowFlix', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('18__MeowFlix', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('18__MeowFlix', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('18__MeowFlix', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="18__MeowFlix_images">                    <div class="tool-group" data-tool-group="vibecode">
@@ -4658,12 +4868,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="18. MeowFlix/Builder.png" alt="Builder.png" onclick="openLightbox('18. MeowFlix/Builder.png', 'Builder.png')">
                                 <div class="image-label builder">Builder.png</div>
                             </div>                        </div>
-                    </div>                    <div class="tool-group" data-tool-group="other">
-                        <div class="tool-group-header other">OTHER</div>
-                        <div class="tool-group-images">                            <div class="image-card" data-tool="other">
+                    </div>                    <div class="tool-group" data-tool-group="bolt">
+                        <div class="tool-group-header bolt">BOLT</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1NGqdTow7XYmQJ1NXngcB40s0dwNaJ3f9/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="bolt">
                                 
                                 <img src="18. MeowFlix/Bolt.png" alt="Bolt.png" onclick="openLightbox('18. MeowFlix/Bolt.png', 'Bolt.png')">
-                                <div class="image-label other">Bolt.png</div>
+                                <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>

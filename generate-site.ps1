@@ -69,6 +69,28 @@ $builderDriveLinks = @{
     "18. MeowFlix" = "https://drive.google.com/file/d/1HFHJ2Fbgh7j3ws-eOaGKhu64Zwo547UN/view?usp=drive_link"
 }
 
+# Google Drive video links (Bolt demos)
+$boltDriveLinks = @{
+    "1. Flight Details" = "https://drive.google.com/file/d/1SNYktZUdHAf2q28MvKk_DmLNDrYElwrB/view?usp=drive_link"
+    "2. Football Fantasy" = "https://drive.google.com/file/d/1zxUiLWcyqDrWuI5o3nclDTJBsF2LcQMh/view?usp=drive_link"
+    "3. Travel Guide" = "https://drive.google.com/file/d/1wESirzeF57tRYZqkLQN06xUCGfCRsA8G/view?usp=drive_link"
+    "4. Electric Utility Dashboard" = "https://drive.google.com/file/d/1IrRdPBX0-5N-I5EjKPxJQoKRn6pI6BBk/view?usp=drive_link"
+    "5. Video Streaming" = "https://drive.google.com/file/d/1CtLcbWFRmj8wgimYWe8P-2wTKrzb39mw/view?usp=drive_link"
+    "6. Notes" = "https://drive.google.com/file/d/14gQx2vpCSqBIylWpp0s-T8QyY8zR8YTy/view?usp=drive_link"
+    "7. Calendar" = "https://drive.google.com/file/d/1hpc1tQ1-M5F15pCAQzzYQkGXELqOEw6I/view?usp=drive_link"
+    "8. Hospital Dashboard" = "https://drive.google.com/file/d/1dFPi08toVxuiBk_D-mz769UtQXegitQw/view?usp=drive_link"
+    "9. Budgeting Dashboard" = "https://drive.google.com/file/d/1i8H-usT9xyaUB0GTuZnjAyw8vpQC68Rp/view?usp=drive_link"
+    "10. Recipe Home Screen" = "https://drive.google.com/file/d/1hAs418Ctj1mXSUmq7UEkwe5l7cV7mI2A/view?usp=drive_link"
+    "11. Fitness Tracking" = "https://drive.google.com/file/d/1koPDB1abVglplT2zpxssFEcjfBhBB0K8/view?usp=drive_link"
+    "12. Login Register" = "https://drive.google.com/file/d/1u7HRpa74e1s6Cp5fFr9xz1gy0CLiOivM/view?usp=drive_link"
+    "13. Travel Home Screen" = "https://drive.google.com/file/d/1-hAvJCsGhPzyNJCAZafeJY8BIb7IwYnM/view?usp=drive_link"
+    "14. Burger Joint" = "https://drive.google.com/file/d/193RQWOEoADH4yVMIZ6A9od6Nk2kpiLw8/view?usp=drive_link"
+    "15. Fitness Home Screen" = "https://drive.google.com/file/d/1sepyQtf1jXiLAJCxzfgiC42pOz62DMdl/view?usp=drive_link"
+    "16. Background Dashboard" = "https://drive.google.com/file/d/1h5bTmpcYMqkfziY0qWQsE1emu7sfI4oH/view?usp=drive_link"
+    "17. Login Email Phone" = "https://drive.google.com/file/d/1hkwVVi3oijANckZ3OJ-i8OlFrGz7R_77/view?usp=drive_link"
+    "18. MeowFlix" = "https://drive.google.com/file/d/1NGqdTow7XYmQJ1NXngcB40s0dwNaJ3f9/view?usp=drive_link"
+}
+
 # Get all project folders and sort numerically
 $folders = Get-ChildItem $basePath -Directory | Where-Object { $_.Name -ne "Comparison" -and $_.Name -ne ".vscode" -and $_.Name -ne ".git" } | Sort-Object { 
     if ($_.Name -match '^(\d+)') { 
@@ -119,6 +141,7 @@ foreach ($folder in $folders) {
         InspirationImages = @()
         VibecodeVideoUrl = $vibecodeDriveLinks[$projectName]
         BuilderVideoUrl = $builderDriveLinks[$projectName]
+        BoltVideoUrl = $boltDriveLinks[$projectName]
     }
     
     foreach ($image in $images) {
@@ -155,6 +178,8 @@ foreach ($folder in $folders) {
             $tool = "vibecode"
         } elseif ($imageName -match "^Builder") {
             $tool = "builder"
+        } elseif ($imageName -match "^Bolt") {
+            $tool = "bolt"
         }
         
         $projectData.Images += @{
@@ -657,6 +682,21 @@ $html = @"
             border-color: transparent;
         }
 
+        .tab-bolt {
+            border-color: #1389FD;
+            color: #1389FD;
+        }
+
+        .tab-bolt:hover {
+            background: #1389FD;
+            color: white;
+        }
+
+        .tab-bolt.active.active-tool {
+            background: #1389FD;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -710,6 +750,10 @@ $html = @"
 
         .tool-group-header.builder {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .tool-group-header.bolt {
+            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
         }
 
         .video-container {
@@ -862,6 +906,10 @@ $html = @"
 
         .summary-table th.tool-builder {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .summary-table th.tool-bolt {
+            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
         }
 
         .summary-table th:last-child {
@@ -1366,11 +1414,11 @@ foreach ($project in $projectsData) {
             $trimmed = $line.Trim()
             if ($trimmed -eq "UNO" -or $trimmed -eq "LOVABLE" -or $trimmed -eq "DREAMFLOW") {
                 $currentTool = $trimmed
-            } elseif ($trimmed -eq "BUILDER") {
-                $currentTool = "BUILDER"
+            } elseif ($trimmed -eq "BUILDER" -or $trimmed -eq "BOLT") {
+                $currentTool = $trimmed
             } elseif ($trimmed -and $currentTool -eq "") {
                 $defaultPrompt += $trimmed
-            } elseif ($trimmed -and $currentTool -and $currentTool -ne "BUILDER") {
+            } elseif ($trimmed -and $currentTool -and $currentTool -ne "BUILDER" -and $currentTool -ne "BOLT") {
                 $toolContent[$currentTool] += $trimmed
             }
         }
@@ -1691,6 +1739,13 @@ foreach ($project in $projectsData) {
                                 <td>$pBuilderCost</td>
                                 <td>$pBuilderCostPerPage</td>
                             </tr>
+                            <tr>
+                                <td>Bolt</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1710,6 +1765,7 @@ foreach ($project in $projectsData) {
                     <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('$projectId', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('$projectId', 'builder')">Builder</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('$projectId', 'bolt')">Bolt</button>
                 </div>
 
                 <div class="images-grid" id="${projectId}_images">
@@ -1725,6 +1781,7 @@ foreach ($project in $projectsData) {
         "dreamflow" = @()
         "vibecode" = @()
         "builder" = @()
+        "bolt" = @()
         "other" = @()
     }
     
@@ -1733,10 +1790,10 @@ foreach ($project in $projectsData) {
     }
     
     # Generate tool sections
-    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "vibecode", "builder", "other")
+    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "vibecode", "builder", "bolt", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
-        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl)) {
+        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl)) {
             $toolDisplayName = switch ($toolName) {
                 "antigravity" { "ANTIGRAVITY" }
                 "uno" { "UNO HD" }
@@ -1746,6 +1803,7 @@ foreach ($project in $projectsData) {
                 "dreamflow" { "DREAMFLOW" }
                 "vibecode" { "VIBECODE" }
                 "builder" { "BUILDER" }
+                "bolt" { "BOLT" }
                 default { $toolName.ToUpper() }
             }
             
@@ -1770,6 +1828,17 @@ foreach ($project in $projectsData) {
             if ($toolName -eq "builder" -and $project.BuilderVideoUrl) {
                 # Convert Google Drive view URL to embed URL
                 $embedUrl = $project.BuilderVideoUrl -replace '/view\?usp=drive_link', '/preview'
+                $html += @"
+                            <div class="video-container">
+                                <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>
+"@
+            }
+            
+            # Add video embed for Bolt if URL exists
+            if ($toolName -eq "bolt" -and $project.BoltVideoUrl) {
+                # Convert Google Drive view URL to embed URL
+                $embedUrl = $project.BoltVideoUrl -replace '/view\?usp=drive_link', '/preview'
                 $html += @"
                             <div class="video-container">
                                 <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>

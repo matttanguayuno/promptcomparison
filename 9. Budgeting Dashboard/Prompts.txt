@@ -6,3 +6,7 @@ Create a budgeting dashboard with a header, a pie chart placeholder, and a list 
 BUILDER
 Video: https://drive.google.com/file/d/1EqSMqLDtU0n5Gemh5f2E4XSFseDrUg-S/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/1i8H-usT9xyaUB0GTuZnjAyw8vpQC68Rp/view?usp=drive_link
+Screenshots: See project folder

@@ -6,3 +6,7 @@ Design a fitness tracking screen with a progress ring placeholder, daily goals, 
 BUILDER
 Video: https://drive.google.com/file/d/1FTeyez7tgyXALKyAuUZ9xe6Rsll44vLL/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/1koPDB1abVglplT2zpxssFEcjfBhBB0K8/view?usp=drive_link
+Screenshots: See project folder

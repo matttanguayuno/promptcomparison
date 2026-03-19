@@ -6,3 +6,7 @@ Make a recipe app home screen with a search bar, category buttons, and a feature
 BUILDER
 Video: https://drive.google.com/file/d/18PbUQl-VqbIEBBwAvvQIIl-1W89zB6C7/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/1hAs418Ctj1mXSUmq7UEkwe5l7cV7mI2A/view?usp=drive_link
+Screenshots: See project folder

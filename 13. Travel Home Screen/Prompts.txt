@@ -53,3 +53,7 @@ No lorem ipsum — use meaningful travel-related placeholder text.
 BUILDER
 Video: https://drive.google.com/file/d/1CX7-0hS-tg39sdwki-iTqKFDkdY2mKqY/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/1-hAvJCsGhPzyNJCAZafeJY8BIb7IwYnM/view?usp=drive_link
+Screenshots: See project folder

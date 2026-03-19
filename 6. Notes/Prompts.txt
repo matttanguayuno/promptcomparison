@@ -6,3 +6,7 @@ create a page for adding and editing notes. Similar to digital post-it notes whe
 BUILDER
 Video: https://drive.google.com/file/d/1zqjmkv-ymkhPJRRWzrrw0Fe4jghPdS2m/view?usp=drive_link
 Screenshots: See project folder
+
+BOLT
+Video: https://drive.google.com/file/d/14gQx2vpCSqBIylWpp0s-T8QyY8zR8YTy/view?usp=drive_link
+Screenshots: See project folder
