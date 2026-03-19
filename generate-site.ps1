@@ -1206,7 +1206,9 @@ $html += @"
                             <th data-view="costperpage" class="tool-builder">Builder<br>Cost/Page ($)</th>
                             <th data-view="time" class="view-active tool-bolt">Bolt<br>Time (s)</th>
                             <th data-view="credits" class="tool-bolt">Bolt<br>Tokens</th>
+                            <th data-view="cost" class="tool-bolt">Bolt<br>Cost ($)</th>
                             <th data-view="creditsperpage" class="tool-bolt">Bolt<br>Tokens/Page</th>
+                            <th data-view="costperpage" class="tool-bolt">Bolt<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1273,6 +1275,10 @@ foreach ($data in $performanceData) {
     $boltTokensDisplay = if ($data.BoltTokens -eq 0) { "" } else { [math]::Round($data.BoltTokens / 1000, 0).ToString() + "k" }
     $boltTokensPerPage = if ($data.BoltPages -gt 0) { [math]::Round($data.BoltTokens / $data.BoltPages, 0) } else { 0 }
     $boltTokensPerPageDisplay = if ($boltTokensPerPage -eq 0) { "" } else { [math]::Round($boltTokensPerPage / 1000, 0).ToString() + "k" }
+    $boltCost = [math]::Round($data.BoltTokens * 0.0000025, 2)
+    $boltCostDisplay = if ($boltCost -eq 0) { "" } else { $boltCost }
+    $boltCostPerPage = if ($data.BoltPages -gt 0 -and $data.BoltTokens -gt 0) { [math]::Round($boltCost / $data.BoltPages, 2) } else { 0 }
+    $boltCostPerPageDisplay = if ($boltCostPerPage -eq 0) { "" } else { $boltCostPerPage }
     $lovableCostDisplay2 = if ($lovableCost -eq 0) { "" } else { $lovableCost }
     $lovableCreditsPerPageDisplay = if ($lovableCreditsPerPage -eq 0) { "" } else { $lovableCreditsPerPage }
     $dreamflowCostDisplay2 = if ($dreamflowCost -eq 0) { "" } else { $dreamflowCost }
@@ -1304,7 +1310,9 @@ foreach ($data in $performanceData) {
                             <td data-view="costperpage">$builderCostPerPageDisplay</td>
                             <td data-view="time" class="view-active $boltTimeClass">$boltTimeDisplay</td>
                             <td data-view="credits">$boltTokensDisplay</td>
+                            <td data-view="cost">$boltCostDisplay</td>
                             <td data-view="creditsperpage">$boltTokensPerPageDisplay</td>
+                            <td data-view="costperpage">$boltCostPerPageDisplay</td>
                         </tr>
 "@
 }
@@ -1369,6 +1377,8 @@ $dreamflowCostPerPageAvg = [math]::Round(($dreamflowCreditsTotal * 0.18) / $coun
 $boltTimeAvg = if ($boltCount -gt 0) { [math]::Round($boltTimeTotal / $boltCount, 1) } else { "" }
 $boltTokensAvg = if ($boltCount -gt 0) { [math]::Round(($boltTokensTotal / $boltCount) / 1000, 0).ToString() + "k" } else { "" }
 $boltTokensPerPageAvg = if ($boltCount -gt 0) { [math]::Round(($boltTokensTotal / $boltCount) / 1000, 0).ToString() + "k" } else { "" }
+$boltCostAvg = if ($boltCount -gt 0) { [math]::Round(($boltTokensTotal * 0.0000025) / $boltCount, 2) } else { "" }
+$boltCostPerPageAvg = if ($boltCount -gt 0) { [math]::Round(($boltTokensTotal * 0.0000025) / $boltCount, 2) } else { "" }
 
 $html += @"
                         <tr>
@@ -1396,7 +1406,9 @@ $html += @"
                             <td data-view="costperpage">$builderCostPerPageAvg</td>
                             <td data-view="time" class="view-active">$boltTimeAvg</td>
                             <td data-view="credits">$boltTokensAvg</td>
+                            <td data-view="cost">$boltCostAvg</td>
                             <td data-view="creditsperpage">$boltTokensPerPageAvg</td>
+                            <td data-view="costperpage">$boltCostPerPageAvg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1700,6 +1712,8 @@ foreach ($project in $projectsData) {
         $builderCreditsDisplay = if ($projectPerf.BuilderCredits -eq 0) { "" } else { $projectPerf.BuilderCredits }
         $boltTimeDisplay = if ($projectPerf.BoltTime -eq 0) { "" } else { $projectPerf.BoltTime }
         $boltTokensDisplay = if ($projectPerf.BoltTokens -eq 0) { "" } else { [math]::Round($projectPerf.BoltTokens / 1000, 0).ToString() + "k" }
+        $pBoltCost = if ($projectPerf.BoltTokens -eq 0) { "" } else { [math]::Round($projectPerf.BoltTokens * 0.0000025, 2) }
+        $pBoltCostPerPage = if ($projectPerf.BoltPages -gt 0 -and $projectPerf.BoltTokens -gt 0) { [math]::Round(($projectPerf.BoltTokens * 0.0000025) / $projectPerf.BoltPages, 2) } else { "" }
         
         $html += @"
                 <div class="prompts-section">
@@ -1777,8 +1791,8 @@ foreach ($project in $projectsData) {
                                 <td>$boltTimeDisplay</td>
                                 <td>-</td>
                                 <td>$boltTokensDisplay</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td>$pBoltCost</td>
+                                <td>$pBoltCostPerPage</td>
                             </tr>
                         </tbody>
                     </table>
