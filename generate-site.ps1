@@ -907,14 +907,19 @@ $html = @"
             color: white;
         }
 
+        .table-scroll-wrapper {
+            overflow-x: auto;
+            max-width: 100%;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
         .summary-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 2rem;
             background: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border-radius: 8px;
-            overflow: hidden;
+            min-width: 600px;
         }
 
         .summary-table th {
@@ -956,6 +961,22 @@ $html = @"
         .sort-desc .sort-arrow::after {
             content: '\25BC';
             opacity: 1;
+        }
+
+        .pivot-btn {
+            background: #475569 !important;
+            color: white !important;
+            border-color: #475569 !important;
+        }
+
+        .pivot-btn:hover {
+            background: #334155 !important;
+            border-color: #334155 !important;
+        }
+
+        .pivot-btn.active {
+            background: #1e293b !important;
+            border-color: #1e293b !important;
         }
 
         .summary-table th:first-child {
@@ -1261,43 +1282,45 @@ $html += @"
                     <button class="view-btn" onclick="switchTableView('cost')">Cost ($)</button>
                     <button class="view-btn" onclick="switchTableView('creditsperpage')">Credits / Page</button>
                     <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page ($)</button>
+                    <button class="view-btn pivot-btn" id="pivot-btn" onclick="pivotSummaryTable()">Pivot Table</button>
                 </div>
 
+                <div class="table-scroll-wrapper">
                 <table class="summary-table" id="performance-table">
                     <thead>
                         <tr>
-                            <th>Project</th>
-                            <th data-view="time" class="view-active tool-antigravity">Antigravity<br>Time (s)</th>
-                            <th data-view="time" class="view-active tool-uno">Uno VS Code<br>Time (s)</th>
-                            <th data-view="time" class="view-active tool-unomcp">Uno VS Code MCP<br>Time (s)</th>
-                            <th data-view="time" class="view-active tool-lovable">Lovable<br>Time (s)</th>
-                            <th data-view="credits" class="tool-lovable">Lovable<br>Credits</th>
-                            <th data-view="cost" class="tool-lovable">Lovable<br>Cost ($)</th>
-                            <th data-view="creditsperpage" class="tool-lovable">Lovable<br>Credits/Page</th>
-                            <th data-view="costperpage" class="tool-lovable">Lovable<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active tool-dreamflow">Dreamflow<br>Time (s)</th>
-                            <th data-view="credits" class="tool-dreamflow">Dreamflow<br>Credits</th>
-                            <th data-view="cost" class="tool-dreamflow">Dreamflow<br>Cost ($)</th>
-                            <th data-view="creditsperpage" class="tool-dreamflow">Dreamflow<br>Credits/Page</th>
-                            <th data-view="costperpage" class="tool-dreamflow">Dreamflow<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active tool-vibecode">Vibecode<br>Time (s)</th>
-                            <th data-view="cost" class="tool-vibecode">Vibecode<br>Cost ($)</th>
-                            <th data-view="costperpage" class="tool-vibecode">Vibecode<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active tool-builder">Builder<br>Time (s)</th>
-                            <th data-view="credits" class="tool-builder">Builder<br>Credits</th>
-                            <th data-view="cost" class="tool-builder">Builder<br>Cost ($)</th>
-                            <th data-view="creditsperpage" class="tool-builder">Builder<br>Credits/Page</th>
-                            <th data-view="costperpage" class="tool-builder">Builder<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active tool-bolt">Bolt<br>Time (s)</th>
-                            <th data-view="credits" class="tool-bolt">Bolt<br>Tokens</th>
-                            <th data-view="cost" class="tool-bolt">Bolt<br>Cost ($)</th>
-                            <th data-view="creditsperpage" class="tool-bolt">Bolt<br>Tokens/Page</th>
-                            <th data-view="costperpage" class="tool-bolt">Bolt<br>Cost/Page ($)</th>
-                            <th data-view="time" class="view-active tool-tempo">Tempo<br>Time (s)</th>
-                            <th data-view="credits" class="tool-tempo">Tempo<br>Credits</th>
-                            <th data-view="cost" class="tool-tempo">Tempo<br>Cost ($)</th>
-                            <th data-view="creditsperpage" class="tool-tempo">Tempo<br>Credits/Page</th>
-                            <th data-view="costperpage" class="tool-tempo">Tempo<br>Cost/Page ($)</th>
+                            <th class="sortable" onclick="sortSummaryTable(this, 'string')">Project<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-antigravity sortable" onclick="sortSummaryTable(this, 'number')">Antigravity<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-uno sortable" onclick="sortSummaryTable(this, 'number')">Uno VS Code<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-unomcp sortable" onclick="sortSummaryTable(this, 'number')">Uno VS Code MCP<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-lovable sortable" onclick="sortSummaryTable(this, 'number')">Lovable<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-lovable sortable" onclick="sortSummaryTable(this, 'number')">Lovable<br>Credits<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-lovable sortable" onclick="sortSummaryTable(this, 'number')">Lovable<br>Cost ($)<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-lovable sortable" onclick="sortSummaryTable(this, 'number')">Lovable<br>Credits/Page<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-lovable sortable" onclick="sortSummaryTable(this, 'number')">Lovable<br>Cost/Page ($)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-dreamflow sortable" onclick="sortSummaryTable(this, 'number')">Dreamflow<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-dreamflow sortable" onclick="sortSummaryTable(this, 'number')">Dreamflow<br>Credits<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-dreamflow sortable" onclick="sortSummaryTable(this, 'number')">Dreamflow<br>Cost ($)<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-dreamflow sortable" onclick="sortSummaryTable(this, 'number')">Dreamflow<br>Credits/Page<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-dreamflow sortable" onclick="sortSummaryTable(this, 'number')">Dreamflow<br>Cost/Page ($)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-vibecode sortable" onclick="sortSummaryTable(this, 'number')">Vibecode<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-vibecode sortable" onclick="sortSummaryTable(this, 'number')">Vibecode<br>Cost ($)<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-vibecode sortable" onclick="sortSummaryTable(this, 'number')">Vibecode<br>Cost/Page ($)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-builder sortable" onclick="sortSummaryTable(this, 'number')">Builder<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-builder sortable" onclick="sortSummaryTable(this, 'number')">Builder<br>Credits<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-builder sortable" onclick="sortSummaryTable(this, 'number')">Builder<br>Cost ($)<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-builder sortable" onclick="sortSummaryTable(this, 'number')">Builder<br>Credits/Page<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-builder sortable" onclick="sortSummaryTable(this, 'number')">Builder<br>Cost/Page ($)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-bolt sortable" onclick="sortSummaryTable(this, 'number')">Bolt<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-bolt sortable" onclick="sortSummaryTable(this, 'number')">Bolt<br>Tokens<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-bolt sortable" onclick="sortSummaryTable(this, 'number')">Bolt<br>Cost ($)<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-bolt sortable" onclick="sortSummaryTable(this, 'number')">Bolt<br>Tokens/Page<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-bolt sortable" onclick="sortSummaryTable(this, 'number')">Bolt<br>Cost/Page ($)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Credits<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Cost ($)<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Credits/Page<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Cost/Page ($)<span class="sort-arrow"></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1531,6 +1554,7 @@ $html += @"
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
 
 "@
@@ -2260,7 +2284,21 @@ $html += @"
             updateVisibleImages();
         });
 
+        let isPivoted = false;
+        let originalTableHTML = null;
+        let currentView = 'time';
+
         function switchTableView(view) {
+            currentView = view;
+
+            if (isPivoted) {
+                // Restore original, switch view, then re-pivot
+                const table = document.getElementById('performance-table');
+                table.innerHTML = originalTableHTML;
+                isPivoted = false;
+                originalTableHTML = null;
+            }
+
             // Remove view-active from all columns
             document.querySelectorAll('#performance-table th[data-view], #performance-table td[data-view]').forEach(cell => {
                 cell.classList.remove('view-active');
@@ -2272,10 +2310,152 @@ $html += @"
             });
             
             // Update button states
-            document.querySelectorAll('.view-btn').forEach(btn => {
+            document.querySelectorAll('.view-btn:not(.pivot-btn)').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
+
+            // Re-pivot if the pivot button is active
+            if (document.getElementById('pivot-btn').classList.contains('active')) {
+                pivotSummaryTable();
+            }
+        }
+
+        function sortSummaryTable(th, type) {
+            const table = th.closest('table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const headerRow = th.closest('tr');
+            const allThs = headerRow.querySelectorAll('th');
+            const colIndex = Array.from(allThs).indexOf(th);
+
+            // Separate average row (last row) from data rows
+            const avgRow = rows[rows.length - 1];
+            const dataRows = rows.slice(0, -1);
+
+            // Determine sort direction
+            let asc = true;
+            if (th.classList.contains('sort-asc')) {
+                asc = false;
+            }
+
+            // Reset all headers
+            allThs.forEach(h => {
+                h.classList.remove('sort-asc', 'sort-desc');
+            });
+            th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+
+            dataRows.sort((a, b) => {
+                let aVal = a.cells[colIndex].textContent.trim();
+                let bVal = b.cells[colIndex].textContent.trim();
+
+                if (type === 'number') {
+                    const parseNum = v => {
+                        if (v === '-' || v === '') return null;
+                        if (v.endsWith('k')) return parseFloat(v) * 1000;
+                        return parseFloat(v);
+                    };
+                    aVal = parseNum(aVal);
+                    bVal = parseNum(bVal);
+                    if (aVal === null && bVal === null) return 0;
+                    if (aVal === null) return 1;
+                    if (bVal === null) return -1;
+                    return asc ? aVal - bVal : bVal - aVal;
+                } else {
+                    return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                }
+            });
+
+            // Re-append sorted data rows, then average row at the end
+            dataRows.forEach(row => tbody.appendChild(row));
+            tbody.appendChild(avgRow);
+        }
+
+        function pivotSummaryTable() {
+            const table = document.getElementById('performance-table');
+            const pivotBtn = document.getElementById('pivot-btn');
+
+            if (isPivoted) {
+                // Restore original table
+                table.innerHTML = originalTableHTML;
+                isPivoted = false;
+                originalTableHTML = null;
+                pivotBtn.classList.remove('active');
+                pivotBtn.textContent = 'Pivot Table';
+
+                // Re-apply current view
+                document.querySelectorAll('#performance-table th[data-view], #performance-table td[data-view]').forEach(cell => {
+                    cell.classList.remove('view-active');
+                });
+                document.querySelectorAll('#performance-table th[data-view="' + currentView + '"], #performance-table td[data-view="' + currentView + '"]').forEach(cell => {
+                    cell.classList.add('view-active');
+                });
+                return;
+            }
+
+            // Save original HTML
+            originalTableHTML = table.innerHTML;
+
+            // Read visible columns (view-active headers + Project column)
+            const headers = table.querySelectorAll('thead th');
+            const visibleCols = [];
+            const toolColors = {};
+            headers.forEach((th, i) => {
+                if (i === 0) return; // Skip Project
+                if (th.classList.contains('view-active') || !th.hasAttribute('data-view')) {
+                    const toolClass = Array.from(th.classList).find(c => c.startsWith('tool-'));
+                    const toolName = th.innerHTML.split('<br>')[0].trim();
+                    visibleCols.push({ index: i, name: toolName, toolClass: toolClass || '' });
+                    if (toolClass) {
+                        toolColors[toolName] = toolClass;
+                    }
+                }
+            });
+
+            // Read all body rows
+            const bodyRows = table.querySelectorAll('tbody tr');
+            const projects = [];
+            bodyRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const projectName = cells[0].textContent.trim();
+                const values = {};
+                visibleCols.forEach(col => {
+                    const cell = cells[col.index];
+                    values[col.name] = {
+                        text: cell ? cell.textContent.trim() : '-',
+                        classes: cell ? cell.className.replace('view-active', '').trim() : ''
+                    };
+                });
+                projects.push({ name: projectName, values: values });
+            });
+
+            // Build pivoted table
+            let html = '<thead><tr>';
+            html += '<th class="sortable" onclick="sortSummaryTable(this, \'string\')">Tool<span class="sort-arrow"></span></th>';
+            projects.forEach(p => {
+                const isAvg = p.name === 'Average';
+                html += '<th class="sortable" onclick="sortSummaryTable(this, \'number\')">' + p.name + '<span class="sort-arrow"></span></th>';
+            });
+            html += '</tr></thead><tbody>';
+
+            visibleCols.forEach(col => {
+                const colorClass = col.toolClass ? ' ' + col.toolClass : '';
+                html += '<tr>';
+                html += '<td style="font-weight: 600;">' + col.name + '</td>';
+                projects.forEach(p => {
+                    const val = p.values[col.name];
+                    const cellClasses = val ? val.classes : '';
+                    const isAvg = p.name === 'Average';
+                    html += '<td class="' + cellClasses + '">' + (val ? val.text : '-') + '</td>';
+                });
+                html += '</tr>';
+            });
+
+            html += '</tbody>';
+            table.innerHTML = html;
+            isPivoted = true;
+            pivotBtn.classList.add('active');
+            pivotBtn.textContent = 'Unpivot Table';
         }
 
         function sortProjectTable(th, colIndex, type) {
