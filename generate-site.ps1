@@ -928,6 +928,36 @@ $html = @"
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
         }
 
+        .sortable {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .sortable:hover {
+            opacity: 0.85;
+        }
+
+        .sort-arrow {
+            font-size: 0.7rem;
+            margin-left: 4px;
+        }
+
+        .sort-arrow::after {
+            content: '\2195';
+            opacity: 0.5;
+        }
+
+        .sort-asc .sort-arrow::after {
+            content: '\25B2';
+            opacity: 1;
+        }
+
+        .sort-desc .sort-arrow::after {
+            content: '\25BC';
+            opacity: 1;
+        }
+
         .summary-table th:first-child {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-top-left-radius: 8px;
@@ -1811,15 +1841,15 @@ foreach ($project in $projectsData) {
         $html += @"
                 <div class="prompts-section">
                     <h3>Performance</h3>
-                    <table class="summary-table">
+                    <table class="summary-table project-perf-table">
                         <thead>
                             <tr>
-                                <th>Tool</th>
-                                <th>Time (s)</th>
-                                <th>Credits</th>
-                                <th>Tokens</th>
-                                <th>Cost ($)</th>
-                                <th>Cost/Page ($)</th>
+                                <th onclick="sortProjectTable(this, 0, 'string')" class="sortable">Tool <span class="sort-arrow"></span></th>
+                                <th onclick="sortProjectTable(this, 1, 'number')" class="sortable">Time (s) <span class="sort-arrow"></span></th>
+                                <th onclick="sortProjectTable(this, 2, 'number')" class="sortable">Credits <span class="sort-arrow"></span></th>
+                                <th onclick="sortProjectTable(this, 3, 'number')" class="sortable">Tokens <span class="sort-arrow"></span></th>
+                                <th onclick="sortProjectTable(this, 4, 'number')" class="sortable">Cost ($) <span class="sort-arrow"></span></th>
+                                <th onclick="sortProjectTable(this, 5, 'number')" class="sortable">Cost/Page ($) <span class="sort-arrow"></span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -2246,6 +2276,49 @@ $html += @"
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
+        }
+
+        function sortProjectTable(th, colIndex, type) {
+            const table = th.closest('table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const allThs = th.closest('tr').querySelectorAll('th');
+            
+            // Determine sort direction
+            let asc = true;
+            if (th.classList.contains('sort-asc')) {
+                asc = false;
+            }
+            
+            // Reset all headers in this table
+            allThs.forEach(h => {
+                h.classList.remove('sort-asc', 'sort-desc');
+            });
+            th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+            
+            rows.sort((a, b) => {
+                let aVal = a.cells[colIndex].textContent.trim();
+                let bVal = b.cells[colIndex].textContent.trim();
+                
+                if (type === 'number') {
+                    // Handle '-', empty, and 'k' suffix
+                    const parseNum = v => {
+                        if (v === '-' || v === '') return null;
+                        if (v.endsWith('k')) return parseFloat(v) * 1000;
+                        return parseFloat(v);
+                    };
+                    aVal = parseNum(aVal);
+                    bVal = parseNum(bVal);
+                    if (aVal === null && bVal === null) return 0;
+                    if (aVal === null) return 1;
+                    if (bVal === null) return -1;
+                    return asc ? aVal - bVal : bVal - aVal;
+                } else {
+                    return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                }
+            });
+            
+            rows.forEach(row => tbody.appendChild(row));
         }
 
         function copyPrompt(button) {
