@@ -1285,7 +1285,7 @@ foreach ($data in $performanceData) {
     $builderCost = [math]::Round($data.BuilderCredits * 0.048, 2)
     $builderCreditsPerPage = if ($data.BuilderPages -gt 0) { [math]::Round($data.BuilderCredits / $data.BuilderPages, 2) } else { 0 }
     $builderCostPerPage = if ($data.BuilderPages -gt 0) { [math]::Round($builderCost / $data.BuilderPages, 2) } else { 0 }
-    $tempoCost = [math]::Round($data.TempoCredits * 0.40, 2)
+    $tempoCost = [math]::Round($data.TempoCredits * 0.20, 2)
     $tempoCreditsPerPage = if ($data.TempoPages -gt 0) { [math]::Round($data.TempoCredits / $data.TempoPages, 2) } else { 0 }
     $tempoCostPerPage = if ($data.TempoPages -gt 0) { [math]::Round($tempoCost / $data.TempoPages, 2) } else { 0 }
     
@@ -1459,9 +1459,9 @@ $boltCostAvg = if ($boltCount -gt 0) { [math]::Round(($boltTokensTotal * 0.00000
 $boltCostPerPageAvg = if ($boltCount -gt 0) { [math]::Round(($boltTokensTotal * 0.0000025) / $boltCount, 2) } else { "" }
 $tempoTimeAvg = if ($tempoCount -gt 0) { [math]::Round($tempoTimeTotal / $tempoCount, 1) } else { "" }
 $tempoCreditsAvg = if ($tempoCount -gt 0) { [math]::Round($tempoCreditsTotal / $tempoCount, 1) } else { "" }
-$tempoCostAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.40) / $tempoCount, 2) } else { "" }
+$tempoCostAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.20) / $tempoCount, 2) } else { "" }
 $tempoCreditsPerPageAvg = if ($tempoCount -gt 0) { [math]::Round($tempoCreditsTotal / $tempoCount, 2) } else { "" }
-$tempoCostPerPageAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.40) / $tempoCount, 2) } else { "" }
+$tempoCostPerPageAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.20) / $tempoCount, 2) } else { "" }
 
 $html += @"
                         <tr>
@@ -1802,8 +1802,8 @@ foreach ($project in $projectsData) {
         $boltTokensDisplay = if ($projectPerf.BoltTokens -eq 0) { "" } else { [math]::Round($projectPerf.BoltTokens / 1000, 0).ToString() + "k" }
         $pBoltCost = if ($projectPerf.BoltTokens -eq 0) { "" } else { [math]::Round($projectPerf.BoltTokens * 0.0000025, 2) }
         $pBoltCostPerPage = if ($projectPerf.BoltPages -gt 0 -and $projectPerf.BoltTokens -gt 0) { [math]::Round(($projectPerf.BoltTokens * 0.0000025) / $projectPerf.BoltPages, 2) } else { "" }
-        $pTempoCost = if ($projectPerf.TempoCredits -eq 0) { "" } else { [math]::Round($projectPerf.TempoCredits * 0.40, 2) }
-        $pTempoCostPerPage = if ($projectPerf.TempoPages -gt 0 -and $projectPerf.TempoCredits -gt 0) { [math]::Round(($projectPerf.TempoCredits * 0.40) / $projectPerf.TempoPages, 2) } else { "" }
+        $pTempoCost = if ($projectPerf.TempoCredits -eq 0) { "" } else { [math]::Round($projectPerf.TempoCredits * 0.20, 2) }
+        $pTempoCostPerPage = if ($projectPerf.TempoPages -gt 0 -and $projectPerf.TempoCredits -gt 0) { [math]::Round(($projectPerf.TempoCredits * 0.20) / $projectPerf.TempoPages, 2) } else { "" }
         $tempoTimeDisplay = if ($projectPerf.TempoTime -eq 0) { "" } else { $projectPerf.TempoTime }
         $tempoCreditsDisplay = if ($projectPerf.TempoCredits -eq 0) { "" } else { $projectPerf.TempoCredits }
         
