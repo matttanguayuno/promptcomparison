@@ -1,4 +1,4 @@
-Recreate the dashboard in the inspiration image attached
+﻿Recreate the dashboard in the inspiration image attached
 
 
 BUILDER
@@ -7,4 +7,8 @@ Screenshots: See project folder
 
 BOLT
 Video: https://drive.google.com/file/d/1h5bTmpcYMqkfziY0qWQsE1emu7sfI4oH/view?usp=drive_link
+Screenshots: See project folder
+
+TEMPO
+Video: https://drive.google.com/file/d/1GQIN_kvpTNMFxB_0XFO-PUKK_iLojLzZ/view?usp=drive_link
 Screenshots: See project folder

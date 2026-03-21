@@ -479,6 +479,21 @@
             border-color: transparent;
         }
 
+        .tab-tempo {
+            border-color: #FF6B6B;
+            color: #FF6B6B;
+        }
+
+        .tab-tempo:hover {
+            background: #FF6B6B;
+            color: white;
+        }
+
+        .tab-tempo.active.active-tool {
+            background: #FF6B6B;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -536,6 +551,10 @@
 
         .tool-group-header.bolt {
             background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
+        }
+
+        .tool-group-header.tempo {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
         }
 
         .video-container {
@@ -640,6 +659,11 @@
             color: white;
         }
 
+        .image-label.tempo {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+            color: white;
+        }
+
         .summary-table {
             width: 100%;
             border-collapse: collapse;
@@ -692,6 +716,10 @@
 
         .summary-table th.tool-bolt {
             background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
+        }
+
+        .summary-table th.tool-tempo {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
         }
 
         .summary-table th:last-child {
@@ -999,6 +1027,11 @@
                             <th data-view="cost" class="tool-bolt">Bolt<br>Cost ($)</th>
                             <th data-view="creditsperpage" class="tool-bolt">Bolt<br>Tokens/Page</th>
                             <th data-view="costperpage" class="tool-bolt">Bolt<br>Cost/Page ($)</th>
+                            <th data-view="time" class="view-active tool-tempo">Tempo<br>Time (s)</th>
+                            <th data-view="credits" class="tool-tempo">Tempo<br>Credits</th>
+                            <th data-view="cost" class="tool-tempo">Tempo<br>Cost ($)</th>
+                            <th data-view="creditsperpage" class="tool-tempo">Tempo<br>Credits/Page</th>
+                            <th data-view="costperpage" class="tool-tempo">Tempo<br>Cost/Page ($)</th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
@@ -1029,6 +1062,11 @@
                             <td data-view="cost">0.25</td>
                             <td data-view="creditsperpage">99k</td>
                             <td data-view="costperpage">0.25</td>
+                            <td data-view="time" class="view-active ">435</td>
+                            <td data-view="credits">4.2</td>
+                            <td data-view="cost">1.68</td>
+                            <td data-view="creditsperpage">4.2</td>
+                            <td data-view="costperpage">1.68</td>
                         </tr>                        <tr>
                             <td>2. Football Fantasy</td>
                             <td data-view="time" class="view-active value-better">65</td>
@@ -1057,6 +1095,11 @@
                             <td data-view="cost">0.5</td>
                             <td data-view="creditsperpage">201k</td>
                             <td data-view="costperpage">0.5</td>
+                            <td data-view="time" class="view-active ">875</td>
+                            <td data-view="credits">5</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="creditsperpage">0.62</td>
+                            <td data-view="costperpage">0.25</td>
                         </tr>                        <tr>
                             <td>3. Travel Guide</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1085,6 +1128,11 @@
                             <td data-view="cost">0.75</td>
                             <td data-view="creditsperpage">300k</td>
                             <td data-view="costperpage">0.75</td>
+                            <td data-view="time" class="view-active ">510</td>
+                            <td data-view="credits">5</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="creditsperpage">5</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>4. Electric Utility Dashboard</td>
                             <td data-view="time" class="view-active value-better">95</td>
@@ -1113,6 +1161,11 @@
                             <td data-view="cost">0.47</td>
                             <td data-view="creditsperpage">188k</td>
                             <td data-view="costperpage">0.47</td>
+                            <td data-view="time" class="view-active value-worse">290</td>
+                            <td data-view="credits">3.7</td>
+                            <td data-view="cost">1.48</td>
+                            <td data-view="creditsperpage">3.7</td>
+                            <td data-view="costperpage">1.48</td>
                         </tr>                        <tr>
                             <td>5. Video Streaming</td>
                             <td data-view="time" class="view-active value-better">90</td>
@@ -1141,6 +1194,11 @@
                             <td data-view="cost">0.75</td>
                             <td data-view="creditsperpage">300k</td>
                             <td data-view="costperpage">0.75</td>
+                            <td data-view="time" class="view-active ">475</td>
+                            <td data-view="credits">5</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="creditsperpage">5</td>
+                            <td data-view="costperpage">2</td>
                         </tr>                        <tr>
                             <td>6. Notes</td>
                             <td data-view="time" class="view-active value-better">90</td>
@@ -1169,6 +1227,11 @@
                             <td data-view="cost">0.33</td>
                             <td data-view="creditsperpage">131k</td>
                             <td data-view="costperpage">0.33</td>
+                            <td data-view="time" class="view-active ">170</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.8</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.8</td>
                         </tr>                        <tr>
                             <td>7. Calendar</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1197,6 +1260,11 @@
                             <td data-view="cost">0.35</td>
                             <td data-view="creditsperpage">141k</td>
                             <td data-view="costperpage">0.35</td>
+                            <td data-view="time" class="view-active ">270</td>
+                            <td data-view="credits">2</td>
+                            <td data-view="cost">0.8</td>
+                            <td data-view="creditsperpage">2</td>
+                            <td data-view="costperpage">0.8</td>
                         </tr>                        <tr>
                             <td>8. Hospital Dashboard</td>
                             <td data-view="time" class="view-active value-better">85</td>
@@ -1225,6 +1293,11 @@
                             <td data-view="cost">0.51</td>
                             <td data-view="creditsperpage">203k</td>
                             <td data-view="costperpage">0.51</td>
+                            <td data-view="time" class="view-active ">270</td>
+                            <td data-view="credits">2.9</td>
+                            <td data-view="cost">1.16</td>
+                            <td data-view="creditsperpage">2.9</td>
+                            <td data-view="costperpage">1.16</td>
                         </tr>                        <tr>
                             <td>9. Budgeting Dashboard</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1253,6 +1326,11 @@
                             <td data-view="cost">0.61</td>
                             <td data-view="creditsperpage">122k</td>
                             <td data-view="costperpage">0.3</td>
+                            <td data-view="time" class="view-active ">220</td>
+                            <td data-view="credits">2.9</td>
+                            <td data-view="cost">1.16</td>
+                            <td data-view="creditsperpage">2.9</td>
+                            <td data-view="costperpage">1.16</td>
                         </tr>                        <tr>
                             <td>10. Recipe Home Screen</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1281,6 +1359,11 @@
                             <td data-view="cost">0.2</td>
                             <td data-view="creditsperpage">79k</td>
                             <td data-view="costperpage">0.2</td>
+                            <td data-view="time" class="view-active ">250</td>
+                            <td data-view="credits">3.3</td>
+                            <td data-view="cost">1.32</td>
+                            <td data-view="creditsperpage">1.65</td>
+                            <td data-view="costperpage">0.66</td>
                         </tr>                        <tr>
                             <td>11. Fitness Tracking</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1309,6 +1392,11 @@
                             <td data-view="cost">0.21</td>
                             <td data-view="creditsperpage">84k</td>
                             <td data-view="costperpage">0.21</td>
+                            <td data-view="time" class="view-active value-worse">240</td>
+                            <td data-view="credits">3</td>
+                            <td data-view="cost">1.2</td>
+                            <td data-view="creditsperpage">3</td>
+                            <td data-view="costperpage">1.2</td>
                         </tr>                        <tr>
                             <td>12. Login Register</td>
                             <td data-view="time" class="view-active value-better">60</td>
@@ -1337,6 +1425,11 @@
                             <td data-view="cost">0.75</td>
                             <td data-view="creditsperpage">300k</td>
                             <td data-view="costperpage">0.75</td>
+                            <td data-view="time" class="view-active ">270</td>
+                            <td data-view="credits">3.3</td>
+                            <td data-view="cost">1.32</td>
+                            <td data-view="creditsperpage">3.3</td>
+                            <td data-view="costperpage">1.32</td>
                         </tr>                        <tr>
                             <td>13. Travel Home Screen</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1365,11 +1458,16 @@
                             <td data-view="cost">0.59</td>
                             <td data-view="creditsperpage">235k</td>
                             <td data-view="costperpage">0.59</td>
+                            <td data-view="time" class="view-active ">220</td>
+                            <td data-view="credits">2.9</td>
+                            <td data-view="cost">1.16</td>
+                            <td data-view="creditsperpage">2.9</td>
+                            <td data-view="costperpage">1.16</td>
                         </tr>                        <tr>
                             <td>14. Burger Joint</td>
                             <td data-view="time" class="view-active value-better">80</td>
                             <td data-view="time" class="view-active ">100</td>
-                            <td data-view="time" class="view-active value-worse">330</td>
+                            <td data-view="time" class="view-active ">330</td>
                             <td data-view="time" class="view-active ">200</td>
                             <td data-view="credits">1.8</td>
                             <td data-view="cost">0.77</td>
@@ -1393,6 +1491,11 @@
                             <td data-view="cost">0.26</td>
                             <td data-view="creditsperpage">105k</td>
                             <td data-view="costperpage">0.26</td>
+                            <td data-view="time" class="view-active value-worse">410</td>
+                            <td data-view="credits">5</td>
+                            <td data-view="cost">2</td>
+                            <td data-view="creditsperpage">1.67</td>
+                            <td data-view="costperpage">0.67</td>
                         </tr>                        <tr>
                             <td>15. Fitness Home Screen</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1421,6 +1524,11 @@
                             <td data-view="cost">0.33</td>
                             <td data-view="creditsperpage">131k</td>
                             <td data-view="costperpage">0.33</td>
+                            <td data-view="time" class="view-active ">290</td>
+                            <td data-view="credits">3.5</td>
+                            <td data-view="cost">1.4</td>
+                            <td data-view="creditsperpage">0.7</td>
+                            <td data-view="costperpage">0.28</td>
                         </tr>                        <tr>
                             <td>16. Background Dashboard</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1449,6 +1557,11 @@
                             <td data-view="cost">0.29</td>
                             <td data-view="creditsperpage">116k</td>
                             <td data-view="costperpage">0.29</td>
+                            <td data-view="time" class="view-active ">320</td>
+                            <td data-view="credits">3.7</td>
+                            <td data-view="cost">1.48</td>
+                            <td data-view="creditsperpage">3.7</td>
+                            <td data-view="costperpage">1.48</td>
                         </tr>                        <tr>
                             <td>17. Login Email Phone</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1477,6 +1590,11 @@
                             <td data-view="cost">0.27</td>
                             <td data-view="creditsperpage">107k</td>
                             <td data-view="costperpage">0.27</td>
+                            <td data-view="time" class="view-active ">160</td>
+                            <td data-view="credits">1.5</td>
+                            <td data-view="cost">0.6</td>
+                            <td data-view="creditsperpage">1.5</td>
+                            <td data-view="costperpage">0.6</td>
                         </tr>                        <tr>
                             <td>18. MeowFlix</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1505,6 +1623,11 @@
                             <td data-view="cost">0.35</td>
                             <td data-view="creditsperpage">141k</td>
                             <td data-view="costperpage">0.35</td>
+                            <td data-view="time" class="view-active ">375</td>
+                            <td data-view="credits">4.9</td>
+                            <td data-view="cost">1.96</td>
+                            <td data-view="creditsperpage">4.9</td>
+                            <td data-view="costperpage">1.96</td>
                         </tr>                        <tr>
                             <td>Average</td>
                             <td data-view="time" class="view-active">61.7</td>
@@ -1533,6 +1656,11 @@
                             <td data-view="cost">0.43</td>
                             <td data-view="creditsperpage">172k</td>
                             <td data-view="costperpage">0.43</td>
+                            <td data-view="time" class="view-active">336.1</td>
+                            <td data-view="credits">3.5</td>
+                            <td data-view="cost">1.42</td>
+                            <td data-view="creditsperpage">3.54</td>
+                            <td data-view="costperpage">1.42</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1658,6 +1786,14 @@
                                 <td>0.25</td>
                                 <td>0.25</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>435</td>
+                                <td>4.2</td>
+                                <td>-</td>
+                                <td>1.68</td>
+                                <td>1.68</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1672,6 +1808,7 @@
                     <button class="tab-button tab-vibecode" onclick="filterImages('1__Flight_Details', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('1__Flight_Details', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('1__Flight_Details', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('1__Flight_Details', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="1__Flight_Details_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -1778,6 +1915,15 @@
                                 
                                 <img src="1. Flight Details/Bolt.png" alt="Bolt.png" onclick="openLightbox('1. Flight Details/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1ba_V_vNdR10PucP-R5uiF6uLRuSogf5N/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="1. Flight Details/Tempo.png" alt="Tempo.png" onclick="openLightbox('1. Flight Details/Tempo.png', 'Tempo.png')">
+                                <div class="image-label tempo">Tempo.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="other">
                         <div class="tool-group-header other">OTHER</div>
@@ -1886,6 +2032,14 @@
                                 <td>0.5</td>
                                 <td>0.5</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>875</td>
+                                <td>5</td>
+                                <td>-</td>
+                                <td>2</td>
+                                <td>0.25</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1900,6 +2054,7 @@
                     <button class="tab-button tab-vibecode" onclick="filterImages('2__Football_Fantasy', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('2__Football_Fantasy', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('2__Football_Fantasy', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('2__Football_Fantasy', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="2__Football_Fantasy_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2031,6 +2186,55 @@
                                 <img src="2. Football Fantasy/Bolt.png" alt="Bolt.png" onclick="openLightbox('2. Football Fantasy/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1qM8AHkO43CVKoqMl2t25wBD_uLu6f5oc/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 1.png" alt="Tempo - 1.png" onclick="openLightbox('2. Football Fantasy/Tempo - 1.png', 'Tempo - 1.png')">
+                                <div class="image-label tempo">Tempo - 1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 10.png" alt="Tempo - 10.png" onclick="openLightbox('2. Football Fantasy/Tempo - 10.png', 'Tempo - 10.png')">
+                                <div class="image-label tempo">Tempo - 10.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 11.png" alt="Tempo - 11.png" onclick="openLightbox('2. Football Fantasy/Tempo - 11.png', 'Tempo - 11.png')">
+                                <div class="image-label tempo">Tempo - 11.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 2.png" alt="Tempo - 2.png" onclick="openLightbox('2. Football Fantasy/Tempo - 2.png', 'Tempo - 2.png')">
+                                <div class="image-label tempo">Tempo - 2.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 3.png" alt="Tempo - 3.png" onclick="openLightbox('2. Football Fantasy/Tempo - 3.png', 'Tempo - 3.png')">
+                                <div class="image-label tempo">Tempo - 3.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 4.png" alt="Tempo - 4.png" onclick="openLightbox('2. Football Fantasy/Tempo - 4.png', 'Tempo - 4.png')">
+                                <div class="image-label tempo">Tempo - 4.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 5.png" alt="Tempo - 5.png" onclick="openLightbox('2. Football Fantasy/Tempo - 5.png', 'Tempo - 5.png')">
+                                <div class="image-label tempo">Tempo - 5.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 6.png" alt="Tempo - 6.png" onclick="openLightbox('2. Football Fantasy/Tempo - 6.png', 'Tempo - 6.png')">
+                                <div class="image-label tempo">Tempo - 6.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 7.png" alt="Tempo - 7.png" onclick="openLightbox('2. Football Fantasy/Tempo - 7.png', 'Tempo - 7.png')">
+                                <div class="image-label tempo">Tempo - 7.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 8.png" alt="Tempo - 8.png" onclick="openLightbox('2. Football Fantasy/Tempo - 8.png', 'Tempo - 8.png')">
+                                <div class="image-label tempo">Tempo - 8.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="2. Football Fantasy/Tempo - 9.png" alt="Tempo - 9.png" onclick="openLightbox('2. Football Fantasy/Tempo - 9.png', 'Tempo - 9.png')">
+                                <div class="image-label tempo">Tempo - 9.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="3__Travel_Guide">
@@ -2134,6 +2338,14 @@
                                 <td>0.75</td>
                                 <td>0.75</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>510</td>
+                                <td>5</td>
+                                <td>-</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2148,6 +2360,7 @@
                     <button class="tab-button tab-vibecode" onclick="filterImages('3__Travel_Guide', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('3__Travel_Guide', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('3__Travel_Guide', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('3__Travel_Guide', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="3__Travel_Guide_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2242,6 +2455,15 @@
                         <div class="tool-group-header bolt">BOLT</div>
                         <div class="tool-group-images">                            <div class="video-container">
                                 <iframe src="https://drive.google.com/file/d/1wESirzeF57tRYZqkLQN06xUCGfCRsA8G/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1W3wPVEwB9gjvHp9mAMKC5Y3g7QdhaQvr/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="3. Travel Guide/Tempo.png" alt="Tempo.png" onclick="openLightbox('3. Travel Guide/Tempo.png', 'Tempo.png')">
+                                <div class="image-label tempo">Tempo.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2345,6 +2567,14 @@ Requirements:
                                 <td>0.47</td>
                                 <td>0.47</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>290</td>
+                                <td>3.7</td>
+                                <td>-</td>
+                                <td>1.48</td>
+                                <td>1.48</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2359,6 +2589,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('4__Electric_Utility_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('4__Electric_Utility_Dashboard', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('4__Electric_Utility_Dashboard', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('4__Electric_Utility_Dashboard', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="4__Electric_Utility_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2437,6 +2668,19 @@ Requirements:
                                 
                                 <img src="4. Electric Utility Dashboard/Bolt.png" alt="Bolt.png" onclick="openLightbox('4. Electric Utility Dashboard/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1JyBViAhDqAzAAj8ht9s90uDGlyYbP5xb/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="4. Electric Utility Dashboard/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('4. Electric Utility Dashboard/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="4. Electric Utility Dashboard/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('4. Electric Utility Dashboard/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -2538,6 +2782,14 @@ Requirements:
                                 <td>0.75</td>
                                 <td>0.75</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>475</td>
+                                <td>5</td>
+                                <td>-</td>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2552,6 +2804,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('5__Video_Streaming', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('5__Video_Streaming', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('5__Video_Streaming', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('5__Video_Streaming', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="5__Video_Streaming_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2675,6 +2928,19 @@ Requirements:
                                 <img src="5. Video Streaming/Bolt.png" alt="Bolt.png" onclick="openLightbox('5. Video Streaming/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1Kt3DAOdsOTcSEVDp0rD5imfgBFJFSpTS/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="5. Video Streaming/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('5. Video Streaming/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="5. Video Streaming/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('5. Video Streaming/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="6__Notes">
@@ -2771,6 +3037,14 @@ Requirements:
                                 <td>0.33</td>
                                 <td>0.33</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>170</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td>0.8</td>
+                                <td>0.8</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -2785,6 +3059,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('6__Notes', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('6__Notes', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('6__Notes', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('6__Notes', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="6__Notes_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -2900,6 +3175,19 @@ Requirements:
                                 <img src="6. Notes/Bolt-2.png" alt="Bolt-2.png" onclick="openLightbox('6. Notes/Bolt-2.png', 'Bolt-2.png')">
                                 <div class="image-label bolt">Bolt-2.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1-fTaZfY1mkCeRa2Qfi_DU5C88uxKSfsT/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="6. Notes/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('6. Notes/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="6. Notes/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('6. Notes/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="7__Calendar">
@@ -2996,6 +3284,14 @@ Requirements:
                                 <td>0.35</td>
                                 <td>0.35</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>270</td>
+                                <td>2</td>
+                                <td>-</td>
+                                <td>0.8</td>
+                                <td>0.8</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3010,6 +3306,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('7__Calendar', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('7__Calendar', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('7__Calendar', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('7__Calendar', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="7__Calendar_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3109,6 +3406,15 @@ Requirements:
                                 <img src="7. Calendar/Bolt.png" alt="Bolt.png" onclick="openLightbox('7. Calendar/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1JNjSaBuhsOTNOLeU4RFBNHe8Q-MS1rDD/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="7. Calendar/Tempo.png" alt="Tempo.png" onclick="openLightbox('7. Calendar/Tempo.png', 'Tempo.png')">
+                                <div class="image-label tempo">Tempo.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="8__Hospital_Dashboard">
@@ -3205,6 +3511,14 @@ Requirements:
                                 <td>0.51</td>
                                 <td>0.51</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>270</td>
+                                <td>2.9</td>
+                                <td>-</td>
+                                <td>1.16</td>
+                                <td>1.16</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3219,6 +3533,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('8__Hospital_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('8__Hospital_Dashboard', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('8__Hospital_Dashboard', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('8__Hospital_Dashboard', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="8__Hospital_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3297,6 +3612,35 @@ Requirements:
                                 
                                 <img src="8. Hospital Dashboard/Bolt.png" alt="Bolt.png" onclick="openLightbox('8. Hospital Dashboard/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1yLal2wHSAbF5aVNhqJvqRDHrLaTbbi44/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="8. Hospital Dashboard/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('8. Hospital Dashboard/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="8. Hospital Dashboard/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('8. Hospital Dashboard/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="8. Hospital Dashboard/Tempo-3.png" alt="Tempo-3.png" onclick="openLightbox('8. Hospital Dashboard/Tempo-3.png', 'Tempo-3.png')">
+                                <div class="image-label tempo">Tempo-3.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="8. Hospital Dashboard/Tempo-4.png" alt="Tempo-4.png" onclick="openLightbox('8. Hospital Dashboard/Tempo-4.png', 'Tempo-4.png')">
+                                <div class="image-label tempo">Tempo-4.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="8. Hospital Dashboard/Tempo-5.png" alt="Tempo-5.png" onclick="openLightbox('8. Hospital Dashboard/Tempo-5.png', 'Tempo-5.png')">
+                                <div class="image-label tempo">Tempo-5.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="8. Hospital Dashboard/Tempo-6.png" alt="Tempo-6.png" onclick="openLightbox('8. Hospital Dashboard/Tempo-6.png', 'Tempo-6.png')">
+                                <div class="image-label tempo">Tempo-6.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3394,6 +3738,14 @@ Requirements:
                                 <td>0.61</td>
                                 <td>0.31</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>220</td>
+                                <td>2.9</td>
+                                <td>-</td>
+                                <td>1.16</td>
+                                <td>1.16</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3408,6 +3760,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('9__Budgeting_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('9__Budgeting_Dashboard', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('9__Budgeting_Dashboard', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('9__Budgeting_Dashboard', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="9__Budgeting_Dashboard_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3490,6 +3843,15 @@ Requirements:
                                 
                                 <img src="9. Budgeting Dashboard/Bolt-2.png" alt="Bolt-2.png" onclick="openLightbox('9. Budgeting Dashboard/Bolt-2.png', 'Bolt-2.png')">
                                 <div class="image-label bolt">Bolt-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1hqNDdo-73l_ijKzui8G_DTuBUZ9hQAzR/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="9. Budgeting Dashboard/Tempo.png" alt="Tempo.png" onclick="openLightbox('9. Budgeting Dashboard/Tempo.png', 'Tempo.png')">
+                                <div class="image-label tempo">Tempo.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3587,6 +3949,14 @@ Requirements:
                                 <td>0.2</td>
                                 <td>0.2</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>250</td>
+                                <td>3.3</td>
+                                <td>-</td>
+                                <td>1.32</td>
+                                <td>0.66</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3601,6 +3971,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('10__Recipe_Home_Screen', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('10__Recipe_Home_Screen', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('10__Recipe_Home_Screen', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('10__Recipe_Home_Screen', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="10__Recipe_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3679,6 +4050,19 @@ Requirements:
                                 
                                 <img src="10. Recipe Home Screen/Bolt.png" alt="Bolt.png" onclick="openLightbox('10. Recipe Home Screen/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1bG5lZSJ75VwlT_73BTwF6GZubqZ5O6mO/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="10. Recipe Home Screen/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('10. Recipe Home Screen/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="10. Recipe Home Screen/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('10. Recipe Home Screen/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3776,6 +4160,14 @@ Requirements:
                                 <td>0.21</td>
                                 <td>0.21</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>240</td>
+                                <td>3</td>
+                                <td>-</td>
+                                <td>1.2</td>
+                                <td>1.2</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3790,6 +4182,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('11__Fitness_Tracking', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('11__Fitness_Tracking', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('11__Fitness_Tracking', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('11__Fitness_Tracking', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="11__Fitness_Tracking_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -3868,6 +4261,23 @@ Requirements:
                                 
                                 <img src="11. Fitness Tracking/Bolt.png" alt="Bolt.png" onclick="openLightbox('11. Fitness Tracking/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1yMsxK6DsmnhPSMlxDhPQn4lNDg1R0gU_/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="11. Fitness Tracking/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('11. Fitness Tracking/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="11. Fitness Tracking/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('11. Fitness Tracking/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="11. Fitness Tracking/Tempo-3.png" alt="Tempo-3.png" onclick="openLightbox('11. Fitness Tracking/Tempo-3.png', 'Tempo-3.png')">
+                                <div class="image-label tempo">Tempo-3.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -3965,6 +4375,14 @@ Requirements:
                                 <td>0.75</td>
                                 <td>0.75</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>270</td>
+                                <td>3.3</td>
+                                <td>-</td>
+                                <td>1.32</td>
+                                <td>1.32</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -3979,6 +4397,7 @@ Requirements:
                     <button class="tab-button tab-vibecode" onclick="filterImages('12__Login_Register', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('12__Login_Register', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('12__Login_Register', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('12__Login_Register', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="12__Login_Register_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -4090,6 +4509,19 @@ Requirements:
                                 <img src="12. Login Register/Bolt.png" alt="Bolt.png" onclick="openLightbox('12. Login Register/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1TCWDhGctHe7twCwvto-u6uIikYLklNX0/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="12. Login Register/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('12. Login Register/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="12. Login Register/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('12. Login Register/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="13__Travel_Home_Screen">
@@ -4107,37 +4539,37 @@ Requirements:
                             </button>
                             <pre>Design a mobile travel app home page UI in a clean, premium style.
 Overall aesthetic: modern, minimalistic, high-contrast layout with generous white space, subtle shadows, and crisp typography. No device frames. Balanced, calm color palette (avoid overly bright tones). Use soft rounded corners on all cards and buttons. Layout should feel curated and editorial.
-Screen structure (top -&gt; bottom):
+Screen structure (top â†' bottom):
 Top bar / Header area:
 A compact top navigation bar with a small profile avatar on the left (circular), app logo in the center, and a notifications bell icon on the right.
 Subtle shadow separating header from content.
 Greeting + Search:
-Line 1: personalized greeting text, e.g. "Where do you want to explore today?".
-Large, dominant search bar beneath, wide and centered, with magnifying-glass icon on the left and placeholder text "Search destinations, flights, hotels...".
+Line 1: personalized greeting text, e.g. âEURœWhere do you want to explore today?âEUR.
+Large, dominant search bar beneath, wide and centered, with magnifying-glass icon on the left and placeholder text âEURœSearch destinations, flights, hotelsâEUR¦âEUR.
 Slight inset shadow to indicate interactivity.
 Featured destination hero card:
-Wide full-bleed carousel card with an atmospheric travel photo (mountains, beach cityscape, or iconic landmark - avoid specific brand references).
+Wide full-bleed carousel card with an atmospheric travel photo (mountains, beach cityscape, or iconic landmark âEUR" avoid specific brand references).
 Rounded corners.
 Overlaid text: destination name in bold, short tagline below.
 Subtle gradient overlay to ensure readability.
 Include left/right carousel pagination indicators or dots at bottom center.
 Quick-action icon grid:
-A 2x3 or 3x2 grid of rounded square icons for primary actions: "Flights", "Hotels", "Experiences", "Cars", "Trips", "Map".
+A 2Ã-3 or 3Ã-2 grid of rounded square icons for primary actions: âEURœFlightsâEUR, âEURœHotelsâEUR, âEURœExperiencesâEUR, âEURœCarsâEUR, âEURœTripsâEUR, âEURœMapâEUR.
 Each icon minimalistic, monochrome line style.
 Beneath each icon: a short label in small text.
 Even spacing, consistent margins.
 Recommended trips section:
-Section title: "Recommended for You" aligned left.
-Horizontal scrollable card list (3–4 cards visible).
-Each card: destination photo, destination name, small detail like "From EUR129" or "4.7 * Reviews".
+Section title: âEURœRecommended for YouâEUR aligned left.
+Horizontal scrollable card list (3âEUR"4 cards visible).
+Each card: destination photo, destination name, small detail like âEURœFrom â‚¬129âEUR or âEURœ4.7 â˜... ReviewsâEUR.
 Uniform shadow depth and spacing between cards.
 Explore categories section:
-Title: "Explore Categories".
+Title: âEURœExplore CategoriesâEUR.
 Two large rectangular cards arranged vertically or in a grid:
-Examples: "City Breaks", "Nature Escapes", "Cultural Trips", "Romantic Getaways".
+Examples: âEURœCity BreaksâEUR, âEURœNature EscapesâEUR, âEURœCultural TripsâEUR, âEURœRomantic GetawaysâEUR.
 Each card contains a background image with soft color overlay and bold text label.
 Bottom navigation bar:
-Persistent nav bar with 4–5 icons: "Home", "Search", "Trips", "Favorites", "Profile".
+Persistent nav bar with 4âEUR"5 icons: âEURœHomeâEUR, âEURœSearchâEUR, âEURœTripsâEUR, âEURœFavoritesâEUR, âEURœProfileâEUR.
 Minimalistic outline icons, slight active-state color highlight on Home.
 Fixed, with subtle top border line.
 Typography:
@@ -4152,7 +4584,7 @@ The final render:
 High-resolution, crisp mobile UI mockup.
 Straight-on view (no perspective).
 Consistent color palette and spacing.
-No lorem ipsum - use meaningful travel-related placeholder text.</pre>
+No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                         </div>
                     </div>                </div>
                 <div class="prompts-section">
@@ -4233,6 +4665,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.59</td>
                                 <td>0.59</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>220</td>
+                                <td>2.9</td>
+                                <td>-</td>
+                                <td>1.16</td>
+                                <td>1.16</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4247,6 +4687,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vibecode" onclick="filterImages('13__Travel_Home_Screen', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('13__Travel_Home_Screen', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('13__Travel_Home_Screen', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('13__Travel_Home_Screen', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="13__Travel_Home_Screen_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -4322,6 +4763,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                         <div class="tool-group-images">                            <div class="video-container">
                                 <iframe src="https://drive.google.com/file/d/1-hAvJCsGhPzyNJCAZafeJY8BIb7IwYnM/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1P9rPi3xaXsLwpyoE16-iHaOs1NBEmaUi/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="13. Travel Home Screen/Tempo.png" alt="Tempo.png" onclick="openLightbox('13. Travel Home Screen/Tempo.png', 'Tempo.png')">
+                                <div class="image-label tempo">Tempo.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="14__Burger_Joint">
@@ -4337,7 +4787,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                     <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
                                 </svg>
                             </button>
-                            <pre>Design a clean, modern home page UI for a burger joint app. Include a hero burger image, today's specials, quick-order buttons (Burgers, Sides, Drinks), a prominent ‘Order Now' CTA, and a bottom navigation bar (Home, Menu, Cart, Profile). Use bold typography, simple iconography, subtle depth, and a mobile-first layout. Keep the style appetizing, friendly, and minimal</pre>
+                            <pre>Design a clean, modern home page UI for a burger joint app. Include a hero burger image, todayâEUR™s specials, quick-order buttons (Burgers, Sides, Drinks), a prominent âEUR˜Order NowâEUR™ CTA, and a bottom navigation bar (Home, Menu, Cart, Profile). Use bold typography, simple iconography, subtle depth, and a mobile-first layout. Keep the style appetizing, friendly, and minimal</pre>
                         </div>
                     </div>                </div>
                 <div class="prompts-section">
@@ -4418,6 +4868,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.26</td>
                                 <td>0.26</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>410</td>
+                                <td>5</td>
+                                <td>-</td>
+                                <td>2</td>
+                                <td>0.67</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4432,6 +4890,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vibecode" onclick="filterImages('14__Burger_Joint', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('14__Burger_Joint', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('14__Burger_Joint', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('14__Burger_Joint', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="14__Burger_Joint_images">                    <div class="tool-group" data-tool-group="antigravity">
@@ -4510,6 +4969,27 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="14. Burger Joint/Bolt.png" alt="Bolt.png" onclick="openLightbox('14. Burger Joint/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1FlC-znJwjTmNJYSaGJS_cOF4ZKBrGguH/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="14. Burger Joint/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('14. Burger Joint/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="14. Burger Joint/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('14. Burger Joint/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="14. Burger Joint/Tempo-3.png" alt="Tempo-3.png" onclick="openLightbox('14. Burger Joint/Tempo-3.png', 'Tempo-3.png')">
+                                <div class="image-label tempo">Tempo-3.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="14. Burger Joint/Tempo-4.png" alt="Tempo-4.png" onclick="openLightbox('14. Burger Joint/Tempo-4.png', 'Tempo-4.png')">
+                                <div class="image-label tempo">Tempo-4.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4609,6 +5089,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.33</td>
                                 <td>0.33</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>290</td>
+                                <td>3.5</td>
+                                <td>-</td>
+                                <td>1.4</td>
+                                <td>0.28</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4623,6 +5111,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vibecode" onclick="filterImages('15__Fitness_Home_Screen', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('15__Fitness_Home_Screen', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('15__Fitness_Home_Screen', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('15__Fitness_Home_Screen', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="15__Fitness_Home_Screen_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -4669,6 +5158,31 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="15. Fitness Home Screen/Bolt.png" alt="Bolt.png" onclick="openLightbox('15. Fitness Home Screen/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1585TQBeaJDEfvcNVpBtoaCpleli2Hmfo/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="15. Fitness Home Screen/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('15. Fitness Home Screen/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="15. Fitness Home Screen/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('15. Fitness Home Screen/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="15. Fitness Home Screen/Tempo-3.png" alt="Tempo-3.png" onclick="openLightbox('15. Fitness Home Screen/Tempo-3.png', 'Tempo-3.png')">
+                                <div class="image-label tempo">Tempo-3.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="15. Fitness Home Screen/Tempo-4.png" alt="Tempo-4.png" onclick="openLightbox('15. Fitness Home Screen/Tempo-4.png', 'Tempo-4.png')">
+                                <div class="image-label tempo">Tempo-4.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="15. Fitness Home Screen/Tempo-5.png" alt="Tempo-5.png" onclick="openLightbox('15. Fitness Home Screen/Tempo-5.png', 'Tempo-5.png')">
+                                <div class="image-label tempo">Tempo-5.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4768,6 +5282,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.29</td>
                                 <td>0.29</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>320</td>
+                                <td>3.7</td>
+                                <td>-</td>
+                                <td>1.48</td>
+                                <td>1.48</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4782,6 +5304,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vibecode" onclick="filterImages('16__Background_Dashboard', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('16__Background_Dashboard', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('16__Background_Dashboard', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('16__Background_Dashboard', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="16__Background_Dashboard_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -4832,6 +5355,39 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="16. Background Dashboard/Bolt.png" alt="Bolt.png" onclick="openLightbox('16. Background Dashboard/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1GQIN_kvpTNMFxB_0XFO-PUKK_iLojLzZ/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('16. Background Dashboard/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('16. Background Dashboard/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-3.png" alt="Tempo-3.png" onclick="openLightbox('16. Background Dashboard/Tempo-3.png', 'Tempo-3.png')">
+                                <div class="image-label tempo">Tempo-3.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-4.png" alt="Tempo-4.png" onclick="openLightbox('16. Background Dashboard/Tempo-4.png', 'Tempo-4.png')">
+                                <div class="image-label tempo">Tempo-4.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-5.png" alt="Tempo-5.png" onclick="openLightbox('16. Background Dashboard/Tempo-5.png', 'Tempo-5.png')">
+                                <div class="image-label tempo">Tempo-5.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-6.png" alt="Tempo-6.png" onclick="openLightbox('16. Background Dashboard/Tempo-6.png', 'Tempo-6.png')">
+                                <div class="image-label tempo">Tempo-6.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="16. Background Dashboard/Tempo-7.png" alt="Tempo-7.png" onclick="openLightbox('16. Background Dashboard/Tempo-7.png', 'Tempo-7.png')">
+                                <div class="image-label tempo">Tempo-7.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>
@@ -4931,6 +5487,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.27</td>
                                 <td>0.27</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>160</td>
+                                <td>1.5</td>
+                                <td>-</td>
+                                <td>0.6</td>
+                                <td>0.6</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -4945,6 +5509,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vibecode" onclick="filterImages('17__Login_Email_Phone', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('17__Login_Email_Phone', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('17__Login_Email_Phone', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('17__Login_Email_Phone', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="17__Login_Email_Phone_images">                    <div class="tool-group" data-tool-group="vscodeuno">
@@ -4996,6 +5561,19 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <img src="17. LoginEmailPhone/Bolt.png" alt="Bolt.png" onclick="openLightbox('17. LoginEmailPhone/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1zHmqhU1MFaNkvNK93Kquwn6lls9YMNv1/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="17. LoginEmailPhone/Tempo-1.png" alt="Tempo-1.png" onclick="openLightbox('17. LoginEmailPhone/Tempo-1.png', 'Tempo-1.png')">
+                                <div class="image-label tempo">Tempo-1.png</div>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="17. LoginEmailPhone/Tempo-2.png" alt="Tempo-2.png" onclick="openLightbox('17. LoginEmailPhone/Tempo-2.png', 'Tempo-2.png')">
+                                <div class="image-label tempo">Tempo-2.png</div>
+                            </div>                        </div>
                     </div>                </div>
             </div>
             <div class="project-section" id="18__MeowFlix">
@@ -5011,7 +5589,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                     <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
                                 </svg>
                             </button>
-                            <pre>Design a 'Netflix for Cats' app interface where users can subscribe to live streams of cats around the world, rate their favorite felines, and send virtual treats. The vibe should be playful but sleek-think Tinder meets Animal Planet with a dark mode aesthetic. Use these guidelines: Must-Have Elements: 1. Hero Section: - A looping video placeholder (or animated gradient) of a cat yawning dramatically. - Tagline: 'Unlimited Cats. Zero Disappointments.' - CTA: 'Start Your Free Trial (Humans Only)' 2. Live Stream Grid: - Show 3-5 'trending' cat streams with: - Circular thumbnails (like Instagram Stories) - Real-time viewer counts - A floating heart button to 'send treats' 3. Featured Cat Profile: - A horizontally scrollable card for 'Cat of the Hour' with: - Name, age, breed - A 5-star rating system (paw icons, not stars) - Bio: 'Loves naps, hates Mondays. 12k treat points this week!' 4. Dark Mode Aesthetic - Color Palette: - Background: #121212 (near-black) - Text: #FFFFFF (pure white) with #E0E0E0 for subtitles - Accents: #FF9F1C (vibrant orange) and #A569BD (purple for VIP features) - Use glow effects on interactive elements (buttons, icons). 5. Micro-Interactions: - Hover effects on cards (slight scale-up + shadow). - A bouncing animation on the 'Send Treat' button.</pre>
+                            <pre>Design a 'Netflix for Cats' app interface where users can subscribe to live streams of cats around the world, rate their favorite felines, and send virtual treats. The vibe should be playful but sleekâEUR"think Tinder meets Animal Planet with a dark mode aesthetic. Use these guidelines: Must-Have Elements: 1. Hero Section: - A looping video placeholder (or animated gradient) of a cat yawning dramatically. - Tagline: 'Unlimited Cats. Zero Disappointments.' - CTA: 'Start Your Free Trial (Humans Only)' 2. Live Stream Grid: - Show 3-5 'trending' cat streams with: - Circular thumbnails (like Instagram Stories) - Real-time viewer counts - A floating heart button to 'send treats' 3. Featured Cat Profile: - A horizontally scrollable card for 'Cat of the Hour' with: - Name, age, breed - A 5-star rating system (paw icons, not stars) - Bio: 'Loves naps, hates Mondays. 12k treat points this week!' 4. Dark Mode Aesthetic - Color Palette: - Background: #121212 (near-black) - Text: #FFFFFF (pure white) with #E0E0E0 for subtitles - Accents: #FF9F1C (vibrant orange) and #A569BD (purple for VIP features) - Use glow effects on interactive elements (buttons, icons). 5. Micro-Interactions: - Hover effects on cards (slight scale-up + shadow). - A bouncing animation on the 'Send Treat' button.</pre>
                         </div>
                     </div>                </div>
                 <div class="prompts-section">
@@ -5092,6 +5670,14 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 <td>0.35</td>
                                 <td>0.35</td>
                             </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>375</td>
+                                <td>4.9</td>
+                                <td>-</td>
+                                <td>1.96</td>
+                                <td>1.96</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -5106,6 +5692,7 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-vibecode" onclick="filterImages('18__MeowFlix', 'vibecode')">Vibecode</button>
                     <button class="tab-button tab-builder" onclick="filterImages('18__MeowFlix', 'builder')">Builder</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('18__MeowFlix', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('18__MeowFlix', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="18__MeowFlix_images">                    <div class="tool-group" data-tool-group="vibecode">
@@ -5138,6 +5725,15 @@ No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="18. MeowFlix/Bolt.png" alt="Bolt.png" onclick="openLightbox('18. MeowFlix/Bolt.png', 'Bolt.png')">
                                 <div class="image-label bolt">Bolt.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="tempo">
+                        <div class="tool-group-header tempo">TEMPO</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1YgeSpZHoxOLwECCETmSd6NkLS6T2TWhY/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="tempo">
+                                
+                                <img src="18. MeowFlix/Tempo.png" alt="Tempo.png" onclick="openLightbox('18. MeowFlix/Tempo.png', 'Tempo.png')">
+                                <div class="image-label tempo">Tempo.png</div>
                             </div>                        </div>
                     </div>                </div>
             </div>

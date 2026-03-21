@@ -1,4 +1,4 @@
-UNO
+﻿UNO
 
 Design a fitness tracking screen with a progress ring placeholder, daily goals, and action buttons
 
@@ -9,4 +9,8 @@ Screenshots: See project folder
 
 BOLT
 Video: https://drive.google.com/file/d/1koPDB1abVglplT2zpxssFEcjfBhBB0K8/view?usp=drive_link
+Screenshots: See project folder
+
+TEMPO
+Video: https://drive.google.com/file/d/1yMsxK6DsmnhPSMlxDhPQn4lNDg1R0gU_/view?usp=drive_link
 Screenshots: See project folder
