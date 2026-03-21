@@ -940,10 +940,6 @@ $html = @"
             background: white;
         }
 
-        .summary-table td.pivoted-tool-cell {
-            background: none;
-        }
-
         .summary-table thead th:first-child {
             z-index: 3;
         }
@@ -1074,41 +1070,41 @@ $html = @"
             background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
         }
 
-        .pivoted-tool-cell {
+        .summary-table td.pivoted-tool-cell {
             font-weight: 600;
             color: white;
         }
 
-        .pivoted-tool-cell.tool-antigravity {
+        .summary-table td.pivoted-tool-cell.tool-antigravity {
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
         }
 
-        .pivoted-tool-cell.tool-uno,
-        .pivoted-tool-cell.tool-unomcp {
+        .summary-table td.pivoted-tool-cell.tool-uno,
+        .summary-table td.pivoted-tool-cell.tool-unomcp {
             background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
         }
 
-        .pivoted-tool-cell.tool-lovable {
+        .summary-table td.pivoted-tool-cell.tool-lovable {
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
 
-        .pivoted-tool-cell.tool-dreamflow {
+        .summary-table td.pivoted-tool-cell.tool-dreamflow {
             background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
         }
 
-        .pivoted-tool-cell.tool-vibecode {
+        .summary-table td.pivoted-tool-cell.tool-vibecode {
             background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
         }
 
-        .pivoted-tool-cell.tool-builder {
+        .summary-table td.pivoted-tool-cell.tool-builder {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
         }
 
-        .pivoted-tool-cell.tool-bolt {
+        .summary-table td.pivoted-tool-cell.tool-bolt {
             background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
         }
 
-        .pivoted-tool-cell.tool-tempo {
+        .summary-table td.pivoted-tool-cell.tool-tempo {
             background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
         }
 
