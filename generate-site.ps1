@@ -1832,6 +1832,46 @@ foreach ($project in $projectsData) {
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Bolt</td>
+                                <td>$boltTimeDisplay</td>
+                                <td>-</td>
+                                <td>$boltTokensDisplay</td>
+                                <td>$pBoltCost</td>
+                                <td>$pBoltCostPerPage</td>
+                            </tr>
+                            <tr>
+                                <td>Builder</td>
+                                <td>$builderTimeDisplay</td>
+                                <td>$builderCreditsDisplay</td>
+                                <td>-</td>
+                                <td>$pBuilderCost</td>
+                                <td>$pBuilderCostPerPage</td>
+                            </tr>
+                            <tr>
+                                <td>Dreamflow</td>
+                                <td>$dreamflowTimeDisplay</td>
+                                <td>$dreamflowCreditsDisplay</td>
+                                <td>-</td>
+                                <td>$pDreamflowCost</td>
+                                <td>$pDreamflowCostPerPage</td>
+                            </tr>
+                            <tr>
+                                <td>Lovable</td>
+                                <td>$lovableTimeDisplay</td>
+                                <td>$lovableCreditsDisplay</td>
+                                <td>-</td>
+                                <td>$pLovableCost</td>
+                                <td>$pLovableCostPerPage</td>
+                            </tr>
+                            <tr>
+                                <td>Tempo</td>
+                                <td>$tempoTimeDisplay</td>
+                                <td>$tempoCreditsDisplay</td>
+                                <td>-</td>
+                                <td>$pTempoCost</td>
+                                <td>$pTempoCostPerPage</td>
+                            </tr>
+                            <tr>
                                 <td>Uno VS Code</td>
                                 <td>$unoVSCodeTimeDisplay</td>
                                 <td>-</td>
@@ -1848,52 +1888,12 @@ foreach ($project in $projectsData) {
                                 <td>-</td>
                             </tr>
                             <tr>
-                                <td>Lovable</td>
-                                <td>$lovableTimeDisplay</td>
-                                <td>$lovableCreditsDisplay</td>
-                                <td>-</td>
-                                <td>$pLovableCost</td>
-                                <td>$pLovableCostPerPage</td>
-                            </tr>
-                            <tr>
-                                <td>Dreamflow</td>
-                                <td>$dreamflowTimeDisplay</td>
-                                <td>$dreamflowCreditsDisplay</td>
-                                <td>-</td>
-                                <td>$pDreamflowCost</td>
-                                <td>$pDreamflowCostPerPage</td>
-                            </tr>
-                            <tr>
                                 <td>Vibecode</td>
                                 <td>$vibecodeTimeDisplay</td>
                                 <td>-</td>
                                 <td>-</td>
                                 <td>$pVibecodeCost</td>
                                 <td>$pVibecodeCostPerPage</td>
-                            </tr>
-                            <tr>
-                                <td>Builder</td>
-                                <td>$builderTimeDisplay</td>
-                                <td>$builderCreditsDisplay</td>
-                                <td>-</td>
-                                <td>$pBuilderCost</td>
-                                <td>$pBuilderCostPerPage</td>
-                            </tr>
-                            <tr>
-                                <td>Bolt</td>
-                                <td>$boltTimeDisplay</td>
-                                <td>-</td>
-                                <td>$boltTokensDisplay</td>
-                                <td>$pBoltCost</td>
-                                <td>$pBoltCostPerPage</td>
-                            </tr>
-                            <tr>
-                                <td>Tempo</td>
-                                <td>$tempoTimeDisplay</td>
-                                <td>$tempoCreditsDisplay</td>
-                                <td>-</td>
-                                <td>$pTempoCost</td>
-                                <td>$pTempoCostPerPage</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1907,15 +1907,15 @@ foreach ($project in $projectsData) {
                 <div class="tabs">
                     <button class="tab-button active" onclick="filterImages('$projectId', 'all')">All</button>
                     <button class="tab-button tab-antigravity" onclick="filterImages('$projectId', 'antigravity')">Antigravity</button>
+                    <button class="tab-button tab-bolt" onclick="filterImages('$projectId', 'bolt')">Bolt</button>
+                    <button class="tab-button tab-builder" onclick="filterImages('$projectId', 'builder')">Builder</button>
+                    <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
+                    <button class="tab-button tab-lovable" onclick="filterImages('$projectId', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-tempo" onclick="filterImages('$projectId', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('$projectId', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('$projectId', 'vscodeuno')">Uno VS Code</button>
                     <button class="tab-button tab-vscodeunomcp" onclick="filterImages('$projectId', 'vscodeunomcp')">Uno VS Code MCP</button>
-                    <button class="tab-button tab-lovable" onclick="filterImages('$projectId', 'lovable')">Lovable</button>
-                    <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-vibecode" onclick="filterImages('$projectId', 'vibecode')">Vibecode</button>
-                    <button class="tab-button tab-builder" onclick="filterImages('$projectId', 'builder')">Builder</button>
-                    <button class="tab-button tab-bolt" onclick="filterImages('$projectId', 'bolt')">Bolt</button>
-                    <button class="tab-button tab-tempo" onclick="filterImages('$projectId', 'tempo')">Tempo</button>
                 </div>
 
                 <div class="images-grid" id="${projectId}_images">
@@ -1941,7 +1941,7 @@ foreach ($project in $projectsData) {
     }
     
     # Generate tool sections
-    $toolOrder = @("antigravity", "uno", "vscodeuno", "vscodeunomcp", "lovable", "dreamflow", "vibecode", "builder", "bolt", "tempo", "other")
+    $toolOrder = @("antigravity", "bolt", "builder", "dreamflow", "lovable", "tempo", "uno", "vscodeuno", "vscodeunomcp", "vibecode", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
         if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl) -or ($toolName -eq "tempo" -and $project.TempoVideoUrl)) {
