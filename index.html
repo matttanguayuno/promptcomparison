@@ -720,20 +720,51 @@
             opacity: 1;
         }
 
-        .pivot-btn {
-            background: #475569 !important;
-            color: white !important;
-            border-color: #475569 !important;
+        .view-btn-group {
+            display: inline-flex;
+            align-items: stretch;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #1e3c72;
         }
 
-        .pivot-btn:hover {
-            background: #334155 !important;
-            border-color: #334155 !important;
+        .view-btn-group .view-btn {
+            border: none;
+            border-radius: 0;
+            border-right: 1px solid rgba(30, 60, 114, 0.3);
         }
 
-        .pivot-btn.active {
-            background: #1e293b !important;
-            border-color: #1e293b !important;
+        .view-btn-group .pivot-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 0.6rem;
+            background: white;
+            color: #1e3c72;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .view-btn-group .pivot-icon-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .view-btn-group .pivot-icon-btn.active {
+            background: #475569;
+            color: white;
+        }
+
+        .view-btn-group.active-group .view-btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            box-shadow: 0 2px 6px rgba(30, 60, 114, 0.3);
+        }
+
+        .view-btn-group.active-group .pivot-icon-btn:not(.active) {
+            background: #2a5298;
+            color: white;
         }
 
         .summary-table th:first-child {
@@ -1041,12 +1072,26 @@
                 </div>
 
                 <div class="view-switcher">
-                    <button class="view-btn active" onclick="switchTableView('time')">Time</button>
-                    <button class="view-btn" onclick="switchTableView('credits')">Credits</button>
-                    <button class="view-btn" onclick="switchTableView('cost')">Cost ($)</button>
-                    <button class="view-btn" onclick="switchTableView('creditsperpage')">Credits / Page</button>
-                    <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page ($)</button>
-                    <button class="view-btn pivot-btn" id="pivot-btn" onclick="pivotSummaryTable()">Pivot Table</button>
+                    <span class="view-btn-group active-group" data-view-group="time">
+                        <button class="view-btn active" onclick="switchTableView('time')">Time</button>
+                        <button class="pivot-icon-btn" title="Pivot Time view" onclick="pivotSummaryTable('time')">&#8645;</button>
+                    </span>
+                    <span class="view-btn-group" data-view-group="credits">
+                        <button class="view-btn" onclick="switchTableView('credits')">Credits</button>
+                        <button class="pivot-icon-btn" title="Pivot Credits view" onclick="pivotSummaryTable('credits')">&#8645;</button>
+                    </span>
+                    <span class="view-btn-group" data-view-group="cost">
+                        <button class="view-btn" onclick="switchTableView('cost')">Cost ($)</button>
+                        <button class="pivot-icon-btn" title="Pivot Cost view" onclick="pivotSummaryTable('cost')">&#8645;</button>
+                    </span>
+                    <span class="view-btn-group" data-view-group="creditsperpage">
+                        <button class="view-btn" onclick="switchTableView('creditsperpage')">Credits / Page</button>
+                        <button class="pivot-icon-btn" title="Pivot Credits/Page view" onclick="pivotSummaryTable('creditsperpage')">&#8645;</button>
+                    </span>
+                    <span class="view-btn-group" data-view-group="costperpage">
+                        <button class="view-btn" onclick="switchTableView('costperpage')">Cost / Page ($)</button>
+                        <button class="pivot-icon-btn" title="Pivot Cost/Page view" onclick="pivotSummaryTable('costperpage')">&#8645;</button>
+                    </span>
                 </div>
 
                 <div class="table-scroll-wrapper">
@@ -5990,11 +6035,13 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
             currentView = view;
 
             if (isPivoted) {
-                // Restore original, switch view, then re-pivot
+                // Restore original table first
                 const table = document.getElementById('performance-table');
                 table.innerHTML = originalTableHTML;
                 isPivoted = false;
                 originalTableHTML = null;
+                // Clear pivot icon active states
+                document.querySelectorAll('.pivot-icon-btn').forEach(b => b.classList.remove('active'));
             }
 
             // Remove view-active from all columns
@@ -6007,15 +6054,13 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                 cell.classList.add('view-active');
             });
             
-            // Update button states
-            document.querySelectorAll('.view-btn:not(.pivot-btn)').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // Re-pivot if the pivot button is active
-            if (document.getElementById('pivot-btn').classList.contains('active')) {
-                pivotSummaryTable();
+            // Update button group states
+            document.querySelectorAll('.view-btn-group').forEach(g => g.classList.remove('active-group'));
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            const group = document.querySelector('.view-btn-group[data-view-group="' + view + '"]');
+            if (group) {
+                group.classList.add('active-group');
+                group.querySelector('.view-btn').classList.add('active');
             }
         }
 
@@ -6060,7 +6105,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     if (bVal === null) return -1;
                     return asc ? aVal - bVal : bVal - aVal;
                 } else {
-                    return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                    return asc ? aVal.localeCompare(bVal, undefined, { numeric: true }) : bVal.localeCompare(aVal, undefined, { numeric: true });
                 }
             });
 
@@ -6069,17 +6114,16 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
             tbody.appendChild(avgRow);
         }
 
-        function pivotSummaryTable() {
+        function pivotSummaryTable(view) {
             const table = document.getElementById('performance-table');
-            const pivotBtn = document.getElementById('pivot-btn');
+            const clickedPivotBtn = document.querySelector('.view-btn-group[data-view-group="' + view + '"] .pivot-icon-btn');
 
             if (isPivoted) {
                 // Restore original table
                 table.innerHTML = originalTableHTML;
                 isPivoted = false;
                 originalTableHTML = null;
-                pivotBtn.classList.remove('active');
-                pivotBtn.textContent = 'Pivot Table';
+                document.querySelectorAll('.pivot-icon-btn').forEach(b => b.classList.remove('active'));
 
                 // Re-apply current view
                 document.querySelectorAll('#performance-table th[data-view], #performance-table td[data-view]').forEach(cell => {
@@ -6091,22 +6135,34 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                 return;
             }
 
+            // Switch to the requested view first
+            currentView = view;
+            document.querySelectorAll('#performance-table th[data-view], #performance-table td[data-view]').forEach(cell => {
+                cell.classList.remove('view-active');
+            });
+            document.querySelectorAll('#performance-table th[data-view="' + view + '"], #performance-table td[data-view="' + view + '"]').forEach(cell => {
+                cell.classList.add('view-active');
+            });
+            document.querySelectorAll('.view-btn-group').forEach(g => g.classList.remove('active-group'));
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            const activeGroup = document.querySelector('.view-btn-group[data-view-group="' + view + '"]');
+            if (activeGroup) {
+                activeGroup.classList.add('active-group');
+                activeGroup.querySelector('.view-btn').classList.add('active');
+            }
+
             // Save original HTML
             originalTableHTML = table.innerHTML;
 
             // Read visible columns (view-active headers + Project column)
             const headers = table.querySelectorAll('thead th');
             const visibleCols = [];
-            const toolColors = {};
             headers.forEach((th, i) => {
-                if (i === 0) return; // Skip Project
+                if (i === 0) return;
                 if (th.classList.contains('view-active') || !th.hasAttribute('data-view')) {
                     const toolClass = Array.from(th.classList).find(c => c.startsWith('tool-'));
                     const toolName = th.innerHTML.split('<br>')[0].trim();
                     visibleCols.push({ index: i, name: toolName, toolClass: toolClass || '' });
-                    if (toolClass) {
-                        toolColors[toolName] = toolClass;
-                    }
                 }
             });
 
@@ -6127,23 +6183,20 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                 projects.push({ name: projectName, values: values });
             });
 
-            // Build pivoted table
+            // Build pivoted table â€” tools as rows, projects as columns
             let html = '<thead><tr>';
             html += '<th class="sortable" onclick="sortSummaryTable(this, \'string\')">Tool<span class="sort-arrow"></span></th>';
             projects.forEach(p => {
-                const isAvg = p.name === 'Average';
                 html += '<th class="sortable" onclick="sortSummaryTable(this, \'number\')">' + p.name + '<span class="sort-arrow"></span></th>';
             });
             html += '</tr></thead><tbody>';
 
             visibleCols.forEach(col => {
-                const colorClass = col.toolClass ? ' ' + col.toolClass : '';
                 html += '<tr>';
                 html += '<td style="font-weight: 600;">' + col.name + '</td>';
                 projects.forEach(p => {
                     const val = p.values[col.name];
                     const cellClasses = val ? val.classes : '';
-                    const isAvg = p.name === 'Average';
                     html += '<td class="' + cellClasses + '">' + (val ? val.text : '-') + '</td>';
                 });
                 html += '</tr>';
@@ -6152,8 +6205,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
             html += '</tbody>';
             table.innerHTML = html;
             isPivoted = true;
-            pivotBtn.classList.add('active');
-            pivotBtn.textContent = 'Unpivot Table';
+            if (clickedPivotBtn) clickedPivotBtn.classList.add('active');
         }
 
         function sortProjectTable(th, colIndex, type) {
