@@ -691,7 +691,14 @@
             position: sticky;
             left: 0;
             z-index: 2;
+        }
+
+        .summary-table td:first-child {
             background: white;
+        }
+
+        .summary-table td.pivoted-tool-cell {
+            background: none;
         }
 
         .summary-table thead th:first-child {
@@ -881,14 +888,14 @@
             font-size: 1rem;
         }
 
-        .summary-table tr:last-child td {
+        .summary-table tr.avg-row td {
             border-bottom: none;
             font-weight: 700;
             background: #f8fafc;
             font-size: 1.05rem;
         }
 
-        .summary-table tr:hover:not(:last-child) td:first-child {
+        .summary-table tr:hover:not(.avg-row) td:first-child:not(.pivoted-tool-cell) {
             background: #f8fafc;
         }
 
@@ -1787,7 +1794,7 @@
                             <td data-view="cost">0.98</td>
                             <td data-view="creditsperpage">4.9</td>
                             <td data-view="costperpage">0.98</td>
-                        </tr>                        <tr>
+                        </tr>                        <tr class="avg-row">
                             <td>Average</td>
                             <td data-view="time" class="view-active">61.7</td>
                             <td data-view="time" class="view-active">123.6</td>

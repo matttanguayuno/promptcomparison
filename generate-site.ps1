@@ -934,7 +934,14 @@ $html = @"
             position: sticky;
             left: 0;
             z-index: 2;
+        }
+
+        .summary-table td:first-child {
             background: white;
+        }
+
+        .summary-table td.pivoted-tool-cell {
+            background: none;
         }
 
         .summary-table thead th:first-child {
@@ -1124,14 +1131,14 @@ $html = @"
             font-size: 1rem;
         }
 
-        .summary-table tr:last-child td {
+        .summary-table tr.avg-row td {
             border-bottom: none;
             font-weight: 700;
             background: #f8fafc;
             font-size: 1.05rem;
         }
 
-        .summary-table tr:hover:not(:last-child) td:first-child {
+        .summary-table tr:hover:not(.avg-row) td:first-child:not(.pivoted-tool-cell) {
             background: #f8fafc;
         }
 
@@ -1623,7 +1630,7 @@ $tempoCreditsPerPageAvg = if ($tempoCount -gt 0) { [math]::Round($tempoCreditsTo
 $tempoCostPerPageAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.20) / $tempoCount, 2) } else { "" }
 
 $html += @"
-                        <tr>
+                        <tr class="avg-row">
                             <td>Average</td>
                             <td data-view="time" class="view-active">$antigravityAvg</td>
                             <td data-view="time" class="view-active">$unoVSCodeAvg</td>
