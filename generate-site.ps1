@@ -922,6 +922,24 @@ $html = @"
             min-width: 600px;
         }
 
+        .summary-table th,
+        .summary-table td {
+            min-width: 80px;
+            white-space: nowrap;
+        }
+
+        .summary-table th:first-child,
+        .summary-table td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background: white;
+        }
+
+        .summary-table thead th:first-child {
+            z-index: 3;
+        }
+
         .summary-table th {
             color: white;
             padding: 1rem;
@@ -1072,6 +1090,10 @@ $html = @"
             font-weight: 700;
             background: #f8fafc;
             font-size: 1.05rem;
+        }
+
+        .summary-table tr:hover:not(:last-child) td:first-child {
+            background: #f8fafc;
         }
 
         .prompts-section .summary-table td {
