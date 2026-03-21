@@ -351,6 +351,7 @@ $html = @"
 
         .main-content {
             flex: 1;
+            min-width: 0;
             background: #ffffff;
             border-radius: 12px;
             padding: 2rem;
