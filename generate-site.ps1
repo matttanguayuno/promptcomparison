@@ -599,7 +599,7 @@ $html = @"
         }
 
         .tab-dreamflow.active.active-tool {
-            background: #16a085;
+            background: #00BCD4;
             border-color: transparent;
         }
 
@@ -659,12 +659,12 @@ $html = @"
         }
 
         .tab-dreamflow {
-            border-color: #16a085;
-            color: #16a085;
+            border-color: #00BCD4;
+            color: #00BCD4;
         }
 
         .tab-dreamflow:hover {
-            background: #16a085;
+            background: #00BCD4;
             color: white;
         }
 
@@ -694,47 +694,47 @@ $html = @"
         }
 
         .tab-builder {
-            border-color: #2ecc71;
-            color: #2ecc71;
+            border-color: #43A047;
+            color: #43A047;
         }
 
         .tab-builder:hover {
-            background: #2ecc71;
+            background: #43A047;
             color: white;
         }
 
         .tab-builder.active.active-tool {
-            background: #2ecc71;
+            background: #43A047;
             border-color: transparent;
         }
 
         .tab-bolt {
-            border-color: #1389FD;
-            color: #1389FD;
+            border-color: #5C6BC0;
+            color: #5C6BC0;
         }
 
         .tab-bolt:hover {
-            background: #1389FD;
+            background: #5C6BC0;
             color: white;
         }
 
         .tab-bolt.active.active-tool {
-            background: #1389FD;
+            background: #5C6BC0;
             border-color: transparent;
         }
 
         .tab-tempo {
-            border-color: #FF6B6B;
-            color: #FF6B6B;
+            border-color: #E91E63;
+            color: #E91E63;
         }
 
         .tab-tempo:hover {
-            background: #FF6B6B;
+            background: #E91E63;
             color: white;
         }
 
         .tab-tempo.active.active-tool {
-            background: #FF6B6B;
+            background: #E91E63;
             border-color: transparent;
         }
 
@@ -770,7 +770,7 @@ $html = @"
         }
 
         .tool-group-header.dreamflow {
-            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
         }
 
         .tool-group-header.vscodeuno {
@@ -790,15 +790,15 @@ $html = @"
         }
 
         .tool-group-header.builder {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%);
         }
 
         .tool-group-header.bolt {
-            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
+            background: linear-gradient(135deg, #5C6BC0 0%, #3949AB 100%);
         }
 
         .tool-group-header.tempo {
-            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+            background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
         }
 
         .video-container {
@@ -889,7 +889,7 @@ $html = @"
         }
 
         .image-label.dreamflow {
-            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
             color: white;
         }
 
@@ -904,7 +904,7 @@ $html = @"
         }
 
         .image-label.tempo {
-            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+            background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
             color: white;
         }
 
@@ -1051,7 +1051,7 @@ $html = @"
         }
 
         .summary-table th.tool-dreamflow {
-            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
         }
 
         .summary-table th.tool-vibecode {
@@ -1059,15 +1059,15 @@ $html = @"
         }
 
         .summary-table th.tool-builder {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%);
         }
 
         .summary-table th.tool-bolt {
-            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
+            background: linear-gradient(135deg, #5C6BC0 0%, #3949AB 100%);
         }
 
         .summary-table th.tool-tempo {
-            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+            background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
         }
 
         .summary-table td.pivoted-tool-cell {
@@ -1089,7 +1089,7 @@ $html = @"
         }
 
         .summary-table td.pivoted-tool-cell.tool-dreamflow {
-            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
         }
 
         .summary-table td.pivoted-tool-cell.tool-vibecode {
@@ -1097,15 +1097,15 @@ $html = @"
         }
 
         .summary-table td.pivoted-tool-cell.tool-builder {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%);
         }
 
         .summary-table td.pivoted-tool-cell.tool-bolt {
-            background: linear-gradient(135deg, #1389FD 0%, #0D6FD8 100%);
+            background: linear-gradient(135deg, #5C6BC0 0%, #3949AB 100%);
         }
 
         .summary-table td.pivoted-tool-cell.tool-tempo {
-            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A24 100%);
+            background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
         }
 
         .summary-table th:last-child {
