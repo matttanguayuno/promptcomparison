@@ -1248,8 +1248,7 @@ $html = @"
 </head>
 <body>
     <header>
-        <h1>AI Generation Comparison</h1>
-        <p class="subtitle">Comparing Uno, Lovable, and Dreamflow outputs across different prompts</p>
+        <h1>Prompt Comparison</h1>
     </header>
 
     <div class="container">
