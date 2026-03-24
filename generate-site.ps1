@@ -19,10 +19,10 @@ $performanceData = @(
     @{ Name = "12. Login Register"; AntigravityTime = 60; UnoVSCodeTime = 90; UnoVSCodeMCPTime = 300; LovableTime = 155; LovableCredits = 2.1; LovablePages = 2; DreamflowTime = 255; DreamflowCredits = 3.5; DreamflowPages = 2; VibecodeTime = 330; VibecodeCredits = 0.82; VibecodePages = 1; BuilderTime = 110; BuilderCredits = 2; BuilderPages = 1; BoltTime = 300; BoltTokens = 300000; BoltPages = 1; TempoTime = 270; TempoCredits = 3.3; TempoPages = 1; ReplitTime = 110; ReplitCredits = 9; ReplitPages = 1 }
     @{ Name = "13. Travel Home Screen"; AntigravityTime = 75; UnoVSCodeTime = 400; UnoVSCodeMCPTime = 240; LovableTime = 210; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 8.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.57; VibecodePages = 1; BuilderTime = 200; BuilderCredits = 6; BuilderPages = 1; BoltTime = 250; BoltTokens = 235000; BoltPages = 1; TempoTime = 220; TempoCredits = 2.9; TempoPages = 1; ReplitTime = 240; ReplitCredits = 20; ReplitPages = 1 }
     @{ Name = "14. Burger Joint"; AntigravityTime = 80; UnoVSCodeTime = 100; UnoVSCodeMCPTime = 330; LovableTime = 200; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 3.4; DreamflowPages = 1; VibecodeTime = 295; VibecodeCredits = 0.61; VibecodePages = 1; BuilderTime = 175; BuilderCredits = 5; BuilderPages = 1; BoltTime = 100; BoltTokens = 105000; BoltPages = 1; TempoTime = 410; TempoCredits = 5; TempoPages = 3; ReplitTime = 135; ReplitCredits = 11; ReplitPages = 1 }
-    @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1; BuilderTime = 235; BuilderCredits = 6; BuilderPages = 1; BoltTime = 135; BoltTokens = 131000; BoltPages = 1; TempoTime = 290; TempoCredits = 3.5; TempoPages = 5; ReplitTime = 160; ReplitCredits = 12; ReplitPages = 1 }
-    @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1; BuilderTime = 145; BuilderCredits = 3; BuilderPages = 1; BoltTime = 120; BoltTokens = 116000; BoltPages = 1; TempoTime = 320; TempoCredits = 3.7; TempoPages = 1; ReplitTime = 170; ReplitCredits = 14; ReplitPages = 1 }
-    @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1; BoltTime = 90; BoltTokens = 107000; BoltPages = 1; TempoTime = 160; TempoCredits = 1.5; TempoPages = 1; ReplitTime = 90; ReplitCredits = 8; ReplitPages = 1 }
-    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2; BuilderTime = 120; BuilderCredits = 2; BuilderPages = 1; BoltTime = 135; BoltTokens = 141000; BoltPages = 1; TempoTime = 375; TempoCredits = 4.9; TempoPages = 1; ReplitTime = 200; ReplitCredits = 16; ReplitPages = 1 }
+    @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 335; DreamflowCredits = 3.5; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1; BuilderTime = 235; BuilderCredits = 6; BuilderPages = 1; BoltTime = 135; BoltTokens = 131000; BoltPages = 1; TempoTime = 290; TempoCredits = 3.5; TempoPages = 5; ReplitTime = 160; ReplitCredits = 12; ReplitPages = 1 }
+    @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 170; DreamflowCredits = 3.1; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1; BuilderTime = 145; BuilderCredits = 3; BuilderPages = 1; BoltTime = 120; BoltTokens = 116000; BoltPages = 1; TempoTime = 320; TempoCredits = 3.7; TempoPages = 1; ReplitTime = 170; ReplitCredits = 14; ReplitPages = 1 }
+    @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 230; DreamflowCredits = 3.4; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1; BoltTime = 90; BoltTokens = 107000; BoltPages = 1; TempoTime = 160; TempoCredits = 1.5; TempoPages = 1; ReplitTime = 90; ReplitCredits = 8; ReplitPages = 1 }
+    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 540; DreamflowCredits = 11.81; DreamflowPages = 0; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2; BuilderTime = 120; BuilderCredits = 2; BuilderPages = 1; BoltTime = 135; BoltTokens = 141000; BoltPages = 1; TempoTime = 375; TempoCredits = 4.9; TempoPages = 1; ReplitTime = 200; ReplitCredits = 16; ReplitPages = 1 }
 )
 
 # Google Drive video links (Vibecode demos)
@@ -113,6 +113,28 @@ $tempoDriveLinks = @{
     "18. MeowFlix" = "https://drive.google.com/file/d/1YgeSpZHoxOLwECCETmSd6NkLS6T2TWhY/view?usp=drive_link"
 }
 
+# Google Drive video links (Dreamflow demos)
+$dreamflowDriveLinks = @{
+    "1. Flight Details" = "https://drive.google.com/file/d/1gYwTFgJFAASlSrPR1S-TufUK5e7FOcmF/view?usp=drive_link"
+    "2. Football Fantasy" = "https://drive.google.com/file/d/10ce_zHgYFgtVQqZ7yKi1AXs5joqrf2Bc/view?usp=drive_link"
+    "3. Travel Guide" = "https://drive.google.com/file/d/1Ola-DlEJsEfwu39D_2Aw-1JYQFAtnxWN/view?usp=drive_link"
+    "4. Electric Utility Dashboard" = "https://drive.google.com/file/d/16NsWe7XNNoQSsY919ADpm606UovpTcdY/view?usp=drive_link"
+    "5. Video Streaming" = "https://drive.google.com/file/d/1F5PSits1L1twL_DAb-MDCXSSJpAwSUr0/view?usp=drive_link"
+    "6. Notes" = "https://drive.google.com/file/d/1UcfDK7OgOsCeKFrRDRTZ0KzVXGfu6_yX/view?usp=drive_link"
+    "7. Calendar" = "https://drive.google.com/file/d/1Ql6dduAL5d8IxnqDfEaOZ_AFG-NH0dMM/view?usp=drive_link"
+    "8. Hospital Dashboard" = "https://drive.google.com/file/d/1vD6cm8j6U7xcmNgzaSFGSx0JMvV5Ww76/view?usp=drive_link"
+    "9. Budgeting Dashboard" = "https://drive.google.com/file/d/1M4tleZnCU6S46hGJd9-XIu_QI37Uslo5/view?usp=drive_link"
+    "10. Recipe Home Screen" = "https://drive.google.com/file/d/15gdCxNPkIufHX6_kVdUP1BvOi3Jn1EoD/view?usp=drive_link"
+    "11. Fitness Tracking" = "https://drive.google.com/file/d/1v0eTqJsCSPgbs0YdEcn1sL4S9aEdI-fo/view?usp=drive_link"
+    "12. Login Register" = "https://drive.google.com/file/d/1f3nuNreNcXlbzEtLRWOdLjYcihJFzRwU/view?usp=drive_link"
+    "13. Travel Home Screen" = "https://drive.google.com/file/d/1BwqaTFYFFi8cZdeeIG1VPQhzflBxN3WQ/view?usp=drive_link"
+    "14. Burger Joint" = "https://drive.google.com/file/d/184Asoy5O7mKh2UCtnANwKi_aMtUwG0xX/view?usp=drive_link"
+    "15. Fitness Home Screen" = "https://drive.google.com/file/d/1P_L40WbjSuGLx3U8fWl0dIVYJwpxiSD3/view?usp=drive_link"
+    "16. Background Dashboard" = "https://drive.google.com/file/d/1zfVjwvxFPZjSbB8Hu21abkdUuxxwqZhM/view?usp=drive_link"
+    "17. Login Email Phone" = "https://drive.google.com/file/d/1wgsa2RZei7ZYMWeVFpKSOhEmGTl1F6Is/view?usp=drive_link"
+    "18. MeowFlix" = "https://drive.google.com/file/d/11XMHSRHwWt08o2_l6BmMp30QBNmjbZm2/view?usp=drive_link"
+}
+
 # Google Drive video links (Replit demos)
 $replitDriveLinks = @{
     "1. Flight Details" = "https://drive.google.com/file/d/10qRtLQF3XWsNL13vYCUxPsv69JWmEdsL/view?usp=drive_link"
@@ -188,6 +210,7 @@ foreach ($folder in $folders) {
         BoltVideoUrl = $boltDriveLinks[$projectName]
         TempoVideoUrl = $tempoDriveLinks[$projectName]
         ReplitVideoUrl = $replitDriveLinks[$projectName]
+        DreamflowVideoUrl = $dreamflowDriveLinks[$projectName]
     }
     
     foreach ($image in $images) {
@@ -2198,7 +2221,7 @@ foreach ($project in $projectsData) {
     $toolOrder = @("antigravity", "bolt", "builder", "dreamflow", "lovable", "replit", "tempo", "uno", "vscodeuno", "vscodeunomcp", "vibecode", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
-        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl) -or ($toolName -eq "tempo" -and $project.TempoVideoUrl) -or ($toolName -eq "replit" -and $project.ReplitVideoUrl)) {
+        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl) -or ($toolName -eq "tempo" -and $project.TempoVideoUrl) -or ($toolName -eq "replit" -and $project.ReplitVideoUrl) -or ($toolName -eq "dreamflow" -and $project.DreamflowVideoUrl)) {
             $toolDisplayName = switch ($toolName) {
                 "antigravity" { "ANTIGRAVITY" }
                 "uno" { "UNO HD" }
@@ -2219,6 +2242,17 @@ foreach ($project in $projectsData) {
                         <div class="tool-group-header $toolName">$toolDisplayName</div>
                         <div class="tool-group-images">
 "@
+            
+            # Add video embed for Dreamflow if URL exists
+            if ($toolName -eq "dreamflow" -and $project.DreamflowVideoUrl) {
+                # Convert Google Drive view URL to embed URL
+                $embedUrl = $project.DreamflowVideoUrl -replace '/view\?usp=drive_link', '/preview'
+                $html += @"
+                            <div class="video-container">
+                                <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>
+"@
+            }
             
             # Add video embed for Vibecode if URL exists
             if ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) {
