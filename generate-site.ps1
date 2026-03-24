@@ -5,24 +5,24 @@ $outputFile = Join-Path $basePath "index.html"
 
 # Performance data for summary
 $performanceData = @(
-    @{ Name = "1. Flight Details"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 105; LovableTime = 180; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 200; DreamflowCredits = 3.4; DreamflowPages = 2; VibecodeTime = 780; VibecodeCredits = 1.96; VibecodePages = 1; BuilderTime = 380; BuilderCredits = 14; BuilderPages = 1; BoltTime = 95; BoltTokens = 99000; BoltPages = 1; TempoTime = 435; TempoCredits = 4.2; TempoPages = 1 }
-    @{ Name = "2. Football Fantasy"; AntigravityTime = 65; UnoVSCodeTime = 110; UnoVSCodeMCPTime = 170; LovableTime = 420; LovableCredits = 2.9; LovablePages = 1; DreamflowTime = 500; DreamflowCredits = 11.5; DreamflowPages = 1; VibecodeTime = 1490; VibecodeCredits = 0.54; VibecodePages = 2; BuilderTime = 180; BuilderCredits = 5; BuilderPages = 3; BoltTime = 505; BoltTokens = 201000; BoltPages = 1; TempoTime = 875; TempoCredits = 5; TempoPages = 8 }
-    @{ Name = "3. Travel Guide"; AntigravityTime = 80; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 230; LovableCredits = 2.4; LovablePages = 1; DreamflowTime = 170; DreamflowCredits = 4.1; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.1; VibecodePages = 1; BuilderTime = 160; BuilderCredits = 4; BuilderPages = 2; BoltTime = 305; BoltTokens = 300000; BoltPages = 1; TempoTime = 510; TempoCredits = 5; TempoPages = 1 }
-    @{ Name = "4. Electric Utility Dashboard"; AntigravityTime = 95; UnoVSCodeTime = 115; UnoVSCodeMCPTime = 290; LovableTime = 160; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 3.9; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.5; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1; BoltTime = 225; BoltTokens = 188000; BoltPages = 1; TempoTime = 290; TempoCredits = 3.7; TempoPages = 1 }
-    @{ Name = "5. Video Streaming"; AntigravityTime = 90; UnoVSCodeTime = 105; UnoVSCodeMCPTime = 160; LovableTime = 270; LovableCredits = 2.5; LovablePages = 2; DreamflowTime = 330; DreamflowCredits = 5.8; DreamflowPages = 4; VibecodeTime = 1080; VibecodeCredits = 6.37; VibecodePages = 2; BuilderTime = 160; BuilderCredits = 4; BuilderPages = 2; BoltTime = 350; BoltTokens = 300000; BoltPages = 1; TempoTime = 475; TempoCredits = 5; TempoPages = 1 }
-    @{ Name = "6. Notes"; AntigravityTime = 90; UnoVSCodeTime = 275; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 2; LovablePages = 3; DreamflowTime = 210; DreamflowCredits = 3.8; DreamflowPages = 3; VibecodeTime = 450; VibecodeCredits = 1.49; VibecodePages = 1; BuilderTime = 125; BuilderCredits = 2; BuilderPages = 1; BoltTime = 160; BoltTokens = 131000; BoltPages = 1; TempoTime = 170; TempoCredits = 2; TempoPages = 1 }
-    @{ Name = "7. Calendar"; AntigravityTime = 75; UnoVSCodeTime = 210; UnoVSCodeMCPTime = 230; LovableTime = 290; LovableCredits = 2.2; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 7; DreamflowPages = 1; VibecodeTime = 285; VibecodeCredits = 0.69; VibecodePages = 1; BuilderTime = 125; BuilderCredits = 3; BuilderPages = 1; BoltTime = 175; BoltTokens = 141000; BoltPages = 1; TempoTime = 270; TempoCredits = 2; TempoPages = 1 }
-    @{ Name = "8. Hospital Dashboard"; AntigravityTime = 85; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 260; DreamflowCredits = 4.4; DreamflowPages = 1; VibecodeTime = 680; VibecodeCredits = 2.52; VibecodePages = 1; BuilderTime = 100; BuilderCredits = 2; BuilderPages = 1; BoltTime = 205; BoltTokens = 203000; BoltPages = 1; TempoTime = 270; TempoCredits = 2.9; TempoPages = 1 }
-    @{ Name = "9. Budgeting Dashboard"; AntigravityTime = 80; UnoVSCodeTime = 160; UnoVSCodeMCPTime = 140; LovableTime = 150; LovableCredits = 1.7; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 5.4; DreamflowPages = 1; VibecodeTime = 1095; VibecodeCredits = 1.15; VibecodePages = 1; BuilderTime = 105; BuilderCredits = 2; BuilderPages = 1; BoltTime = 235; BoltTokens = 244000; BoltPages = 2; TempoTime = 220; TempoCredits = 2.9; TempoPages = 1 }
-    @{ Name = "10. Recipe Home Screen"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 170; LovableTime = 120; LovableCredits = 1.6; LovablePages = 1; DreamflowTime = 185; DreamflowCredits = 4.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.54; VibecodePages = 1; BuilderTime = 95; BuilderCredits = 2; BuilderPages = 1; BoltTime = 80; BoltTokens = 79000; BoltPages = 1; TempoTime = 250; TempoCredits = 3.3; TempoPages = 2 }
-    @{ Name = "11. Fitness Tracking"; AntigravityTime = 75; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 200; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 3.5; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.51; VibecodePages = 1; BuilderTime = 120; BuilderCredits = 3; BuilderPages = 1; BoltTime = 120; BoltTokens = 84000; BoltPages = 1; TempoTime = 240; TempoCredits = 3; TempoPages = 1 }
-    @{ Name = "12. Login Register"; AntigravityTime = 60; UnoVSCodeTime = 90; UnoVSCodeMCPTime = 300; LovableTime = 155; LovableCredits = 2.1; LovablePages = 2; DreamflowTime = 255; DreamflowCredits = 3.5; DreamflowPages = 2; VibecodeTime = 330; VibecodeCredits = 0.82; VibecodePages = 1; BuilderTime = 110; BuilderCredits = 2; BuilderPages = 1; BoltTime = 300; BoltTokens = 300000; BoltPages = 1; TempoTime = 270; TempoCredits = 3.3; TempoPages = 1 }
-    @{ Name = "13. Travel Home Screen"; AntigravityTime = 75; UnoVSCodeTime = 400; UnoVSCodeMCPTime = 240; LovableTime = 210; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 8.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.57; VibecodePages = 1; BuilderTime = 200; BuilderCredits = 6; BuilderPages = 1; BoltTime = 250; BoltTokens = 235000; BoltPages = 1; TempoTime = 220; TempoCredits = 2.9; TempoPages = 1 }
-    @{ Name = "14. Burger Joint"; AntigravityTime = 80; UnoVSCodeTime = 100; UnoVSCodeMCPTime = 330; LovableTime = 200; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 3.4; DreamflowPages = 1; VibecodeTime = 295; VibecodeCredits = 0.61; VibecodePages = 1; BuilderTime = 175; BuilderCredits = 5; BuilderPages = 1; BoltTime = 100; BoltTokens = 105000; BoltPages = 1; TempoTime = 410; TempoCredits = 5; TempoPages = 3 }
-    @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1; BuilderTime = 235; BuilderCredits = 6; BuilderPages = 1; BoltTime = 135; BoltTokens = 131000; BoltPages = 1; TempoTime = 290; TempoCredits = 3.5; TempoPages = 5 }
-    @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1; BuilderTime = 145; BuilderCredits = 3; BuilderPages = 1; BoltTime = 120; BoltTokens = 116000; BoltPages = 1; TempoTime = 320; TempoCredits = 3.7; TempoPages = 1 }
-    @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1; BoltTime = 90; BoltTokens = 107000; BoltPages = 1; TempoTime = 160; TempoCredits = 1.5; TempoPages = 1 }
-    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2; BuilderTime = 120; BuilderCredits = 2; BuilderPages = 1; BoltTime = 135; BoltTokens = 141000; BoltPages = 1; TempoTime = 375; TempoCredits = 4.9; TempoPages = 1 }
+    @{ Name = "1. Flight Details"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 105; LovableTime = 180; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 200; DreamflowCredits = 3.4; DreamflowPages = 2; VibecodeTime = 780; VibecodeCredits = 1.96; VibecodePages = 1; BuilderTime = 380; BuilderCredits = 14; BuilderPages = 1; BoltTime = 95; BoltTokens = 99000; BoltPages = 1; TempoTime = 435; TempoCredits = 4.2; TempoPages = 1; ReplitTime = 195; ReplitCredits = 15; ReplitPages = 1 }
+    @{ Name = "2. Football Fantasy"; AntigravityTime = 65; UnoVSCodeTime = 110; UnoVSCodeMCPTime = 170; LovableTime = 420; LovableCredits = 2.9; LovablePages = 1; DreamflowTime = 500; DreamflowCredits = 11.5; DreamflowPages = 1; VibecodeTime = 1490; VibecodeCredits = 0.54; VibecodePages = 2; BuilderTime = 180; BuilderCredits = 5; BuilderPages = 3; BoltTime = 505; BoltTokens = 201000; BoltPages = 1; TempoTime = 875; TempoCredits = 5; TempoPages = 8; ReplitTime = 255; ReplitCredits = 40; ReplitPages = 7 }
+    @{ Name = "3. Travel Guide"; AntigravityTime = 80; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 230; LovableCredits = 2.4; LovablePages = 1; DreamflowTime = 170; DreamflowCredits = 4.1; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.1; VibecodePages = 1; BuilderTime = 160; BuilderCredits = 4; BuilderPages = 2; BoltTime = 305; BoltTokens = 300000; BoltPages = 1; TempoTime = 510; TempoCredits = 5; TempoPages = 1; ReplitTime = 225; ReplitCredits = 30; ReplitPages = 5 }
+    @{ Name = "4. Electric Utility Dashboard"; AntigravityTime = 95; UnoVSCodeTime = 115; UnoVSCodeMCPTime = 290; LovableTime = 160; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 3.9; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.5; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1; BoltTime = 225; BoltTokens = 188000; BoltPages = 1; TempoTime = 290; TempoCredits = 3.7; TempoPages = 1; ReplitTime = 190; ReplitCredits = 25; ReplitPages = 1 }
+    @{ Name = "5. Video Streaming"; AntigravityTime = 90; UnoVSCodeTime = 105; UnoVSCodeMCPTime = 160; LovableTime = 270; LovableCredits = 2.5; LovablePages = 2; DreamflowTime = 330; DreamflowCredits = 5.8; DreamflowPages = 4; VibecodeTime = 1080; VibecodeCredits = 6.37; VibecodePages = 2; BuilderTime = 160; BuilderCredits = 4; BuilderPages = 2; BoltTime = 350; BoltTokens = 300000; BoltPages = 1; TempoTime = 475; TempoCredits = 5; TempoPages = 1; ReplitTime = 390; ReplitCredits = 46; ReplitPages = 2 }
+    @{ Name = "6. Notes"; AntigravityTime = 90; UnoVSCodeTime = 275; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 2; LovablePages = 3; DreamflowTime = 210; DreamflowCredits = 3.8; DreamflowPages = 3; VibecodeTime = 450; VibecodeCredits = 1.49; VibecodePages = 1; BuilderTime = 125; BuilderCredits = 2; BuilderPages = 1; BoltTime = 160; BoltTokens = 131000; BoltPages = 1; TempoTime = 170; TempoCredits = 2; TempoPages = 1; ReplitTime = 230; ReplitCredits = 24; ReplitPages = 1 }
+    @{ Name = "7. Calendar"; AntigravityTime = 75; UnoVSCodeTime = 210; UnoVSCodeMCPTime = 230; LovableTime = 290; LovableCredits = 2.2; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 7; DreamflowPages = 1; VibecodeTime = 285; VibecodeCredits = 0.69; VibecodePages = 1; BuilderTime = 125; BuilderCredits = 3; BuilderPages = 1; BoltTime = 175; BoltTokens = 141000; BoltPages = 1; TempoTime = 270; TempoCredits = 2; TempoPages = 1; ReplitTime = 180; ReplitCredits = 18; ReplitPages = 1 }
+    @{ Name = "8. Hospital Dashboard"; AntigravityTime = 85; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 150; LovableTime = 180; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 260; DreamflowCredits = 4.4; DreamflowPages = 1; VibecodeTime = 680; VibecodeCredits = 2.52; VibecodePages = 1; BuilderTime = 100; BuilderCredits = 2; BuilderPages = 1; BoltTime = 205; BoltTokens = 203000; BoltPages = 1; TempoTime = 270; TempoCredits = 2.9; TempoPages = 1; ReplitTime = 360; ReplitCredits = 58; ReplitPages = 2 }
+    @{ Name = "9. Budgeting Dashboard"; AntigravityTime = 80; UnoVSCodeTime = 160; UnoVSCodeMCPTime = 140; LovableTime = 150; LovableCredits = 1.7; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 5.4; DreamflowPages = 1; VibecodeTime = 1095; VibecodeCredits = 1.15; VibecodePages = 1; BuilderTime = 105; BuilderCredits = 2; BuilderPages = 1; BoltTime = 235; BoltTokens = 244000; BoltPages = 2; TempoTime = 220; TempoCredits = 2.9; TempoPages = 1; ReplitTime = 230; ReplitCredits = 29; ReplitPages = 1 }
+    @{ Name = "10. Recipe Home Screen"; AntigravityTime = 80; UnoVSCodeTime = 150; UnoVSCodeMCPTime = 170; LovableTime = 120; LovableCredits = 1.6; LovablePages = 1; DreamflowTime = 185; DreamflowCredits = 4.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.54; VibecodePages = 1; BuilderTime = 95; BuilderCredits = 2; BuilderPages = 1; BoltTime = 80; BoltTokens = 79000; BoltPages = 1; TempoTime = 250; TempoCredits = 3.3; TempoPages = 2; ReplitTime = 165; ReplitCredits = 15; ReplitPages = 1 }
+    @{ Name = "11. Fitness Tracking"; AntigravityTime = 75; UnoVSCodeTime = 120; UnoVSCodeMCPTime = 180; LovableTime = 200; LovableCredits = 1.9; LovablePages = 1; DreamflowTime = 240; DreamflowCredits = 3.5; DreamflowPages = 1; VibecodeTime = 240; VibecodeCredits = 0.51; VibecodePages = 1; BuilderTime = 120; BuilderCredits = 3; BuilderPages = 1; BoltTime = 120; BoltTokens = 84000; BoltPages = 1; TempoTime = 240; TempoCredits = 3; TempoPages = 1; ReplitTime = 95; ReplitCredits = 7; ReplitPages = 1 }
+    @{ Name = "12. Login Register"; AntigravityTime = 60; UnoVSCodeTime = 90; UnoVSCodeMCPTime = 300; LovableTime = 155; LovableCredits = 2.1; LovablePages = 2; DreamflowTime = 255; DreamflowCredits = 3.5; DreamflowPages = 2; VibecodeTime = 330; VibecodeCredits = 0.82; VibecodePages = 1; BuilderTime = 110; BuilderCredits = 2; BuilderPages = 1; BoltTime = 300; BoltTokens = 300000; BoltPages = 1; TempoTime = 270; TempoCredits = 3.3; TempoPages = 1; ReplitTime = 110; ReplitCredits = 9; ReplitPages = 1 }
+    @{ Name = "13. Travel Home Screen"; AntigravityTime = 75; UnoVSCodeTime = 400; UnoVSCodeMCPTime = 240; LovableTime = 210; LovableCredits = 2.1; LovablePages = 1; DreamflowTime = 220; DreamflowCredits = 8.5; DreamflowPages = 1; VibecodeTime = 270; VibecodeCredits = 0.57; VibecodePages = 1; BuilderTime = 200; BuilderCredits = 6; BuilderPages = 1; BoltTime = 250; BoltTokens = 235000; BoltPages = 1; TempoTime = 220; TempoCredits = 2.9; TempoPages = 1; ReplitTime = 240; ReplitCredits = 20; ReplitPages = 1 }
+    @{ Name = "14. Burger Joint"; AntigravityTime = 80; UnoVSCodeTime = 100; UnoVSCodeMCPTime = 330; LovableTime = 200; LovableCredits = 1.8; LovablePages = 1; DreamflowTime = 225; DreamflowCredits = 3.4; DreamflowPages = 1; VibecodeTime = 295; VibecodeCredits = 0.61; VibecodePages = 1; BuilderTime = 175; BuilderCredits = 5; BuilderPages = 1; BoltTime = 100; BoltTokens = 105000; BoltPages = 1; TempoTime = 410; TempoCredits = 5; TempoPages = 3; ReplitTime = 135; ReplitCredits = 11; ReplitPages = 1 }
+    @{ Name = "15. Fitness Home Screen"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 540; VibecodeCredits = 1.24; VibecodePages = 1; BuilderTime = 235; BuilderCredits = 6; BuilderPages = 1; BoltTime = 135; BoltTokens = 131000; BoltPages = 1; TempoTime = 290; TempoCredits = 3.5; TempoPages = 5; ReplitTime = 160; ReplitCredits = 12; ReplitPages = 1 }
+    @{ Name = "16. Background Dashboard"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 445; VibecodeCredits = 1.22; VibecodePages = 1; BuilderTime = 145; BuilderCredits = 3; BuilderPages = 1; BoltTime = 120; BoltTokens = 116000; BoltPages = 1; TempoTime = 320; TempoCredits = 3.7; TempoPages = 1; ReplitTime = 170; ReplitCredits = 14; ReplitPages = 1 }
+    @{ Name = "17. Login Email Phone"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 380; VibecodeCredits = 0.92; VibecodePages = 1; BuilderTime = 155; BuilderCredits = 4; BuilderPages = 1; BoltTime = 90; BoltTokens = 107000; BoltPages = 1; TempoTime = 160; TempoCredits = 1.5; TempoPages = 1; ReplitTime = 90; ReplitCredits = 8; ReplitPages = 1 }
+    @{ Name = "18. MeowFlix"; AntigravityTime = 0; UnoVSCodeTime = 0; UnoVSCodeMCPTime = 0; LovableTime = 0; LovableCredits = 0; LovablePages = 1; DreamflowTime = 0; DreamflowCredits = 0; DreamflowPages = 1; VibecodeTime = 730; VibecodeCredits = 1.52; VibecodePages = 2; BuilderTime = 120; BuilderCredits = 2; BuilderPages = 1; BoltTime = 135; BoltTokens = 141000; BoltPages = 1; TempoTime = 375; TempoCredits = 4.9; TempoPages = 1; ReplitTime = 200; ReplitCredits = 16; ReplitPages = 1 }
 )
 
 # Google Drive video links (Vibecode demos)
@@ -113,6 +113,28 @@ $tempoDriveLinks = @{
     "18. MeowFlix" = "https://drive.google.com/file/d/1YgeSpZHoxOLwECCETmSd6NkLS6T2TWhY/view?usp=drive_link"
 }
 
+# Google Drive video links (Replit demos)
+$replitDriveLinks = @{
+    "1. Flight Details" = "https://drive.google.com/file/d/10qRtLQF3XWsNL13vYCUxPsv69JWmEdsL/view?usp=drive_link"
+    "2. Football Fantasy" = "https://drive.google.com/file/d/1l6oxzUNJShsFVT3A33JIBhcsv6kSDUwe/view?usp=drive_link"
+    "3. Travel Guide" = "https://drive.google.com/file/d/1qBQflIanR2kw2a_CVOo1nBVO3EWXtwvJ/view?usp=drive_link"
+    "4. Electric Utility Dashboard" = "https://drive.google.com/file/d/1fOTWQyIBspj_pM8vzbwRsBKaqpmhnpZS/view?usp=drive_link"
+    "5. Video Streaming" = "https://drive.google.com/file/d/1Dbk7n6umAEjD4xGd7jsvD4el8guAnXWw/view?usp=drive_link"
+    "6. Notes" = "https://drive.google.com/file/d/1GMQ5bqm9Wtzz2dOh6WlKrBikHnAfHbCH/view?usp=drive_link"
+    "7. Calendar" = "https://drive.google.com/file/d/1-9fBKSenMqPEJZcdcR0XCmtA8wgug5fp/view?usp=drive_link"
+    "8. Hospital Dashboard" = "https://drive.google.com/file/d/19wr7WcnkqOw7I0ldTMz2NT6FU6yDqRtT/view?usp=drive_link"
+    "9. Budgeting Dashboard" = "https://drive.google.com/file/d/1ytQcZzSbGall1IPsj6yt8KXwtrYaydYR/view?usp=drive_link"
+    "10. Recipe Home Screen" = "https://drive.google.com/file/d/1XJEStLM5-lgA80sCiTBWGGbCbm3y2JSa/view?usp=drive_link"
+    "11. Fitness Tracking" = "https://drive.google.com/file/d/1WrgOtPkHqRHjuxi0wMcUh-Zj8bGAzZTH/view?usp=drive_link"
+    "12. Login Register" = "https://drive.google.com/file/d/1gTnkgmnSTwjV2KdH-YZBxP7W8KkllzIJ/view?usp=drive_link"
+    "13. Travel Home Screen" = "https://drive.google.com/file/d/1sbl4-Gj0PULfDWT1GGH9E-ttQapIFegE/view?usp=drive_link"
+    "14. Burger Joint" = "https://drive.google.com/file/d/1CE7R7-_kH1oBTW9qzkn325yRdLF2fBlh/view?usp=drive_link"
+    "15. Fitness Home Screen" = "https://drive.google.com/file/d/1RJd6KlP_q3q8qwxLWPV5YhE0u-ytLaWU/view?usp=drive_link"
+    "16. Background Dashboard" = "https://drive.google.com/file/d/1XcJegxUbvUaSAx6vYbW9_sFPC2erzx3w/view?usp=drive_link"
+    "17. Login Email Phone" = "https://drive.google.com/file/d/1k0MYKbvXKUDcb_HFaGsqmhTf-1gawSzm/view?usp=drive_link"
+    "18. MeowFlix" = "https://drive.google.com/file/d/1Sq9n0snEMamoUtm-_v54AJIzDePd9ex4/view?usp=drive_link"
+}
+
 # Get all project folders and sort numerically
 $folders = Get-ChildItem $basePath -Directory | Where-Object { $_.Name -ne "Comparison" -and $_.Name -ne ".vscode" -and $_.Name -ne ".git" } | Sort-Object { 
     if ($_.Name -match '^(\d+)') { 
@@ -165,6 +187,7 @@ foreach ($folder in $folders) {
         BuilderVideoUrl = $builderDriveLinks[$projectName]
         BoltVideoUrl = $boltDriveLinks[$projectName]
         TempoVideoUrl = $tempoDriveLinks[$projectName]
+        ReplitVideoUrl = $replitDriveLinks[$projectName]
     }
     
     foreach ($image in $images) {
@@ -205,6 +228,8 @@ foreach ($folder in $folders) {
             $tool = "bolt"
         } elseif ($imageName -match "^Tempo") {
             $tool = "tempo"
+        } elseif ($imageName -match "^Replit") {
+            $tool = "replit"
         }
         
         $projectData.Images += @{
@@ -738,6 +763,21 @@ $html = @"
             border-color: transparent;
         }
 
+        .tab-replit {
+            border-color: #009688;
+            color: #009688;
+        }
+
+        .tab-replit:hover {
+            background: #009688;
+            color: white;
+        }
+
+        .tab-replit.active.active-tool {
+            background: #009688;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -799,6 +839,10 @@ $html = @"
 
         .tool-group-header.tempo {
             background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+        }
+
+        .tool-group-header.replit {
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
         }
 
         .video-container {
@@ -905,6 +949,11 @@ $html = @"
 
         .image-label.tempo {
             background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+            color: white;
+        }
+
+        .image-label.replit {
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
             color: white;
         }
 
@@ -1070,6 +1119,10 @@ $html = @"
             background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
         }
 
+        .summary-table th.tool-replit {
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+        }
+
         .summary-table td.pivoted-tool-cell {
             font-weight: 600;
             color: white;
@@ -1106,6 +1159,10 @@ $html = @"
 
         .summary-table td.pivoted-tool-cell.tool-tempo {
             background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+        }
+
+        .summary-table td.pivoted-tool-cell.tool-replit {
+            background: linear-gradient(135deg, #009688 0%, #00796B 100%);
         }
 
         .summary-table th:last-child {
@@ -1429,6 +1486,9 @@ $html += @"
                             <th data-view="cost" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Cost ($)<span class="sort-arrow"></span></th>
                             <th data-view="creditsperpage" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Credits/Page<span class="sort-arrow"></span></th>
                             <th data-view="costperpage" class="tool-tempo sortable" onclick="sortSummaryTable(this, 'number')">Tempo<br>Cost/Page ($)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Credits (%)<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Credits/Page (%)<span class="sort-arrow"></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1450,9 +1510,10 @@ foreach ($data in $performanceData) {
     $tempoCost = [math]::Round($data.TempoCredits * 0.20, 2)
     $tempoCreditsPerPage = if ($data.TempoPages -gt 0) { [math]::Round($data.TempoCredits / $data.TempoPages, 2) } else { 0 }
     $tempoCostPerPage = if ($data.TempoPages -gt 0) { [math]::Round($tempoCost / $data.TempoPages, 2) } else { 0 }
+    $replitCreditsPerPage = if ($data.ReplitPages -gt 0) { [math]::Round($data.ReplitCredits / $data.ReplitPages, 2) } else { 0 }
     
     # Get all time values for comparison
-    $allTimes = @($data.AntigravityTime, $data.UnoVSCodeTime, $data.UnoVSCodeMCPTime, $data.LovableTime, $data.DreamflowTime, $data.VibecodeTime, $data.BuilderTime, $data.BoltTime, $data.TempoTime)
+    $allTimes = @($data.AntigravityTime, $data.UnoVSCodeTime, $data.UnoVSCodeMCPTime, $data.LovableTime, $data.DreamflowTime, $data.VibecodeTime, $data.BuilderTime, $data.BoltTime, $data.TempoTime, $data.ReplitTime)
     $minTime = ($allTimes | Measure-Object -Minimum).Minimum
     $maxTime = ($allTimes | Measure-Object -Maximum).Maximum
     
@@ -1466,6 +1527,7 @@ foreach ($data in $performanceData) {
     $builderTimeClass = if ($data.BuilderTime -eq $minTime) { "value-better" } elseif ($data.BuilderTime -eq $maxTime) { "value-worse" } else { "" }
     $boltTimeClass = if ($data.BoltTime -eq $minTime) { "value-better" } elseif ($data.BoltTime -eq $maxTime) { "value-worse" } else { "" }
     $tempoTimeClass = if ($data.TempoTime -eq $minTime) { "value-better" } elseif ($data.TempoTime -eq $maxTime) { "value-worse" } else { "" }
+    $replitTimeClass = if ($data.ReplitTime -eq $minTime) { "value-better" } elseif ($data.ReplitTime -eq $maxTime) { "value-worse" } else { "" }
     
     # Determine which tool is better for credits
     $lovableCreditsClass = if ($data.LovableCredits -lt $data.DreamflowCredits -and $data.LovableCredits -lt $data.VibecodeCredits) { "value-better" } elseif ($data.LovableCredits -gt $data.DreamflowCredits -and $data.LovableCredits -gt $data.VibecodeCredits) { "value-worse" } else { "" }
@@ -1512,6 +1574,9 @@ foreach ($data in $performanceData) {
     $tempoCostDisplay = if ($tempoCost -eq 0) { "" } else { $tempoCost }
     $tempoCreditsPerPageDisplay = if ($tempoCreditsPerPage -eq 0) { "" } else { $tempoCreditsPerPage }
     $tempoCostPerPageDisplay = if ($tempoCostPerPage -eq 0) { "" } else { $tempoCostPerPage }
+    $replitTimeDisplay = if ($data.ReplitTime -eq 0) { "" } else { $data.ReplitTime }
+    $replitCreditsDisplay = if ($data.ReplitCredits -eq 0) { "" } else { $data.ReplitCredits.ToString() + "%" }
+    $replitCreditsPerPageDisplay = if ($replitCreditsPerPage -eq 0) { "" } else { $replitCreditsPerPage.ToString() + "%" }
     
     $html += @"
                         <tr>
@@ -1547,6 +1612,9 @@ foreach ($data in $performanceData) {
                             <td data-view="cost">$tempoCostDisplay</td>
                             <td data-view="creditsperpage">$tempoCreditsPerPageDisplay</td>
                             <td data-view="costperpage">$tempoCostPerPageDisplay</td>
+                            <td data-view="time" class="view-active $replitTimeClass">$replitTimeDisplay</td>
+                            <td data-view="credits">$replitCreditsDisplay</td>
+                            <td data-view="creditsperpage">$replitCreditsPerPageDisplay</td>
                         </tr>
 "@
 }
@@ -1571,6 +1639,9 @@ $boltCount = 0
 $tempoTimeTotal = 0
 $tempoCreditsTotal = 0
 $tempoCount = 0
+$replitTimeTotal = 0
+$replitCreditsTotal = 0
+$replitCount = 0
 foreach ($d in $performanceData) {
     $antigravityTotal += $d.AntigravityTime
     $unoVSCodeTotal += $d.UnoVSCodeTime
@@ -1591,6 +1662,9 @@ foreach ($d in $performanceData) {
     $tempoTimeTotal += $d.TempoTime
     $tempoCreditsTotal += $d.TempoCredits
     if ($d.TempoTime -gt 0) { $tempoCount++ }
+    $replitTimeTotal += $d.ReplitTime
+    $replitCreditsTotal += $d.ReplitCredits
+    if ($d.ReplitTime -gt 0) { $replitCount++ }
 }
 $count = $performanceData.Count
 $antigravityAvg = [math]::Round($antigravityTotal / $count, 1)
@@ -1624,6 +1698,9 @@ $tempoCreditsAvg = if ($tempoCount -gt 0) { [math]::Round($tempoCreditsTotal / $
 $tempoCostAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.20) / $tempoCount, 2) } else { "" }
 $tempoCreditsPerPageAvg = if ($tempoCount -gt 0) { [math]::Round($tempoCreditsTotal / $tempoCount, 2) } else { "" }
 $tempoCostPerPageAvg = if ($tempoCount -gt 0) { [math]::Round(($tempoCreditsTotal * 0.20) / $tempoCount, 2) } else { "" }
+$replitTimeAvg = if ($replitCount -gt 0) { [math]::Round($replitTimeTotal / $replitCount, 1) } else { "" }
+$replitCreditsAvg = if ($replitCount -gt 0) { [math]::Round($replitCreditsTotal / $replitCount, 1).ToString() + "%" } else { "" }
+$replitCreditsPerPageAvg = if ($replitCount -gt 0) { [math]::Round($replitCreditsTotal / $replitCount, 1).ToString() + "%" } else { "" }
 
 $html += @"
                         <tr class="avg-row">
@@ -1659,6 +1736,9 @@ $html += @"
                             <td data-view="cost">$tempoCostAvg</td>
                             <td data-view="creditsperpage">$tempoCreditsPerPageAvg</td>
                             <td data-view="costperpage">$tempoCostPerPageAvg</td>
+                            <td data-view="time" class="view-active">$replitTimeAvg</td>
+                            <td data-view="credits">$replitCreditsAvg</td>
+                            <td data-view="creditsperpage">$replitCreditsPerPageAvg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1700,11 +1780,11 @@ foreach ($project in $projectsData) {
             $trimmed = $line.Trim()
             if ($trimmed -eq "UNO" -or $trimmed -eq "LOVABLE" -or $trimmed -eq "DREAMFLOW") {
                 $currentTool = $trimmed
-            } elseif ($trimmed -eq "BUILDER" -or $trimmed -eq "BOLT" -or $trimmed -eq "TEMPO") {
+            } elseif ($trimmed -eq "BUILDER" -or $trimmed -eq "BOLT" -or $trimmed -eq "TEMPO" -or $trimmed -eq "REPLIT") {
                 $currentTool = $trimmed
             } elseif ($trimmed -and $currentTool -eq "") {
                 $defaultPrompt += $trimmed
-            } elseif ($trimmed -and $currentTool -and $currentTool -ne "BUILDER" -and $currentTool -ne "BOLT" -and $currentTool -ne "TEMPO") {
+            } elseif ($trimmed -and $currentTool -and $currentTool -ne "BUILDER" -and $currentTool -ne "BOLT" -and $currentTool -ne "TEMPO" -and $currentTool -ne "REPLIT") {
                 $toolContent[$currentTool] += $trimmed
             }
         }
@@ -1969,6 +2049,8 @@ foreach ($project in $projectsData) {
         $pTempoCostPerPage = if ($projectPerf.TempoPages -gt 0 -and $projectPerf.TempoCredits -gt 0) { [math]::Round(($projectPerf.TempoCredits * 0.20) / $projectPerf.TempoPages, 2) } else { "" }
         $tempoTimeDisplay = if ($projectPerf.TempoTime -eq 0) { "" } else { $projectPerf.TempoTime }
         $tempoCreditsDisplay = if ($projectPerf.TempoCredits -eq 0) { "" } else { $projectPerf.TempoCredits }
+        $replitTimeDisplay = if ($projectPerf.ReplitTime -eq 0) { "" } else { $projectPerf.ReplitTime }
+        $replitCreditsDisplay = if ($projectPerf.ReplitCredits -eq 0) { "" } else { $projectPerf.ReplitCredits.ToString() + "%" }
         
         $html += @"
                 <div class="prompts-section">
@@ -2026,6 +2108,14 @@ foreach ($project in $projectsData) {
                                 <td>$pLovableCostPerPage</td>
                             </tr>
                             <tr>
+                                <td>Replit</td>
+                                <td>$replitTimeDisplay</td>
+                                <td>$replitCreditsDisplay</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>$tempoTimeDisplay</td>
                                 <td>$tempoCreditsDisplay</td>
@@ -2073,6 +2163,7 @@ foreach ($project in $projectsData) {
                     <button class="tab-button tab-builder" onclick="filterImages('$projectId', 'builder')">Builder</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('$projectId', 'lovable')">Lovable</button>
+                    <button class="tab-button tab-replit" onclick="filterImages('$projectId', 'replit')">Replit</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('$projectId', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('$projectId', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('$projectId', 'vscodeuno')">Uno VS Code</button>
@@ -2095,6 +2186,7 @@ foreach ($project in $projectsData) {
         "builder" = @()
         "bolt" = @()
         "tempo" = @()
+        "replit" = @()
         "other" = @()
     }
     
@@ -2103,10 +2195,10 @@ foreach ($project in $projectsData) {
     }
     
     # Generate tool sections
-    $toolOrder = @("antigravity", "bolt", "builder", "dreamflow", "lovable", "tempo", "uno", "vscodeuno", "vscodeunomcp", "vibecode", "other")
+    $toolOrder = @("antigravity", "bolt", "builder", "dreamflow", "lovable", "replit", "tempo", "uno", "vscodeuno", "vscodeunomcp", "vibecode", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
-        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl) -or ($toolName -eq "tempo" -and $project.TempoVideoUrl)) {
+        if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl) -or ($toolName -eq "tempo" -and $project.TempoVideoUrl) -or ($toolName -eq "replit" -and $project.ReplitVideoUrl)) {
             $toolDisplayName = switch ($toolName) {
                 "antigravity" { "ANTIGRAVITY" }
                 "uno" { "UNO HD" }
@@ -2118,6 +2210,7 @@ foreach ($project in $projectsData) {
                 "builder" { "BUILDER" }
                 "bolt" { "BOLT" }
                 "tempo" { "TEMPO" }
+                "replit" { "REPLIT" }
                 default { $toolName.ToUpper() }
             }
             
@@ -2164,6 +2257,17 @@ foreach ($project in $projectsData) {
             if ($toolName -eq "tempo" -and $project.TempoVideoUrl) {
                 # Convert Google Drive view URL to embed URL
                 $embedUrl = $project.TempoVideoUrl -replace '/view\?usp=drive_link', '/preview'
+                $html += @"
+                            <div class="video-container">
+                                <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>
+"@
+            }
+            
+            # Add video embed for Replit if URL exists
+            if ($toolName -eq "replit" -and $project.ReplitVideoUrl) {
+                # Convert Google Drive view URL to embed URL
+                $embedUrl = $project.ReplitVideoUrl -replace '/view\?usp=drive_link', '/preview'
                 $html += @"
                             <div class="video-container">
                                 <iframe src="$embedUrl" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
