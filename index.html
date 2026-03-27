@@ -510,6 +510,21 @@
             border-color: transparent;
         }
 
+        .tab-rork {
+            border-color: #FF7043;
+            color: #FF7043;
+        }
+
+        .tab-rork:hover {
+            background: #FF7043;
+            color: white;
+        }
+
+        .tab-rork.active.active-tool {
+            background: #FF7043;
+            border-color: transparent;
+        }
+
         .images-grid {
             margin-top: 2rem;
         }
@@ -575,6 +590,10 @@
 
         .tool-group-header.replit {
             background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+        }
+
+        .tool-group-header.rork {
+            background: linear-gradient(135deg, #FF7043 0%, #F4511E 100%);
         }
 
         .video-container {
@@ -855,6 +874,10 @@
             background: linear-gradient(135deg, #009688 0%, #00796B 100%);
         }
 
+        .summary-table th.tool-rork {
+            background: linear-gradient(135deg, #FF7043 0%, #F4511E 100%);
+        }
+
         .summary-table td.pivoted-tool-cell {
             font-weight: 600;
             color: white;
@@ -895,6 +918,10 @@
 
         .summary-table td.pivoted-tool-cell.tool-replit {
             background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+        }
+
+        .summary-table td.pivoted-tool-cell.tool-rork {
+            background: linear-gradient(135deg, #FF7043 0%, #F4511E 100%);
         }
 
         .summary-table th:last-child {
@@ -1229,6 +1256,9 @@
                             <th data-view="time" class="view-active tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Time (s)<span class="sort-arrow"></span></th>
                             <th data-view="credits" class="tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Credits (%)<span class="sort-arrow"></span></th>
                             <th data-view="creditsperpage" class="tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Credits/Page (%)<span class="sort-arrow"></span></th>
+                            <th data-view="time" class="view-active tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Time (s)<span class="sort-arrow"></span></th>
+                            <th data-view="credits" class="tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Credits<span class="sort-arrow"></span></th>
+                            <th data-view="creditsperpage" class="tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Credits/Page<span class="sort-arrow"></span></th>
                         </tr>
                     </thead>
                     <tbody>                        <tr>
@@ -1267,6 +1297,9 @@
                             <td data-view="time" class="view-active ">195</td>
                             <td data-view="credits">15%</td>
                             <td data-view="creditsperpage">15%</td>
+                            <td data-view="time" class="view-active ">330</td>
+                            <td data-view="credits">1.4</td>
+                            <td data-view="creditsperpage">0.7</td>
                         </tr>                        <tr>
                             <td>2. Football Fantasy</td>
                             <td data-view="time" class="view-active value-better">65</td>
@@ -1303,6 +1336,9 @@
                             <td data-view="time" class="view-active ">255</td>
                             <td data-view="credits">40%</td>
                             <td data-view="creditsperpage">5.71%</td>
+                            <td data-view="time" class="view-active ">975</td>
+                            <td data-view="credits">3.6</td>
+                            <td data-view="creditsperpage"></td>
                         </tr>                        <tr>
                             <td>3. Travel Guide</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1318,7 +1354,7 @@
                             <td data-view="cost">0.74</td>
                             <td data-view="creditsperpage">4.1</td>
                             <td data-view="costperpage">0.74</td>
-                            <td data-view="time" class="view-active value-worse">540</td>
+                            <td data-view="time" class="view-active ">540</td>
                             <td data-view="cost">1.1</td>
                             <td data-view="costperpage">1.1</td>
                             <td data-view="time" class="view-active ">160</td>
@@ -1339,11 +1375,14 @@
                             <td data-view="time" class="view-active ">225</td>
                             <td data-view="credits">30%</td>
                             <td data-view="creditsperpage">6%</td>
+                            <td data-view="time" class="view-active value-worse">555</td>
+                            <td data-view="credits">3.1</td>
+                            <td data-view="creditsperpage">0.52</td>
                         </tr>                        <tr>
                             <td>4. Electric Utility Dashboard</td>
                             <td data-view="time" class="view-active value-better">95</td>
                             <td data-view="time" class="view-active ">115</td>
-                            <td data-view="time" class="view-active value-worse">290</td>
+                            <td data-view="time" class="view-active ">290</td>
                             <td data-view="time" class="view-active ">160</td>
                             <td data-view="credits">1.8</td>
                             <td data-view="cost">0.77</td>
@@ -1367,7 +1406,7 @@
                             <td data-view="cost">0.47</td>
                             <td data-view="creditsperpage">188k</td>
                             <td data-view="costperpage">0.47</td>
-                            <td data-view="time" class="view-active value-worse">290</td>
+                            <td data-view="time" class="view-active ">290</td>
                             <td data-view="credits">3.7</td>
                             <td data-view="cost">0.74</td>
                             <td data-view="creditsperpage">3.7</td>
@@ -1375,6 +1414,9 @@
                             <td data-view="time" class="view-active ">190</td>
                             <td data-view="credits">25%</td>
                             <td data-view="creditsperpage">25%</td>
+                            <td data-view="time" class="view-active value-worse">475</td>
+                            <td data-view="credits">2.7</td>
+                            <td data-view="creditsperpage">2.7</td>
                         </tr>                        <tr>
                             <td>5. Video Streaming</td>
                             <td data-view="time" class="view-active value-better">90</td>
@@ -1411,6 +1453,9 @@
                             <td data-view="time" class="view-active ">390</td>
                             <td data-view="credits">46%</td>
                             <td data-view="creditsperpage">23%</td>
+                            <td data-view="time" class="view-active ">520</td>
+                            <td data-view="credits">3</td>
+                            <td data-view="creditsperpage">3</td>
                         </tr>                        <tr>
                             <td>6. Notes</td>
                             <td data-view="time" class="view-active value-better">90</td>
@@ -1447,12 +1492,15 @@
                             <td data-view="time" class="view-active ">230</td>
                             <td data-view="credits">24%</td>
                             <td data-view="creditsperpage">24%</td>
+                            <td data-view="time" class="view-active ">440</td>
+                            <td data-view="credits">2.8</td>
+                            <td data-view="creditsperpage">2.8</td>
                         </tr>                        <tr>
                             <td>7. Calendar</td>
                             <td data-view="time" class="view-active value-better">75</td>
                             <td data-view="time" class="view-active ">210</td>
                             <td data-view="time" class="view-active ">230</td>
-                            <td data-view="time" class="view-active value-worse">290</td>
+                            <td data-view="time" class="view-active ">290</td>
                             <td data-view="credits">2.2</td>
                             <td data-view="cost">0.95</td>
                             <td data-view="creditsperpage">2.2</td>
@@ -1483,6 +1531,9 @@
                             <td data-view="time" class="view-active ">180</td>
                             <td data-view="credits">18%</td>
                             <td data-view="creditsperpage">18%</td>
+                            <td data-view="time" class="view-active value-worse">615</td>
+                            <td data-view="credits">4.1</td>
+                            <td data-view="creditsperpage">4.1</td>
                         </tr>                        <tr>
                             <td>8. Hospital Dashboard</td>
                             <td data-view="time" class="view-active value-better">85</td>
@@ -1519,6 +1570,9 @@
                             <td data-view="time" class="view-active ">360</td>
                             <td data-view="credits">58%</td>
                             <td data-view="creditsperpage">29%</td>
+                            <td data-view="time" class="view-active ">480</td>
+                            <td data-view="credits">4.9</td>
+                            <td data-view="creditsperpage">4.9</td>
                         </tr>                        <tr>
                             <td>9. Budgeting Dashboard</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1555,6 +1609,9 @@
                             <td data-view="time" class="view-active ">230</td>
                             <td data-view="credits">29%</td>
                             <td data-view="creditsperpage">29%</td>
+                            <td data-view="time" class="view-active ">560</td>
+                            <td data-view="credits">2.6</td>
+                            <td data-view="creditsperpage">2.6</td>
                         </tr>                        <tr>
                             <td>10. Recipe Home Screen</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1570,7 +1627,7 @@
                             <td data-view="cost">0.81</td>
                             <td data-view="creditsperpage">4.5</td>
                             <td data-view="costperpage">0.81</td>
-                            <td data-view="time" class="view-active value-worse">270</td>
+                            <td data-view="time" class="view-active ">270</td>
                             <td data-view="cost">0.54</td>
                             <td data-view="costperpage">0.54</td>
                             <td data-view="time" class="view-active ">95</td>
@@ -1591,6 +1648,9 @@
                             <td data-view="time" class="view-active ">165</td>
                             <td data-view="credits">15%</td>
                             <td data-view="creditsperpage">15%</td>
+                            <td data-view="time" class="view-active value-worse">300</td>
+                            <td data-view="credits">1.4</td>
+                            <td data-view="creditsperpage">1.4</td>
                         </tr>                        <tr>
                             <td>11. Fitness Tracking</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1601,12 +1661,12 @@
                             <td data-view="cost">0.82</td>
                             <td data-view="creditsperpage">1.9</td>
                             <td data-view="costperpage">0.82</td>
-                            <td data-view="time" class="view-active value-worse">240</td>
+                            <td data-view="time" class="view-active ">240</td>
                             <td data-view="credits">3.5</td>
                             <td data-view="cost">0.63</td>
                             <td data-view="creditsperpage">3.5</td>
                             <td data-view="costperpage">0.63</td>
-                            <td data-view="time" class="view-active value-worse">240</td>
+                            <td data-view="time" class="view-active ">240</td>
                             <td data-view="cost">0.51</td>
                             <td data-view="costperpage">0.51</td>
                             <td data-view="time" class="view-active ">120</td>
@@ -1619,7 +1679,7 @@
                             <td data-view="cost">0.21</td>
                             <td data-view="creditsperpage">84k</td>
                             <td data-view="costperpage">0.21</td>
-                            <td data-view="time" class="view-active value-worse">240</td>
+                            <td data-view="time" class="view-active ">240</td>
                             <td data-view="credits">3</td>
                             <td data-view="cost">0.6</td>
                             <td data-view="creditsperpage">3</td>
@@ -1627,6 +1687,9 @@
                             <td data-view="time" class="view-active ">95</td>
                             <td data-view="credits">7%</td>
                             <td data-view="creditsperpage">7%</td>
+                            <td data-view="time" class="view-active value-worse">980</td>
+                            <td data-view="credits">3</td>
+                            <td data-view="creditsperpage">3</td>
                         </tr>                        <tr>
                             <td>12. Login Register</td>
                             <td data-view="time" class="view-active value-better">60</td>
@@ -1663,6 +1726,9 @@
                             <td data-view="time" class="view-active ">110</td>
                             <td data-view="credits">9%</td>
                             <td data-view="creditsperpage">9%</td>
+                            <td data-view="time" class="view-active ">300</td>
+                            <td data-view="credits">1.5</td>
+                            <td data-view="creditsperpage">1.5</td>
                         </tr>                        <tr>
                             <td>13. Travel Home Screen</td>
                             <td data-view="time" class="view-active value-better">75</td>
@@ -1699,6 +1765,9 @@
                             <td data-view="time" class="view-active ">240</td>
                             <td data-view="credits">20%</td>
                             <td data-view="creditsperpage">20%</td>
+                            <td data-view="time" class="view-active ">265</td>
+                            <td data-view="credits">1.6</td>
+                            <td data-view="creditsperpage">1.6</td>
                         </tr>                        <tr>
                             <td>14. Burger Joint</td>
                             <td data-view="time" class="view-active value-better">80</td>
@@ -1735,6 +1804,9 @@
                             <td data-view="time" class="view-active ">135</td>
                             <td data-view="credits">11%</td>
                             <td data-view="creditsperpage">11%</td>
+                            <td data-view="time" class="view-active ">375</td>
+                            <td data-view="credits"></td>
+                            <td data-view="creditsperpage"></td>
                         </tr>                        <tr>
                             <td>15. Fitness Home Screen</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1771,6 +1843,9 @@
                             <td data-view="time" class="view-active ">160</td>
                             <td data-view="credits">12%</td>
                             <td data-view="creditsperpage">12%</td>
+                            <td data-view="time" class="view-active ">280</td>
+                            <td data-view="credits">1.2</td>
+                            <td data-view="creditsperpage">1.2</td>
                         </tr>                        <tr>
                             <td>16. Background Dashboard</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1807,6 +1882,9 @@
                             <td data-view="time" class="view-active ">170</td>
                             <td data-view="credits">14%</td>
                             <td data-view="creditsperpage">14%</td>
+                            <td data-view="time" class="view-active ">390</td>
+                            <td data-view="credits">2.6</td>
+                            <td data-view="creditsperpage">2.6</td>
                         </tr>                        <tr>
                             <td>17. Login Email Phone</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1843,6 +1921,9 @@
                             <td data-view="time" class="view-active ">90</td>
                             <td data-view="credits">8%</td>
                             <td data-view="creditsperpage">8%</td>
+                            <td data-view="time" class="view-active ">220</td>
+                            <td data-view="credits">1.4</td>
+                            <td data-view="creditsperpage">1.4</td>
                         </tr>                        <tr>
                             <td>18. MeowFlix</td>
                             <td data-view="time" class="view-active value-better"></td>
@@ -1858,7 +1939,7 @@
                             <td data-view="cost">2.13</td>
                             <td data-view="creditsperpage"></td>
                             <td data-view="costperpage"></td>
-                            <td data-view="time" class="view-active value-worse">730</td>
+                            <td data-view="time" class="view-active ">730</td>
                             <td data-view="cost">1.52</td>
                             <td data-view="costperpage">0.76</td>
                             <td data-view="time" class="view-active ">120</td>
@@ -1879,6 +1960,9 @@
                             <td data-view="time" class="view-active ">200</td>
                             <td data-view="credits">16%</td>
                             <td data-view="creditsperpage">16%</td>
+                            <td data-view="time" class="view-active value-worse">960</td>
+                            <td data-view="credits">1.3</td>
+                            <td data-view="creditsperpage">0.65</td>
                         </tr>                        <tr class="avg-row">
                             <td>Average</td>
                             <td data-view="time" class="view-active">61.7</td>
@@ -1915,6 +1999,9 @@
                             <td data-view="time" class="view-active">201.1</td>
                             <td data-view="credits">22.1%</td>
                             <td data-view="creditsperpage">22.1%</td>
+                            <td data-view="time" class="view-active">501.1</td>
+                            <td data-view="credits">2.3</td>
+                            <td data-view="creditsperpage">2.34</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2026,6 +2113,14 @@
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>330</td>
+                                <td>1.4</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>435</td>
                                 <td>4.2</td>
@@ -2068,6 +2163,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('1__Flight_Details', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('1__Flight_Details', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('1__Flight_Details', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('1__Flight_Details', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('1__Flight_Details', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('1__Flight_Details', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('1__Flight_Details', 'vscodeuno')">Uno VS Code</button>
@@ -2144,6 +2240,15 @@
                                 
                                 <img src="1. Flight Details/Replit.png" alt="Replit.png" onclick="openLightbox('1. Flight Details/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1bNgTGIKs9EwChSBU-CXIU0V720NuNGMh/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="1. Flight Details/Rork.png" alt="Rork.png" onclick="openLightbox('1. Flight Details/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -2292,6 +2397,14 @@
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>975</td>
+                                <td>3.6</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>875</td>
                                 <td>5</td>
@@ -2334,6 +2447,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('2__Football_Fantasy', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('2__Football_Fantasy', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('2__Football_Fantasy', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('2__Football_Fantasy', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('2__Football_Fantasy', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('2__Football_Fantasy', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('2__Football_Fantasy', 'vscodeuno')">Uno VS Code</button>
@@ -2450,6 +2564,15 @@
                                 
                                 <img src="2. Football Fantasy/Replit-7.png" alt="Replit-7.png" onclick="openLightbox('2. Football Fantasy/Replit-7.png', 'Replit-7.png')">
                                 <div class="image-label replit">Replit-7.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1AqKls1AWRAJOXd3Q631eNpKUYuIpccHv/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="2. Football Fantasy/Rork.png" alt="Rork.png" onclick="openLightbox('2. Football Fantasy/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -2642,6 +2765,14 @@
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>555</td>
+                                <td>3.1</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>510</td>
                                 <td>5</td>
@@ -2684,6 +2815,7 @@
                     <button class="tab-button tab-dreamflow" onclick="filterImages('3__Travel_Guide', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('3__Travel_Guide', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('3__Travel_Guide', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('3__Travel_Guide', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('3__Travel_Guide', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('3__Travel_Guide', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('3__Travel_Guide', 'vscodeuno')">Uno VS Code</button>
@@ -2764,6 +2896,35 @@
                                 
                                 <img src="3. Travel Guide/Replit-5.png" alt="Replit-5.png" onclick="openLightbox('3. Travel Guide/Replit-5.png', 'Replit-5.png')">
                                 <div class="image-label replit">Replit-5.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1BBIaAvu8YMj-cjwMLzkejjpGknuCKIYy/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="3. Travel Guide/Rork-1.png" alt="Rork-1.png" onclick="openLightbox('3. Travel Guide/Rork-1.png', 'Rork-1.png')">
+                                <div class="image-label rork">Rork-1.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="3. Travel Guide/Rork-2.png" alt="Rork-2.png" onclick="openLightbox('3. Travel Guide/Rork-2.png', 'Rork-2.png')">
+                                <div class="image-label rork">Rork-2.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="3. Travel Guide/Rork-3.png" alt="Rork-3.png" onclick="openLightbox('3. Travel Guide/Rork-3.png', 'Rork-3.png')">
+                                <div class="image-label rork">Rork-3.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="3. Travel Guide/Rork-4.png" alt="Rork-4.png" onclick="openLightbox('3. Travel Guide/Rork-4.png', 'Rork-4.png')">
+                                <div class="image-label rork">Rork-4.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="3. Travel Guide/Rork-5.png" alt="Rork-5.png" onclick="openLightbox('3. Travel Guide/Rork-5.png', 'Rork-5.png')">
+                                <div class="image-label rork">Rork-5.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="3. Travel Guide/Rork-6.png" alt="Rork-6.png" onclick="openLightbox('3. Travel Guide/Rork-6.png', 'Rork-6.png')">
+                                <div class="image-label rork">Rork-6.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -2907,6 +3068,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>475</td>
+                                <td>2.7</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>290</td>
                                 <td>3.7</td>
@@ -2949,6 +3118,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('4__Electric_Utility_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('4__Electric_Utility_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('4__Electric_Utility_Dashboard', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('4__Electric_Utility_Dashboard', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('4__Electric_Utility_Dashboard', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('4__Electric_Utility_Dashboard', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('4__Electric_Utility_Dashboard', 'vscodeuno')">Uno VS Code</button>
@@ -3013,6 +3183,15 @@ Requirements:
                                 
                                 <img src="4. Electric Utility Dashboard/Replit.png" alt="Replit.png" onclick="openLightbox('4. Electric Utility Dashboard/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1gBLX-cvjn7MeONuucND_Qi0Co6va9ct2/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="4. Electric Utility Dashboard/Rork.png" alt="Rork.png" onclick="openLightbox('4. Electric Utility Dashboard/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -3142,6 +3321,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>520</td>
+                                <td>3</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>475</td>
                                 <td>5</td>
@@ -3184,6 +3371,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('5__Video_Streaming', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('5__Video_Streaming', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('5__Video_Streaming', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('5__Video_Streaming', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('5__Video_Streaming', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('5__Video_Streaming', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('5__Video_Streaming', 'vscodeuno')">Uno VS Code</button>
@@ -3292,6 +3480,15 @@ Requirements:
                                 
                                 <img src="5. Video Streaming/Replit-3.png" alt="Replit-3.png" onclick="openLightbox('5. Video Streaming/Replit-3.png', 'Replit-3.png')">
                                 <div class="image-label replit">Replit-3.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1TFIbcLyV-Fx_ERD5S7KQKxRo4HRc9ml6/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="5. Video Streaming/Rork.png" alt="Rork.png" onclick="openLightbox('5. Video Streaming/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -3425,6 +3622,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>440</td>
+                                <td>2.8</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>170</td>
                                 <td>2</td>
@@ -3467,6 +3672,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('6__Notes', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('6__Notes', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('6__Notes', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('6__Notes', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('6__Notes', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('6__Notes', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('6__Notes', 'vscodeuno')">Uno VS Code</button>
@@ -3563,6 +3769,15 @@ Requirements:
                                 
                                 <img src="6. Notes/Replit.png" alt="Replit.png" onclick="openLightbox('6. Notes/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1ckhZDPZQq3VdWm-gKxQhwIpWG6B81WK7/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="6. Notes/Rork.png" alt="Rork.png" onclick="openLightbox('6. Notes/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -3692,6 +3907,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>615</td>
+                                <td>4.1</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>270</td>
                                 <td>2</td>
@@ -3734,6 +3957,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('7__Calendar', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('7__Calendar', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('7__Calendar', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('7__Calendar', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('7__Calendar', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('7__Calendar', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('7__Calendar', 'vscodeuno')">Uno VS Code</button>
@@ -3818,6 +4042,15 @@ Requirements:
                                 
                                 <img src="7. Calendar/Replit.png" alt="Replit.png" onclick="openLightbox('7. Calendar/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1Dp3T6zeubImA46wsJpcLsgH4Ej6XcK1I/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="7. Calendar/Rork.png" alt="Rork.png" onclick="openLightbox('7. Calendar/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -3939,6 +4172,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>480</td>
+                                <td>4.9</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>270</td>
                                 <td>2.9</td>
@@ -3981,6 +4222,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('8__Hospital_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('8__Hospital_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('8__Hospital_Dashboard', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('8__Hospital_Dashboard', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('8__Hospital_Dashboard', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('8__Hospital_Dashboard', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('8__Hospital_Dashboard', 'vscodeuno')">Uno VS Code</button>
@@ -4049,6 +4291,15 @@ Requirements:
                                 
                                 <img src="8. Hospital Dashboard/Replit-2.png" alt="Replit-2.png" onclick="openLightbox('8. Hospital Dashboard/Replit-2.png', 'Replit-2.png')">
                                 <div class="image-label replit">Replit-2.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1YdkkXCaSg9eo-x57bp9RI4qA-J8Nykuj/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="8. Hospital Dashboard/Rork.png" alt="Rork.png" onclick="openLightbox('8. Hospital Dashboard/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -4190,6 +4441,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>560</td>
+                                <td>2.6</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>220</td>
                                 <td>2.9</td>
@@ -4232,6 +4491,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('9__Budgeting_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('9__Budgeting_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('9__Budgeting_Dashboard', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('9__Budgeting_Dashboard', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('9__Budgeting_Dashboard', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('9__Budgeting_Dashboard', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('9__Budgeting_Dashboard', 'vscodeuno')">Uno VS Code</button>
@@ -4300,6 +4560,11 @@ Requirements:
                                 
                                 <img src="9. Budgeting Dashboard/Replit.png" alt="Replit.png" onclick="openLightbox('9. Budgeting Dashboard/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1km2Sm5-gLv8lQyin7vjyt2L871eLMT6q/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -4421,6 +4686,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>300</td>
+                                <td>1.4</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>250</td>
                                 <td>3.3</td>
@@ -4463,6 +4736,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('10__Recipe_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('10__Recipe_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('10__Recipe_Home_Screen', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('10__Recipe_Home_Screen', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('10__Recipe_Home_Screen', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('10__Recipe_Home_Screen', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('10__Recipe_Home_Screen', 'vscodeuno')">Uno VS Code</button>
@@ -4527,6 +4801,11 @@ Requirements:
                                 
                                 <img src="10. Recipe Home Screen/Replit.png" alt="Replit.png" onclick="openLightbox('10. Recipe Home Screen/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1qVJIrFakPcttJ7YqlGxv5ZA2VzktZVfI/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -4652,6 +4931,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>980</td>
+                                <td>3</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>240</td>
                                 <td>3</td>
@@ -4694,6 +4981,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('11__Fitness_Tracking', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('11__Fitness_Tracking', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('11__Fitness_Tracking', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('11__Fitness_Tracking', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('11__Fitness_Tracking', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('11__Fitness_Tracking', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('11__Fitness_Tracking', 'vscodeuno')">Uno VS Code</button>
@@ -4758,6 +5046,15 @@ Requirements:
                                 
                                 <img src="11. Fitness Tracking/Replit.png" alt="Replit.png" onclick="openLightbox('11. Fitness Tracking/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1lRrBaT__t9yjYqsQkTbRgbw4mHp6AzPj/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="11. Fitness Tracking/Rork.png" alt="Rork.png" onclick="openLightbox('11. Fitness Tracking/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -4887,6 +5184,14 @@ Requirements:
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>300</td>
+                                <td>1.5</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>270</td>
                                 <td>3.3</td>
@@ -4929,6 +5234,7 @@ Requirements:
                     <button class="tab-button tab-dreamflow" onclick="filterImages('12__Login_Register', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('12__Login_Register', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('12__Login_Register', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('12__Login_Register', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('12__Login_Register', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('12__Login_Register', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('12__Login_Register', 'vscodeuno')">Uno VS Code</button>
@@ -5026,6 +5332,19 @@ Requirements:
                                 <img src="12. Login Register/Replit-2.png" alt="Replit-2.png" onclick="openLightbox('12. Login Register/Replit-2.png', 'Replit-2.png')">
                                 <div class="image-label replit">Replit-2.png</div>
                             </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1ByXr7aLYpodBEQKX5vNeLDHtcunNYkk1/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="12. Login Register/Rork-1.png" alt="Rork-1.png" onclick="openLightbox('12. Login Register/Rork-1.png', 'Rork-1.png')">
+                                <div class="image-label rork">Rork-1.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="12. Login Register/Rork-2.png" alt="Rork-2.png" onclick="openLightbox('12. Login Register/Rork-2.png', 'Rork-2.png')">
+                                <div class="image-label rork">Rork-2.png</div>
+                            </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
                         <div class="tool-group-images">                            <div class="video-container">
@@ -5090,37 +5409,37 @@ Requirements:
                             </button>
                             <pre>Design a mobile travel app home page UI in a clean, premium style.
 Overall aesthetic: modern, minimalistic, high-contrast layout with generous white space, subtle shadows, and crisp typography. No device frames. Balanced, calm color palette (avoid overly bright tones). Use soft rounded corners on all cards and buttons. Layout should feel curated and editorial.
-Screen structure (top â†' bottom):
+Screen structure (top -&gt; bottom):
 Top bar / Header area:
 A compact top navigation bar with a small profile avatar on the left (circular), app logo in the center, and a notifications bell icon on the right.
 Subtle shadow separating header from content.
 Greeting + Search:
-Line 1: personalized greeting text, e.g. âEURœWhere do you want to explore today?âEUR.
-Large, dominant search bar beneath, wide and centered, with magnifying-glass icon on the left and placeholder text âEURœSearch destinations, flights, hotelsâEUR¦âEUR.
+Line 1: personalized greeting text, e.g. "Where do you want to explore today?".
+Large, dominant search bar beneath, wide and centered, with magnifying-glass icon on the left and placeholder text "Search destinations, flights, hotels...".
 Slight inset shadow to indicate interactivity.
 Featured destination hero card:
-Wide full-bleed carousel card with an atmospheric travel photo (mountains, beach cityscape, or iconic landmark âEUR" avoid specific brand references).
+Wide full-bleed carousel card with an atmospheric travel photo (mountains, beach cityscape, or iconic landmark - avoid specific brand references).
 Rounded corners.
 Overlaid text: destination name in bold, short tagline below.
 Subtle gradient overlay to ensure readability.
 Include left/right carousel pagination indicators or dots at bottom center.
 Quick-action icon grid:
-A 2Ã-3 or 3Ã-2 grid of rounded square icons for primary actions: âEURœFlightsâEUR, âEURœHotelsâEUR, âEURœExperiencesâEUR, âEURœCarsâEUR, âEURœTripsâEUR, âEURœMapâEUR.
+A 2x3 or 3x2 grid of rounded square icons for primary actions: "Flights", "Hotels", "Experiences", "Cars", "Trips", "Map".
 Each icon minimalistic, monochrome line style.
 Beneath each icon: a short label in small text.
 Even spacing, consistent margins.
 Recommended trips section:
-Section title: âEURœRecommended for YouâEUR aligned left.
-Horizontal scrollable card list (3âEUR"4 cards visible).
-Each card: destination photo, destination name, small detail like âEURœFrom â‚¬129âEUR or âEURœ4.7 â˜... ReviewsâEUR.
+Section title: "Recommended for You" aligned left.
+Horizontal scrollable card list (3–4 cards visible).
+Each card: destination photo, destination name, small detail like "From EUR129" or "4.7 * Reviews".
 Uniform shadow depth and spacing between cards.
 Explore categories section:
-Title: âEURœExplore CategoriesâEUR.
+Title: "Explore Categories".
 Two large rectangular cards arranged vertically or in a grid:
-Examples: âEURœCity BreaksâEUR, âEURœNature EscapesâEUR, âEURœCultural TripsâEUR, âEURœRomantic GetawaysâEUR.
+Examples: "City Breaks", "Nature Escapes", "Cultural Trips", "Romantic Getaways".
 Each card contains a background image with soft color overlay and bold text label.
 Bottom navigation bar:
-Persistent nav bar with 4âEUR"5 icons: âEURœHomeâEUR, âEURœSearchâEUR, âEURœTripsâEUR, âEURœFavoritesâEUR, âEURœProfileâEUR.
+Persistent nav bar with 4–5 icons: "Home", "Search", "Trips", "Favorites", "Profile".
 Minimalistic outline icons, slight active-state color highlight on Home.
 Fixed, with subtle top border line.
 Typography:
@@ -5135,7 +5454,7 @@ The final render:
 High-resolution, crisp mobile UI mockup.
 Straight-on view (no perspective).
 Consistent color palette and spacing.
-No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
+No lorem ipsum - use meaningful travel-related placeholder text.</pre>
                         </div>
                     </div>                </div>
                 <div class="prompts-section">
@@ -5201,6 +5520,14 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>265</td>
+                                <td>1.6</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>220</td>
                                 <td>2.9</td>
@@ -5243,6 +5570,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('13__Travel_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('13__Travel_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('13__Travel_Home_Screen', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('13__Travel_Home_Screen', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('13__Travel_Home_Screen', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('13__Travel_Home_Screen', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('13__Travel_Home_Screen', 'vscodeuno')">Uno VS Code</button>
@@ -5303,6 +5631,15 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="13. Travel Home Screen/Replit.png" alt="Replit.png" onclick="openLightbox('13. Travel Home Screen/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/18J8lnIiPADU5CbLpEAgEj1d3h-WIrk2S/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="13. Travel Home Screen/Rork.png" alt="Rork.png" onclick="openLightbox('13. Travel Home Screen/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -5424,6 +5761,14 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>375</td>
+                                <td></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>410</td>
                                 <td>5</td>
@@ -5466,6 +5811,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('14__Burger_Joint', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('14__Burger_Joint', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('14__Burger_Joint', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('14__Burger_Joint', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('14__Burger_Joint', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('14__Burger_Joint', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('14__Burger_Joint', 'vscodeuno')">Uno VS Code</button>
@@ -5530,6 +5876,15 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="14. Burger Joint/Replit.png" alt="Replit.png" onclick="openLightbox('14. Burger Joint/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/11BdUk0Ue50yDBa8Smsg4jOMdL5S_hKn8/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="14. Burger Joint/Rork.png" alt="Rork.png" onclick="openLightbox('14. Burger Joint/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -5665,6 +6020,14 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>280</td>
+                                <td>1.2</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>290</td>
                                 <td>3.5</td>
@@ -5707,6 +6070,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('15__Fitness_Home_Screen', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('15__Fitness_Home_Screen', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('15__Fitness_Home_Screen', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('15__Fitness_Home_Screen', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('15__Fitness_Home_Screen', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('15__Fitness_Home_Screen', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('15__Fitness_Home_Screen', 'vscodeuno')">Uno VS Code</button>
@@ -5749,6 +6113,15 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="15. Fitness Home Screen/Replit.png" alt="Replit.png" onclick="openLightbox('15. Fitness Home Screen/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1Niv4aBvlZBLe1HIjhgOYaOO3cXF-pqq4/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="15. Fitness Home Screen/Rork.png" alt="Rork.png" onclick="openLightbox('15. Fitness Home Screen/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -5885,6 +6258,14 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>390</td>
+                                <td>2.6</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>320</td>
                                 <td>3.7</td>
@@ -5927,6 +6308,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('16__Background_Dashboard', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('16__Background_Dashboard', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('16__Background_Dashboard', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('16__Background_Dashboard', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('16__Background_Dashboard', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('16__Background_Dashboard', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('16__Background_Dashboard', 'vscodeuno')">Uno VS Code</button>
@@ -5969,6 +6351,15 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="16. Background Dashboard/Replit.png" alt="Replit.png" onclick="openLightbox('16. Background Dashboard/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1iiSxSHZRtjojUl9E3NHfx-4oyJbSvlZY/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="16. Background Dashboard/Rork.png" alt="Rork.png" onclick="openLightbox('16. Background Dashboard/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -6117,6 +6508,14 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>220</td>
+                                <td>1.4</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>160</td>
                                 <td>1.5</td>
@@ -6159,6 +6558,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('17__Login_Email_Phone', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('17__Login_Email_Phone', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('17__Login_Email_Phone', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('17__Login_Email_Phone', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('17__Login_Email_Phone', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('17__Login_Email_Phone', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('17__Login_Email_Phone', 'vscodeuno')">Uno VS Code</button>
@@ -6201,6 +6601,15 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="17. LoginEmailPhone/Replit.png" alt="Replit.png" onclick="openLightbox('17. LoginEmailPhone/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1EQnLBfYqwmV8yLEtOKCRqY9PUc1PKRT3/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="17. LoginEmailPhone/Rork.png" alt="Rork.png" onclick="openLightbox('17. LoginEmailPhone/Rork.png', 'Rork.png')">
+                                <div class="image-label rork">Rork.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
@@ -6327,6 +6736,14 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 <td>-</td>
                             </tr>
                             <tr>
+                                <td>Rork</td>
+                                <td>960</td>
+                                <td>1.3</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
                                 <td>Tempo</td>
                                 <td>375</td>
                                 <td>4.9</td>
@@ -6369,6 +6786,7 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('18__MeowFlix', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('18__MeowFlix', 'lovable')">Lovable</button>
                     <button class="tab-button tab-replit" onclick="filterImages('18__MeowFlix', 'replit')">Replit</button>
+                    <button class="tab-button tab-rork" onclick="filterImages('18__MeowFlix', 'rork')">Rork</button>
                     <button class="tab-button tab-tempo" onclick="filterImages('18__MeowFlix', 'tempo')">Tempo</button>
                     <button class="tab-button tab-uno" onclick="filterImages('18__MeowFlix', 'uno')">Uno HD</button>
                     <button class="tab-button tab-vscodeuno" onclick="filterImages('18__MeowFlix', 'vscodeuno')">Uno VS Code</button>
@@ -6411,6 +6829,19 @@ No lorem ipsum âEUR" use meaningful travel-related placeholder text.</pre>
                                 
                                 <img src="18. MeowFlix/Replit.png" alt="Replit.png" onclick="openLightbox('18. MeowFlix/Replit.png', 'Replit.png')">
                                 <div class="image-label replit">Replit.png</div>
+                            </div>                        </div>
+                    </div>                    <div class="tool-group" data-tool-group="rork">
+                        <div class="tool-group-header rork">RORK</div>
+                        <div class="tool-group-images">                            <div class="video-container">
+                                <iframe src="https://drive.google.com/file/d/1ZOFbdtM06FWx2zxtYCTohV1bvam4cM6O/preview" width="640" height="480" allow="autoplay" allowfullscreen></iframe>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="18. MeowFlix/Rork-1.png" alt="Rork-1.png" onclick="openLightbox('18. MeowFlix/Rork-1.png', 'Rork-1.png')">
+                                <div class="image-label rork">Rork-1.png</div>
+                            </div>                            <div class="image-card" data-tool="rork">
+                                
+                                <img src="18. MeowFlix/Rork-2.png" alt="Rork-2.png" onclick="openLightbox('18. MeowFlix/Rork-2.png', 'Rork-2.png')">
+                                <div class="image-label rork">Rork-2.png</div>
                             </div>                        </div>
                     </div>                    <div class="tool-group" data-tool-group="tempo">
                         <div class="tool-group-header tempo">TEMPO</div>
