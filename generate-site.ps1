@@ -1566,7 +1566,9 @@ $html += @"
                             <th data-view="creditsperpage" class="tool-replit sortable" onclick="sortSummaryTable(this, 'number')">Replit<br>Credits/Page (%)<span class="sort-arrow"></span></th>
                             <th data-view="time" class="view-active tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Time (s)<span class="sort-arrow"></span></th>
                             <th data-view="credits" class="tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Credits<span class="sort-arrow"></span></th>
+                            <th data-view="cost" class="tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Cost ($)<span class="sort-arrow"></span></th>
                             <th data-view="creditsperpage" class="tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Credits/Page<span class="sort-arrow"></span></th>
+                            <th data-view="costperpage" class="tool-rork sortable" onclick="sortSummaryTable(this, 'number')">Rork<br>Cost/Page ($)<span class="sort-arrow"></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1589,7 +1591,9 @@ foreach ($data in $performanceData) {
     $tempoCreditsPerPage = if ($data.TempoPages -gt 0) { [math]::Round($data.TempoCredits / $data.TempoPages, 2) } else { 0 }
     $tempoCostPerPage = if ($data.TempoPages -gt 0) { [math]::Round($tempoCost / $data.TempoPages, 2) } else { 0 }
     $replitCreditsPerPage = if ($data.ReplitPages -gt 0) { [math]::Round($data.ReplitCredits / $data.ReplitPages, 2) } else { 0 }
+    $rorkCost = [math]::Round($data.RorkCredits * 0.20, 2)
     $rorkCreditsPerPage = if ($data.RorkPages -gt 0) { [math]::Round($data.RorkCredits / $data.RorkPages, 2) } else { 0 }
+    $rorkCostPerPage = if ($data.RorkPages -gt 0) { [math]::Round($rorkCost / $data.RorkPages, 2) } else { 0 }
     
     # Get all time values for comparison
     $allTimes = @($data.AntigravityTime, $data.UnoVSCodeTime, $data.UnoVSCodeMCPTime, $data.LovableTime, $data.DreamflowTime, $data.VibecodeTime, $data.BuilderTime, $data.BoltTime, $data.TempoTime, $data.ReplitTime, $data.RorkTime)
@@ -1659,7 +1663,9 @@ foreach ($data in $performanceData) {
     $replitCreditsPerPageDisplay = if ($replitCreditsPerPage -eq 0) { "" } else { $replitCreditsPerPage.ToString() + "%" }
     $rorkTimeDisplay = if ($data.RorkTime -eq 0) { "" } else { $data.RorkTime }
     $rorkCreditsDisplay = if ($data.RorkCredits -eq 0) { "" } else { $data.RorkCredits }
+    $rorkCostDisplay = if ($rorkCost -eq 0) { "" } else { $rorkCost }
     $rorkCreditsPerPageDisplay = if ($rorkCreditsPerPage -eq 0) { "" } else { $rorkCreditsPerPage }
+    $rorkCostPerPageDisplay = if ($rorkCostPerPage -eq 0) { "" } else { $rorkCostPerPage }
     
     $html += @"
                         <tr>
@@ -1700,7 +1706,9 @@ foreach ($data in $performanceData) {
                             <td data-view="creditsperpage">$replitCreditsPerPageDisplay</td>
                             <td data-view="time" class="view-active $rorkTimeClass">$rorkTimeDisplay</td>
                             <td data-view="credits">$rorkCreditsDisplay</td>
+                            <td data-view="cost">$rorkCostDisplay</td>
                             <td data-view="creditsperpage">$rorkCreditsPerPageDisplay</td>
+                            <td data-view="costperpage">$rorkCostPerPageDisplay</td>
                         </tr>
 "@
 }
@@ -1795,7 +1803,9 @@ $replitCreditsAvg = if ($replitCount -gt 0) { [math]::Round($replitCreditsTotal 
 $replitCreditsPerPageAvg = if ($replitCount -gt 0) { [math]::Round($replitCreditsTotal / $replitCount, 1).ToString() + "%" } else { "" }
 $rorkTimeAvg = if ($rorkCount -gt 0) { [math]::Round($rorkTimeTotal / $rorkCount, 1) } else { "" }
 $rorkCreditsAvg = if ($rorkCount -gt 0) { [math]::Round($rorkCreditsTotal / $rorkCount, 1) } else { "" }
+$rorkCostAvg = if ($rorkCount -gt 0) { [math]::Round(($rorkCreditsTotal * 0.20) / $rorkCount, 2) } else { "" }
 $rorkCreditsPerPageAvg = if ($rorkCount -gt 0) { [math]::Round($rorkCreditsTotal / $rorkCount, 2) } else { "" }
+$rorkCostPerPageAvg = if ($rorkCount -gt 0) { [math]::Round(($rorkCreditsTotal * 0.20) / $rorkCount, 2) } else { "" }
 
 $html += @"
                         <tr class="avg-row">
@@ -1836,7 +1846,9 @@ $html += @"
                             <td data-view="creditsperpage">$replitCreditsPerPageAvg</td>
                             <td data-view="time" class="view-active">$rorkTimeAvg</td>
                             <td data-view="credits">$rorkCreditsAvg</td>
+                            <td data-view="cost">$rorkCostAvg</td>
                             <td data-view="creditsperpage">$rorkCreditsPerPageAvg</td>
+                            <td data-view="costperpage">$rorkCostPerPageAvg</td>
                         </tr>
                     </tbody>
                 </table>
@@ -2149,6 +2161,8 @@ foreach ($project in $projectsData) {
         $tempoCreditsDisplay = if ($projectPerf.TempoCredits -eq 0) { "" } else { $projectPerf.TempoCredits }
         $replitTimeDisplay = if ($projectPerf.ReplitTime -eq 0) { "" } else { $projectPerf.ReplitTime }
         $replitCreditsDisplay = if ($projectPerf.ReplitCredits -eq 0) { "" } else { $projectPerf.ReplitCredits.ToString() + "%" }
+        $pRorkCost = if ($projectPerf.RorkCredits -eq 0) { "" } else { [math]::Round($projectPerf.RorkCredits * 0.20, 2) }
+        $pRorkCostPerPage = if ($projectPerf.RorkPages -gt 0 -and $projectPerf.RorkCredits -gt 0) { [math]::Round(($projectPerf.RorkCredits * 0.20) / $projectPerf.RorkPages, 2) } else { "" }
         $rorkTimeDisplay = if ($projectPerf.RorkTime -eq 0) { "" } else { $projectPerf.RorkTime }
         $rorkCreditsDisplay = if ($projectPerf.RorkCredits -eq 0) { "" } else { $projectPerf.RorkCredits }
         
@@ -2220,8 +2234,8 @@ foreach ($project in $projectsData) {
                                 <td>$rorkTimeDisplay</td>
                                 <td>$rorkCreditsDisplay</td>
                                 <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td>$pRorkCost</td>
+                                <td>$pRorkCostPerPage</td>
                             </tr>
                             <tr>
                                 <td>Tempo</td>
