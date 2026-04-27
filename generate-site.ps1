@@ -303,6 +303,8 @@ foreach ($folder in $folders) {
             $tool = "rork"
         } elseif ($imageName -match "^Onspace") {
             $tool = "onspace"
+        } elseif ($imageName -match "^ClaudeDesign") {
+            $tool = "claudedesign"
         }
         
         $projectData.Images += @{
@@ -878,6 +880,21 @@ $html = @"
 
         .tab-onspace.active.active-tool {
             background: #7B1FA2;
+            border-color: transparent;
+        }
+
+        .tab-claudedesign {
+            border-color: #D97706;
+            color: #D97706;
+        }
+
+        .tab-claudedesign:hover {
+            background: #D97706;
+            color: white;
+        }
+
+        .tab-claudedesign.active.active-tool {
+            background: #D97706;
             border-color: transparent;
         }
 
@@ -2387,6 +2404,7 @@ foreach ($project in $projectsData) {
                     <button class="tab-button tab-antigravity" onclick="filterImages('$projectId', 'antigravity')">Antigravity</button>
                     <button class="tab-button tab-bolt" onclick="filterImages('$projectId', 'bolt')">Bolt</button>
                     <button class="tab-button tab-builder" onclick="filterImages('$projectId', 'builder')">Builder</button>
+                    <button class="tab-button tab-claudedesign" onclick="filterImages('$projectId', 'claudedesign')">Claude Design</button>
                     <button class="tab-button tab-dreamflow" onclick="filterImages('$projectId', 'dreamflow')">Dreamflow</button>
                     <button class="tab-button tab-lovable" onclick="filterImages('$projectId', 'lovable')">Lovable</button>
                     <button class="tab-button tab-onspace" onclick="filterImages('$projectId', 'onspace')">Onspace</button>
@@ -2417,6 +2435,7 @@ foreach ($project in $projectsData) {
         "replit" = @()
         "rork" = @()
         "onspace" = @()
+        "claudedesign" = @()
         "other" = @()
     }
     
@@ -2425,7 +2444,7 @@ foreach ($project in $projectsData) {
     }
     
     # Generate tool sections
-    $toolOrder = @("antigravity", "bolt", "builder", "dreamflow", "lovable", "onspace", "replit", "rork", "tempo", "uno", "vscodeuno", "vscodeunomcp", "vibecode", "other")
+    $toolOrder = @("antigravity", "bolt", "builder", "claudedesign", "dreamflow", "lovable", "onspace", "replit", "rork", "tempo", "uno", "vscodeuno", "vscodeunomcp", "vibecode", "other")
     foreach ($toolName in $toolOrder) {
         $toolImages = $imagesByTool[$toolName]
         if ($toolImages.Count -gt 0 -or ($toolName -eq "vibecode" -and $project.VibecodeVideoUrl) -or ($toolName -eq "builder" -and $project.BuilderVideoUrl) -or ($toolName -eq "bolt" -and $project.BoltVideoUrl) -or ($toolName -eq "tempo" -and $project.TempoVideoUrl) -or ($toolName -eq "replit" -and $project.ReplitVideoUrl) -or ($toolName -eq "rork" -and $project.RorkVideoUrl) -or ($toolName -eq "onspace" -and $project.OnspaceVideoUrl) -or ($toolName -eq "dreamflow" -and $project.DreamflowVideoUrl)) {
@@ -2443,6 +2462,7 @@ foreach ($project in $projectsData) {
                 "replit" { "REPLIT" }
                 "rork" { "RORK" }
                 "onspace" { "ONSPACE" }
+                "claudedesign" { "CLAUDE DESIGN" }
                 default { $toolName.ToUpper() }
             }
             
