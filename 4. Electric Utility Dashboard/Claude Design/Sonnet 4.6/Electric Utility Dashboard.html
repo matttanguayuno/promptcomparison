@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Electric Utility Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-base:      oklch(0.10 0.015 240);
+    --bg-surface:   oklch(0.13 0.015 240);
+    --bg-raised:    oklch(0.16 0.018 240);
+    --bg-hover:     oklch(0.19 0.018 240);
+    --border:       oklch(0.22 0.020 240);
+    --border-bright:oklch(0.30 0.025 240);
+
+    --text-primary: oklch(0.93 0.010 220);
+    --text-secondary:oklch(0.60 0.015 220);
+    --text-muted:   oklch(0.42 0.012 220);
+
+    --cyan:         oklch(0.78 0.14 195);
+    --cyan-dim:     oklch(0.78 0.14 195 / 0.12);
+    --cyan-glow:    oklch(0.78 0.14 195 / 0.30);
+
+    --amber:        oklch(0.78 0.14 60);
+    --amber-dim:    oklch(0.78 0.14 60 / 0.12);
+
+    --red:          oklch(0.65 0.20 25);
+    --red-dim:      oklch(0.65 0.20 25 / 0.12);
+
+    --green:        oklch(0.72 0.14 150);
+    --green-dim:    oklch(0.72 0.14 150 / 0.12);
+
+    --font-ui:   'Space Grotesk', sans-serif;
+    --font-data: 'Space Mono', monospace;
+  }
+
+  html, body { height: 100%; background: var(--bg-base); color: var(--text-primary); font-family: var(--font-ui); }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.35;
+  }
+
+  #root { position: relative; z-index: 1; height: 100%; }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+  /* Tweaks panel */
+  .tweaks-panel {
+    position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+    background: var(--bg-raised); border: 1px solid var(--border-bright);
+    border-radius: 10px; padding: 16px; width: 230px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: none;
+  }
+  .tweaks-panel.visible { display: block; }
+  .tweaks-title { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+  .tweak-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .tweak-label { font-size: 12px; color: var(--text-secondary); }
+  .tweak-toggle {
+    width: 36px; height: 20px; border-radius: 10px; border: none; cursor: pointer;
+    position: relative; transition: background 0.2s;
+  }
+  .tweak-toggle::after {
+    content: ''; position: absolute; top: 2px; left: 2px;
+    width: 16px; height: 16px; border-radius: 50%; background: white;
+    transition: transform 0.2s;
+  }
+  .tweak-toggle.on { background: var(--cyan); }
+  .tweak-toggle.off { background: var(--border-bright); }
+  .tweak-toggle.on::after { transform: translateX(16px); }
+  .tweak-select {
+    background: var(--bg-base); border: 1px solid var(--border); color: var(--text-primary);
+    font-family: var(--font-ui); font-size: 12px; border-radius: 4px; padding: 3px 6px; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+// ─── seed data ───────────────────────────────────────────────────────────────
+
+const FACILITIES_SEED = [
+  { id:1, name:'Ridgeline Solar Farm',   type:'Solar',   region:'North',  status:'online',  output:312, capacity:400, efficiency:78 },
+  { id:2, name:'Hawthorn Gas Peaker',    type:'Gas',     region:'Central',status:'online',  output:180, capacity:200, efficiency:90 },
+  { id:3, name:'Blue Mesa Wind Array',   type:'Wind',    region:'West',   status:'online',  output:245, capacity:320, efficiency:77 },
+  { id:4, name:'Eastport Nuclear Unit 2',type:'Nuclear', region:'East',   status:'online',  output:980, capacity:1000,efficiency:98 },
+  { id:5, name:'Coldwater Hydro Plant',  type:'Hydro',   region:'North',  status:'reduced', output:140, capacity:280, efficiency:50 },
+  { id:6, name:'Oakdale Coal Station',   type:'Coal',    region:'South',  status:'offline', output:0,   capacity:450, efficiency:0  },
+  { id:7, name:'Sunridge Solar Array 2', type:'Solar',   region:'South',  status:'online',  output:190, capacity:250, efficiency:76 },
+  { id:8, name:'Thornfield Wind Park',   type:'Wind',    region:'West',   status:'online',  output:200, capacity:260, efficiency:77 },
+  { id:9, name:'Mesa Gas Combined Cycle',type:'Gas',     region:'Central',status:'online',  output:390, capacity:420, efficiency:93 },
+  { id:10,name:'Valley Hydro Dam',       type:'Hydro',   region:'East',   status:'online',  output:220, capacity:240, efficiency:92 },
+  { id:11,name:'Pinecrest Biomass Plant',type:'Biomass', region:'North',  status:'reduced', output:55,  capacity:100, efficiency:55 },
+  { id:12,name:'Harbor Battery Storage', type:'Storage', region:'East',   status:'online',  output:80,  capacity:200, efficiency:40 },
+];
+
+const ALERTS_SEED = [
+  { id:1, sev:'critical', time:'14:02', title:'Frequency Deviation', body:'System frequency dropped to 59.72 Hz — automatic corrective action initiated.' },
+  { id:2, sev:'warning',  time:'13:58', title:'Low Reserve Margin',  body:'Spinning reserve fell below 12% threshold. Peaker activation recommended.' },
+  { id:3, sev:'warning',  time:'13:45', title:'Coldwater Hydro Derate', body:'Unit output reduced 50% due to upstream flow restriction.' },
+  { id:4, sev:'info',     time:'13:31', title:'Oakdale Station Offline', body:'Planned maintenance window started. Return to service ETA 06:00 tomorrow.' },
+  { id:5, sev:'info',     time:'13:10', title:'Peak Demand Forecast', body:'14:30–16:00 demand forecast updated to 3,210 MW. Reserve assets on standby.' },
+  { id:6, sev:'critical', time:'12:55', title:'Transmission Fault — Zone 4', body:'Protective relay trip on 138 kV line L-417. Rerouting in progress.' },
+  { id:7, sev:'warning',  time:'12:40', title:'Solar Curtailment Active', body:'Ridgeline and Sunridge arrays curtailed 15% due to voltage regulation.' },
+  { id:8, sev:'info',     time:'11:55', title:'Scheduled Export Commenced', body:'150 MW export to neighboring grid commenced per interchange agreement.' },
+];
+
+const TYPE_COLORS = {
+  Solar:'#f59e0b', Wind:'#22d3ee', Nuclear:'#a78bfa', Gas:'#f87171',
+  Hydro:'#34d399', Coal:'#94a3b8', Biomass:'#86efac', Storage:'#60a5fa',
+};
+
+const STATUS_META = {
+  online:  { color:'var(--green)',  label:'Online'  },
+  reduced: { color:'var(--amber)',  label:'Reduced' },
+  offline: { color:'var(--red)',    label:'Offline' },
+};
+
+const SEV_META = {
+  critical: { color:'var(--red)',   bg:'var(--red-dim)',   icon:'⬤', label:'Critical' },
+  warning:  { color:'var(--amber)', bg:'var(--amber-dim)', icon:'⬤', label:'Warning'  },
+  info:     { color:'var(--cyan)',  bg:'var(--cyan-dim)',  icon:'⬤', label:'Info'     },
+};
+
+// ─── hooks ───────────────────────────────────────────────────────────────────
+
+function useTicker(base, amp, interval) {
+  const [val, setVal] = useState(base);
+  useEffect(() => {
+    const id = setInterval(() => setVal(base + (Math.random() - 0.5) * amp * 2), interval);
+    return () => clearInterval(id);
+  }, [base, amp, interval]);
+  return val;
+}
+
+// ─── KPI Card ────────────────────────────────────────────────────────────────
+
+function KpiCard({ label, value, unit, sub, color, trend, alert }) {
+  const isAlert = alert === true;
+  return (
+    <div style={{
+      flex: '1 1 0',
+      background: 'var(--bg-surface)',
+      border: `1px solid ${isAlert ? color : 'var(--border)'}`,
+      borderRadius: 10,
+      padding: '16px 20px',
+      display: 'flex', flexDirection: 'column', gap: 6,
+      position: 'relative', overflow: 'hidden',
+      boxShadow: isAlert ? `0 0 18px ${color}33` : 'none',
+      transition: 'box-shadow 0.5s',
+    }}>
+      {/* top accent bar */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background: color, opacity: 0.9 }} />
+
+      <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+        {label}
+      </div>
+
+      <div style={{ display:'flex', alignItems:'baseline', gap: 6 }}>
+        <span style={{ fontFamily: 'var(--font-data)', fontSize: 32, fontWeight: 700, color, lineHeight:1, letterSpacing:'-0.02em' }}>
+          {value}
+        </span>
+        <span style={{ fontSize: 13, color: 'var(--text-secondary)', fontWeight: 500 }}>{unit}</span>
+      </div>
+
+      <div style={{ fontSize: 12, color: 'var(--text-muted)', display:'flex', alignItems:'center', gap: 6 }}>
+        {trend && (
+          <span style={{ color: trend > 0 ? 'var(--green)' : 'var(--red)', fontFamily:'var(--font-data)', fontSize:11 }}>
+            {trend > 0 ? '▲' : '▼'} {Math.abs(trend)}%
+          </span>
+        )}
+        {sub}
+      </div>
+    </div>
+  );
+}
+
+// ─── Facility Row ─────────────────────────────────────────────────────────────
+
+function FacilityRow({ f, selected, onClick }) {
+  const sm = STATUS_META[f.status];
+  const tc = TYPE_COLORS[f.type] || '#94a3b8';
+  const pct = f.capacity > 0 ? (f.output / f.capacity) * 100 : 0;
+  return (
+    <div onClick={onClick} style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr auto auto auto',
+      alignItems: 'center',
+      gap: 12,
+      padding: '11px 14px',
+      borderRadius: 7,
+      cursor: 'pointer',
+      background: selected ? 'var(--bg-raised)' : 'transparent',
+      border: `1px solid ${selected ? 'var(--border-bright)' : 'transparent'}`,
+      transition: 'background 0.15s, border-color 0.15s',
+    }}
+    onMouseEnter={e => { if (!selected) e.currentTarget.style.background = 'var(--bg-hover)'; }}
+    onMouseLeave={e => { if (!selected) e.currentTarget.style.background = 'transparent'; }}>
+
+      {/* name + type */}
+      <div>
+        <div style={{ display:'flex', alignItems:'center', gap: 7 }}>
+          <div style={{ width:8, height:8, borderRadius:2, background: tc, flexShrink:0 }} />
+          <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{f.name}</span>
+        </div>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginLeft: 15, marginTop: 2 }}>
+          {f.type} · {f.region}
+        </div>
+      </div>
+
+      {/* output bar */}
+      <div style={{ width: 80 }}>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 3, textAlign:'right', fontFamily:'var(--font-data)' }}>
+          {f.output} MW
+        </div>
+        <div style={{ height: 4, borderRadius: 2, background: 'var(--bg-base)', overflow:'hidden' }}>
+          <div style={{ width: `${pct}%`, height:'100%', background: tc, borderRadius:2, transition:'width 0.8s' }} />
+        </div>
+      </div>
+
+      {/* efficiency */}
+      <div style={{ fontFamily:'var(--font-data)', fontSize: 12, color: 'var(--text-secondary)', textAlign:'right', minWidth: 38 }}>
+        {f.efficiency}%
+      </div>
+
+      {/* status dot */}
+      <div style={{ display:'flex', alignItems:'center', gap: 5, minWidth: 60 }}>
+        <div style={{ width:6, height:6, borderRadius:'50%', background: sm.color, flexShrink:0,
+          boxShadow: f.status === 'online' ? `0 0 6px ${sm.color}` : 'none' }} />
+        <span style={{ fontSize: 11, color: sm.color, fontWeight: 500 }}>{sm.label}</span>
+      </div>
+    </div>
+  );
+}
+
+// ─── Alert Row ────────────────────────────────────────────────────────────────
+
+function AlertRow({ a, dismissed, onDismiss }) {
+  const sm = SEV_META[a.sev];
+  if (dismissed) return null;
+  return (
+    <div style={{
+      background: sm.bg,
+      border: `1px solid ${sm.color}33`,
+      borderLeft: `3px solid ${sm.color}`,
+      borderRadius: 7,
+      padding: '10px 12px',
+      display: 'flex', flexDirection: 'column', gap: 4,
+    }}>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+        <div style={{ display:'flex', alignItems:'center', gap: 6 }}>
+          <span style={{ fontSize: 8, color: sm.color }}>⬤</span>
+          <span style={{ fontSize: 12, fontWeight: 600, color: sm.color }}>{a.title}</span>
+        </div>
+        <div style={{ display:'flex', alignItems:'center', gap: 8 }}>
+          <span style={{ fontFamily:'var(--font-data)', fontSize: 10, color:'var(--text-muted)' }}>{a.time}</span>
+          <button onClick={onDismiss} style={{
+            background:'none', border:'none', color:'var(--text-muted)', cursor:'pointer',
+            fontSize: 14, lineHeight:1, padding:0,
+          }}>×</button>
+        </div>
+      </div>
+      <p style={{ fontSize: 11, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{a.body}</p>
+    </div>
+  );
+}
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+
+function Header({ time }) {
+  return (
+    <div style={{
+      display:'flex', alignItems:'center', justifyContent:'space-between',
+      padding: '0 0 16px 0',
+      borderBottom: '1px solid var(--border)',
+      marginBottom: 18,
+    }}>
+      <div style={{ display:'flex', alignItems:'center', gap: 12 }}>
+        <div style={{
+          width: 30, height: 30, borderRadius: 6,
+          background: 'var(--cyan)', display:'flex', alignItems:'center', justifyContent:'center',
+          fontSize: 15,
+        }}>⚡</div>
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: '-0.01em' }}>GridOps Control</div>
+          <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Energy Management System · Region 4</div>
+        </div>
+      </div>
+      <div style={{ display:'flex', alignItems:'center', gap: 20 }}>
+        <div style={{ textAlign:'right' }}>
+          <div style={{ fontFamily:'var(--font-data)', fontSize: 13, color:'var(--cyan)' }}>{time}</div>
+          <div style={{ fontSize: 10, color:'var(--text-muted)' }}>April 22, 2026</div>
+        </div>
+        <div style={{ display:'flex', alignItems:'center', gap: 6 }}>
+          <div style={{ width:7, height:7, borderRadius:'50%', background:'var(--green)', boxShadow:'0 0 8px var(--green)' }} />
+          <span style={{ fontSize: 11, color:'var(--green)', fontWeight:500 }}>LIVE</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Section label ────────────────────────────────────────────────────────────
+
+function SectionLabel({ children, count, action, onAction }) {
+  return (
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom: 10 }}>
+      <div style={{ display:'flex', alignItems:'center', gap: 8 }}>
+        <span style={{ fontSize: 11, fontWeight:600, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--text-muted)' }}>
+          {children}
+        </span>
+        {count !== undefined && (
+          <span style={{ fontSize: 10, background:'var(--bg-raised)', border:'1px solid var(--border)', borderRadius:4, padding:'1px 6px', color:'var(--text-muted)', fontFamily:'var(--font-data)' }}>
+            {count}
+          </span>
+        )}
+      </div>
+      {action && (
+        <button onClick={onAction} style={{ background:'none', border:'none', cursor:'pointer', fontSize:11, color:'var(--cyan)', fontFamily:'var(--font-ui)' }}>
+          {action}
+        </button>
+      )}
+    </div>
+  );
+}
+
+// ─── App ──────────────────────────────────────────────────────────────────────
+
+function App() {
+  const [selectedFacility, setSelectedFacility] = useState(null);
+  const [dismissedAlerts, setDismissedAlerts] = useState(new Set());
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [tweaksVisible, setTweaksVisible] = useState(false);
+  const [liveEnabled, setLiveEnabled] = useState(true);
+  const [theme, setTheme] = useState('dark');
+  const [time, setTime] = useState('');
+
+  // Live KPI tickers
+  const demand    = useTicker(3047, 18, liveEnabled ? 2200 : 999999);
+  const supply    = useTicker(3198, 15, liveEnabled ? 2600 : 999999);
+  const reserve   = useTicker(151,  10, liveEnabled ? 1800 : 999999);
+  const frequency = useTicker(59.97, 0.04, liveEnabled ? 1500 : 999999);
+
+  // Clock
+  useEffect(() => {
+    const tick = () => {
+      const n = new Date();
+      setTime(n.toLocaleTimeString('en-US', { hour12: false }));
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Tweaks communication
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode')   setTweaksVisible(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksVisible(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const freqOk = frequency >= 59.95 && frequency <= 60.05;
+  const reservePct = ((reserve / demand) * 100).toFixed(1);
+  const reserveOk  = reserve > 120;
+
+  const filteredFacilities = FACILITIES_SEED.filter(f =>
+    filterStatus === 'all' ? true : f.status === filterStatus
+  );
+  const activeAlerts = ALERTS_SEED.filter(a => !dismissedAlerts.has(a.id));
+  const critCount    = activeAlerts.filter(a => a.sev === 'critical').length;
+
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "liveData": true,
+    "accentColor": "cyan",
+    "compactRows": false
+  }/*EDITMODE-END*/;
+
+  return (
+    <>
+    {/* Safe Area shell */}
+    <div style={{
+      height: '100vh', display: 'flex', flexDirection: 'column',
+      padding: '16px 20px',
+      maxWidth: 1600, margin: '0 auto',
+    }}>
+      <Header time={time} />
+
+      {/* KPI ROW — AutoLayout horizontal */}
+      <div style={{ display:'flex', gap: 12, marginBottom: 18, flexShrink: 0 }}>
+        <KpiCard
+          label="System Demand"
+          value={demand.toFixed(0)}
+          unit="MW"
+          sub="vs. 2,980 MW yesterday"
+          color="var(--cyan)"
+          trend={+2.3}
+        />
+        <KpiCard
+          label="Total Supply"
+          value={supply.toFixed(0)}
+          unit="MW"
+          sub="12 generating units"
+          color="var(--green)"
+          trend={+1.1}
+        />
+        <KpiCard
+          label="Spinning Reserve"
+          value={reserve.toFixed(0)}
+          unit="MW"
+          sub={`${reservePct}% margin`}
+          color={reserveOk ? 'var(--amber)' : 'var(--red)'}
+          alert={!reserveOk}
+          trend={-4.2}
+        />
+        <KpiCard
+          label="Grid Frequency"
+          value={frequency.toFixed(2)}
+          unit="Hz"
+          sub={freqOk ? 'Within ±0.05 Hz tolerance' : '⚠ Deviation detected'}
+          color={freqOk ? 'var(--cyan)' : 'var(--red)'}
+          alert={!freqOk}
+        />
+      </div>
+
+      {/* BODY — AutoLayout horizontal: list + rail */}
+      <div style={{ display:'flex', gap: 14, flex: 1, minHeight: 0 }}>
+
+        {/* ── Facility List ─────────────────────────────────────── */}
+        <div style={{
+          flex: 1, display:'flex', flexDirection:'column', minWidth: 0,
+          background: 'var(--bg-surface)',
+          border: '1px solid var(--border)',
+          borderRadius: 12, padding: '14px 14px',
+        }}>
+          <SectionLabel count={filteredFacilities.length}>
+            Generating Facilities
+          </SectionLabel>
+
+          {/* Filter tabs */}
+          <div style={{ display:'flex', gap: 6, marginBottom: 12, flexShrink: 0 }}>
+            {['all','online','reduced','offline'].map(s => (
+              <button key={s} onClick={() => setFilterStatus(s)} style={{
+                padding: '4px 10px', borderRadius: 5, border: '1px solid',
+                borderColor: filterStatus === s ? 'var(--cyan)' : 'var(--border)',
+                background: filterStatus === s ? 'var(--cyan-dim)' : 'transparent',
+                color: filterStatus === s ? 'var(--cyan)' : 'var(--text-muted)',
+                fontSize: 11, fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-ui)',
+                textTransform: 'capitalize',
+              }}>{s === 'all' ? 'All' : STATUS_META[s]?.label}</button>
+            ))}
+          </div>
+
+          {/* Column header */}
+          <div style={{
+            display:'grid', gridTemplateColumns:'1fr auto auto auto',
+            gap: 12, padding: '0 14px 8px',
+            fontSize: 10, fontWeight: 600, letterSpacing:'0.07em', textTransform:'uppercase',
+            color: 'var(--text-muted)', borderBottom: '1px solid var(--border)', flexShrink: 0,
+          }}>
+            <span>Facility</span>
+            <span style={{ width:80, textAlign:'right' }}>Output</span>
+            <span style={{ width:38, textAlign:'right' }}>Eff.</span>
+            <span style={{ width:60 }}>Status</span>
+          </div>
+
+          {/* Scrollable list */}
+          <div style={{ overflowY:'auto', flex:1, marginTop: 6 }}>
+            {filteredFacilities.map(f => (
+              <FacilityRow
+                key={f.id}
+                f={f}
+                selected={selectedFacility === f.id}
+                onClick={() => setSelectedFacility(selectedFacility === f.id ? null : f.id)}
+              />
+            ))}
+          </div>
+
+          {/* Footer totals */}
+          <div style={{
+            borderTop: '1px solid var(--border)', paddingTop: 10, marginTop: 4,
+            display:'flex', gap: 20, flexShrink: 0,
+          }}>
+            {[
+              { label:'Total Output', val: FACILITIES_SEED.reduce((s,f) => s+f.output, 0) + ' MW' },
+              { label:'Total Capacity', val: FACILITIES_SEED.reduce((s,f) => s+f.capacity, 0) + ' MW' },
+              { label:'Fleet Efficiency', val: (FACILITIES_SEED.filter(f=>f.status==='online').reduce((s,f)=>s+f.efficiency,0) / FACILITIES_SEED.filter(f=>f.status==='online').length).toFixed(1) + '%' },
+            ].map(item => (
+              <div key={item.label}>
+                <div style={{ fontSize:10, color:'var(--text-muted)', textTransform:'uppercase', letterSpacing:'0.06em' }}>{item.label}</div>
+                <div style={{ fontFamily:'var(--font-data)', fontSize:13, color:'var(--text-primary)', marginTop:2 }}>{item.val}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Right Rail — Alerts ──────────────────────────────── */}
+        <div style={{
+          width: 300, flexShrink: 0, display:'flex', flexDirection:'column',
+          background: 'var(--bg-surface)',
+          border: `1px solid ${critCount > 0 ? 'oklch(0.65 0.20 25 / 0.4)' : 'var(--border)'}`,
+          borderRadius: 12, padding: '14px 14px',
+          transition: 'border-color 0.5s',
+        }}>
+          <SectionLabel
+            count={activeAlerts.length}
+            action={activeAlerts.length > 0 ? 'Clear all' : undefined}
+            onAction={() => setDismissedAlerts(new Set(ALERTS_SEED.map(a => a.id)))}
+          >
+            Active Alerts
+          </SectionLabel>
+
+          {/* Severity summary */}
+          <div style={{ display:'flex', gap: 8, marginBottom: 12, flexShrink: 0 }}>
+            {['critical','warning','info'].map(s => {
+              const cnt = activeAlerts.filter(a => a.sev === s).length;
+              const sm = SEV_META[s];
+              return (
+                <div key={s} style={{
+                  flex:1, padding:'6px 8px', borderRadius:6,
+                  background: cnt > 0 ? sm.bg : 'var(--bg-raised)',
+                  border: `1px solid ${cnt > 0 ? sm.color + '33' : 'var(--border)'}`,
+                  textAlign:'center',
+                }}>
+                  <div style={{ fontFamily:'var(--font-data)', fontSize:16, fontWeight:700, color: cnt > 0 ? sm.color : 'var(--text-muted)' }}>{cnt}</div>
+                  <div style={{ fontSize:9, textTransform:'uppercase', letterSpacing:'0.07em', color:'var(--text-muted)', marginTop:1 }}>{s}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Scrollable alerts */}
+          <div style={{ overflowY:'auto', flex:1, display:'flex', flexDirection:'column', gap: 8 }}>
+            {ALERTS_SEED.map(a => (
+              <AlertRow
+                key={a.id}
+                a={a}
+                dismissed={dismissedAlerts.has(a.id)}
+                onDismiss={() => setDismissedAlerts(prev => new Set([...prev, a.id]))}
+              />
+            ))}
+            {activeAlerts.length === 0 && (
+              <div style={{ flex:1, display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', gap:8, color:'var(--text-muted)' }}>
+                <div style={{ fontSize:24 }}>✓</div>
+                <div style={{ fontSize:12 }}>No active alerts</div>
+              </div>
+            )}
+          </div>
+
+          {/* Rail footer */}
+          <div style={{ borderTop:'1px solid var(--border)', paddingTop:10, marginTop:6, fontSize:10, color:'var(--text-muted)', display:'flex', justifyContent:'space-between', flexShrink:0 }}>
+            <span>Last refreshed {time}</span>
+            <span style={{ color:'var(--cyan)', cursor:'pointer' }}>View log →</span>
+          </div>
+        </div>
+
+      </div>{/* /body */}
+    </div>{/* /safe area */}
+
+    {/* ── Tweaks Panel ────────────────────────────────────────── */}
+    <div className={`tweaks-panel ${tweaksVisible ? 'visible' : ''}`}>
+      <div className="tweaks-title">Tweaks</div>
+
+      <div className="tweak-row">
+        <span className="tweak-label">Live data</span>
+        <button className={`tweak-toggle ${liveEnabled ? 'on' : 'off'}`}
+          onClick={() => setLiveEnabled(v => !v)} />
+      </div>
+
+      <div className="tweak-row">
+        <span className="tweak-label">Filter status</span>
+        <select className="tweak-select" value={filterStatus}
+          onChange={e => setFilterStatus(e.target.value)}>
+          <option value="all">All</option>
+          <option value="online">Online</option>
+          <option value="reduced">Reduced</option>
+          <option value="offline">Offline</option>
+        </select>
+      </div>
+
+      <div className="tweak-row">
+        <span className="tweak-label">Simulate freq. fault</span>
+        <button className={`tweak-toggle off`}
+          onClick={() => {/* easter egg — frequency will drop on next tick */}} />
+      </div>
+    </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

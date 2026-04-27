@@ -1,0 +1,33 @@
+You
+create a page for adding and editing notes. Similar to digital post-it notes where i can add, delete, and edit the post-its that are displayed on the screen
+Hi-fi design
+Interactive prototype
+Claude
+Invoking skill: Frontend design
++ Design sticky notes app with React
++ Add/edit/delete interactions
++ Drag to reposition notes
++ Tweaks panel
+Writing Notes.html
+Let me build this now! Going with a warm desk/corkboard aesthetic — pastel post-its with slight rotations, handwriting font, satisfying drag-and-drop, and a cork texture background.
+
+Done Notes.html
+Fork verifier agent
+Here's what's been built for you! 🎉
+
+Your sticky notes board features:
+
+Click any note to edit it inline
+Drag notes anywhere on the board to rearrange
+Color swatches in the toolbar to add a note in a specific color
+＋ button to add a random-colored note
+× button (appears on hover) to delete individual notes
+Clear all to wipe the board
+Notes & layout persist across refreshes via localStorage
+Tweaks panel (toggle via toolbar):
+
+4 color palettes (Classic, Muted, Bold, Mono)
+4 board backgrounds (Cork, Slate, Forest, Night)
+Adjustable note size (140–300px)
+Lined / unlined notes
+Let me know if you'd like any changes — different colors, new features like pinning, search, or categories, or a different visual style!

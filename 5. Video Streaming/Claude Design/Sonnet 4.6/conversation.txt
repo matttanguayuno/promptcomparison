@@ -1,0 +1,29 @@
+You
+Create a video streaming app.
+Requirements:
+- Movies library ListView
+- Rate a movie and "add comment" feature
+- Download a movie option
+Hi-fi design
+Interactive prototype
+Claude
+Invoking skill: Frontend design
++ Define aesthetic direction & movie data
++ Build movie library list view with filters
++ Build movie detail panel with rating & comments
++ Build download feature with progress
++ Add tweaks panel & polish
+Writing StreamVault.html
+Building it now! Going with a dark cinematic aesthetic — deep charcoal backgrounds, warm amber for ratings, electric teal for actions. Bebas Neue for display type, DM Sans for body copy. Let me build the full prototype.
+
+Done StreamVault.html
+Fork verifier agent
+Here's what was built — StreamVault, a dark cinematic streaming app:
+
+Features:
+
+🎬 Movie Library — 12 films, filterable by 7 genres, searchable, sortable (rating / newest / A–Z)
+⭐ Rate & Review — click any movie to open the detail panel, tap stars to rate, write a comment and post it
+⬇️ Download — animated progress bar per film, shows file size, confirms completion with a checkmark
+🎛️ Tweaks panel — toggle accent color (teal / amber / violet) and default sort order
+Click any row to open the detail view. Let me know what you'd like to change!

@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AirLux — Flight Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #06091a;
+    --navy2: #0d1230;
+    --navy3: #141a3d;
+    --gold: oklch(72% 0.12 82);
+    --gold2: oklch(60% 0.10 82);
+    --blue: oklch(62% 0.18 252);
+    --blue2: oklch(72% 0.14 252);
+    --white: oklch(97% 0.005 252);
+    --white60: oklch(97% 0.005 252 / 60%);
+    --white20: oklch(97% 0.005 252 / 20%);
+    --white10: oklch(97% 0.005 252 / 10%);
+    --white5: oklch(97% 0.005 252 / 5%);
+    --glass: oklch(15% 0.04 252 / 70%);
+    --glass-border: oklch(97% 0.01 252 / 12%);
+    --font-display: 'Cormorant Garant', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Animated gradient background */
+  .bg-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, oklch(25% 0.12 252 / 70%) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 90%, oklch(18% 0.08 280 / 80%) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 50% 50%, oklch(10% 0.05 252) 0%, transparent 100%),
+      linear-gradient(160deg, #06091a 0%, #0d1232 40%, #0a0e24 100%);
+  }
+
+  .bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, oklch(55% 0.18 252 / 15%) 0%, transparent 70%);
+    top: -150px; right: -100px;
+    animation: floatGlow 12s ease-in-out infinite;
+  }
+
+  .bg-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, oklch(65% 0.12 82 / 10%) 0%, transparent 70%);
+    bottom: 100px; left: -80px;
+    animation: floatGlow 15s ease-in-out infinite reverse;
+  }
+
+  .bg-stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle 1px at 15% 25%, oklch(97% 0.005 252 / 40%) 0%, transparent 100%),
+      radial-gradient(circle 1px at 35% 65%, oklch(97% 0.005 252 / 30%) 0%, transparent 100%),
+      radial-gradient(circle 1.5px at 55% 15%, oklch(97% 0.005 252 / 50%) 0%, transparent 100%),
+      radial-gradient(circle 1px at 72% 42%, oklch(97% 0.005 252 / 35%) 0%, transparent 100%),
+      radial-gradient(circle 1px at 88% 70%, oklch(97% 0.005 252 / 25%) 0%, transparent 100%),
+      radial-gradient(circle 1px at 5% 80%, oklch(97% 0.005 252 / 30%) 0%, transparent 100%),
+      radial-gradient(circle 1px at 92% 20%, oklch(97% 0.005 252 / 45%) 0%, transparent 100%),
+      radial-gradient(circle 0.5px at 48% 88%, oklch(97% 0.005 252 / 20%) 0%, transparent 100%),
+      radial-gradient(circle 1.5px at 28% 45%, oklch(97% 0.005 252 / 35%) 0%, transparent 100%),
+      radial-gradient(circle 1px at 65% 78%, oklch(97% 0.005 252 / 30%) 0%, transparent 100%);
+  }
+
+  /* Clouds / atmosphere */
+  .bg-cloud {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.06;
+  }
+  .bg-cloud1 { width:700px;height:200px; background:white; top:60%; left:10%; animation: driftCloud 30s linear infinite; }
+  .bg-cloud2 { width:500px;height:150px; background:white; top:70%; left:50%; animation: driftCloud 45s linear infinite 10s; }
+
+  .plane-silhouette {
+    position: absolute;
+    right: -40px;
+    top: 35%;
+    transform: translateY(-50%);
+    opacity: 0.04;
+    font-size: 480px;
+    line-height: 1;
+    filter: blur(1px);
+    animation: planeFloat 20s ease-in-out infinite;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @keyframes floatGlow {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(30px, 20px) scale(1.08); }
+  }
+  @keyframes driftCloud {
+    from { transform: translateX(-120%); }
+    to { transform: translateX(200vw); }
+  }
+  @keyframes planeFloat {
+    0%, 100% { transform: translateY(-50%) rotate(-5deg); }
+    50% { transform: translateY(calc(-50% - 30px)) rotate(-3deg); }
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(28px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Layout */
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Navbar */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    border-bottom: 1px solid var(--white10);
+    backdrop-filter: blur(12px);
+    background: oklch(8% 0.03 252 / 40%);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), oklch(62% 0.14 82));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .logo-dot { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white60);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--white10);
+    border: 1px solid var(--glass-border);
+    color: var(--white);
+    padding: 9px 22px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .nav-cta:hover { background: var(--white20); border-color: var(--white20); }
+
+  /* Hero section */
+  .hero {
+    padding: 64px 48px 32px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: oklch(72% 0.12 82 / 12%);
+    border: 1px solid oklch(72% 0.12 82 / 25%);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 600px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    margin-top: 14px;
+    color: var(--white60);
+    font-size: 16px;
+    font-weight: 300;
+    max-width: 400px;
+    line-height: 1.6;
+  }
+
+  /* Search card */
+  .search-wrap {
+    flex: 1;
+    padding: 0 48px 48px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .search-card {
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 36px 40px;
+    box-shadow: 0 32px 80px oklch(0% 0 0 / 40%), inset 0 1px 0 oklch(100% 0 0 / 8%);
+  }
+
+  /* Trip type tabs */
+  .trip-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--white5);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 4px;
+    width: fit-content;
+    margin-bottom: 32px;
+  }
+  .trip-tab {
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    color: var(--white60);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .trip-tab.active {
+    background: white;
+    color: var(--navy);
+  }
+
+  /* Form grid */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+
+  .swap-btn {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--white10);
+    border: 1px solid var(--glass-border);
+    color: var(--white60);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  .swap-btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    transform: rotate(180deg);
+  }
+
+  .form-row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .form-row3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 12px;
+    align-items: end;
+  }
+
+  /* Field */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+  .field-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white60);
+    padding-left: 2px;
+  }
+  .field-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .field-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 16px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .field-input, .field-select {
+    width: 100%;
+    background: var(--white5);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    padding: 14px 14px 14px 42px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .field-select option { background: var(--navy2); color: white; }
+  .field-input::placeholder { color: oklch(97% 0.005 252 / 35%); }
+  .field-input:focus, .field-select:focus {
+    border-color: oklch(62% 0.18 252 / 70%);
+    background: var(--white10);
+    box-shadow: 0 0 0 3px oklch(62% 0.18 252 / 12%);
+  }
+  .field-input:focus + .field-focus-ring, .field-select:focus + .field-focus-ring {
+    opacity: 1;
+  }
+
+  /* Passengers field */
+  .pax-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--white5);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    overflow: hidden;
+    height: 52px;
+  }
+  .pax-btn {
+    width: 44px; height: 100%;
+    background: transparent;
+    border: none;
+    color: var(--white60);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pax-btn:hover { background: var(--white10); color: var(--white); }
+  .pax-val {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  /* Promo code */
+  .promo-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .promo-input {
+    width: 100%;
+    background: var(--white5);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 14px 80px 14px 42px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .promo-input::placeholder { color: oklch(97% 0.005 252 / 30%); text-transform: none; letter-spacing: 0; }
+  .promo-input:focus {
+    border-color: oklch(72% 0.12 82 / 70%);
+    background: var(--white10);
+    box-shadow: 0 0 0 3px oklch(72% 0.12 82 / 10%);
+  }
+  .promo-apply {
+    position: absolute;
+    right: 8px;
+    background: oklch(72% 0.12 82 / 18%);
+    border: 1px solid oklch(72% 0.12 82 / 30%);
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .promo-apply:hover { background: oklch(72% 0.12 82 / 28%); }
+
+  .promo-badge {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: oklch(72% 0.14 160);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Search button */
+  .search-btn {
+    width: 100%;
+    height: 56px;
+    background: linear-gradient(135deg, var(--blue) 0%, oklch(55% 0.20 262) 100%);
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 32px oklch(62% 0.18 252 / 30%);
+    position: relative;
+    overflow: hidden;
+  }
+  .search-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, oklch(100% 0 0 / 10%) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .search-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px oklch(62% 0.18 252 / 40%); }
+  .search-btn:hover::after { opacity: 1; }
+  .search-btn:active { transform: translateY(0); }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--glass-border);
+    margin: 24px 0;
+  }
+
+  /* Popular routes */
+  .popular-section {
+    padding: 0 48px 48px;
+    animation: fadeUp 0.9s ease 0.35s both;
+  }
+  .popular-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white60);
+    margin-bottom: 14px;
+  }
+  .popular-routes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .route-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white5);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--white60);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .route-chip:hover {
+    background: var(--white10);
+    color: var(--white);
+    border-color: var(--white20);
+  }
+  .route-chip-flag { font-size: 16px; }
+  .route-chip-price {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* Dropdown */
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: oklch(12% 0.05 252);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 100;
+    box-shadow: 0 24px 60px oklch(0% 0 0 / 50%);
+    animation: fadeUp 0.15s ease both;
+  }
+  .dropdown-search {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .dropdown-search input {
+    width: 100%;
+    background: var(--white10);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 13px;
+    padding: 8px 12px;
+    outline: none;
+  }
+  .dropdown-search input::placeholder { color: var(--white60); }
+  .dropdown-items { max-height: 220px; overflow-y: auto; }
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .dropdown-item:hover { background: var(--white10); }
+  .dropdown-item.selected { background: oklch(62% 0.18 252 / 15%); }
+  .di-flag { font-size: 22px; }
+  .di-info { flex: 1; }
+  .di-city { font-size: 14px; font-weight: 500; color: var(--white); }
+  .di-country { font-size: 11px; color: var(--white60); margin-top: 1px; }
+  .di-code { font-size: 13px; font-weight: 600; color: var(--blue2); font-family: monospace; }
+
+  /* Calendar dropdown */
+  .cal-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 300px;
+    background: oklch(12% 0.05 252);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
+    z-index: 100;
+    box-shadow: 0 24px 60px oklch(0% 0 0 / 50%);
+    animation: fadeUp 0.15s ease both;
+  }
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .cal-nav {
+    width: 30px; height: 30px;
+    background: var(--white10);
+    border: none;
+    border-radius: 8px;
+    color: var(--white60);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .cal-nav:hover { background: var(--white20); color: var(--white); }
+  .cal-month-year {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+  .cal-day-name {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--white60);
+    padding: 4px 0 8px;
+    text-transform: uppercase;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--white);
+    border: none;
+    background: transparent;
+    font-family: var(--font-body);
+  }
+  .cal-day:hover:not(.empty):not(.past) { background: var(--white10); }
+  .cal-day.past { color: oklch(97% 0 0 / 20%); cursor: not-allowed; }
+  .cal-day.today { border: 1px solid var(--blue); color: var(--blue2); }
+  .cal-day.selected { background: var(--blue); color: white; font-weight: 600; }
+  .cal-day.empty { cursor: default; }
+
+  /* Class selector */
+  .class-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--white5);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 4px;
+  }
+  .class-tab {
+    flex: 1;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: var(--white60);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .class-tab.active {
+    background: linear-gradient(135deg, var(--blue) 0%, oklch(55% 0.20 262) 100%);
+    color: white;
+    box-shadow: 0 4px 12px oklch(62% 0.18 252 / 30%);
+  }
+  .class-emoji { font-size: 16px; display: block; margin-bottom: 3px; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: oklch(20% 0.05 252);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--white);
+    box-shadow: 0 16px 48px oklch(0% 0 0 / 40%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast-icon { font-size: 18px; }
+
+  /* Scrollbar */
+  .dropdown-items::-webkit-scrollbar { width: 4px; }
+  .dropdown-items::-webkit-scrollbar-track { background: transparent; }
+  .dropdown-items::-webkit-scrollbar-thumb { background: var(--white20); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="bg-scene">
+  <div class="bg-gradient"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-glow2"></div>
+  <div class="bg-stars"></div>
+  <div class="bg-cloud bg-cloud1"></div>
+  <div class="bg-cloud bg-cloud2"></div>
+  <div class="plane-silhouette">✈</div>
+</div>
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useRef, useEffect, useCallback } = React;
+
+const AIRPORTS = [
+  { code: 'JFK', city: 'New York', country: 'United States', flag: '🇺🇸' },
+  { code: 'LAX', city: 'Los Angeles', country: 'United States', flag: '🇺🇸' },
+  { code: 'LHR', city: 'London', country: 'United Kingdom', flag: '🇬🇧' },
+  { code: 'CDG', city: 'Paris', country: 'France', flag: '🇫🇷' },
+  { code: 'DXB', city: 'Dubai', country: 'UAE', flag: '🇦🇪' },
+  { code: 'SIN', city: 'Singapore', country: 'Singapore', flag: '🇸🇬' },
+  { code: 'HND', city: 'Tokyo', country: 'Japan', flag: '🇯🇵' },
+  { code: 'SYD', city: 'Sydney', country: 'Australia', flag: '🇦🇺' },
+  { code: 'GRU', city: 'São Paulo', country: 'Brazil', flag: '🇧🇷' },
+  { code: 'MXP', city: 'Milan', country: 'Italy', flag: '🇮🇹' },
+  { code: 'BKK', city: 'Bangkok', country: 'Thailand', flag: '🇹🇭' },
+  { code: 'DEL', city: 'New Delhi', country: 'India', flag: '🇮🇳' },
+  { code: 'ICN', city: 'Seoul', country: 'South Korea', flag: '🇰🇷' },
+  { code: 'AMS', city: 'Amsterdam', country: 'Netherlands', flag: '🇳🇱' },
+  { code: 'FRA', city: 'Frankfurt', country: 'Germany', flag: '🇩🇪' },
+  { code: 'ORD', city: 'Chicago', country: 'United States', flag: '🇺🇸' },
+];
+
+const POPULAR = [
+  { from: '🇺🇸 NYC', to: '🇬🇧 London', price: '$428' },
+  { from: '🇺🇸 LA', to: '🇯🇵 Tokyo', price: '$612' },
+  { from: '🇬🇧 London', to: '🇦🇪 Dubai', price: '$387' },
+  { from: '🇸🇬 Singapore', to: '🇦🇺 Sydney', price: '$295' },
+];
+
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAY_NAMES = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+function useOutsideClick(ref, handler) {
+  useEffect(() => {
+    const listener = (e) => { if (!ref.current || ref.current.contains(e.target)) return; handler(); };
+    document.addEventListener('mousedown', listener);
+    return () => document.removeEventListener('mousedown', listener);
+  }, [ref, handler]);
+}
+
+function AirportDropdown({ label, icon, value, onChange, placeholder }) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const ref = useRef(null);
+  useOutsideClick(ref, () => setOpen(false));
+
+  const filtered = AIRPORTS.filter(a =>
+    a.city.toLowerCase().includes(search.toLowerCase()) ||
+    a.code.toLowerCase().includes(search.toLowerCase()) ||
+    a.country.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const selected = AIRPORTS.find(a => a.code === value);
+
+  return (
+    <div className="field" ref={ref} style={{ position: 'relative' }}>
+      <span className="field-label">{label}</span>
+      <div className="field-inner" onClick={() => setOpen(o => !o)} style={{ cursor: 'pointer' }}>
+        <span className="field-icon">{icon}</span>
+        <div style={{
+          width: '100%',
+          background: 'var(--white5)',
+          border: `1px solid ${open ? 'oklch(62% 0.18 252 / 70%)' : 'var(--glass-border)'}`,
+          borderRadius: 14,
+          color: selected ? 'var(--white)' : 'oklch(97% 0.005 252 / 35%)',
+          fontFamily: 'var(--font-body)',
+          fontSize: 15,
+          padding: '14px 14px 14px 42px',
+          transition: 'all 0.2s',
+          boxShadow: open ? '0 0 0 3px oklch(62% 0.18 252 / 12%)' : 'none',
+          userSelect: 'none',
+        }}>
+          {selected ? (
+            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span>{selected.flag}</span>
+              <span style={{ fontWeight: 500 }}>{selected.city}</span>
+              <span style={{ color: 'var(--blue2)', fontWeight: 600, fontSize: 13, fontFamily: 'monospace' }}>{selected.code}</span>
+            </span>
+          ) : placeholder}
+        </div>
+      </div>
+      {open && (
+        <div className="dropdown-menu">
+          <div className="dropdown-search">
+            <input
+              autoFocus
+              placeholder="Search city or airport..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              onClick={e => e.stopPropagation()}
+            />
+          </div>
+          <div className="dropdown-items">
+            {filtered.map(a => (
+              <div key={a.code} className={`dropdown-item ${value === a.code ? 'selected' : ''}`}
+                onClick={(e) => { e.stopPropagation(); onChange(a.code); setOpen(false); setSearch(''); }}>
+                <span className="di-flag">{a.flag}</span>
+                <div className="di-info">
+                  <div className="di-city">{a.city}</div>
+                  <div className="di-country">{a.country}</div>
+                </div>
+                <span className="di-code">{a.code}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CalendarPicker({ label, icon, value, onChange, minDate }) {
+  const [open, setOpen] = useState(false);
+  const [viewYear, setViewYear] = useState(() => { const d = value || new Date(); return d.getFullYear(); });
+  const [viewMonth, setViewMonth] = useState(() => { const d = value || new Date(); return d.getMonth(); });
+  const ref = useRef(null);
+  useOutsideClick(ref, () => setOpen(false));
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const min = minDate || today;
+
+  const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const cells = Array(firstDay).fill(null).concat(Array.from({length: daysInMonth}, (_,i) => i+1));
+
+  const prevMonth = () => { if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y-1); } else setViewMonth(m => m-1); };
+  const nextMonth = () => { if (viewMonth === 11) { setViewMonth(0); setViewYear(y => y+1); } else setViewMonth(m => m+1); };
+
+  const isSelected = (d) => value && value.getDate() === d && value.getMonth() === viewMonth && value.getFullYear() === viewYear;
+  const isPast = (d) => new Date(viewYear, viewMonth, d) < min;
+  const isToday = (d) => { const t = new Date(viewYear, viewMonth, d); return t.toDateString() === today.toDateString(); };
+
+  const fmt = (d) => d ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null;
+
+  return (
+    <div className="field" ref={ref} style={{ position: 'relative' }}>
+      <span className="field-label">{label}</span>
+      <div className="field-inner" onClick={() => setOpen(o => !o)} style={{ cursor: 'pointer' }}>
+        <span className="field-icon">{icon}</span>
+        <div style={{
+          width: '100%',
+          background: 'var(--white5)',
+          border: `1px solid ${open ? 'oklch(62% 0.18 252 / 70%)' : 'var(--glass-border)'}`,
+          borderRadius: 14,
+          color: value ? 'var(--white)' : 'oklch(97% 0.005 252 / 35%)',
+          fontFamily: 'var(--font-body)',
+          fontSize: 15,
+          padding: '14px 14px 14px 42px',
+          transition: 'all 0.2s',
+          boxShadow: open ? '0 0 0 3px oklch(62% 0.18 252 / 12%)' : 'none',
+          userSelect: 'none',
+          fontWeight: value ? 400 : 400,
+        }}>
+          {fmt(value) || 'Select date'}
+        </div>
+      </div>
+      {open && (
+        <div className="cal-dropdown">
+          <div className="cal-header">
+            <button className="cal-nav" onClick={e => { e.stopPropagation(); prevMonth(); }}>‹</button>
+            <span className="cal-month-year">{MONTHS[viewMonth]} {viewYear}</span>
+            <button className="cal-nav" onClick={e => { e.stopPropagation(); nextMonth(); }}>›</button>
+          </div>
+          <div className="cal-grid">
+            {DAY_NAMES.map(d => <div key={d} className="cal-day-name">{d}</div>)}
+            {cells.map((d, i) => (
+              <button key={i}
+                className={`cal-day ${!d ? 'empty' : ''} ${d && isPast(d) ? 'past' : ''} ${d && isToday(d) ? 'today' : ''} ${d && isSelected(d) ? 'selected' : ''}`}
+                onClick={e => { e.stopPropagation(); if (!d || isPast(d)) return; onChange(new Date(viewYear, viewMonth, d)); setOpen(false); }}
+                disabled={!d || isPast(d)}
+              >
+                {d || ''}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function App() {
+  const [tripType, setTripType] = useState('roundtrip');
+  const [from, setFrom] = useState('JFK');
+  const [to, setTo] = useState('LHR');
+  const [depart, setDepart] = useState(null);
+  const [returnDate, setReturnDate] = useState(null);
+  const [cabinClass, setCabinClass] = useState('economy');
+  const [pax, setPax] = useState(1);
+  const [promo, setPromo] = useState('');
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (msg, icon='✈️') => {
+    setToast({ msg, icon });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const swapAirports = () => {
+    const tmp = from; setFrom(to); setTo(tmp);
+  };
+
+  const handlePromo = () => {
+    if (promo.trim().length > 2) {
+      setPromoApplied(true);
+      showToast('Promo code applied! 15% off your booking 🎉', '🏷️');
+    }
+  };
+
+  const handleSearch = () => {
+    if (!from || !to) return showToast('Please select departure & destination', '⚠️');
+    if (!depart) return showToast('Please select a departure date', '📅');
+    if (tripType === 'roundtrip' && !returnDate) return showToast('Please select a return date', '📅');
+    showToast('Searching best fares for you...', '✈️');
+  };
+
+  const handlePopularRoute = (route) => {
+    showToast(`Route selected: ${route.from} → ${route.to} from ${route.price}`, '✈️');
+  };
+
+  const classes = [
+    { key: 'economy', label: 'Economy', emoji: '💺' },
+    { key: 'business', label: 'Business', emoji: '🛋️' },
+    { key: 'first', label: 'First Class', emoji: '👑' },
+  ];
+
+  return (
+    <div className="page">
+      {/* Nav */}
+      <nav className="nav">
+        <a className="logo" href="#">
+          <div className="logo-icon">✈️</div>
+          Air<span className="logo-dot">Lux</span>
+        </a>
+        <ul className="nav-links">
+          <li><a href="#">Flights</a></li>
+          <li><a href="#">Hotels</a></li>
+          <li><a href="#">My Trips</a></li>
+          <li><a href="#">Deals</a></li>
+        </ul>
+        <button className="nav-cta">Sign In</button>
+      </nav>
+
+      {/* Hero */}
+      <div className="hero">
+        <div className="hero-tag">✦ Premium Air Travel</div>
+        <h1 className="hero-title">
+          Fly to your<br /><em>next adventure</em>
+        </h1>
+        <p className="hero-sub">Search hundreds of airlines, compare prices and book your perfect journey.</p>
+      </div>
+
+      {/* Search card */}
+      <div className="search-wrap">
+        <div className="search-card">
+          {/* Trip type */}
+          <div className="trip-tabs">
+            {['roundtrip','oneway','multicity'].map(t => (
+              <button key={t} className={`trip-tab ${tripType === t ? 'active' : ''}`} onClick={() => setTripType(t)}>
+                {t === 'roundtrip' ? '⇄ Round Trip' : t === 'oneway' ? '→ One Way' : '⤳ Multi-city'}
+              </button>
+            ))}
+          </div>
+
+          {/* From / To */}
+          <div className="form-grid">
+            <AirportDropdown label="From" icon="🛫" value={from} onChange={setFrom} placeholder="Departure city" />
+            <button className="swap-btn" onClick={swapAirports} title="Swap airports">⇄</button>
+            <AirportDropdown label="To" icon="🛬" value={to} onChange={setTo} placeholder="Destination city" />
+          </div>
+
+          {/* Dates + Passengers + Class */}
+          <div className="form-row2">
+            <CalendarPicker label="Departure" icon="📅" value={depart} onChange={setDepart} />
+            {tripType === 'roundtrip'
+              ? <CalendarPicker label="Return" icon="📅" value={returnDate} onChange={setReturnDate} minDate={depart} />
+              : <div className="field"><span className="field-label">Return</span><div style={{ background:'var(--white5)', border:'1px solid var(--glass-border)', borderRadius:14, padding:'14px', color:'var(--white60)', fontSize:13, textAlign:'center', height:52, display:'flex', alignItems:'center', justifyContent:'center' }}>One-way trip</div></div>
+            }
+
+            {/* Passengers */}
+            <div className="field">
+              <span className="field-label">👥 Passengers</span>
+              <div className="pax-control">
+                <button className="pax-btn" onClick={() => setPax(p => Math.max(1, p-1))}>−</button>
+                <span className="pax-val">{pax} {pax === 1 ? 'Adult' : 'Adults'}</span>
+                <button className="pax-btn" onClick={() => setPax(p => Math.min(9, p+1))}>+</button>
+              </div>
+            </div>
+
+            {/* Class */}
+            <div className="field">
+              <span className="field-label">✦ Cabin Class</span>
+              <div className="class-tabs">
+                {classes.map(c => (
+                  <button key={c.key} className={`class-tab ${cabinClass === c.key ? 'active' : ''}`} onClick={() => setCabinClass(c.key)}>
+                    <span className="class-emoji">{c.emoji}</span>
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="divider" />
+
+          {/* Promo + Search */}
+          <div className="form-row3">
+            <div className="field">
+              <span className="field-label">🏷️ Promo Code</span>
+              <div className="promo-wrap">
+                <span className="field-icon">🎟️</span>
+                <input
+                  className="promo-input"
+                  placeholder="Enter code (e.g. AIRLUX20)"
+                  value={promo}
+                  onChange={e => { setPromo(e.target.value); setPromoApplied(false); }}
+                  onKeyDown={e => e.key === 'Enter' && handlePromo()}
+                  disabled={promoApplied}
+                />
+                {promoApplied ? (
+                  <div className="promo-badge">✅ −15%</div>
+                ) : (
+                  <button className="promo-apply" onClick={handlePromo}>Apply</button>
+                )}
+              </div>
+            </div>
+
+            <div className="field">
+              <span className="field-label">⚡ Fare Type</span>
+              <select className="field-select" style={{ paddingLeft: 14 }}>
+                <option>Flexible fares</option>
+                <option>Cheapest fares</option>
+                <option>Direct flights only</option>
+              </select>
+            </div>
+
+            <button className="search-btn" onClick={handleSearch}>
+              ✈️ &nbsp;Search Flights
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Popular routes */}
+      <div className="popular-section">
+        <div className="popular-title">✦ Popular Routes</div>
+        <div className="popular-routes">
+          {POPULAR.map((r, i) => (
+            <button key={i} className="route-chip" onClick={() => handlePopularRoute(r)}>
+              <span>{r.from}</span>
+              <span style={{ color: 'var(--white20)' }}>→</span>
+              <span>{r.to}</span>
+              <span className="route-chip-price">{r.price}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Toast */}
+      <div className={`toast ${toast ? 'show' : ''}`}>
+        <span className="toast-icon">{toast?.icon}</span>
+        <span>{toast?.msg}</span>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<!-- Tweaks system -->
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "blue",
+  "backgroundIntensity": "medium",
+  "showPopularRoutes": true
+}/*EDITMODE-END*/;
+
+let tweaksVisible = false;
+let panel = null;
+
+function applyTweaks(t) {
+  const root = document.documentElement;
+  if (t.accentColor === 'gold') {
+    root.style.setProperty('--blue', 'oklch(62% 0.14 82)');
+    root.style.setProperty('--blue2', 'oklch(72% 0.12 82)');
+  } else if (t.accentColor === 'teal') {
+    root.style.setProperty('--blue', 'oklch(62% 0.18 190)');
+    root.style.setProperty('--blue2', 'oklch(72% 0.14 190)');
+  } else {
+    root.style.setProperty('--blue', 'oklch(62% 0.18 252)');
+    root.style.setProperty('--blue2', 'oklch(72% 0.14 252)');
+  }
+
+  const glow1 = document.querySelector('.bg-glow');
+  const glow2 = document.querySelector('.bg-glow2');
+  const opacity = t.backgroundIntensity === 'low' ? 0.05 : t.backgroundIntensity === 'high' ? 0.25 : 0.15;
+  if (glow1) glow1.style.opacity = opacity;
+  if (glow2) glow2.style.opacity = opacity;
+
+  const pop = document.querySelector('.popular-section');
+  if (pop) pop.style.display = t.showPopularRoutes ? '' : 'none';
+}
+
+function createPanel(current) {
+  panel = document.createElement('div');
+  panel.style.cssText = `position:fixed;bottom:24px;right:24px;z-index:9999;background:oklch(12% 0.05 252 / 95%);border:1px solid oklch(97% 0.01 252 / 15%);border-radius:16px;padding:20px;width:240px;backdrop-filter:blur(20px);font-family:'Plus Jakarta Sans',sans-serif;color:white;box-shadow:0 20px 60px rgba(0,0,0,0.5);`;
+  panel.innerHTML = `
+    <div style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:oklch(97% 0 0 / 60%);margin-bottom:16px;">Tweaks</div>
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;color:oklch(97% 0 0 / 50%);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;">Accent Color</div>
+      <div style="display:flex;gap:8px;">
+        ${['blue','teal','gold'].map(c => `<button data-accent="${c}" style="flex:1;padding:7px;border-radius:8px;border:1px solid ${current.accentColor===c?'white':'oklch(97% 0 0/15%)'};background:${current.accentColor===c?'oklch(97% 0 0/15%)':'transparent'};color:white;font-size:11px;cursor:pointer;font-family:inherit;transition:all 0.2s;">${c.charAt(0).toUpperCase()+c.slice(1)}</button>`).join('')}
+      </div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;color:oklch(97% 0 0 / 50%);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;">Background Glow</div>
+      <div style="display:flex;gap:8px;">
+        ${['low','medium','high'].map(v => `<button data-bg="${v}" style="flex:1;padding:7px;border-radius:8px;border:1px solid ${current.backgroundIntensity===v?'white':'oklch(97% 0 0/15%)'};background:${current.backgroundIntensity===v?'oklch(97% 0 0/15%)':'transparent'};color:white;font-size:11px;cursor:pointer;font-family:inherit;transition:all 0.2s;">${v.charAt(0).toUpperCase()+v.slice(1)}</button>`).join('')}
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:12px;color:oklch(97% 0 0/60%);">Popular Routes</span>
+      <button data-toggle-pop style="width:40px;height:22px;border-radius:11px;border:none;background:${current.showPopularRoutes?'oklch(62% 0.18 252)':'oklch(97% 0 0/15%)'};cursor:pointer;position:relative;transition:background 0.2s;">
+        <span style="position:absolute;top:3px;left:${current.showPopularRoutes?'21px':'3px'};width:16px;height:16px;border-radius:50%;background:white;transition:left 0.2s;"></span>
+      </button>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  let state = { ...current };
+
+  panel.querySelectorAll('[data-accent]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.accentColor = btn.dataset.accent;
+      applyTweaks(state);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: state }, '*');
+      document.body.removeChild(panel);
+      createPanel(state);
+    });
+  });
+
+  panel.querySelectorAll('[data-bg]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.backgroundIntensity = btn.dataset.bg;
+      applyTweaks(state);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: state }, '*');
+      document.body.removeChild(panel);
+      createPanel(state);
+    });
+  });
+
+  panel.querySelector('[data-toggle-pop]').addEventListener('click', () => {
+    state.showPopularRoutes = !state.showPopularRoutes;
+    applyTweaks(state);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: state }, '*');
+    document.body.removeChild(panel);
+    createPanel(state);
+  });
+}
+
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') {
+    tweaksVisible = true;
+    createPanel(TWEAK_DEFAULTS);
+    applyTweaks(TWEAK_DEFAULTS);
+  }
+  if (e.data?.type === '__deactivate_edit_mode') {
+    tweaksVisible = false;
+    if (panel) { document.body.removeChild(panel); panel = null; }
+  }
+});
+
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+applyTweaks(TWEAK_DEFAULTS);
+</script>
+</body>
+</html>

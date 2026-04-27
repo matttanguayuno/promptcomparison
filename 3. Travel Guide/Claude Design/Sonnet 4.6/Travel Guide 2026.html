@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: oklch(11% 0.025 255);
+    --surface: oklch(16% 0.03 255);
+    --surface2: oklch(20% 0.03 255);
+    --border: oklch(28% 0.03 255);
+    --gold: oklch(72% 0.14 85);
+    --gold2: oklch(60% 0.12 85);
+    --cream: oklch(93% 0.015 80);
+    --muted: oklch(58% 0.02 255);
+    --teal: oklch(65% 0.12 195);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Tweaks Panel */
+  #tweaks-panel {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; width: 260px;
+    z-index: 9999; display: none; flex-direction: column; gap: 14px;
+    box-shadow: 0 20px 60px oklch(0% 0 0 / 0.5);
+  }
+  #tweaks-panel.visible { display: flex; }
+  #tweaks-panel h4 { font-family: var(--font-display); font-size: 18px; color: var(--gold); font-weight: 400; }
+  .tweak-row { display: flex; flex-direction: column; gap: 6px; }
+  .tweak-row label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .tweak-row select, .tweak-row input[type=range] { background: var(--surface2); border: 1px solid var(--border); color: var(--cream); padding: 6px 10px; border-radius: 6px; font-size: 13px; width: 100%; font-family: var(--font-body); cursor: pointer; }
+  .tweak-row input[type=range] { padding: 0; accent-color: var(--gold); }
+  .tweak-swatch-row { display: flex; gap: 8px; }
+  .tweak-swatch { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; }
+  .tweak-swatch.active { border-color: var(--cream); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<div id="tweaks-panel">
+  <h4>Tweaks</h4>
+  <div class="tweak-row">
+    <label>Accent Color</label>
+    <div class="tweak-swatch-row" id="tweak-accents"></div>
+  </div>
+  <div class="tweak-row">
+    <label>Hero Destination</label>
+    <select id="tweak-hero"></select>
+  </div>
+  <div class="tweak-row">
+    <label>Card Density</label>
+    <input type="range" id="tweak-density" min="2" max="4" step="1" value="3">
+  </div>
+</div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentHue": 85,
+  "heroIndex": 0,
+  "cardCols": 3
+}/*EDITMODE-END*/;
+
+// ── DATA ──────────────────────────────────────────────────────────
+const DESTINATIONS = [
+  { name: "Kyoto", country: "Japan", tagline: "Where ancient temples meet cherry blossoms", color: "oklch(55% 0.12 20)" },
+  { name: "Amalfi", country: "Italy", tagline: "Cliffside villages over a cobalt sea", color: "oklch(50% 0.14 220)" },
+  { name: "Marrakech", country: "Morocco", tagline: "A labyrinth of spice and wonder", color: "oklch(55% 0.14 50)" },
+  { name: "Patagonia", country: "Argentina", tagline: "At the edge of the known world", color: "oklch(45% 0.10 200)" },
+];
+
+const TIPS = [
+  { icon: "◈", title: "Book Off-Season", body: "Shoulder months — April, October — offer 40% lower costs with 80% fewer crowds. The light is better for photography too." },
+  { icon: "◈", title: "Carry Local Currency", body: "Always have the equivalent of $50 USD in local cash. ATMs in remote areas can be unreliable and card readers often fail." },
+  { icon: "◈", title: "One Bag Rule", body: "If you can't carry it for a mile, you packed too much. A 40L backpack is enough for three weeks anywhere on earth." },
+  { icon: "◈", title: "Learn Three Phrases", body: "Hello, Thank you, and Where is the bathroom? — in the local language. It opens more doors than any guidebook." },
+  { icon: "◈", title: "Slow Travel", body: "Spend at least four nights per destination. You'll find the hidden restaurant on night three, and the perfect morning on day four." },
+  { icon: "◈", title: "Digital Backup", body: "Photograph every document, card and ticket. Store them in cloud storage accessible without local data. Emergencies don't wait." },
+];
+
+const HIDDEN_GEMS = [
+  { place: "Kotor", country: "Montenegro", desc: "Medieval walled city at the foot of dramatic karst mountains. The Adriatic's best kept secret.", tag: "Under the radar" },
+  { place: "Luang Prabang", country: "Laos", desc: "Buddhist temples wrapped in jungle, monks at dawn, and the most peaceful night market in Southeast Asia.", tag: "Timeless" },
+  { place: "Plovdiv", country: "Bulgaria", desc: "Europe's oldest inhabited city — cobblestone old town, thriving arts scene, and zero tourist queues.", tag: "Rising fast" },
+  { place: "Colonia del Sacramento", country: "Uruguay", desc: "A UNESCO gem across the river from Buenos Aires, with Portuguese-era streets and golden hour light.", tag: "Day trip magic" },
+  { place: "Matera", country: "Italy", desc: "Sassi cave dwellings carved into ravines — one of the world's oldest settlements and hauntingly beautiful.", tag: "UNESCO" },
+  { place: "Faroe Islands", country: "Denmark", desc: "Dramatic sea cliffs, puffin colonies, and a total absence of the beaten path.", tag: "Remote" },
+];
+
+const RESTAURANTS = [
+  { name: "Noma", city: "Copenhagen", cuisine: "New Nordic", price: "$$$$", note: "Book 3 months ahead. The tasting menu redefines what a meal can be." },
+  { name: "El Mercado de San Miguel", city: "Madrid", cuisine: "Tapas Market", price: "$$", note: "Open all day. Share jamón, croquetas and vermouth at marble counters." },
+  { name: "Gaggan", city: "Bangkok", cuisine: "Progressive Indian", price: "$$$$", note: "25-course emoji menu. Surprising, playful, unforgettable." },
+  { name: "Zuni Café", city: "San Francisco", cuisine: "California", price: "$$$", note: "The brick-oven roast chicken is a pilgrimage in itself. Always order it." },
+  { name: "Wildair", city: "New York", cuisine: "Natural Wine Bar", price: "$$$", note: "Tiny, loud, perfect. Show up early for a bar seat and let them guide you." },
+  { name: "Carncarnì", city: "Rome", cuisine: "Offal & Tradition", price: "$$", note: "Tripe on Tuesday, cacio e pepe every day. Eat where the locals argue about football." },
+];
+
+const BUCKETLIST = [
+  { item: "Watch the sunrise over Angkor Wat", region: "Asia", difficulty: "Easy", checked: false },
+  { item: "Sleep in an overwater bungalow in the Maldives", region: "Indian Ocean", difficulty: "Easy", checked: false },
+  { item: "Trek the W Circuit in Torres del Paine", region: "South America", difficulty: "Hard", checked: false },
+  { item: "Take the Trans-Siberian Railway", region: "Eurasia", difficulty: "Epic", checked: false },
+  { item: "Dive the Great Barrier Reef", region: "Oceania", difficulty: "Easy", checked: false },
+  { item: "Spend a night in the Sahara Desert", region: "Africa", difficulty: "Medium", checked: false },
+  { item: "Witness the Northern Lights in Iceland", region: "Europe", difficulty: "Medium", checked: false },
+  { item: "Walk the Camino de Santiago", region: "Europe", difficulty: "Hard", checked: false },
+  { item: "Safari in the Serengeti during the Great Migration", region: "Africa", difficulty: "Medium", checked: false },
+  { item: "Cruise through the Norwegian Fjords", region: "Europe", difficulty: "Easy", checked: false },
+];
+
+// ── NAV ───────────────────────────────────────────────────────────
+const NAV_ITEMS = [
+  { id: "hero", label: "Guide 2026" },
+  { id: "tips", label: "Tips" },
+  { id: "gems", label: "Hidden Gems" },
+  { id: "eat", label: "Where to Eat" },
+  { id: "bucket", label: "Bucket List" },
+  { id: "book", label: "Book Travel" },
+];
+
+function Navbar({ active }) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '0 48px',
+      height: 64,
+      background: scrolled ? 'oklch(11% 0.025 255 / 0.92)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(16px)' : 'none',
+      borderBottom: scrolled ? '1px solid oklch(28% 0.03 255)' : '1px solid transparent',
+      transition: 'background 0.4s, border-color 0.4s, backdrop-filter 0.4s',
+    }}>
+      <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, letterSpacing: '0.06em', color: 'var(--gold)', fontStyle: 'italic' }}>
+        Wanderlust
+      </div>
+      <div style={{ display: 'flex', gap: 32 }}>
+        {NAV_ITEMS.map(n => (
+          <a key={n.id} href={`#${n.id}`} style={{
+            fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.12em',
+            textTransform: 'uppercase', textDecoration: 'none',
+            color: active === n.id ? 'var(--gold)' : 'var(--muted)',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={e => { if (active !== n.id) e.target.style.color = 'var(--cream)'; }}
+          onMouseLeave={e => { if (active !== n.id) e.target.style.color = 'var(--muted)'; }}
+          >{n.label}</a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+// ── HERO ──────────────────────────────────────────────────────────
+function Hero({ heroIdx, setHeroIdx }) {
+  const dest = DESTINATIONS[heroIdx];
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { setTimeout(() => setVisible(true), 80); }, [heroIdx]);
+  const switchTo = (i) => { setVisible(false); setTimeout(() => { setHeroIdx(i); setVisible(true); }, 300); };
+
+  return (
+    <section id="hero" data-screen-label="01 Hero" style={{
+      minHeight: '100vh', display: 'flex', flexDirection: 'column',
+      justifyContent: 'flex-end', padding: '0 64px 80px',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      {/* BG gradient */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        background: `radial-gradient(ellipse at 60% 40%, ${dest.color} 0%, oklch(11% 0.025 255) 70%)`,
+        transition: 'background 0.8s ease',
+      }} />
+      {/* Noise texture */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, opacity: 0.04,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundSize: '200px 200px',
+      }} />
+      {/* Grid lines */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        backgroundImage: 'linear-gradient(oklch(100% 0 0 / 0.02) 1px, transparent 1px), linear-gradient(90deg, oklch(100% 0 0 / 0.02) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
+      }} />
+
+      {/* Year label */}
+      <div style={{
+        position: 'absolute', top: 96, left: 64, zIndex: 2,
+        fontFamily: 'var(--font-display)', fontSize: 13, letterSpacing: '0.3em',
+        textTransform: 'uppercase', color: 'var(--gold)', opacity: 0.8,
+      }}>Travel Guide — 2026</div>
+
+      {/* Destination pills */}
+      <div style={{
+        position: 'absolute', top: 100, right: 64, zIndex: 2,
+        display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end',
+      }}>
+        {DESTINATIONS.map((d, i) => (
+          <button key={i} onClick={() => switchTo(i)} style={{
+            background: i === heroIdx ? 'var(--gold)' : 'oklch(100% 0 0 / 0.08)',
+            border: '1px solid ' + (i === heroIdx ? 'var(--gold)' : 'oklch(100% 0 0 / 0.15)'),
+            color: i === heroIdx ? 'var(--bg)' : 'var(--cream)',
+            padding: '6px 16px', borderRadius: 40,
+            fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.08em',
+            cursor: 'pointer', transition: 'all 0.25s',
+          }}>{d.name}</button>
+        ))}
+      </div>
+
+      {/* Hero text */}
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: 780,
+        opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(24px)',
+        transition: 'opacity 0.5s, transform 0.5s',
+      }}>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 16 }}>
+          {dest.country}
+        </div>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(64px, 9vw, 120px)', fontWeight: 300, lineHeight: 0.95, letterSpacing: '-0.01em', marginBottom: 28, color: 'var(--cream)' }}>
+          {dest.name}
+        </h1>
+        <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 22, color: 'oklch(93% 0.015 80 / 0.7)', maxWidth: 480, lineHeight: 1.5 }}>
+          {dest.tagline}
+        </p>
+        <div style={{ marginTop: 40, display: 'flex', gap: 16, alignItems: 'center' }}>
+          <a href="#book" style={{
+            background: 'var(--gold)', color: 'var(--bg)',
+            padding: '14px 32px', borderRadius: 4,
+            fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
+            textDecoration: 'none', fontWeight: 500, transition: 'opacity 0.2s',
+          }}
+          onMouseEnter={e => e.target.style.opacity = 0.85}
+          onMouseLeave={e => e.target.style.opacity = 1}
+          >Book This Trip</a>
+          <a href="#tips" style={{
+            color: 'var(--cream)', textDecoration: 'none',
+            fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
+            display: 'flex', alignItems: 'center', gap: 8, opacity: 0.7,
+          }}>Explore Guide ↓</a>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div style={{
+        position: 'absolute', bottom: 40, right: 64, zIndex: 2,
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: 0.4,
+      }}>
+        <div style={{ width: 1, height: 60, background: 'var(--cream)', animation: 'scrollPulse 2s ease infinite' }} />
+      </div>
+
+      <style>{`
+        @keyframes scrollPulse {
+          0%, 100% { opacity: 0.3; transform: scaleY(1); }
+          50% { opacity: 1; transform: scaleY(0.6); }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+// ── SECTION HEADER ────────────────────────────────────────────────
+function SectionHeader({ number, title, subtitle }) {
+  return (
+    <div style={{ marginBottom: 64 }}>
+      <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 12 }}>
+        {String(number).padStart(2, '0')}
+      </div>
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(42px, 6vw, 72px)', fontWeight: 300, lineHeight: 1, color: 'var(--cream)', marginBottom: 16 }}>
+        {title}
+      </h2>
+      {subtitle && <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 18, color: 'var(--muted)', maxWidth: 480 }}>{subtitle}</p>}
+    </div>
+  );
+}
+
+// ── TIPS ──────────────────────────────────────────────────────────
+function Tips() {
+  return (
+    <section id="tips" data-screen-label="02 Tips" style={{ padding: '120px 64px', background: 'var(--bg)' }}>
+      <SectionHeader number={1} title="Essential Tips" subtitle="Wisdom from a million miles of road." />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+        {TIPS.map((tip, i) => (
+          <div key={i} style={{
+            background: 'var(--surface)', padding: '40px 36px',
+            borderTop: '1px solid var(--border)',
+            transition: 'background 0.2s',
+            cursor: 'default',
+          }}
+          onMouseEnter={e => e.currentTarget.style.background = 'var(--surface2)'}
+          onMouseLeave={e => e.currentTarget.style.background = 'var(--surface)'}
+          >
+            <div style={{ color: 'var(--gold)', fontSize: 20, marginBottom: 20 }}>{tip.icon}</div>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 400, color: 'var(--cream)', marginBottom: 12 }}>{tip.title}</h3>
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'var(--muted)', fontWeight: 300 }}>{tip.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── HIDDEN GEMS ───────────────────────────────────────────────────
+function HiddenGems() {
+  const [hovered, setHovered] = useState(null);
+  return (
+    <section id="gems" data-screen-label="03 Hidden Gems" style={{ padding: '120px 64px', background: 'var(--surface)' }}>
+      <SectionHeader number={2} title="Hidden Gems" subtitle="Places that reward the curious traveller." />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+        {HIDDEN_GEMS.map((gem, i) => (
+          <div key={i}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
+            style={{
+              padding: '48px 40px', background: hovered === i ? 'var(--surface2)' : 'var(--bg)',
+              borderLeft: '3px solid ' + (hovered === i ? 'var(--gold)' : 'transparent'),
+              transition: 'all 0.3s', cursor: 'default',
+              display: 'flex', flexDirection: 'column', gap: 12,
+            }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 8 }}>{gem.country}</div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 300, color: 'var(--cream)', lineHeight: 1 }}>{gem.place}</h3>
+              </div>
+              <span style={{
+                background: 'oklch(100% 0 0 / 0.05)', border: '1px solid var(--border)',
+                padding: '4px 12px', borderRadius: 20,
+                fontSize: 11, letterSpacing: '0.08em', color: 'var(--muted)',
+              }}>{gem.tag}</span>
+            </div>
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'var(--muted)', fontWeight: 300, marginTop: 8 }}>{gem.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── WHERE TO EAT ──────────────────────────────────────────────────
+const PRICE_COLOR = { "$": "var(--teal)", "$$": "var(--gold)", "$$$": "var(--gold)", "$$$$": "#e8a87c" };
+
+function WhereToEat() {
+  return (
+    <section id="eat" data-screen-label="04 Where to Eat" style={{ padding: '120px 64px', background: 'var(--bg)' }}>
+      <SectionHeader number={3} title="Where to Eat" subtitle="Tables worth travelling for." />
+      <div style={{ borderTop: '1px solid var(--border)' }}>
+        {RESTAURANTS.map((r, i) => (
+          <div key={i} style={{
+            display: 'grid', gridTemplateColumns: '1fr auto auto',
+            alignItems: 'center', gap: 32,
+            padding: '28px 0', borderBottom: '1px solid var(--border)',
+            transition: 'background 0.2s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.paddingLeft = '12px'}
+          onMouseLeave={e => e.currentTarget.style.paddingLeft = '0px'}
+          >
+            <div style={{ transition: 'padding-left 0.2s' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 6 }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--cream)', fontWeight: 400 }}>{r.name}</span>
+                <span style={{ fontSize: 13, color: 'var(--muted)' }}>{r.city}</span>
+              </div>
+              <p style={{ fontSize: 13, color: 'var(--muted)', fontStyle: 'italic', lineHeight: 1.6 }}>{r.note}</p>
+            </div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--muted)', textAlign: 'right', whiteSpace: 'nowrap' }}>
+              {r.cuisine}
+            </div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: PRICE_COLOR[r.price] || 'var(--gold)', minWidth: 48, textAlign: 'right' }}>
+              {r.price}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── BUCKET LIST ───────────────────────────────────────────────────
+const DIFF_COLORS = { Easy: "var(--teal)", Medium: "var(--gold)", Hard: "#e8a87c", Epic: "#e87c7c" };
+
+function BucketList() {
+  const [checked, setChecked] = useState(
+    () => JSON.parse(localStorage.getItem('bucketlist') || '[]')
+  );
+  const toggle = (i) => {
+    const next = checked.includes(i) ? checked.filter(x => x !== i) : [...checked, i];
+    setChecked(next);
+    localStorage.setItem('bucketlist', JSON.stringify(next));
+  };
+  return (
+    <section id="bucket" data-screen-label="05 Bucket List" style={{ padding: '120px 64px', background: 'var(--surface)' }}>
+      <SectionHeader number={4} title="Bucket List" subtitle="Life is short. The list is long." />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+        {BUCKETLIST.map((item, i) => {
+          const done = checked.includes(i);
+          return (
+            <div key={i} onClick={() => toggle(i)} style={{
+              display: 'flex', alignItems: 'center', gap: 24,
+              padding: '22px 0', borderBottom: '1px solid var(--border)',
+              cursor: 'pointer', transition: 'opacity 0.2s',
+              opacity: done ? 0.4 : 1,
+            }}>
+              <div style={{
+                width: 22, height: 22, borderRadius: 4, flexShrink: 0,
+                border: '1.5px solid ' + (done ? 'var(--gold)' : 'var(--border)'),
+                background: done ? 'var(--gold)' : 'transparent',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'all 0.2s',
+              }}>
+                {done && <span style={{ color: 'var(--bg)', fontSize: 13, lineHeight: 1 }}>✓</span>}
+              </div>
+              <span style={{
+                fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--cream)', fontWeight: 300,
+                flex: 1, textDecoration: done ? 'line-through' : 'none',
+              }}>{item.item}</span>
+              <span style={{ fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--muted)', display: 'none' }}>{item.region}</span>
+              <span style={{
+                fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase',
+                color: DIFF_COLORS[item.difficulty] || 'var(--gold)',
+                minWidth: 60, textAlign: 'right',
+              }}>{item.difficulty}</span>
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ marginTop: 32, fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 16, color: 'var(--muted)' }}>
+        {checked.length} of {BUCKETLIST.length} completed
+      </div>
+    </section>
+  );
+}
+
+// ── BOOKING ───────────────────────────────────────────────────────
+function Booking() {
+  const [tab, setTab] = useState('hotel');
+  const [hotelForm, setHotelForm] = useState({ destination: '', checkin: '', checkout: '', guests: '2', rooms: '1' });
+  const [flightForm, setFlightForm] = useState({ from: '', to: '', depart: '', returnDate: '', passengers: '1', cls: 'Economy' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1400);
+  };
+
+  const inputStyle = {
+    background: 'var(--surface2)', border: '1px solid var(--border)',
+    color: 'var(--cream)', padding: '14px 16px', borderRadius: 4,
+    fontFamily: 'var(--font-body)', fontSize: 14, width: '100%',
+    outline: 'none', transition: 'border-color 0.2s',
+  };
+  const labelStyle = { fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 8, display: 'block' };
+
+  return (
+    <section id="book" data-screen-label="06 Book Travel" style={{ padding: '120px 64px', background: 'var(--bg)' }}>
+      <SectionHeader number={5} title="Book Your Journey" subtitle="Hotels and flights, curated for the discerning traveller." />
+
+      {/* Tabs */}
+      <div style={{ display: 'flex', gap: 0, marginBottom: 48, borderBottom: '1px solid var(--border)' }}>
+        {['hotel', 'flight'].map(t => (
+          <button key={t} onClick={() => { setTab(t); setSubmitted(false); }} style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            padding: '14px 32px', fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
+            color: tab === t ? 'var(--gold)' : 'var(--muted)',
+            borderBottom: tab === t ? '2px solid var(--gold)' : '2px solid transparent',
+            marginBottom: '-1px', transition: 'color 0.2s',
+          }}>
+            {t === 'hotel' ? '⌂  Hotels' : '✈  Flights'}
+          </button>
+        ))}
+      </div>
+
+      {submitted ? (
+        <div style={{ textAlign: 'center', padding: '80px 0' }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: 60, color: 'var(--gold)', marginBottom: 24 }}>✦</div>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 300, color: 'var(--cream)', marginBottom: 16 }}>
+            Request Received
+          </h3>
+          <p style={{ color: 'var(--muted)', fontSize: 16, fontFamily: 'var(--font-display)', fontStyle: 'italic', marginBottom: 40 }}>
+            Our travel concierge will reach out within 24 hours with curated options.
+          </p>
+          <button onClick={() => setSubmitted(false)} style={{
+            background: 'none', border: '1px solid var(--border)',
+            color: 'var(--muted)', padding: '12px 28px', borderRadius: 4, cursor: 'pointer',
+            fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+          }}>Make Another Search</button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          {tab === 'hotel' ? (
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 16, marginBottom: 32 }}>
+              <div>
+                <label style={labelStyle}>Destination</label>
+                <input style={inputStyle} placeholder="City, resort or hotel" value={hotelForm.destination}
+                  onChange={e => setHotelForm({ ...hotelForm, destination: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>Check-in</label>
+                <input type="date" style={{...inputStyle, colorScheme: 'dark'}} value={hotelForm.checkin}
+                  onChange={e => setHotelForm({ ...hotelForm, checkin: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>Check-out</label>
+                <input type="date" style={{...inputStyle, colorScheme: 'dark'}} value={hotelForm.checkout}
+                  onChange={e => setHotelForm({ ...hotelForm, checkout: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>Guests</label>
+                <select style={inputStyle} value={hotelForm.guests} onChange={e => setHotelForm({ ...hotelForm, guests: e.target.value })}>
+                  {[1,2,3,4,5,6].map(n => <option key={n} value={n}>{n} Guest{n>1?'s':''}</option>)}
+                </select>
+              </div>
+              <div>
+                <label style={labelStyle}>Rooms</label>
+                <select style={inputStyle} value={hotelForm.rooms} onChange={e => setHotelForm({ ...hotelForm, rooms: e.target.value })}>
+                  {[1,2,3,4].map(n => <option key={n} value={n}>{n} Room{n>1?'s':''}</option>)}
+                </select>
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr', gap: 16, marginBottom: 32 }}>
+              <div>
+                <label style={labelStyle}>From</label>
+                <input style={inputStyle} placeholder="City or airport" value={flightForm.from}
+                  onChange={e => setFlightForm({ ...flightForm, from: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>To</label>
+                <input style={inputStyle} placeholder="City or airport" value={flightForm.to}
+                  onChange={e => setFlightForm({ ...flightForm, to: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>Depart</label>
+                <input type="date" style={{...inputStyle, colorScheme: 'dark'}} value={flightForm.depart}
+                  onChange={e => setFlightForm({ ...flightForm, depart: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>Return</label>
+                <input type="date" style={{...inputStyle, colorScheme: 'dark'}} value={flightForm.returnDate}
+                  onChange={e => setFlightForm({ ...flightForm, returnDate: e.target.value })}
+                  onFocus={e => e.target.style.borderColor = 'var(--gold)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+              </div>
+              <div>
+                <label style={labelStyle}>Passengers</label>
+                <select style={inputStyle} value={flightForm.passengers} onChange={e => setFlightForm({ ...flightForm, passengers: e.target.value })}>
+                  {[1,2,3,4,5,6].map(n => <option key={n} value={n}>{n} Pax</option>)}
+                </select>
+              </div>
+              <div>
+                <label style={labelStyle}>Class</label>
+                <select style={inputStyle} value={flightForm.cls} onChange={e => setFlightForm({ ...flightForm, cls: e.target.value })}>
+                  {['Economy', 'Premium Economy', 'Business', 'First'].map(c => <option key={c}>{c}</option>)}
+                </select>
+              </div>
+            </div>
+          )}
+
+          {/* Popular Destinations */}
+          <div style={{ marginBottom: 40 }}>
+            <div style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 16 }}>Popular This Season</div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              {['Kyoto, Japan', 'Amalfi, Italy', 'Marrakech, Morocco', 'Santorini, Greece', 'Bali, Indonesia', 'Cape Town, SA'].map(d => (
+                <button type="button" key={d} style={{
+                  background: 'var(--surface)', border: '1px solid var(--border)',
+                  color: 'var(--muted)', padding: '8px 18px', borderRadius: 40,
+                  fontFamily: 'var(--font-body)', fontSize: 12, cursor: 'pointer',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
+                onClick={() => {
+                  if (tab === 'hotel') setHotelForm(f => ({...f, destination: d}));
+                  else setFlightForm(f => ({...f, to: d}));
+                }}
+                >{d}</button>
+              ))}
+            </div>
+          </div>
+
+          <button type="submit" disabled={loading} style={{
+            background: loading ? 'var(--border)' : 'var(--gold)',
+            color: 'var(--bg)', padding: '16px 48px', borderRadius: 4, border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
+            fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 500,
+            transition: 'background 0.3s', display: 'flex', alignItems: 'center', gap: 12,
+          }}>
+            {loading ? (
+              <>
+                <span style={{ display: 'inline-block', width: 14, height: 14, border: '2px solid var(--bg)', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
+                Searching...
+              </>
+            ) : `Search ${tab === 'hotel' ? 'Hotels' : 'Flights'}`}
+          </button>
+        </form>
+      )}
+
+      {/* Footer */}
+      <div style={{ marginTop: 120, paddingTop: 48, borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontStyle: 'italic', color: 'var(--gold)' }}>Wanderlust</div>
+        <div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.06em' }}>Travel Guide 2026 · The world is waiting.</div>
+      </div>
+
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </section>
+  );
+}
+
+// ── APP ───────────────────────────────────────────────────────────
+function App() {
+  const [activeSection, setActiveSection] = useState('hero');
+  const [heroIdx, setHeroIdx] = useState(TWEAK_DEFAULTS.heroIndex);
+
+  // Intersection observer for active nav
+  useEffect(() => {
+    const ids = NAV_ITEMS.map(n => n.id);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, []);
+
+  // Tweaks panel setup
+  useEffect(() => {
+    const accents = [
+      { hue: 85, label: 'Gold' }, { hue: 200, label: 'Teal' }, { hue: 30, label: 'Amber' }, { hue: 300, label: 'Mauve' }
+    ];
+    const container = document.getElementById('tweak-accents');
+    if (container) {
+      container.innerHTML = '';
+      accents.forEach(a => {
+        const el = document.createElement('div');
+        el.className = 'tweak-swatch' + (TWEAK_DEFAULTS.accentHue === a.hue ? ' active' : '');
+        el.style.background = `oklch(72% 0.14 ${a.hue})`;
+        el.title = a.label;
+        el.onclick = () => {
+          document.querySelectorAll('.tweak-swatch').forEach(s => s.classList.remove('active'));
+          el.classList.add('active');
+          document.documentElement.style.setProperty('--gold', `oklch(72% 0.14 ${a.hue})`);
+          document.documentElement.style.setProperty('--gold2', `oklch(60% 0.12 ${a.hue})`);
+          window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentHue: a.hue } }, '*');
+        };
+        container.appendChild(el);
+      });
+    }
+    const heroSel = document.getElementById('tweak-hero');
+    if (heroSel) {
+      heroSel.innerHTML = DESTINATIONS.map((d, i) => `<option value="${i}">${d.name}, ${d.country}</option>`).join('');
+      heroSel.value = heroIdx;
+      heroSel.onchange = (e) => {
+        setHeroIdx(Number(e.target.value));
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { heroIndex: Number(e.target.value) } }, '*');
+      };
+    }
+
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel')?.classList.add('visible');
+      if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel')?.classList.remove('visible');
+    });
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+  }, []);
+
+  return (
+    <>
+      <Navbar active={activeSection} />
+      <Hero heroIdx={heroIdx} setHeroIdx={setHeroIdx} />
+      <Tips />
+      <HiddenGems />
+      <WhereToEat />
+      <BucketList />
+      <Booking />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 120 84" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="84" fill="oklch(11% 0.025 255)"/>
+  <text x="60" y="48" text-anchor="middle" font-size="28" fill="oklch(72% 0.14 85)" font-family="Georgia">✦</text>
+  <text x="60" y="66" text-anchor="middle" font-size="8" fill="oklch(58% 0.02 255)" font-family="sans-serif" letter-spacing="2">TRAVEL 2026</text>
+</svg>
+</template>
+</body>
+</html>

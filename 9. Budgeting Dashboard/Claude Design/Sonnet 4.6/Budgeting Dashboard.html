@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        oklch(14% 0.015 260);
+    --surface:   oklch(18% 0.015 260);
+    --surface2:  oklch(22% 0.018 260);
+    --border:    oklch(28% 0.018 260);
+    --text:      oklch(92% 0.008 80);
+    --muted:     oklch(58% 0.010 260);
+    --accent:    oklch(72% 0.16 75);   /* warm gold */
+    --accent2:   oklch(72% 0.16 200);  /* teal */
+    --accent3:   oklch(72% 0.16 320);  /* rose */
+    --accent4:   oklch(72% 0.16 130);  /* lime */
+    --accent5:   oklch(72% 0.16 30);   /* orange */
+  }
+
+  html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; }
+  #root { min-height: 100vh; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes drawArc {
+    from { stroke-dashoffset: 1000; }
+  }
+  .animate-fade-up { animation: fadeUp 0.5s ease both; }
+  .animate-fade-in { animation: fadeIn 0.4s ease both; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentHue": 75,
+  "month": "April 2026",
+  "currency": "$",
+  "showPercentages": true
+}/*EDITMODE-END*/;
+
+// ── Data ──────────────────────────────────────────────────────────────────────
+const EXPENSES = [
+  { id: 1, category: "Housing",       amount: 1850, icon: "⌂",  color: "var(--accent)"  },
+  { id: 2, category: "Groceries",     amount:  620, icon: "◈",  color: "var(--accent2)" },
+  { id: 3, category: "Transport",     amount:  310, icon: "▷",  color: "var(--accent3)" },
+  { id: 4, category: "Dining Out",    amount:  290, icon: "◉",  color: "var(--accent4)" },
+  { id: 5, category: "Subscriptions", amount:  185, icon: "◎",  color: "var(--accent5)" },
+  { id: 6, category: "Healthcare",    amount:  140, icon: "✦",  color: "oklch(72% 0.16 280)" },
+  { id: 7, category: "Entertainment", amount:   95, icon: "◆",  color: "oklch(72% 0.16 170)" },
+  { id: 8, category: "Savings",       amount:  510, icon: "▲",  color: "oklch(72% 0.16 100)" },
+];
+
+const INCOME  = 5200;
+const BUDGET  = 4800;
+
+// ── Pie Chart (pure SVG) ──────────────────────────────────────────────────────
+function PieChart({ expenses, currency, hovered, onHover }) {
+  const total = expenses.reduce((s, e) => s + e.amount, 0);
+  const cx = 160, cy = 160, r = 120, inner = 68;
+
+  let angle = -Math.PI / 2;
+  const slices = expenses.map(exp => {
+    const frac = exp.amount / total;
+    const start = angle;
+    angle += frac * 2 * Math.PI;
+    return { ...exp, frac, start, end: angle };
+  });
+
+  function arc(cx, cy, r, startAngle, endAngle, innerR) {
+    const x1 = cx + r * Math.cos(startAngle);
+    const y1 = cy + r * Math.sin(startAngle);
+    const x2 = cx + r * Math.cos(endAngle);
+    const y2 = cy + r * Math.sin(endAngle);
+    const ix1 = cx + innerR * Math.cos(endAngle);
+    const iy1 = cy + innerR * Math.sin(endAngle);
+    const ix2 = cx + innerR * Math.cos(startAngle);
+    const iy2 = cy + innerR * Math.sin(startAngle);
+    const large = endAngle - startAngle > Math.PI ? 1 : 0;
+    return `M ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} L ${ix1} ${iy1} A ${innerR} ${innerR} 0 ${large} 0 ${ix2} ${iy2} Z`;
+  }
+
+  const hov = hovered != null ? slices.find(s => s.id === hovered) : null;
+
+  return (
+    <div style={{ position: 'relative', width: 320, height: 320, flexShrink: 0 }}>
+      <svg width="320" height="320" viewBox="0 0 320 320">
+        <defs>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        {slices.map((s, i) => {
+          const isHov = hovered === s.id;
+          const rOuter = isHov ? r + 10 : r;
+          const midAngle = (s.start + s.end) / 2;
+          const dx = isHov ? Math.cos(midAngle) * 6 : 0;
+          const dy = isHov ? Math.sin(midAngle) * 6 : 0;
+          return (
+            <path
+              key={s.id}
+              d={arc(cx + dx, cy + dy, rOuter, s.start, s.end, inner)}
+              fill={s.color}
+              opacity={hovered != null && !isHov ? 0.35 : 1}
+              filter={isHov ? "url(#glow)" : undefined}
+              style={{ cursor: 'pointer', transition: 'all 0.2s ease', animationDelay: `${0.05 * i}s` }}
+              onMouseEnter={() => onHover(s.id)}
+              onMouseLeave={() => onHover(null)}
+            />
+          );
+        })}
+        {/* center */}
+        <circle cx={cx} cy={cy} r={inner - 2} fill="var(--bg)" />
+        {hov ? (
+          <>
+            <text x={cx} y={cy - 14} textAnchor="middle" fill="var(--text)" fontSize="11" fontFamily="DM Sans" opacity="0.6">{hov.category}</text>
+            <text x={cx} y={cy + 10} textAnchor="middle" fill={hov.color} fontSize="22" fontFamily="DM Serif Display" fontWeight="400">{currency}{hov.amount.toLocaleString()}</text>
+            <text x={cx} y={cy + 28} textAnchor="middle" fill="var(--muted)" fontSize="11" fontFamily="DM Sans">{(hov.frac * 100).toFixed(1)}%</text>
+          </>
+        ) : (
+          <>
+            <text x={cx} y={cy - 12} textAnchor="middle" fill="var(--muted)" fontSize="11" fontFamily="DM Sans">Total Spent</text>
+            <text x={cx} y={cy + 14} textAnchor="middle" fill="var(--text)" fontSize="26" fontFamily="DM Serif Display" fontWeight="400">{currency}{total.toLocaleString()}</text>
+          </>
+        )}
+      </svg>
+    </div>
+  );
+}
+
+// ── Stat Card ─────────────────────────────────────────────────────────────────
+function StatCard({ label, value, sub, accent, delay }) {
+  return (
+    <div className="animate-fade-up" style={{
+      animationDelay: delay,
+      background: 'var(--surface)',
+      border: '1px solid var(--border)',
+      borderRadius: 16,
+      padding: '20px 24px',
+      flex: 1,
+      minWidth: 160,
+    }}>
+      <div style={{ fontSize: 12, color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 28, fontFamily: 'DM Serif Display', color: accent || 'var(--text)', lineHeight: 1 }}>{value}</div>
+      {sub && <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 6 }}>{sub}</div>}
+    </div>
+  );
+}
+
+// ── Expense Row ───────────────────────────────────────────────────────────────
+function ExpenseRow({ expense, total, showPct, currency, delay, hovered, onHover }) {
+  const pct = ((expense.amount / total) * 100).toFixed(1);
+  const isHov = hovered === expense.id;
+  return (
+    <div
+      className="animate-fade-up"
+      onMouseEnter={() => onHover(expense.id)}
+      onMouseLeave={() => onHover(null)}
+      style={{
+        animationDelay: delay,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 14,
+        padding: '13px 16px',
+        borderRadius: 12,
+        background: isHov ? 'var(--surface2)' : 'transparent',
+        transition: 'background 0.15s ease',
+        cursor: 'default',
+      }}
+    >
+      {/* icon dot */}
+      <div style={{
+        width: 36, height: 36, borderRadius: 10,
+        background: expense.color + '22',
+        border: `1.5px solid ${expense.color}55`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: 14, color: expense.color, flexShrink: 0,
+      }}>
+        {expense.icon}
+      </div>
+
+      {/* label + bar */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+          <span style={{ fontSize: 14, fontWeight: 500 }}>{expense.category}</span>
+          <span style={{ fontSize: 14, fontFamily: 'DM Serif Display', color: isHov ? expense.color : 'var(--text)' }}>
+            {currency}{expense.amount.toLocaleString()}
+            {showPct && <span style={{ fontSize: 11, color: 'var(--muted)', marginLeft: 6 }}>{pct}%</span>}
+          </span>
+        </div>
+        <div style={{ height: 3, background: 'var(--border)', borderRadius: 2, overflow: 'hidden' }}>
+          <div style={{
+            height: '100%',
+            width: `${pct}%`,
+            background: expense.color,
+            borderRadius: 2,
+            transition: 'width 0.6s cubic-bezier(0.34,1.56,0.64,1)',
+          }}/>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Main App ──────────────────────────────────────────────────────────────────
+function App() {
+  const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+  const [hovered, setHovered] = React.useState(null);
+  const [tweakOpen, setTweakOpen] = React.useState(false);
+
+  const total = EXPENSES.reduce((s, e) => s + e.amount, 0);
+  const remaining = INCOME - total;
+  const overBudget = total > BUDGET;
+
+  // Tweaks panel
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode')   setTweakOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweakOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  function updateTweak(key, val) {
+    const next = { ...tweaks, [key]: val };
+    setTweaks(next);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: val } }, '*');
+  }
+
+  const { currency, month, showPercentages } = tweaks;
+
+  return (
+    <div style={{ minHeight: '100vh', padding: '32px 40px 48px', maxWidth: 1200, margin: '0 auto' }}>
+
+      {/* ── Header ── */}
+      <header className="animate-fade-up" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 36, animationDelay: '0s' }}>
+        <div>
+          <div style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 4, fontWeight: 500 }}>Personal Finance</div>
+          <h1 style={{ fontFamily: 'DM Serif Display', fontSize: 38, lineHeight: 1, fontWeight: 400 }}>Budget Overview</h1>
+          <div style={{ color: 'var(--muted)', fontSize: 14, marginTop: 6 }}>{month}</div>
+        </div>
+        <div style={{ display: 'flex', gap: 10 }}>
+          {['Apr', 'Mar', 'Feb', 'Jan'].map((m, i) => (
+            <button key={m} style={{
+              padding: '7px 16px', borderRadius: 8, fontSize: 13, fontFamily: 'DM Sans',
+              background: i === 0 ? 'var(--accent)' : 'var(--surface)',
+              color: i === 0 ? 'var(--bg)' : 'var(--muted)',
+              border: '1px solid ' + (i === 0 ? 'var(--accent)' : 'var(--border)'),
+              cursor: 'pointer', fontWeight: i === 0 ? 600 : 400,
+              transition: 'all 0.15s',
+            }}>{m}</button>
+          ))}
+        </div>
+      </header>
+
+      {/* ── Stat Cards ── */}
+      <div style={{ display: 'flex', gap: 16, marginBottom: 32, flexWrap: 'wrap' }}>
+        <StatCard label="Monthly Income"  value={`${currency}${INCOME.toLocaleString()}`}  sub="After tax"                              delay="0.05s" />
+        <StatCard label="Total Expenses"  value={`${currency}${total.toLocaleString()}`}    sub={`${((total/INCOME)*100).toFixed(0)}% of income`} delay="0.1s" />
+        <StatCard label="Remaining"       value={`${currency}${remaining.toLocaleString()}`} sub="Available to save" accent={remaining > 0 ? 'var(--accent)' : 'var(--accent3)'} delay="0.15s" />
+        <StatCard label="Budget Status"   value={overBudget ? 'Over' : 'On Track'}          sub={`Budget: ${currency}${BUDGET.toLocaleString()}`} accent={overBudget ? 'var(--accent3)' : 'var(--accent4)'} delay="0.2s" />
+      </div>
+
+      {/* ── Main Grid ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 24 }}>
+
+        {/* ── Pie Chart Panel ── */}
+        <div className="animate-fade-up" style={{
+          animationDelay: '0.25s',
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
+          borderRadius: 20,
+          padding: '28px 24px 24px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <div style={{ width: '100%', marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 13, fontWeight: 500 }}>Spending Breakdown</span>
+            <span style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>HOVER TO EXPLORE</span>
+          </div>
+          <PieChart expenses={EXPENSES} currency={currency} hovered={hovered} onHover={setHovered} />
+
+          {/* legend */}
+          <div style={{ width: '100%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', marginTop: 16 }}>
+            {EXPENSES.map(e => (
+              <div key={e.id} onMouseEnter={() => setHovered(e.id)} onMouseLeave={() => setHovered(null)}
+                style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '4px 6px', borderRadius: 6,
+                  background: hovered === e.id ? 'var(--surface2)' : 'transparent',
+                  cursor: 'default', transition: 'background 0.15s' }}>
+                <div style={{ width: 8, height: 8, borderRadius: 2, background: e.color, flexShrink: 0 }}/>
+                <span style={{ fontSize: 11, color: hovered === e.id ? 'var(--text)' : 'var(--muted)', transition: 'color 0.15s', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{e.category}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Expense List ── */}
+        <div className="animate-fade-up" style={{
+          animationDelay: '0.3s',
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
+          borderRadius: 20,
+          padding: '28px 20px 20px',
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, padding: '0 4px' }}>
+            <span style={{ fontSize: 13, fontWeight: 500 }}>Monthly Expenses</span>
+            <span style={{ fontSize: 12, color: 'var(--muted)' }}>{EXPENSES.length} categories</span>
+          </div>
+
+          <div style={{ borderBottom: '1px solid var(--border)', marginBottom: 12 }}/>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {[...EXPENSES].sort((a, b) => b.amount - a.amount).map((exp, i) => (
+              <ExpenseRow
+                key={exp.id}
+                expense={exp}
+                total={total}
+                showPct={showPercentages}
+                currency={currency}
+                delay={`${0.3 + i * 0.04}s`}
+                hovered={hovered}
+                onHover={setHovered}
+              />
+            ))}
+          </div>
+
+          {/* total row */}
+          <div style={{
+            borderTop: '1px solid var(--border)', marginTop: 12, paddingTop: 16,
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            padding: '16px 16px 4px',
+          }}>
+            <span style={{ fontSize: 13, color: 'var(--muted)', fontWeight: 500 }}>Total</span>
+            <span style={{ fontSize: 22, fontFamily: 'DM Serif Display', color: 'var(--accent)' }}>{currency}{total.toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Tweaks Panel ── */}
+      {tweakOpen && (
+        <div style={{
+          position: 'fixed', bottom: 28, right: 28, zIndex: 1000,
+          background: 'var(--surface)', border: '1px solid var(--border)',
+          borderRadius: 16, padding: 20, width: 280, boxShadow: '0 24px 48px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>Tweaks</div>
+
+          <label style={{ display: 'block', marginBottom: 14 }}>
+            <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 6 }}>Currency Symbol</div>
+            <select value={currency} onChange={e => updateTweak('currency', e.target.value)}
+              style={{ width: '100%', background: 'var(--surface2)', border: '1px solid var(--border)', color: 'var(--text)', borderRadius: 8, padding: '7px 10px', fontSize: 13, fontFamily: 'DM Sans' }}>
+              {['$','€','£','¥','₹'].map(c => <option key={c} value={c}>{c}</option>)}
+            </select>
+          </label>
+
+          <label style={{ display: 'block', marginBottom: 14 }}>
+            <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 6 }}>Period Label</div>
+            <input value={month} onChange={e => updateTweak('month', e.target.value)}
+              style={{ width: '100%', background: 'var(--surface2)', border: '1px solid var(--border)', color: 'var(--text)', borderRadius: 8, padding: '7px 10px', fontSize: 13, fontFamily: 'DM Sans' }} />
+          </label>
+
+          <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
+            <input type="checkbox" checked={showPercentages} onChange={e => updateTweak('showPercentages', e.target.checked)}
+              style={{ accentColor: 'var(--accent)', width: 15, height: 15 }} />
+            <span style={{ fontSize: 13 }}>Show percentages</span>
+          </label>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

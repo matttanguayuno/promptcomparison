@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advent Calendar 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1b2a;
+    --bg2: #111f30;
+    --gold: #e8b86d;
+    --gold-light: #f5d49a;
+    --crimson: #c0392b;
+    --crimson-light: #e74c3c;
+    --pine: #1d5c3a;
+    --pine-light: #27ae60;
+    --cream: #f5efe6;
+    --snow: #eef4f8;
+  }
+
+  html, body { min-height: 100vh; background: var(--bg); overflow-x: hidden; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: 
+      radial-gradient(ellipse 80% 60% at 20% 10%, oklch(20% 0.06 265 / 0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, oklch(18% 0.05 10 / 0.5) 0%, transparent 60%),
+      #0d1b2a;
+  }
+
+  #root { min-height: 100vh; }
+
+  /* Snow canvas */
+  #snow-canvas {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  }
+
+  .app {
+    position: relative; z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .header-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--snow);
+    line-height: 1;
+    text-shadow: 0 0 60px oklch(55% 0.18 85 / 0.35);
+    letter-spacing: -0.01em;
+  }
+  .header h1 span {
+    color: var(--gold);
+  }
+  .header-sub {
+    margin-top: 14px;
+    font-size: 15px;
+    color: oklch(75% 0.04 230);
+    font-weight: 300;
+  }
+  .header-divider {
+    margin: 24px auto 0;
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* Grid */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 110px;
+    gap: 10px;
+  }
+
+  /* Door */
+  .door-wrapper {
+    perspective: 900px;
+    cursor: pointer;
+  }
+  .door-wrapper.opened { cursor: default; }
+
+  .door-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  .door-wrapper.opened .door-inner {
+    transform: rotateY(180deg);
+  }
+
+  .door-front, .door-back {
+    position: absolute; inset: 0;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Front face */
+  .door-front {
+    border: 1.5px solid oklch(55% 0.06 240 / 0.35);
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .door-wrapper:not(.opened):hover .door-front {
+    transform: scale(1.04);
+    box-shadow: 0 8px 32px oklch(0% 0% 0% / 0.45), 0 0 20px oklch(78% 0.14 85 / 0.18);
+  }
+  .door-front::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, oklch(100% 0% 0% / 0.07) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+  }
+  /* Ribbon X */
+  .door-front::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, transparent calc(50% - 0.8px), oklch(100% 0% 0% / 0.12) calc(50% - 0.8px), oklch(100% 0% 0% / 0.12) calc(50% + 0.8px), transparent calc(50% + 0.8px)),
+      linear-gradient(to bottom, transparent calc(50% - 0.8px), oklch(100% 0% 0% / 0.12) calc(50% - 0.8px), oklch(100% 0% 0% / 0.12) calc(50% + 0.8px), transparent calc(50% + 0.8px));
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  .door-number {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: oklch(98% 0.01 85);
+    position: relative; z-index: 2;
+    text-shadow: 0 2px 8px oklch(0% 0% 0% / 0.4);
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* Back face */
+  .door-back {
+    transform: rotateY(180deg);
+    background: var(--cream);
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    text-align: center;
+    border: 2px solid oklch(75% 0.08 85 / 0.4);
+    box-shadow: inset 0 0 30px oklch(78% 0.12 85 / 0.12);
+  }
+
+  .door-reveal-icon {
+    font-size: 1.6em;
+    line-height: 1;
+    filter: drop-shadow(0 1px 3px oklch(0% 0% 0% / 0.2));
+  }
+  .door-reveal-text {
+    font-size: 0.68em;
+    font-weight: 500;
+    color: oklch(28% 0.06 35);
+    line-height: 1.3;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Size variants — col/row spans */
+  .size-1x1 { grid-column: span 1; grid-row: span 1; }
+  .size-1x2 { grid-column: span 1; grid-row: span 2; }
+  .size-2x1 { grid-column: span 2; grid-row: span 1; }
+  .size-2x2 { grid-column: span 2; grid-row: span 2; }
+  .size-3x1 { grid-column: span 3; grid-row: span 1; }
+  .size-3x2 { grid-column: span 3; grid-row: span 2; }
+
+  /* Number size scales with door */
+  .size-1x1 .door-number { font-size: 1.6rem; }
+  .size-1x2 .door-number { font-size: 2rem; }
+  .size-2x1 .door-number { font-size: 2.2rem; }
+  .size-2x2 .door-number { font-size: 3.2rem; }
+  .size-3x1 .door-number { font-size: 2.8rem; }
+  .size-3x2 .door-number { font-size: 4rem; }
+
+  .size-1x2 .door-reveal-icon { font-size: 2.2em; }
+  .size-2x1 .door-reveal-icon { font-size: 2em; }
+  .size-2x2 .door-reveal-icon { font-size: 3.2em; }
+  .size-3x2 .door-reveal-icon { font-size: 3.6em; }
+  .size-2x2 .door-reveal-text { font-size: 0.78em; }
+  .size-3x2 .door-reveal-text { font-size: 0.85em; }
+  .size-3x1 .door-reveal-text { font-size: 0.8em; }
+
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: oklch(5% 0.04 265 / 0.7);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeIn 0.25s ease;
+  }
+  .modal-box {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 48px 40px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 32px 80px oklch(0% 0% 0% / 0.55), 0 0 0 1px oklch(78% 0.12 85 / 0.3);
+    animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .modal-icon { font-size: 4rem; margin-bottom: 16px; }
+  .modal-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .modal-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: oklch(22% 0.06 35);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .modal-sub {
+    font-size: 0.9rem;
+    color: oklch(45% 0.04 35);
+    margin-bottom: 28px;
+  }
+  .modal-close {
+    background: oklch(22% 0.06 35);
+    color: var(--cream);
+    border: none;
+    border-radius: 50px;
+    padding: 12px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .modal-close:hover { background: oklch(30% 0.06 35); transform: scale(1.04); }
+  .modal-sparkle {
+    position: absolute;
+    font-size: 1.4rem;
+    pointer-events: none;
+    animation: sparkle 2s infinite;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 12px;
+    color: oklch(45% 0.04 230);
+    letter-spacing: 0.05em;
+  }
+  .progress-bar-wrap {
+    margin: 32px auto 0;
+    max-width: 300px;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: oklch(65% 0.05 230);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .progress-track {
+    height: 4px;
+    background: oklch(25% 0.04 240 / 0.6);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), oklch(80% 0.14 60));
+    border-radius: 99px;
+    transition: width 0.5s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes popIn {
+    from { transform: scale(0.7) translateY(20px); opacity: 0 }
+    to { transform: scale(1) translateY(0); opacity: 1 }
+  }
+  @keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7 }
+    50% { transform: scale(1.3) rotate(15deg); opacity: 1 }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Tweaks panel */
+  .tweaks-panel {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    background: oklch(12% 0.04 265 / 0.95);
+    border: 1px solid oklch(40% 0.06 240 / 0.4);
+    border-radius: 14px;
+    padding: 20px;
+    width: 230px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 40px oklch(0% 0% 0% / 0.5);
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .tweaks-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 14px;
+    letter-spacing: 0.08em;
+  }
+  .tweak-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    color: oklch(75% 0.04 230);
+  }
+  .tweak-row label { flex: 1; }
+  .tweak-toggle {
+    width: 36px; height: 20px;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .tweak-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.2s;
+  }
+  .tweak-toggle.on { background: var(--gold); }
+  .tweak-toggle.off { background: oklch(30% 0.04 240); }
+  .tweak-toggle.on::after { transform: translateX(16px); }
+  .tweak-reset {
+    width: 100%;
+    margin-top: 8px;
+    background: oklch(35% 0.12 10 / 0.7);
+    color: oklch(90% 0.04 10);
+    border: none; border-radius: 8px;
+    padding: 8px;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .tweak-reset:hover { background: oklch(42% 0.14 10); }
+
+  @media (max-width: 680px) {
+    .calendar-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 90px; }
+    .size-3x1 { grid-column: span 2; }
+    .size-3x2 { grid-column: span 2; }
+    .header h1 { font-size: 2.4rem; }
+  }
+  @media (max-width: 440px) {
+    .calendar-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 85px; }
+    .size-2x2 { grid-column: span 2; }
+    .size-3x2 { grid-column: span 3; grid-row: span 2; }
+    .size-3x1 { grid-column: span 3; grid-row: span 1; }
+  }
+</style>
+</head>
+<body>
+<canvas id="snow-canvas"></canvas>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ── Door data ──────────────────────────────────────────────────────────────
+const DOORS = [
+  { day: 1,  size: '2x2', color: '#8B2252', icon: '🎁', msg: 'A gift for you', sub: 'The season of giving begins!' },
+  { day: 2,  size: '1x1', color: '#1d5c3a', icon: '🌟', msg: 'Star of wonder', sub: 'Shine bright today.' },
+  { day: 3,  size: '1x2', color: '#7b3f00', icon: '🦌', msg: 'Dasher & Dancer', sub: 'Rudolph sends his love.' },
+  { day: 4,  size: '1x1', color: '#1a3a6e', icon: '❄️', msg: 'First snowflake', sub: 'No two alike.' },
+  { day: 5,  size: '2x1', color: '#6d2b7f', icon: '🍪', msg: 'Fresh-baked joy', sub: 'Warm from the oven.' },
+  { day: 6,  size: '1x1', color: '#2c5e42', icon: '🎶', msg: 'Jingle all the way', sub: 'Sing out loud!' },
+  { day: 7,  size: '1x1', color: '#8B2020', icon: '🕯️', msg: 'Candlelight', sub: 'Warmth in the dark.' },
+  { day: 8,  size: '1x2', color: '#1d4e72', icon: '⛄', msg: 'Frosty smiles', sub: 'Built with love.' },
+  { day: 9,  size: '1x1', color: '#4a1c6e', icon: '🎀', msg: 'All wrapped up', sub: 'The best is inside.' },
+  { day: 10, size: '2x2', color: '#1d5c3a', icon: '🎄', msg: 'O Christmas Tree', sub: 'Tinsel & twinkling lights.' },
+  { day: 11, size: '1x1', color: '#8B4513', icon: '🥛', msg: 'Milk & cookies', sub: 'Leave some for Santa.' },
+  { day: 12, size: '2x1', color: '#7b1818', icon: '🎠', msg: 'Twelve drummers', sub: 'Drumming merrily.' },
+  { day: 13, size: '1x1', color: '#1a3a6e', icon: '🌙', msg: 'Winter moon', sub: 'Magical & still.' },
+  { day: 14, size: '1x1', color: '#2a5c2a', icon: '💝', msg: 'With love', sub: 'For those you cherish.' },
+  { day: 15, size: '3x2', color: '#7a1f3d', icon: '🏔️', msg: 'Over the mountains', sub: 'Home for the holidays.' },
+  { day: 16, size: '1x1', color: '#1d4e72', icon: '🧦', msg: 'Hung with care', sub: 'Santa is near!' },
+  { day: 17, size: '1x2', color: '#3d2060', icon: '✨', msg: 'Season of magic', sub: 'Believe in wonder.' },
+  { day: 18, size: '1x1', color: '#8B2252', icon: '🍵', msg: 'Hot cocoa', sub: 'Sip & savour.' },
+  { day: 19, size: '2x1', color: '#2c5e42', icon: '🔔', msg: 'Ring those bells', sub: 'Let them ring & ring.' },
+  { day: 20, size: '1x1', color: '#8B3a00', icon: '🤶', msg: 'Mrs. Claus', sub: 'The real hero.' },
+  { day: 21, size: '1x1', color: '#1d5c3a', icon: '🌲', msg: 'Winter solstice', sub: 'Longest night; brightest hope.' },
+  { day: 22, size: '2x1', color: '#6d2b7f', icon: '🎊', msg: 'Almost there!', sub: 'Just 3 more sleeps.' },
+  { day: 23, size: '1x2', color: '#1a3a6e', icon: '🛷', msg: 'Sleigh is ready', sub: 'Polished & packed.' },
+  { day: 24, size: '2x2', color: '#8B1c1c', icon: '🎅', msg: 'Christmas Eve!', sub: 'Tonight the magic happens.' },
+  { day: 25, size: '3x2', color: '#0d3320', icon: '🎉', msg: 'Merry Christmas!', sub: 'Joy to the world — 2025!' },
+];
+
+// ── Snow canvas ─────────────────────────────────────────────────────────────
+function useSnow(enabled) {
+  useEffect(() => {
+    if (!enabled) return;
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+    const flakes = Array.from({ length: 80 }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 2.5 + 0.8,
+      speed: Math.random() * 0.6 + 0.2,
+      drift: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.5 + 0.15,
+    }));
+    let raf;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      flakes.forEach(f => {
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(238,244,248,${f.opacity})`;
+        ctx.fill();
+        f.y += f.speed; f.x += f.drift;
+        if (f.y > H + 5) { f.y = -5; f.x = Math.random() * W; }
+        if (f.x > W + 5) f.x = -5;
+        if (f.x < -5) f.x = W + 5;
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+    const onResize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
+    window.addEventListener('resize', onResize);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); };
+  }, [enabled]);
+}
+
+// ── Color tint ──────────────────────────────────────────────────────────────
+function hexToHSL(hex) {
+  let r = parseInt(hex.slice(1,3),16)/255, g = parseInt(hex.slice(3,5),16)/255, b = parseInt(hex.slice(5,7),16)/255;
+  const max = Math.max(r,g,b), min = Math.min(r,g,b);
+  let h, s, l = (max+min)/2;
+  if (max===min) { h=s=0; } else {
+    const d = max-min; s = l>0.5 ? d/(2-max-min) : d/(max+min);
+    switch(max){ case r: h=(g-b)/d+(g<b?6:0); break; case g: h=(b-r)/d+2; break; case b: h=(r-g)/d+4; break; }
+    h /= 6;
+  }
+  return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
+}
+
+// ── Door component ──────────────────────────────────────────────────────────
+function Door({ door, opened, onOpen }) {
+  const [hsl] = useState(() => hexToHSL(door.color));
+  const lighterBg = `hsl(${hsl[0]}, ${hsl[1]}%, ${Math.min(hsl[2]+10, 70)}%)`;
+  const darkerBg  = `hsl(${hsl[0]}, ${hsl[1]}%, ${Math.max(hsl[2]-8, 5)}%)`;
+
+  return (
+    <div
+      className={`door-wrapper size-${door.size} ${opened ? 'opened' : ''}`}
+      onClick={() => !opened && onOpen(door)}
+      title={opened ? `Day ${door.day}: ${door.msg}` : `Open day ${door.day}`}
+    >
+      <div className="door-inner">
+        {/* Front */}
+        <div className="door-front" style={{
+          background: `linear-gradient(145deg, ${lighterBg}, ${darkerBg})`,
+        }}>
+          <span className="door-number">{door.day}</span>
+        </div>
+        {/* Back */}
+        <div className="door-back">
+          <span className="door-reveal-icon">{door.icon}</span>
+          <span className="door-reveal-text">{door.msg}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Modal ────────────────────────────────────────────────────────────────────
+function Modal({ door, onClose }) {
+  useEffect(() => {
+    const onKey = e => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  if (!door) return null;
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={e => e.stopPropagation()}>
+        <span className="modal-sparkle" style={{ top: 16, left: 20 }}>✨</span>
+        <span className="modal-sparkle" style={{ top: 12, right: 24, animationDelay: '0.7s' }}>⭐</span>
+        <span className="modal-sparkle" style={{ bottom: 60, left: 16, animationDelay: '1.2s' }}>✨</span>
+        <div className="modal-icon">{door.icon}</div>
+        <div className="modal-day">December {door.day}, 2025</div>
+        <div className="modal-message">{door.msg}</div>
+        <div className="modal-sub">{door.sub}</div>
+        <button className="modal-close" onClick={onClose}>Close ✕</button>
+      </div>
+    </div>
+  );
+}
+
+// ── Tweaks ────────────────────────────────────────────────────────────────────
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "snow": true,
+  "showOpened": true,
+  "glow": true
+}/*EDITMODE-END*/;
+
+function TweaksPanel({ tweaks, setTweaks, onReset }) {
+  const toggle = key => {
+    const next = { ...tweaks, [key]: !tweaks[key] };
+    setTweaks(next);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: next }, '*');
+  };
+  return (
+    <div className="tweaks-panel">
+      <div className="tweaks-title">✦ Tweaks</div>
+      {[['snow','Falling snow'],['glow','Header glow'],['showOpened','Show opened count']].map(([k,label]) => (
+        <div className="tweak-row" key={k}>
+          <label>{label}</label>
+          <button className={`tweak-toggle ${tweaks[k] ? 'on' : 'off'}`} onClick={() => toggle(k)} />
+        </div>
+      ))}
+      <button className="tweak-reset" onClick={onReset}>Reset all doors</button>
+    </div>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
+function App() {
+  const [openedDays, setOpenedDays] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('advent2025_opened') || '[]'); } catch { return []; }
+  });
+  const [modal, setModal] = useState(null);
+  const [tweaksVisible, setTweaksVisible] = useState(false);
+  const [tweaks, setTweaks] = useState(() => ({ ...TWEAK_DEFAULTS }));
+
+  // Tweaks mode
+  useEffect(() => {
+    const handler = e => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksVisible(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksVisible(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  useSnow(tweaks.snow);
+
+  const openDoor = useCallback(door => {
+    if (!openedDays.includes(door.day)) {
+      const next = [...openedDays, door.day];
+      setOpenedDays(next);
+      localStorage.setItem('advent2025_opened', JSON.stringify(next));
+    }
+    setModal(door);
+  }, [openedDays]);
+
+  const resetAll = () => {
+    setOpenedDays([]);
+    localStorage.removeItem('advent2025_opened');
+  };
+
+  const pct = Math.round((openedDays.length / 25) * 100);
+
+  return (
+    <>
+      <div className="app">
+        {/* Header */}
+        <header className="header" style={tweaks.glow ? {} : { textShadow: 'none' }}>
+          <div className="header-eyebrow">✦ December 2025 ✦</div>
+          <h1>Advent <span>Calendar</span></h1>
+          <p className="header-sub">Open one door each day of December</p>
+          <div className="header-divider" />
+        </header>
+
+        {/* Grid */}
+        <div className="calendar-grid">
+          {DOORS.map(door => (
+            <Door
+              key={door.day}
+              door={door}
+              opened={openedDays.includes(door.day)}
+              onOpen={openDoor}
+            />
+          ))}
+        </div>
+
+        {/* Progress */}
+        {tweaks.showOpened && (
+          <div className="progress-bar-wrap">
+            <div className="progress-label">
+              <span>{openedDays.length} of 25 opened</span>
+              <span style={{ color: 'var(--gold)' }}>{pct}%</span>
+            </div>
+            <div className="progress-track">
+              <div className="progress-fill" style={{ width: `${pct}%` }} />
+            </div>
+          </div>
+        )}
+
+        <div className="footer">Click a door to reveal the day's surprise &nbsp;·&nbsp; 2025</div>
+      </div>
+
+      {/* Modal */}
+      {modal && <Modal door={modal} onClose={() => setModal(null)} />}
+
+      {/* Tweaks */}
+      {tweaksVisible && (
+        <TweaksPanel tweaks={tweaks} setTweaks={setTweaks} onReset={resetAll} />
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

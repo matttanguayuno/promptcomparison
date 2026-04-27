@@ -1,0 +1,39 @@
+You
+Make a recipe app home screen with a search bar, category buttons, and a featured recipe card
+Hi-fi design
+Interactive prototype
+Claude
+Copying starter: ios_frame.jsx
+Invoking skill: Frontend design
+✓
+✓ #1
+Writing Recipe Home Screen.html
+Let me build this for you! Going with a warm editorial aesthetic — cream background, terracotta accents, Playfair Display + DM Sans, magazine-forward layout. Rich, tactile, food-centric.
+
+Done Recipe Home Screen.html
+Reading logs
+Reading ios-frame.jsx
+Searching ios-frame.jsx
+The component is IOSDevice, not IOSFrame. Let me fix that.
+
+Editing Recipe Home Screen.html
+Editing Recipe Home Screen.html
+Searching Recipe Home Screen.html
+Editing Recipe Home Screen.html
+Done Recipe Home Screen.html
+Fork verifier agent
+Here's your recipe app home screen! Here's what's included:
+
+Features:
+
+Search bar with focus animation and clear button — filters recipes live
+Category pills — All, Breakfast, Lunch, Dinner, Desserts, Drinks — filters the featured card
+Featured recipe card with dot navigation to cycle through recipes, like button, tags, rating, time, difficulty, and a "Cook Now" CTA
+Quick Picks list with compact recipe rows
+Bottom nav bar with Home, Explore, Saved, Profile
+Tweaks panel (toggle via toolbar):
+
+Accent color — Terracotta, Sage, Plum, or Ochre
+Card style — Tall Hero or Compact
+Background — Cream, White, or Dark mode
+Let me know if you'd like to adjust anything — copy, layout, colors, or add new screens!

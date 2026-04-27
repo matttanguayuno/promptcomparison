@@ -1,0 +1,31 @@
+You
+Create a modern hospital dashboard with patient cards, stats, and a quick-action panel
+Hi-fi design
+Interactive prototype
+Claude
+Invoking skill: Frontend design
++ Build hospital dashboard React prototype
++ Add patient cards with status indicators
++ Add stats row and quick-action panel
++ Add Tweaks panel
+Writing Hospital Dashboard.html
+Let me build this now! Here's my design direction:
+
+Aesthetic: Clinical-dark — deep navy sidebar, crisp white content panels, DM Sans for UI + DM Mono for vitals/numbers. Teal primary, amber warnings, rose for critical. Dense but breathable with a sophisticated data-heavy feel.
+
+Done Hospital Dashboard.html
+Fork verifier agent
+It looks like your messages are coming through empty — are you having trouble typing? 😊
+
+Here's what's been built so far — let me know what you'd like to change or add:
+
+Hospital Dashboard features:
+
+🏥 Dark sidebar with navigation, user profile, and patient count badge
+📊 5 stat cards — total patients, critical count, avg LOS, bed occupancy, discharges
+🚨 Live alert strip — dismissable critical/warning alerts that link to patients
+👤 8 patient cards with vitals, status badges, and alert tags
+🔍 Search + filter by status (critical/warning/stable)
+📋 Detail panel — click any patient card to expand full vitals, info & quick actions
+⚡ Quick Actions panel — order lab, prescribe Rx, schedule consult, etc.
+🛠 Tweaks panel — toggle light/dark theme, density, and alerts visibility

@@ -1,0 +1,24 @@
+You
+Create a 2025 advent calendar application with a joyful design and buttons in different sizes.
+Hi-fi design
+Interactive prototype
+Claude
+Invoking skill: Frontend design
++ Build advent calendar React app
++ Add door flip animations + localStorage
++ Add snow particles + festive atmosphere
++ Verify and deliver
+Writing Advent Calendar.html
+Done Advent Calendar.html
+Fork verifier agent
+Here's your 2025 Advent Calendar! 🎄
+
+Here's what's in it:
+
+25 doors in a varied mosaic grid — small 1×1 squares up to large 3×2 feature tiles (days 15, 25)
+Flip animation on click reveals a festive icon + message behind each door
+Pop-up modal with the full day's surprise after flipping
+Falling snow drifting across the deep navy backdrop
+Progress bar tracking how many doors you've opened
+localStorage persistence — your opened doors survive a refresh
+Toggle Tweaks from the toolbar to control snow, the header glow, and the progress counter — or reset all doors to start fresh.

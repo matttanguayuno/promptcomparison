@@ -1,0 +1,31 @@
+You
+Generate an Electric Utility operations dashboard page.
+Requirements:
+- KPI row (4 items): demand, supply, reserve, frequency
+- Each KPI shows a label and a value inside a card-like container
+- A scrollable list of facilities (ListView)
+- A right-hand rail containing alerts
+- Use SafeArea + AutoLayout
+Hi-fi design
+Interactive prototype
+Claude
+Invoking skill: Frontend design
++ Build KPI row (Demand, Supply, Reserve, Frequency)
++ Build scrollable facility list
++ Build right-rail alerts panel
++ Wire up layout with SafeArea + AutoLayout
++ Add live-data simulation + tweaks
+Aesthetic direction: Dark control-room industrial — deep near-black slate backgrounds with subtle grid texture, electric cyan for live metrics, amber for warnings, red for critical alerts. "Space Grotesk" for UI chrome, "Space Mono" for numeric readouts. Feels like a real energy management system (EMS/SCADA).
+
+Writing Electric Utility Dashboard.html
+Building the dashboard now!
+
+Done Electric Utility Dashboard.html
+Fork verifier agent
+The dashboard is live! Here's what's included:
+
+KPI Row — Demand, Supply, Reserve, and Frequency cards with live-ticking values, trend indicators, and color-coded alerts when thresholds are breached
+Facility ListView — 12 generating units (Solar, Wind, Gas, Nuclear, Hydro, etc.) with output bars, efficiency, and status — filterable by Online / Reduced / Offline, with fleet totals in the footer
+Alerts Rail — 8 alerts across Critical / Warning / Info severities, individually dismissible, with a severity summary and "Clear all"
+Live simulation — KPIs tick every ~2s; frequency and reserve will visually alarm when they drift out of bounds
+Use the Tweaks toggle (toolbar) to pause live data or filter facilities. Let me know if you'd like any changes — layout tweaks, additional data columns, a detail drawer for facilities, charts, or anything else!

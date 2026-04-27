@@ -1,0 +1,29 @@
+1. Create a page for flight details which has departure and destination option, user can select date, type of class
+2. Make UI more interesting and Add placeholder texts, redesign the page, add logo, emoji, background image
+3. Turn it into flight details page with colors, user should be able to select places from dropdown, select to and from dates, details for promocode
+Hi-fi design
+Interactive prototype
+Claude
+Invoking skill: Frontend design
++ Build flight details search page
++ Add interactive dropdowns, date pickers, class selector, promo code
++ Polish visuals: bg image, logo, colors, animations
+Writing Flight Details.html
+Let me build this now! Going with a luxury dark airline aesthetic — midnight navy, gold accents, glass-morphism cards, Cormorant Garant display font + Plus Jakarta Sans body. Cinematic and premium.
+
+Done Flight Details.html
+Fork verifier agent
+It looks like your messages are coming through empty! No worries — here's a summary of what's live:
+
+AirLux Flight Search is ready ✈️ — here's what's included:
+
+Logo with branded AirLux identity
+Searchable dropdowns for From/To with 16 global airports, flags & IATA codes
+Interactive calendar pickers for departure & return dates
+Passenger counter with +/− controls
+Cabin class selector — Economy 💺, Business 🛋️, First Class 👑
+Promo code field with apply button (try anything 3+ chars)
+Fare type dropdown
+Popular routes chips at the bottom
+Tweaks panel (toolbar toggle) — swap accent color, glow intensity, show/hide routes
+Let me know what you'd like to change — copy, layout, colors, new features, etc.!

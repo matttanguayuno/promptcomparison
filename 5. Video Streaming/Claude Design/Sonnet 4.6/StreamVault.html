@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>StreamVault</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e28;
+    --bg4: #222636;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8eaf0;
+    --muted: #6b7080;
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.15);
+    --teal: #00d4c8;
+    --teal-dim: rgba(0,212,200,0.12);
+    --red: #ff4757;
+    --green: #2ed573;
+  }
+  html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow: hidden; }
+  #root { height: 100%; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+  @keyframes shimmer { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+  @keyframes progressPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes scaleIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ─── Data ───────────────────────────────────────────────────────────────────
+const GENRES = ['All', 'Action', 'Drama', 'Sci-Fi', 'Thriller', 'Comedy', 'Horror', 'Romance'];
+
+const MOVIES = [
+  { id:1, title:'Neon Requiem', year:2024, genre:'Sci-Fi', duration:'2h 18m', rating:4.6, votes:2341, director:'A. Karlov', cast:['M. Sato','L. Vance','J. Osei'], synopsis:'A rogue AI awakens in the ruins of a flooded megacity, rediscovering what it means to be human through the eyes of a scavenger child.', hue:210, size:'4.2 GB' },
+  { id:2, title:'The Hollow Kings', year:2023, genre:'Thriller', duration:'1h 54m', rating:4.2, votes:1876, director:'P. Renaud', cast:['C. Mbeki','S. Holt','R. Diaz'], synopsis:'Four estranged siblings return to their family estate after a suspicious death, only to uncover a conspiracy that stretches back decades.', hue:340, size:'3.8 GB' },
+  { id:3, title:'Wildfire Season', year:2024, genre:'Drama', duration:'2h 05m', rating:4.8, votes:3102, director:'Y. Tanaka', cast:['E. Cross','D. Mensah'], synopsis:'A documentary-style drama following three families through a catastrophic wildfire summer in rural California.', hue:30, size:'3.1 GB' },
+  { id:4, title:'Apex Protocol', year:2022, genre:'Action', duration:'1h 47m', rating:3.9, votes:987, director:'L. Frost', cast:['T. Reeves','A. Park','N. Johansson'], synopsis:'An elite operative must infiltrate a fortified island compound before a deadly bioweapon reaches civilian shores.', hue:160, size:'5.0 GB' },
+  { id:5, title:'Last Orbit', year:2023, genre:'Sci-Fi', duration:'2h 31m', rating:4.5, votes:2788, director:'C. Adeyemi', cast:['I. Müller','H. Seo','F. Laurent'], synopsis:'Stranded in a decaying orbit above a dying sun, the crew of the Aeolus must make an impossible choice to save humanity.', hue:260, size:'6.1 GB' },
+  { id:6, title:'Sugarcoat', year:2024, genre:'Comedy', duration:'1h 38m', rating:4.1, votes:1453, director:'B. Novak', cast:['W. Chen','P. Obi'], synopsis:'A pastry chef mistakenly gets entangled with a rival food empire, leading to an absurdist culinary arms race.', hue:50, size:'2.9 GB' },
+  { id:7, title:'Crimson Veil', year:2023, genre:'Horror', duration:'1h 52m', rating:4.3, votes:2015, director:'M. Russo', cast:['A. Svensson','K. Park'], synopsis:'A lighthouse keeper on a remote island begins receiving transmissions from a ship that vanished 50 years ago.', hue:5, size:'3.4 GB' },
+  { id:8, title:'Perennial', year:2024, genre:'Romance', duration:'1h 58m', rating:4.7, votes:1699, director:'S. Okafor', cast:['J. Blanc','L. Kim','T. Rossi'], synopsis:'Two botanists conducting research in remote Patagonia find themselves falling in love against an unforgiving landscape.', hue:130, size:'3.6 GB' },
+  { id:9, title:'Grid Down', year:2022, genre:'Thriller', duration:'2h 02m', rating:3.8, votes:876, director:'H. Barlow', cast:['D. Reyes','C. Nair'], synopsis:'When the national power grid collapses, a utility engineer races across a darkened country to prevent nuclear meltdown.', hue:190, size:'4.4 GB' },
+  { id:10, title:'Pale Signal', year:2023, genre:'Sci-Fi', duration:'1h 44m', rating:4.0, votes:1123, director:'O. Fischer', cast:['G. Amara','R. Voss'], synopsis:'A radio telescope operator detects a repeating signal from deep space — one that seems to know her name.', hue:290, size:'3.2 GB' },
+  { id:11, title:'The Long Season', year:2024, genre:'Drama', duration:'2h 22m', rating:4.9, votes:4201, director:'A. Chen', cast:['M. Osei','F. Rivera','B. Kim'], synopsis:'A masterwork spanning three generations of a Korean-American family, told through the lens of a single harvest festival.', hue:25, size:'5.5 GB' },
+  { id:12, title:'Voltage', year:2023, genre:'Action', duration:'1h 39m', rating:3.7, votes:645, director:'B. Khatri', cast:['S. Johansson','E. Musa'], synopsis:'A motorbike courier discovers she can absorb electrical energy, turning her into an unwilling weapon for warring crime syndicates.', hue:75, size:'3.9 GB' },
+];
+
+// ─── Poster Component ────────────────────────────────────────────────────────
+function Poster({ movie, size = 'md' }) {
+  const w = size === 'sm' ? 56 : size === 'lg' ? 220 : 100;
+  const h = size === 'sm' ? 80 : size === 'lg' ? 320 : 148;
+  const h2 = Math.round(movie.hue * 0.6) % 360;
+  const stripes = Array.from({ length: 8 }, (_, i) => i);
+  return (
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} xmlns="http://www.w3.org/2000/svg" style={{ display:'block', flexShrink:0, borderRadius: size==='lg' ? 12 : 8 }}>
+      <defs>
+        <linearGradient id={`g${movie.id}`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={`hsl(${movie.hue},45%,18%)`}/>
+          <stop offset="100%" stopColor={`hsl(${h2},40%,12%)`}/>
+        </linearGradient>
+      </defs>
+      <rect width={w} height={h} fill={`url(#g${movie.id})`}/>
+      {stripes.map(i => (
+        <line key={i} x1={0} y1={h*i/8} x2={w} y2={h*i/8 + w*0.4}
+          stroke={`hsla(${movie.hue},50%,70%,0.07)`} strokeWidth={size==='lg'?18:8}/>
+      ))}
+      <text x={w/2} y={h/2 - (size==='sm'?4:8)} textAnchor="middle" fontFamily="DM Sans,sans-serif"
+        fontSize={size==='sm'?10:size==='lg'?15:11} fill={`hsla(${movie.hue},60%,80%,0.5)`} fontWeight="500">
+        {size !== 'sm' ? 'POSTER' : '▶'}
+      </text>
+      {size !== 'sm' && <text x={w/2} y={h/2 + (size==='lg'?22:14)} textAnchor="middle" fontFamily="DM Sans,sans-serif"
+        fontSize={size==='lg'?12:9} fill={`hsla(${movie.hue},60%,80%,0.3)`}>
+        {movie.genre}
+      </text>}
+    </svg>
+  );
+}
+
+// ─── Star Rating ─────────────────────────────────────────────────────────────
+function StarRating({ value, onChange, size = 20 }) {
+  const [hover, setHover] = useState(0);
+  return (
+    <div style={{ display:'flex', gap:4 }}>
+      {[1,2,3,4,5].map(s => (
+        <span key={s} onClick={() => onChange && onChange(s)}
+          onMouseEnter={() => onChange && setHover(s)}
+          onMouseLeave={() => onChange && setHover(0)}
+          style={{ fontSize:size, cursor: onChange ? 'pointer' : 'default',
+            color: s <= (hover || Math.round(value)) ? 'var(--amber)' : 'var(--bg4)',
+            transition:'color 0.15s', lineHeight:1 }}>★</span>
+      ))}
+    </div>
+  );
+}
+
+// ─── Download Button ──────────────────────────────────────────────────────────
+function DownloadButton({ movie, downloads, onDownload }) {
+  const state = downloads[movie.id]; // undefined | 'downloading' | 'done'
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (state === 'downloading') {
+      setProgress(0);
+      const start = Date.now();
+      const duration = 3000;
+      const id = setInterval(() => {
+        const p = Math.min(100, ((Date.now() - start) / duration) * 100);
+        setProgress(p);
+        if (p >= 100) clearInterval(id);
+      }, 40);
+      return () => clearInterval(id);
+    }
+  }, [state]);
+
+  if (state === 'done') return (
+    <button style={dlBtnStyle('#2ed57322', 'var(--green)')} disabled>
+      <span>✓</span> Downloaded
+    </button>
+  );
+
+  if (state === 'downloading') return (
+    <div style={{ display:'flex', flexDirection:'column', gap:6, minWidth:160 }}>
+      <div style={{ height:3, background:'var(--bg4)', borderRadius:2, overflow:'hidden' }}>
+        <div style={{ height:'100%', width:`${progress}%`, background:'var(--teal)', borderRadius:2, transition:'width 0.1s linear' }}/>
+      </div>
+      <span style={{ fontSize:11, color:'var(--muted)' }}>{Math.round(progress)}% · {movie.size}</span>
+    </div>
+  );
+
+  return (
+    <button onClick={() => onDownload(movie.id)} style={dlBtnStyle('var(--teal-dim)', 'var(--teal)')}>
+      <DownloadIcon/> Download · {movie.size}
+    </button>
+  );
+}
+
+const dlBtnStyle = (bg, color) => ({
+  display:'flex', alignItems:'center', gap:8, padding:'10px 18px',
+  background: bg, border:`1px solid ${color}40`, borderRadius:8,
+  color, fontSize:13, fontFamily:'DM Sans,sans-serif', fontWeight:500,
+  cursor:'pointer', transition:'all 0.2s', letterSpacing:0.2
+});
+
+function DownloadIcon() {
+  return <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 1v8M4 6l3 3 3-3M1 11h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>;
+}
+
+// ─── Movie Detail Modal ───────────────────────────────────────────────────────
+function MovieDetail({ movie, userRatings, userComments, downloads, onClose, onRate, onComment, onDownload }) {
+  const [commentText, setCommentText] = useState('');
+  const [myRating, setMyRating] = useState(userRatings[movie.id] || 0);
+  const [submitting, setSubmitting] = useState(false);
+  const comments = userComments[movie.id] || [];
+  const textareaRef = useRef();
+
+  const handleRate = (val) => {
+    setMyRating(val);
+    onRate(movie.id, val);
+  };
+
+  const handleComment = () => {
+    if (!commentText.trim()) return;
+    setSubmitting(true);
+    setTimeout(() => {
+      onComment(movie.id, commentText.trim(), myRating);
+      setCommentText('');
+      setSubmitting(false);
+    }, 400);
+  };
+
+  return (
+    <div onClick={onClose} style={{
+      position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', backdropFilter:'blur(8px)',
+      zIndex:100, display:'flex', alignItems:'center', justifyContent:'center', padding:24
+    }}>
+      <div onClick={e => e.stopPropagation()} style={{
+        background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:20,
+        width:'100%', maxWidth:820, maxHeight:'90vh', overflow:'auto',
+        animation:'scaleIn 0.22s ease', position:'relative'
+      }}>
+        {/* Header */}
+        <div style={{ display:'flex', gap:28, padding:'32px 32px 0' }}>
+          <Poster movie={movie} size="lg"/>
+          <div style={{ flex:1, paddingTop:4 }}>
+            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start' }}>
+              <div>
+                <div style={{ fontSize:11, color:'var(--teal)', letterSpacing:2, fontWeight:600, marginBottom:6, textTransform:'uppercase' }}>{movie.genre}</div>
+                <h2 style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:44, letterSpacing:2, lineHeight:1, color:'var(--text)', marginBottom:8 }}>{movie.title}</h2>
+                <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:16, flexWrap:'wrap' }}>
+                  <span style={{ color:'var(--muted)', fontSize:13 }}>{movie.year}</span>
+                  <span style={{ color:'var(--bg4)', fontSize:10 }}>◆</span>
+                  <span style={{ color:'var(--muted)', fontSize:13 }}>{movie.duration}</span>
+                  <span style={{ color:'var(--bg4)', fontSize:10 }}>◆</span>
+                  <span style={{ color:'var(--muted)', fontSize:13 }}>Dir. {movie.director}</span>
+                </div>
+                <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:20 }}>
+                  <StarRating value={movie.rating} size={18}/>
+                  <span style={{ color:'var(--amber)', fontSize:15, fontWeight:600 }}>{movie.rating.toFixed(1)}</span>
+                  <span style={{ color:'var(--muted)', fontSize:12 }}>({movie.votes.toLocaleString()} votes)</span>
+                </div>
+              </div>
+              <button onClick={onClose} style={{ background:'var(--bg4)', border:'none', borderRadius:'50%', width:36, height:36, color:'var(--muted)', fontSize:18, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
+            </div>
+
+            <p style={{ fontSize:14, color:'#aab0c0', lineHeight:1.7, marginBottom:20 }}>{movie.synopsis}</p>
+
+            <div style={{ marginBottom:20 }}>
+              <div style={{ fontSize:11, color:'var(--muted)', letterSpacing:1.5, textTransform:'uppercase', marginBottom:6 }}>Cast</div>
+              <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
+                {movie.cast.map(c => (
+                  <span key={c} style={{ padding:'4px 10px', background:'var(--bg4)', borderRadius:20, fontSize:12, color:'var(--text)' }}>{c}</span>
+                ))}
+              </div>
+            </div>
+
+            <DownloadButton movie={movie} downloads={downloads} onDownload={onDownload}/>
+          </div>
+        </div>
+
+        {/* Rating & Comment */}
+        <div style={{ padding:'28px 32px', borderTop:'1px solid var(--border)', marginTop:28 }}>
+          <h3 style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:22, letterSpacing:1.5, marginBottom:20, color:'var(--text)' }}>YOUR RATING & REVIEW</h3>
+          <div style={{ display:'flex', alignItems:'center', gap:16, marginBottom:20 }}>
+            <StarRating value={myRating} onChange={handleRate} size={28}/>
+            {myRating > 0 && <span style={{ color:'var(--amber)', fontSize:13, fontWeight:500 }}>You rated {myRating}/5</span>}
+          </div>
+
+          <div style={{ position:'relative' }}>
+            <textarea ref={textareaRef} value={commentText} onChange={e => setCommentText(e.target.value)}
+              placeholder="Share your thoughts about this film..."
+              onKeyDown={e => { if (e.key === 'Enter' && e.metaKey) handleComment(); }}
+              style={{
+                width:'100%', minHeight:90, background:'var(--bg3)', border:'1px solid var(--border)',
+                borderRadius:10, padding:'14px 16px', color:'var(--text)', fontSize:14,
+                fontFamily:'DM Sans,sans-serif', resize:'vertical', outline:'none',
+                transition:'border-color 0.2s'
+              }}
+              onFocus={e => e.target.style.borderColor = 'rgba(0,212,200,0.4)'}
+              onBlur={e => e.target.style.borderColor = 'var(--border)'}
+            />
+            <button onClick={handleComment} disabled={!commentText.trim() || submitting}
+              style={{
+                position:'absolute', bottom:12, right:12,
+                padding:'7px 16px', background: commentText.trim() ? 'var(--teal)' : 'var(--bg4)',
+                border:'none', borderRadius:6, color: commentText.trim() ? '#000' : 'var(--muted)',
+                fontSize:12, fontWeight:600, cursor: commentText.trim() ? 'pointer' : 'default',
+                fontFamily:'DM Sans,sans-serif', transition:'all 0.2s', letterSpacing:0.3
+              }}>
+              {submitting ? '...' : 'Post ⌘↵'}
+            </button>
+          </div>
+        </div>
+
+        {/* Comments */}
+        {comments.length > 0 && (
+          <div style={{ padding:'0 32px 32px' }}>
+            <div style={{ fontSize:11, color:'var(--muted)', letterSpacing:1.5, textTransform:'uppercase', marginBottom:16 }}>
+              {comments.length} {comments.length === 1 ? 'Review' : 'Reviews'}
+            </div>
+            <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
+              {comments.map((c, i) => (
+                <div key={i} style={{ background:'var(--bg3)', borderRadius:10, padding:'14px 16px', animation:'fadeIn 0.3s ease' }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:8 }}>
+                    <div style={{ width:30, height:30, borderRadius:'50%', background:`hsl(${(i*67+120)%360},40%,30%)`, display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600 }}>
+                      {c.author[0]}
+                    </div>
+                    <span style={{ fontSize:13, fontWeight:500 }}>{c.author}</span>
+                    {c.rating > 0 && <StarRating value={c.rating} size={13}/>}
+                    <span style={{ color:'var(--muted)', fontSize:11, marginLeft:'auto' }}>{c.time}</span>
+                  </div>
+                  <p style={{ fontSize:13, color:'#aab0c0', lineHeight:1.6 }}>{c.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─── Movie Row (List View) ────────────────────────────────────────────────────
+function MovieRow({ movie, userRatings, downloads, onClick, delay }) {
+  const myRating = userRatings[movie.id];
+  const isDownloaded = downloads[movie.id] === 'done';
+  const isDownloading = downloads[movie.id] === 'downloading';
+  return (
+    <div onClick={onClick} style={{
+      display:'grid', gridTemplateColumns:'56px 1fr auto', gap:16, alignItems:'center',
+      padding:'14px 20px', borderRadius:12, cursor:'pointer',
+      transition:'background 0.15s', animation:`fadeIn 0.3s ease ${delay}ms both`
+    }}
+      onMouseEnter={e => e.currentTarget.style.background = 'var(--bg3)'}
+      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+    >
+      <Poster movie={movie} size="sm"/>
+      <div>
+        <div style={{ fontWeight:600, fontSize:15, marginBottom:3 }}>{movie.title}</div>
+        <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap' }}>
+          <span style={{ fontSize:11, color:'var(--teal)', background:'var(--teal-dim)', padding:'2px 8px', borderRadius:20, fontWeight:500 }}>{movie.genre}</span>
+          <span style={{ color:'var(--muted)', fontSize:12 }}>{movie.year} · {movie.duration}</span>
+          {myRating > 0 && <span style={{ color:'var(--amber)', fontSize:12 }}>{'★'.repeat(myRating)} Your rating</span>}
+        </div>
+      </div>
+      <div style={{ display:'flex', alignItems:'center', gap:12, flexShrink:0 }}>
+        <div style={{ textAlign:'right' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:4 }}>
+            <span style={{ color:'var(--amber)', fontSize:14 }}>★</span>
+            <span style={{ fontWeight:600, fontSize:14 }}>{movie.rating.toFixed(1)}</span>
+          </div>
+          <div style={{ color:'var(--muted)', fontSize:11 }}>{(movie.votes/1000).toFixed(1)}k</div>
+        </div>
+        {isDownloaded && <span style={{ fontSize:16, color:'var(--green)' }} title="Downloaded">✓</span>}
+        {isDownloading && <span style={{ fontSize:12, color:'var(--teal)', animation:'shimmer 1s infinite' }}>↓</span>}
+      </div>
+    </div>
+  );
+}
+
+// ─── Main App ────────────────────────────────────────────────────────────────
+function App() {
+  const [genre, setGenre] = useState('All');
+  const [search, setSearch] = useState('');
+  const [sort, setSort] = useState('rating'); // rating | year | title
+  const [selected, setSelected] = useState(null);
+  const [userRatings, setUserRatings] = useState({});
+  const [userComments, setUserComments] = useState({});
+  const [downloads, setDownloads] = useState({});
+  const [tweaksOpen, setTweaksOpen] = useState(false);
+  const [tweaks, setTweaks] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('sv_tweaks')) || defaultTweaks(); } catch { return defaultTweaks(); }
+  });
+
+  // Persist position
+  useEffect(() => {
+    const saved = localStorage.getItem('sv_state');
+    if (saved) { try { const s = JSON.parse(saved); setGenre(s.genre||'All'); setSort(s.sort||'rating'); } catch {} }
+  }, []);
+  useEffect(() => { localStorage.setItem('sv_state', JSON.stringify({ genre, sort })); }, [genre, sort]);
+  useEffect(() => { localStorage.setItem('sv_tweaks', JSON.stringify(tweaks)); }, [tweaks]);
+
+  const filtered = MOVIES
+    .filter(m => genre === 'All' || m.genre === genre)
+    .filter(m => m.title.toLowerCase().includes(search.toLowerCase()) || m.genre.toLowerCase().includes(search.toLowerCase()))
+    .sort((a,b) => sort === 'rating' ? b.rating - a.rating : sort === 'year' ? b.year - a.year : a.title.localeCompare(b.title));
+
+  const handleDownload = useCallback((id) => {
+    setDownloads(d => ({ ...d, [id]: 'downloading' }));
+    setTimeout(() => setDownloads(d => ({ ...d, [id]: 'done' })), 3200);
+  }, []);
+
+  const handleComment = useCallback((movieId, text, rating) => {
+    const names = ['Alex M.','Sam K.','Jordan T.','Riley P.','Casey L.','Morgan F.'];
+    const now = new Date();
+    const time = now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+    setUserComments(c => ({ ...c, [movieId]: [{ text, rating, author: names[Math.floor(Math.random()*names.length)], time }, ...(c[movieId]||[])] }));
+  }, []);
+
+  // Tweaks protocol
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const updateTweak = (key, val) => {
+    const next = { ...tweaks, [key]: val };
+    setTweaks(next);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: next }, '*');
+  };
+
+  const accentColor = tweaks.accent === 'teal' ? 'var(--teal)' : tweaks.accent === 'amber' ? 'var(--amber)' : '#a78bfa';
+  const downloadedCount = Object.values(downloads).filter(v=>v==='done').length;
+  const ratedCount = Object.keys(userRatings).length;
+
+  return (
+    <div style={{ display:'flex', height:'100vh', background:'var(--bg)', fontFamily:'DM Sans,sans-serif' }}>
+      {/* Sidebar */}
+      <aside style={{ width:220, flexShrink:0, background:'var(--bg2)', borderRight:'1px solid var(--border)', display:'flex', flexDirection:'column', padding:'24px 0' }}>
+        <div style={{ padding:'0 20px 24px', borderBottom:'1px solid var(--border)' }}>
+          <div style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:26, letterSpacing:3, color:accentColor }}>STREAM</div>
+          <div style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:26, letterSpacing:3, color:'var(--text)', marginTop:-6 }}>VAULT</div>
+        </div>
+
+        <nav style={{ padding:'16px 12px', flex:1 }}>
+          {[{icon:'▤', label:'Library', active:true},{icon:'▶', label:'Continue Watching'},{icon:'⊡', label:'My List'},{icon:'↓', label:`Downloads${downloadedCount>0?` (${downloadedCount})`:''}`},{icon:'★', label:`Rated${ratedCount>0?` (${ratedCount})`:''}`}].map((item,i) => (
+            <div key={i} style={{
+              display:'flex', alignItems:'center', gap:12, padding:'10px 12px', borderRadius:8,
+              background: item.active ? 'var(--bg4)' : 'transparent',
+              color: item.active ? 'var(--text)' : 'var(--muted)', fontSize:13, fontWeight: item.active ? 500 : 400,
+              cursor:'pointer', marginBottom:2, transition:'all 0.15s'
+            }}
+              onMouseEnter={e => { if (!item.active) e.currentTarget.style.background = 'var(--bg3)'; }}
+              onMouseLeave={e => { if (!item.active) e.currentTarget.style.background = 'transparent'; }}
+            >
+              <span style={{ fontSize:15, opacity:0.7 }}>{item.icon}</span>
+              {item.label}
+            </div>
+          ))}
+        </nav>
+
+        <div style={{ padding:'16px 20px', borderTop:'1px solid var(--border)' }}>
+          <div style={{ width:36, height:36, borderRadius:'50%', background:`hsl(210,40%,30%)`, display:'flex', alignItems:'center', justifyContent:'center', fontSize:14, fontWeight:600, marginBottom:8 }}>J</div>
+          <div style={{ fontSize:13, fontWeight:500 }}>Jamie Rivera</div>
+          <div style={{ fontSize:11, color:'var(--muted)' }}>Premium Member</div>
+        </div>
+      </aside>
+
+      {/* Main */}
+      <main style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden' }}>
+        {/* Header */}
+        <header style={{ padding:'24px 32px 20px', borderBottom:'1px solid var(--border)', flexShrink:0 }}>
+          <div style={{ display:'flex', alignItems:'center', gap:16, marginBottom:20 }}>
+            <h1 style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:32, letterSpacing:2, flex:1 }}>MOVIE LIBRARY</h1>
+            <div style={{ position:'relative' }}>
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search titles, genres…"
+                style={{
+                  background:'var(--bg3)', border:'1px solid var(--border)', borderRadius:10,
+                  padding:'9px 14px 9px 36px', color:'var(--text)', fontSize:13, width:240,
+                  fontFamily:'DM Sans,sans-serif', outline:'none', transition:'border-color 0.2s'
+                }}
+                onFocus={e => e.target.style.borderColor = `${accentColor}60`}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
+              />
+              <span style={{ position:'absolute', left:12, top:'50%', transform:'translateY(-50%)', color:'var(--muted)', fontSize:14 }}>⌕</span>
+            </div>
+            <select value={sort} onChange={e => setSort(e.target.value)}
+              style={{ background:'var(--bg3)', border:'1px solid var(--border)', borderRadius:10, padding:'9px 14px', color:'var(--text)', fontSize:13, fontFamily:'DM Sans,sans-serif', cursor:'pointer', outline:'none' }}>
+              <option value="rating">Top Rated</option>
+              <option value="year">Newest</option>
+              <option value="title">A–Z</option>
+            </select>
+          </div>
+
+          {/* Genre Filters */}
+          <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
+            {GENRES.map(g => (
+              <button key={g} onClick={() => setGenre(g)} style={{
+                padding:'6px 16px', borderRadius:20,
+                background: genre === g ? accentColor : 'var(--bg4)',
+                color: genre === g ? (tweaks.accent === 'amber' ? '#000' : '#000') : 'var(--muted)',
+                border:'none', fontSize:12, fontWeight:500, cursor:'pointer', transition:'all 0.15s',
+                fontFamily:'DM Sans,sans-serif', letterSpacing:0.3
+              }}>{g}</button>
+            ))}
+          </div>
+        </header>
+
+        {/* Movie List */}
+        <div style={{ flex:1, overflow:'auto', padding:'12px 24px 24px' }}>
+          {filtered.length === 0 ? (
+            <div style={{ textAlign:'center', padding:'80px 0', color:'var(--muted)' }}>
+              <div style={{ fontSize:40, marginBottom:12, opacity:0.3 }}>◎</div>
+              <div style={{ fontSize:15 }}>No movies found</div>
+            </div>
+          ) : (
+            <div style={{ display:'flex', flexDirection:'column' }}>
+              <div style={{ fontSize:11, color:'var(--muted)', letterSpacing:1.5, textTransform:'uppercase', padding:'8px 20px 4px' }}>
+                {filtered.length} {filtered.length === 1 ? 'Title' : 'Titles'}
+              </div>
+              {filtered.map((m, i) => (
+                <MovieRow key={m.id} movie={m} userRatings={userRatings} downloads={downloads}
+                  onClick={() => setSelected(m)} delay={i * 30}/>
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Detail Modal */}
+      {selected && (
+        <MovieDetail movie={selected} userRatings={userRatings} userComments={userComments}
+          downloads={downloads} onClose={() => setSelected(null)}
+          onRate={(id, val) => setUserRatings(r => ({ ...r, [id]: val }))}
+          onComment={handleComment} onDownload={handleDownload}/>
+      )}
+
+      {/* Tweaks Panel */}
+      {tweaksOpen && (
+        <div style={{
+          position:'fixed', bottom:24, right:24, background:'var(--bg2)', border:'1px solid var(--border)',
+          borderRadius:16, padding:20, zIndex:200, width:240, boxShadow:'0 20px 60px rgba(0,0,0,0.5)',
+          animation:'slideUp 0.2s ease'
+        }}>
+          <div style={{ fontFamily:'Bebas Neue,sans-serif', fontSize:18, letterSpacing:2, marginBottom:16 }}>TWEAKS</div>
+          <label style={{ fontSize:12, color:'var(--muted)', display:'block', marginBottom:6 }}>Accent Color</label>
+          <div style={{ display:'flex', gap:8, marginBottom:16 }}>
+            {['teal','amber','violet'].map(a => (
+              <button key={a} onClick={() => updateTweak('accent', a)} style={{
+                flex:1, padding:'8px 0', borderRadius:8, border:`2px solid ${tweaks.accent===a?'white':'transparent'}`,
+                background: a==='teal'?'var(--teal-dim)':a==='amber'?'var(--amber-dim)':'rgba(167,139,250,0.15)',
+                color: a==='teal'?'var(--teal)':a==='amber'?'var(--amber)':'#a78bfa',
+                fontSize:11, fontWeight:600, cursor:'pointer', fontFamily:'DM Sans,sans-serif', textTransform:'capitalize'
+              }}>{a}</button>
+            ))}
+          </div>
+          <label style={{ fontSize:12, color:'var(--muted)', display:'block', marginBottom:6 }}>Sort Default</label>
+          <select value={tweaks.defaultSort || 'rating'} onChange={e => { updateTweak('defaultSort', e.target.value); setSort(e.target.value); }}
+            style={{ width:'100%', background:'var(--bg4)', border:'1px solid var(--border)', borderRadius:8, padding:'8px 12px', color:'var(--text)', fontSize:12, fontFamily:'DM Sans,sans-serif', outline:'none', marginBottom:0 }}>
+            <option value="rating">Top Rated</option>
+            <option value="year">Newest First</option>
+            <option value="title">Alphabetical</option>
+          </select>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{"accent":"teal","defaultSort":"rating"}/*EDITMODE-END*/;
+function defaultTweaks() { return { ...TWEAK_DEFAULS }; }
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
